@@ -21,8 +21,10 @@ We use **Docker** for the backend to ensure environment consistency.
 1.  **Create a New Web Service** on Render.
 2.  **Connect your GitHub Repository**.
 3.  **Service Type**: Select `Docker`.
-4.  **Auto-Deploy**: `Yes` (recommended).
-5.  **Environment Variables**: Add all variables from `backend/.env.example`.
+4.  **Root Directory**: (Leave blank or set to root of the repo).
+5.  **Dockerfile Path**: `backend/Dockerfile` (Explicitly set this if Render doesn't find it).
+6.  **Auto-Deploy**: `Yes` (recommended).
+7.  **Environment Variables**: Add all variables from `backend/.env.example`.
     - `PORT`: 10000 (Render's default)
     - `NODE_ENV`: production
     - `MONGODB_URI`: (Your Atlas string)
@@ -45,10 +47,11 @@ Vercel is optimized for Next.js and is the recommended platform.
 1.  **Import Project** into Vercel.
 2.  **Framework Preset**: Next.js.
 3.  **Root Directory**: `frontend`.
-4.  **Install Command**: `pnpm install` (Vercel detects this automatically).
-5.  **Environment Variables**:
+4.  **Install Command**: `pnpm install`
+5.  **Build Command**: `pnpm run build` 👈 **(CRITICAL: Ensure this is NOT set to 'pnpm install')**
+6.  **Environment Variables**:
     - `NEXT_PUBLIC_API_URL`: `https://your-backend-url.onrender.com/api/v1`
-6.  **Build Settings**: The project is configured for `output: standalone` in `next.config.ts`, which Vercel handles natively.
+7.  **Build Settings**: The project is configured for `output: standalone` in `next.config.ts`, which Vercel handles natively.
 
 ---
 
