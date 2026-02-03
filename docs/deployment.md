@@ -21,9 +21,10 @@ We use **Docker** for the backend to ensure environment consistency.
 1.  **Create a New Web Service** on Render.
 2.  **Connect your GitHub Repository**.
 3.  **Service Type**: Select `Docker`.
-4.  **Root Directory**: `backend` 👈 **(CRITICAL: Set this to 'backend' so Render finds the Dockerfile and files)**
-5.  **Dockerfile Path**: `Dockerfile` (Since Root Directory is set to backend)
-6.  **Auto-Deploy**: `Yes` (recommended).
+4.  **Root Directory**: (Leave this **EMPTY** / Repo Root)
+5.  **Dockerfile Path**: `backend/Dockerfile`
+6.  **Docker Build Context**: `backend` 👈 **(This is the key to fixing the path error)**
+7.  **Auto-Deploy**: `Yes` (recommended).
 7.  **Environment Variables**: Add all variables from `backend/.env.example`.
     - `PORT`: 10000 (Render's default)
     - `NODE_ENV`: production
