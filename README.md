@@ -38,9 +38,11 @@ PlugNG Shop isn't just another e-commerce platform—it's a **purpose-built solu
 - 📦 **Real-Time Order Tracking**: Track your order from payment to doorstep with SMS and email notifications
 - 💳 **Wallet System**: Pre-load funds with bonuses (₦500 bonus on every ₦10,000 top-up) and enjoy zero transaction fees
 - 🎁 **Smart Recommendations**: AI-powered product suggestions based on your device and browsing history
+- 🎫 **Newsletter Perks**: Instant ₦500 discount coupon (`WELCOME500`) for all new subscribers
 
 #### **For Business Owners**
 - 📊 **Comprehensive Admin Dashboard**: Real-time analytics, inventory management, and order processing
+- 🔍 **Activity Audit**: Advanced activity logs with rich visualizations (charts) and "before vs after" diff viewing for administrative actions
 - 🤖 **Automated Operations**: Stock alerts, order notifications, and payment verification—all automated
 - 📈 **Business Intelligence**: Sales trends, top products, customer insights, and revenue forecasting
 - 🔄 **Inventory Management**: Multi-variant product support with automatic stock deduction and low-stock alerts
@@ -471,10 +473,10 @@ This ensures:
 
 ### **Configuration Notes**
 
-#### **WhatsApp Number**
-Update the WhatsApp number in `WhatsAppSupport.tsx`:
+#### **WhatsApp Support**
+Updated support integration for fast customer resolution:
 ```typescript
-const whatsappNumber = "+234XXXXXXXXXX"; // Replace with actual business number
+const whatsappNumber = "+2348107060160"; // Official PlugNG Support
 ```
 
 #### **Newsletter API**
@@ -513,8 +515,8 @@ Brands must have:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/plugng-shop.git
-cd plugng-shop
+git clone https://github.com/handyharz/plugng.git
+cd plugng
 
 # Install dependencies
 pnpm install
@@ -538,12 +540,13 @@ pnpm run dev
 
 ### **Deployment**
 
-```bash
-# Backend: Deploy to Render
-# Frontend: Deploy to Vercel
+The project is optimized for production and includes **Docker** configurations for consistency.
 
-# See deployment guides:
-# - Backend: ./backend/README.md#deployment
+- **Frontend**: Recommended deployment on **Vercel** (Next.js Standalone mode enabled).
+- **Backend**: Recommended deployment on **Render** (as a Docker service).
+
+Detailed deployment checklists and infrastructure setup can be found in our:
+➡️ **[Complete Deployment Guide](./docs/deployment.md)**
 # - Frontend: ./frontend/README.md#deployment
 ```
 
@@ -652,11 +655,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 **Contact & Support**
 
 - 🌐 **Website**: [plugng.shop](https://plugng.shop)
-- 📧 **Email**: [email protected]
-- 📱 **Phone**: +234 XXX XXX XXXX
-- 💬 **WhatsApp**: +234 XXX XXX XXXX
+- 📧 **Email**: [harunjibs@gmail.com](mailto:harunjibs@gmail.com)
+- 📱 **Phone**: +234 810 706 0160
+- 💬 **WhatsApp**: [+234 810 706 0160](https://wa.me/2348107060160)
 - 🐦 **Twitter**: [@plugng_shop](https://twitter.com/plugng_shop)
-- 📘 **Facebook**: [PlugNG Shop](https://facebook.com/plugngshop)
 - 📸 **Instagram**: [@plugng.shop](https://instagram.com/plugng.shop)
 
 ---
