@@ -1,14 +1,15 @@
 import { Request, Response } from 'express';
 
-export const subscribe = async (req: Request, res: Response) => {
+export const subscribe = async (req: Request, res: Response): Promise<void> => {
     try {
         const { email } = req.body;
 
         if (!email) {
-            return res.status(400).json({
+            res.status(400).json({
                 success: false,
                 message: 'Email is required'
             });
+            return;
         }
 
         // In a real app, you would save this to a database or Mailchimp/SendGrid
@@ -23,10 +24,12 @@ export const subscribe = async (req: Request, res: Response) => {
                 couponCode: 'WELCOME500'
             }
         });
+        return;
     } catch (error: any) {
         res.status(500).json({
             success: false,
             message: error.message || 'Internal Server Error'
         });
+        return;
     }
 };
