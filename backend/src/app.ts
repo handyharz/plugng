@@ -26,8 +26,10 @@ app.use(mongoSanitize());
 // Rate Limiting
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: process.env.NODE_ENV === 'development' ? 10000 : 100, // much higher limit for dev
-    message: 'Too many requests from this IP, please try again after 15 minutes'
+    max: 1000, // Increased from 100 to 1000 to allow for admin dashboard data fetching
+    message: 'Too many requests from this IP, please try again after 15 minutes',
+    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 app.use('/api', limiter);
 
