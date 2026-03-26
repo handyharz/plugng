@@ -9,7 +9,9 @@ router.use(protect);
 
 router.get('/me', userController.getMe);
 router.put('/me', userController.updateMe);
+router.delete('/me', userController.deleteMe);
 router.post('/address', userController.updateAddress);
+router.patch('/address/:addressId', userController.editAddress);
 router.delete('/address/:addressId', userController.deleteAddress);
 router.patch('/address/:addressId/default', userController.setDefaultAddress);
 router.patch('/password', userController.updatePassword);

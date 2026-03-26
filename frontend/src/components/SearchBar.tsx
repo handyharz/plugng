@@ -13,6 +13,17 @@ interface InstantResults {
     products: any[];
     categories: any[];
     brands: string[];
+    suggestions: string[];
+    trending: {
+        terms: string[];
+        categories: any[];
+        brands: string[];
+    };
+    queryMeta: {
+        normalizedQuery: string;
+        expandedTerms: string[];
+        personalized: boolean;
+    };
 }
 
 function useClickOutside(ref: React.RefObject<HTMLElement | null>, handler: (event: MouseEvent | TouchEvent) => void) {
@@ -45,6 +56,7 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
     const [isLoading, setIsLoading] = useState(false);
     const [results, setResults] = useState<InstantResults | null>(null);
     const [recentSearches, setRecentSearches] = useState<string[]>([]);
+    const [trendingTerms, setTrendingTerms] = useState<string[]>(['iPhone 15 Pro', '30W Charger', 'MagSafe Case', 'Screen Protector']);
     const searchRef = useRef<HTMLDivElement>(null);
 
     useClickOutside(searchRef, () => setIsOpen(false));
@@ -60,6 +72,16 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
                 setRecentSearches(JSON.parse(saved).slice(0, 5));
             } catch (e) { console.error(e); }
         }
+
+        searchApi.getTrending()
+            .then((data) => {
+                if (data.terms?.length) {
+                    setTrendingTerms(data.terms.slice(0, 6));
+                }
+            })
+            .catch((error) => {
+                console.error('Trending search load failed:', error);
+            });
     }, []);
 
     // Handle Search Logic
@@ -215,7 +237,7 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
                                     <div className="space-y-3">
                                         <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2">Trending Now</p>
                                         <div className="grid grid-cols-2 gap-3">
-                                            {['iPhone 15 Pro', '30W Charger', 'MagSafe Case', 'Screen Protector'].map((term, i) => (
+                                            {trendingTerms.map((term, i) => (
                                                 <button key={term} onClick={() => submitSearch(term)} className="flex items-center justify-between p-3 bg-white/5 rounded-xl group hover:bg-white/10 transition-all text-left">
                                                     <span className="text-sm font-bold text-slate-400 group-hover:text-white transition-colors">{term}</span>
                                                     <Zap size={14} className={`${i === 0 ? 'text-amber-500' : 'text-slate-700'} group-hover:text-amber-400`} />
@@ -252,6 +274,20 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
                                                     ))}
                                                 </div>
                                             )}
+                                        </div>
+                                    )}
+
+                                    {results.suggestions.length > 0 && (
+                                        <div className="px-3 pb-4 flex flex-wrap gap-2 border-b border-white/5 mb-2">
+                                            {results.suggestions.slice(0, 6).map((suggestion) => (
+                                                <button
+                                                    key={suggestion}
+                                                    onClick={() => submitSearch(suggestion)}
+                                                    className="px-3 py-2 rounded-xl bg-blue-500/10 text-blue-300 hover:bg-blue-500 hover:text-white transition-all text-[11px] font-black uppercase tracking-wider"
+                                                >
+                                                    {suggestion}
+                                                </button>
+                                            ))}
                                         </div>
                                     )}
 

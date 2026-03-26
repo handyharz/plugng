@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "697d61f7fca7802d12a48489"
+  },
+  "category": "delivery",
+  "key": "baseShippingFee",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-31T01:59:19.511Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:59:54.179Z"
+  },
+  "updatedBy": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "value": 1000
+},
+{
+  "_id": {
+    "$oid": "697d61f7fca7802d12a4848b"
+  },
+  "category": "delivery",
+  "key": "freeShippingThreshold",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-31T01:59:19.518Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:59:54.181Z"
+  },
+  "updatedBy": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "value": 30000
+}]

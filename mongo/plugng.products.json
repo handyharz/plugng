@@ -1,0 +1,355 @@
+[{
+  "_id": {
+    "$oid": "697cc7ca47cdcd8480a4be10"
+  },
+  "name": "Apple 20W USB-C Power Adapter",
+  "slug": "apple-20w-usb-c-adapter",
+  "description": "Fast, efficient charging at home, in the office, or on the go.",
+  "category": {
+    "$oid": "697cc7c62af4a50e58c71185"
+  },
+  "lowStockThreshold": 10,
+  "images": [
+    {
+      "url": "/products/apple-adapter.png",
+      "key": "apple-20w-adapter",
+      "alt": "Apple 20W Adapter",
+      "isPrimary": true,
+      "_id": {
+        "$oid": "697cc7ca47cdcd8480a4be11"
+      }
+    }
+  ],
+  "variants": [
+    {
+      "sku": "APL-20W-ADPT-UK",
+      "attributeValues": {
+        "Plug Type": "UK Plug"
+      },
+      "costPrice": 18500,
+      "sellingPrice": 28500,
+      "stock": 8,
+      "image": "/products/apple-adapter.png",
+      "_id": {
+        "$oid": "697cc7ca47cdcd8480a4be12"
+      }
+    }
+  ],
+  "compatibility": {
+    "brands": [
+      "Apple"
+    ],
+    "models": [
+      "iPhone 15",
+      "iPad Pro"
+    ]
+  },
+  "status": "active",
+  "featured": true,
+  "views": 0,
+  "salesCount": 15,
+  "walletOnlyDiscount": {
+    "enabled": false
+  },
+  "options": [],
+  "specifications": [],
+  "createdAt": {
+    "$date": "2026-01-30T15:01:30.029Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:52:00.265Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697cc7ca47cdcd8480a4be0d"
+  },
+  "name": "Samsung Galaxy S24 Ultra Grip Case",
+  "slug": "samsung-s24-ultra-silicone-case",
+  "description": "This case protects your phone while providing a secure grip. The integrated strap helps you hold your phone more firmly.",
+  "category": {
+    "$oid": "697cc7c62af4a50e58c7118e"
+  },
+  "lowStockThreshold": 10,
+  "images": [
+    {
+      "url": "/products/samsung-case-gray.png",
+      "key": "samsung-case-gray",
+      "alt": "Samsung S24 Case - Gray",
+      "isPrimary": true,
+      "_id": {
+        "$oid": "697cc7ca47cdcd8480a4be0e"
+      }
+    }
+  ],
+  "variants": [
+    {
+      "sku": "SAM-S24U-SIL-GRY",
+      "attributeValues": {
+        "Color": "Gray"
+      },
+      "costPrice": 20000,
+      "sellingPrice": 28000,
+      "compareAtPrice": 40000,
+      "stock": 12,
+      "image": "/products/samsung-case-gray.png",
+      "_id": {
+        "$oid": "697cc7ca47cdcd8480a4be0f"
+      }
+    }
+  ],
+  "compatibility": {
+    "brands": [
+      "Samsung"
+    ],
+    "models": [
+      "Galaxy S24 Ultra"
+    ]
+  },
+  "status": "active",
+  "featured": false,
+  "views": 0,
+  "salesCount": 32,
+  "walletOnlyDiscount": {
+    "enabled": false
+  },
+  "options": [],
+  "specifications": [],
+  "createdAt": {
+    "$date": "2026-01-30T15:01:30.029Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T02:00:49.296Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697cc7ca47cdcd8480a4be13"
+  },
+  "name": "Oraimo 20000mAh Power Bank",
+  "slug": "oraimo-20000mah-power-bank",
+  "description": "High capacity power bank with fast charging support.",
+  "category": {
+    "$oid": "697cc7c62af4a50e58c71209"
+  },
+  "lowStockThreshold": 10,
+  "images": [
+    {
+      "url": "/products/oraimo-powerbank.png",
+      "key": "oraimo-powerbank",
+      "alt": "Oraimo Power Bank",
+      "isPrimary": true,
+      "_id": {
+        "$oid": "697cc7ca47cdcd8480a4be14"
+      }
+    }
+  ],
+  "variants": [
+    {
+      "sku": "ORA-PB-20K",
+      "attributeValues": {
+        "Color": "Black"
+      },
+      "costPrice": 15000,
+      "sellingPrice": 25000,
+      "stock": 0,
+      "image": "/products/oraimo-powerbank.png",
+      "_id": {
+        "$oid": "697cc7ca47cdcd8480a4be15"
+      }
+    }
+  ],
+  "compatibility": {
+    "brands": [],
+    "models": []
+  },
+  "status": "out_of_stock",
+  "featured": true,
+  "views": 0,
+  "salesCount": 8,
+  "walletOnlyDiscount": {
+    "enabled": false
+  },
+  "options": [],
+  "specifications": [],
+  "createdAt": {
+    "$date": "2026-01-30T15:01:30.029Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:20:02.081Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "name": "iPhone 15 Pro Silicone Case with MagSafe",
+  "slug": "iphone-15-pro-silicone-case",
+  "description": "A silky, soft-touch finish of the silicone exterior feels great in your hand. And on the inside, there’s a soft microfiber lining for even more protection.",
+  "category": {
+    "$oid": "697cc7c62af4a50e58c7117c"
+  },
+  "lowStockThreshold": 10,
+  "images": [
+    {
+      "url": "/products/iphone-case-black.png",
+      "key": "iphone-case-black",
+      "alt": "iPhone 15 Pro Case - Black",
+      "isPrimary": true,
+      "_id": {
+        "$oid": "697cc7ca47cdcd8480a4be06"
+      }
+    },
+    {
+      "url": "/products/iphone-case-blue.png",
+      "key": "iphone-case-blue",
+      "alt": "iPhone 15 Pro Case - Blue",
+      "isPrimary": false,
+      "_id": {
+        "$oid": "697cc7ca47cdcd8480a4be07"
+      }
+    }
+  ],
+  "options": [
+    {
+      "name": "Color",
+      "values": [
+        {
+          "value": "Black",
+          "swatchUrl": "/swatches/case-black.png",
+          "_id": {
+            "$oid": "697cc7ca47cdcd8480a4be09"
+          }
+        },
+        {
+          "value": "Blue",
+          "swatchUrl": "/swatches/case-blue.png",
+          "_id": {
+            "$oid": "697cc7ca47cdcd8480a4be0a"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "697cc7ca47cdcd8480a4be08"
+      }
+    }
+  ],
+  "variants": [
+    {
+      "sku": "APL-IP15P-SIL-BLK",
+      "attributeValues": {
+        "Color": "Black"
+      },
+      "costPrice": 25000,
+      "sellingPrice": 35000,
+      "compareAtPrice": 50000,
+      "stock": 32,
+      "image": "/products/iphone-case-black.png",
+      "_id": {
+        "$oid": "697cc7ca47cdcd8480a4be0b"
+      }
+    },
+    {
+      "sku": "APL-IP15P-SIL-BLU",
+      "attributeValues": {
+        "Color": "Blue"
+      },
+      "costPrice": 35000,
+      "sellingPrice": 45000,
+      "compareAtPrice": 50000,
+      "stock": 8,
+      "image": "/products/iphone-case-blue.png",
+      "_id": {
+        "$oid": "697cc7ca47cdcd8480a4be0c"
+      }
+    }
+  ],
+  "compatibility": {
+    "brands": [
+      "Apple"
+    ],
+    "models": [
+      "iPhone 15 Pro"
+    ]
+  },
+  "status": "active",
+  "featured": false,
+  "views": 0,
+  "salesCount": 45,
+  "walletOnlyDiscount": {
+    "enabled": false
+  },
+  "specifications": [],
+  "createdAt": {
+    "$date": "2026-01-30T15:01:30.029Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:12:13.299Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697cc7ca47cdcd8480a4be16"
+  },
+  "name": "iPhone 14 Clear Case with MagSafe",
+  "slug": "iphone-14-clear-case",
+  "description": "Clear design shows off the brilliant finish of your iPhone.",
+  "category": {
+    "$oid": "697cc7c62af4a50e58c7117c"
+  },
+  "lowStockThreshold": 10,
+  "images": [
+    {
+      "url": "/products/iphone-case-green.png",
+      "key": "iphone-14-clear",
+      "alt": "iPhone 14 Clear Case",
+      "isPrimary": true,
+      "_id": {
+        "$oid": "697cc7ca47cdcd8480a4be17"
+      }
+    }
+  ],
+  "variants": [
+    {
+      "sku": "APL-IP14-CLR-WHT",
+      "attributeValues": {
+        "Color": "Clear"
+      },
+      "costPrice": 28000,
+      "sellingPrice": 38000,
+      "stock": 65,
+      "image": "/products/iphone-case-green.png",
+      "_id": {
+        "$oid": "697cc7ca47cdcd8480a4be18"
+      }
+    }
+  ],
+  "compatibility": {
+    "brands": [
+      "Apple"
+    ],
+    "models": [
+      "iPhone 14"
+    ]
+  },
+  "status": "active",
+  "featured": false,
+  "views": 0,
+  "salesCount": 127,
+  "walletOnlyDiscount": {
+    "enabled": false
+  },
+  "options": [],
+  "specifications": [],
+  "createdAt": {
+    "$date": "2026-01-30T15:01:30.029Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:19:56.041Z"
+  },
+  "__v": 0
+}]

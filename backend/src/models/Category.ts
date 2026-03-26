@@ -3,6 +3,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 export interface ICategory extends Document {
     name: string;
     slug: string;
+    searchAliases?: string[];
     description?: string;
     image?: string;
     icon?: string; // Icon URL for navigation
@@ -21,6 +22,7 @@ export interface ICategory extends Document {
 const CategorySchema: Schema = new Schema({
     name: { type: String, required: true, trim: true },
     slug: { type: String, required: true, unique: true, lowercase: true },
+    searchAliases: [{ type: String, trim: true, lowercase: true }],
     description: { type: String },
     image: { type: String }, // Category banner image
     icon: { type: String }, // Small icon for navigation
@@ -50,4 +52,3 @@ CategorySchema.index({ parent: 1, active: 1 });
 CategorySchema.index({ featured: 1, active: 1 });
 
 export default mongoose.model<ICategory>('Category', CategorySchema);
-

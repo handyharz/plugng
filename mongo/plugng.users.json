@@ -1,0 +1,447 @@
+[{
+  "_id": {
+    "$oid": "6978ec16475225fe9b2248ab"
+  },
+  "email": "testuser@example.com",
+  "phone": "8123456789",
+  "password": "$2a$10$S1Y0Xi5f2tVD1FZVEU2RUezeQFmwo8I5zQ.NQNwge5PF9bPAog8tO",
+  "firstName": "Test",
+  "lastName": "User",
+  "role": "customer",
+  "wallet": {
+    "balance": 0,
+    "transactions": []
+  },
+  "emailVerified": false,
+  "phoneVerified": false,
+  "otp": "603668",
+  "otpExpires": {
+    "$date": "2026-01-27T16:57:18.042Z"
+  },
+  "addresses": [],
+  "createdAt": {
+    "$date": "2026-01-27T16:47:18.067Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-27T16:47:18.067Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6978f59f475225fe9b22494f"
+  },
+  "email": "test2@example.com",
+  "phone": "8123456790",
+  "password": "$2a$10$q0DiTcIskEprdN8knoThiOw9/wUJFF0iPA9iGE9OEHAEAunWSvNS6",
+  "firstName": "Test2",
+  "lastName": "User",
+  "role": "customer",
+  "wallet": {
+    "balance": 0,
+    "transactions": []
+  },
+  "emailVerified": false,
+  "phoneVerified": true,
+  "addresses": [],
+  "createdAt": {
+    "$date": "2026-01-27T17:27:59.720Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-27T17:29:12.777Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "email": "harzkane@gmail.com",
+  "phone": "8107060160",
+  "password": "$2a$10$1Ka/zbjHSYEeoA4MVoby8eIeF2w.a3BxDEb91PGlNKxr4Q60cqVYy",
+  "firstName": "Haruna",
+  "lastName": "Jibril",
+  "role": "customer",
+  "wallet": {
+    "balance": 5106100,
+    "transactions": [
+      {
+        "type": "credit",
+        "amount": 5000,
+        "description": "Wallet Top-up (Ref: WLT-1769566035490-4972)",
+        "date": {
+          "$date": "2026-01-28T02:07:25.405Z"
+        },
+        "_id": {
+          "$oid": "69796f5d20d1e5f5701278ca"
+        }
+      },
+      {
+        "type": "credit",
+        "amount": 5000,
+        "description": "Wallet Top-up (Ref: WLT-1769566091312-4972)",
+        "date": {
+          "$date": "2026-01-28T02:09:24.827Z"
+        },
+        "_id": {
+          "$oid": "69796fd420d1e5f5701278ee"
+        }
+      },
+      {
+        "type": "credit",
+        "amount": 5000,
+        "description": "Wallet Top-up (Ref: WLT-1769566217653-4972)",
+        "date": {
+          "$date": "2026-01-28T02:11:28.345Z"
+        },
+        "_id": {
+          "$oid": "6979705020d1e5f570127919"
+        }
+      },
+      {
+        "type": "credit",
+        "amount": 5000,
+        "description": "Wallet Top-up (Ref: WLT-1769566299199-4972)",
+        "date": {
+          "$date": "2026-01-28T02:11:53.679Z"
+        },
+        "_id": {
+          "$oid": "6979706920d1e5f57012794b"
+        }
+      },
+      {
+        "type": "credit",
+        "amount": 5000000,
+        "description": "Wallet Top-up (Ref: WLT-1769566795694-5000000-4972)",
+        "date": {
+          "$date": "2026-01-28T02:25:10.057Z"
+        },
+        "_id": {
+          "$oid": "697973868ea6a72f3cddeb53"
+        }
+      },
+      {
+        "type": "credit",
+        "amount": 10000,
+        "description": "Wallet Top-up (Ref: WLT-1769687764587-10000-4972)",
+        "date": {
+          "$date": "2026-01-29T11:56:23.925Z"
+        },
+        "_id": {
+          "$oid": "697b4ae78fb0f590734c87c2"
+        }
+      },
+      {
+        "type": "credit",
+        "amount": 5000,
+        "description": "Wallet Top-up (Ref: WLT-1769688217528-5000-4972)",
+        "date": {
+          "$date": "2026-01-29T12:03:57.091Z"
+        },
+        "_id": {
+          "$oid": "697b4cad238b58407d57e53c"
+        }
+      },
+      {
+        "type": "credit",
+        "amount": 300000,
+        "description": "Wallet Top-up (Ref: WLT-1769689436924-300000-4972)",
+        "date": {
+          "$date": "2026-01-29T12:33:48.181Z"
+        },
+        "_id": {
+          "$oid": "697b53acb6252c16e3092d37"
+        }
+      },
+      {
+        "type": "credit",
+        "amount": 1000,
+        "description": "Wallet Top-up (Ref: WLT-1769730793011-1000-4972)",
+        "date": {
+          "$date": "2026-01-29T23:53:42.868Z"
+        },
+        "_id": {
+          "$oid": "697bf3066916481818533287"
+        }
+      },
+      {
+        "type": "credit",
+        "amount": 1000,
+        "description": "Wallet Top-up (Ref: WLT-1769730847877-1000-4972)",
+        "date": {
+          "$date": "2026-01-29T23:54:34.195Z"
+        },
+        "_id": {
+          "$oid": "697bf33a6916481818533329"
+        }
+      },
+      {
+        "type": "credit",
+        "amount": 5000,
+        "description": "Wallet Top-up (Ref: WLT-1769731197398-5000-4972)",
+        "date": {
+          "$date": "2026-01-30T00:00:08.595Z"
+        },
+        "_id": {
+          "$oid": "697bf488a1967a566e11b3c9"
+        }
+      },
+      {
+        "type": "debit",
+        "amount": 4630,
+        "description": "Purchase: ORD-1769737097817-413",
+        "date": {
+          "$date": "2026-01-30T01:38:17.835Z"
+        },
+        "_id": {
+          "$oid": "697c0b895280547fc099223c"
+        }
+      },
+      {
+        "type": "debit",
+        "amount": 35000,
+        "description": "Purchase: ORD-1769787062073-670",
+        "date": {
+          "$date": "2026-01-30T15:31:02.084Z"
+        },
+        "_id": {
+          "$oid": "697cceb6ea2a06d76c73cd5f"
+        }
+      },
+      {
+        "type": "debit",
+        "amount": 27440,
+        "description": "Purchase: ORD-1769819133548-278",
+        "date": {
+          "$date": "2026-01-31T00:25:33.559Z"
+        },
+        "_id": {
+          "$oid": "697d4bfd548a33f4146c7d4b"
+        }
+      },
+      {
+        "type": "debit",
+        "amount": 27930,
+        "description": "Purchase: ORD-1769820720237-144",
+        "date": {
+          "$date": "2026-01-31T00:52:00.248Z"
+        },
+        "_id": {
+          "$oid": "697d5230da9f217b3c5702ea"
+        }
+      },
+      {
+        "type": "debit",
+        "amount": 44100,
+        "description": "Purchase: ORD-1769821289597-895",
+        "date": {
+          "$date": "2026-01-31T01:01:29.607Z"
+        },
+        "_id": {
+          "$oid": "697d5469eae0490f58465176"
+        }
+      },
+      {
+        "type": "debit",
+        "amount": 34300,
+        "description": "Purchase: ORD-1769821933270-178",
+        "date": {
+          "$date": "2026-01-31T01:12:13.286Z"
+        },
+        "_id": {
+          "$oid": "697d56edeadbba0ef2abd070"
+        }
+      },
+      {
+        "type": "debit",
+        "amount": 28000,
+        "description": "Purchase: ORD-1769824849271-48",
+        "date": {
+          "$date": "2026-01-31T02:00:49.279Z"
+        },
+        "_id": {
+          "$oid": "697d62511de93d0655f41658"
+        }
+      },
+      {
+        "type": "debit",
+        "amount": 34500,
+        "description": "Purchase: ORD-1770143683378-603",
+        "date": {
+          "$date": "2026-02-03T18:34:43.505Z"
+        },
+        "_id": {
+          "$oid": "69823fc394c85f268ef24074"
+        }
+      }
+    ]
+  },
+  "emailVerified": false,
+  "phoneVerified": true,
+  "addresses": [
+    {
+      "isDefault": true,
+      "label": "Home",
+      "fullName": "Haruna Jibril",
+      "phone": "8107060160",
+      "address": "Aminu Kano Wuse 2",
+      "city": "AbuJA",
+      "state": "Lagos",
+      "landmark": "",
+      "_id": {
+        "$oid": "697a7713e61d4706c03088bc"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-01-27T17:31:33.475Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-03T18:34:43.660Z"
+  },
+  "__v": 9,
+  "loyaltyTier": "Elite",
+  "totalSpent": 428200,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "697919db60f5691624746040"
+  },
+  "email": "test@example.com",
+  "phone": "08012345678",
+  "password": "$2a$10$iJ5mapgFJuIoPGpSyZT5FedORzdGZCSiEc.ZDEyKg5Ak9HFKzuCdq",
+  "firstName": "Test",
+  "lastName": "User",
+  "role": "customer",
+  "wallet": {
+    "balance": 0,
+    "transactions": []
+  },
+  "emailVerified": false,
+  "phoneVerified": false,
+  "otp": "868190",
+  "otpExpires": {
+    "$date": "2026-01-27T20:12:35.652Z"
+  },
+  "addresses": [],
+  "createdAt": {
+    "$date": "2026-01-27T20:02:35.661Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-27T20:02:35.661Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697931227cf0918801a854bf"
+  },
+  "firstName": "Test",
+  "lastName": "User",
+  "email": "[email protected]",
+  "phone": "08000000000",
+  "password": "$2a$10$qTh03zq15a8gnUCQn6zJvupsFvXEJ1UpdNeADEUP3pbqrUQ2UKju.",
+  "role": "customer",
+  "phoneVerified": true,
+  "walletBalance": 0,
+  "createdAt": {
+    "$date": "2026-01-27T21:41:54.866Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-27T21:41:54.866Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "email": "admin@plugng.shop",
+  "phone": "+2348012345678",
+  "password": "$2a$10$qtyvhlRYkZZP3adkY9gzaOuwOjfdmF8TD9LAlZJeFy1LSmrW5TUtG",
+  "firstName": "Admin",
+  "lastName": "User",
+  "role": "super_admin",
+  "wallet": {
+    "balance": 0,
+    "transactions": []
+  },
+  "emailVerified": true,
+  "phoneVerified": true,
+  "totalSpent": 0,
+  "loyaltyTier": "Enthusiast",
+  "addresses": [],
+  "createdAt": {
+    "$date": "2026-01-29T19:17:26.634Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-29T21:36:25.148Z"
+  },
+  "__v": 0,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "698242a394c85f268ef24506"
+  },
+  "email": "test_curl@example.com",
+  "phone": "08123456780",
+  "password": "$2a$10$TR73QHQrZu46edIlTN64meVISBpkWoQYOwGGF.9ldknukeVReGfHa",
+  "firstName": "Test",
+  "lastName": "User",
+  "role": "customer",
+  "wallet": {
+    "balance": 0,
+    "transactions": []
+  },
+  "emailVerified": false,
+  "phoneVerified": false,
+  "totalSpent": 0,
+  "loyaltyTier": "Enthusiast",
+  "otp": "602226",
+  "otpExpires": {
+    "$date": "2026-02-03T18:56:59.334Z"
+  },
+  "status": "active",
+  "addresses": [],
+  "createdAt": {
+    "$date": "2026-02-03T18:46:59.369Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-03T18:46:59.369Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69824a63a25f82c1e67ae467"
+  },
+  "email": "new_user@example.com",
+  "phone": "08123456781",
+  "password": "$2a$10$ozzQkmhSi9cXWEtXqpAbfeKwBiNwaIt7KJRIMSnBOdt10JA9CCqyC",
+  "firstName": "New",
+  "lastName": "User",
+  "role": "customer",
+  "wallet": {
+    "balance": 0,
+    "transactions": []
+  },
+  "emailVerified": false,
+  "phoneVerified": false,
+  "totalSpent": 0,
+  "loyaltyTier": "Enthusiast",
+  "otp": "421205",
+  "otpExpires": {
+    "$date": "2026-02-03T19:30:03.031Z"
+  },
+  "status": "active",
+  "addresses": [],
+  "createdAt": {
+    "$date": "2026-02-03T19:20:03.033Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-03T19:20:03.033Z"
+  },
+  "__v": 0
+}]

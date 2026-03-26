@@ -3,6 +3,12 @@ import Product from '../models/Product';
 import Category from '../models/Category';
 import { optimizeAndUploadImage } from '../services/storageService';
 import slugify from 'slugify';
+import {
+    buildSearchClauses,
+    expandSearchTerms,
+    getPersonalizationSignals,
+    scoreProductResult
+} from '../utils/search';
 
 /**
  * Helper: Process and Upload Images
@@ -115,12 +121,7 @@ export const getProducts = async (req: Request, res: Response, next: NextFunctio
         // For now, let's assume active only for public
         const query: any = { status: 'active' };
 
-        // 1. Search Logic
-        if (search) {
-            query.$text = { $search: search as string };
-        }
-
-        // 2. Category Logic (Recursive)
+        // 1. Category Logic (Recursive)
         if (category && category !== 'all') {
             const categoryDoc = await Category.findOne({ slug: category as string });
             if (categoryDoc) {
@@ -141,19 +142,19 @@ export const getProducts = async (req: Request, res: Response, next: NextFunctio
             }
         }
 
-        // 3. Price Logic (Filtering on variants)
+        // 2. Price Logic (Filtering on variants)
         if (minPrice || maxPrice) {
             query['variants.sellingPrice'] = {};
             if (minPrice) query['variants.sellingPrice'].$gte = parseFloat(minPrice as string);
             if (maxPrice) query['variants.sellingPrice'].$lte = parseFloat(maxPrice as string);
         }
 
-        // 4. Stock Availability Filter
+        // 3. Stock Availability Filter
         if (inStock === 'true') {
             query['variants.stock'] = { $gt: 0 };
         }
 
-        // 5. On Sale Filter (products with discount)
+        // 4. On Sale Filter (products with discount)
         if (onSale === 'true') {
             query.$expr = {
                 $gt: [
@@ -176,7 +177,7 @@ export const getProducts = async (req: Request, res: Response, next: NextFunctio
             };
         }
 
-        // 6. Featured/Trending Filters
+        // 5. Featured/Trending Filters
         if (featured === 'true') {
             query.featured = true;
         }
@@ -185,13 +186,13 @@ export const getProducts = async (req: Request, res: Response, next: NextFunctio
             query.salesCount = { $gt: 0 };
         }
 
-        // 7. Brand/Compatibility Filter
+        // 6. Brand/Compatibility Filter
         if (brands) {
             const brandArray = Array.isArray(brands) ? brands : (brands as string).split(',');
             query['compatibility.brands'] = { $in: brandArray };
         }
 
-        // 8. Color Filter
+        // 7. Color Filter
         if (colors) {
             const colorArray = Array.isArray(colors) ? colors : (colors as string).split(',');
             query['options'] = {
@@ -202,20 +203,61 @@ export const getProducts = async (req: Request, res: Response, next: NextFunctio
             };
         }
 
-        // 9. Sort Logic
+        // 8. Sort Logic
         let sortQuery: any = { createdAt: -1 };
         if (sort === 'price-asc') sortQuery = { 'variants.sellingPrice': 1 };
         if (sort === 'price-desc') sortQuery = { 'variants.sellingPrice': -1 };
         if (sort === 'newest') sortQuery = { createdAt: -1 };
 
         const startTime = Date.now();
-        const products = await Product.find(query)
-            .sort(sortQuery)
-            .skip(skip)
-            .limit(limit)
-            .populate('category', 'name slug');
+        let products;
+        let total;
 
-        const total = await Product.countDocuments(query);
+        if (search && typeof search === 'string' && search.trim().length >= 2) {
+            const searchQuery = search.trim();
+            const expandedTerms = await expandSearchTerms(searchQuery);
+            const clauses = buildSearchClauses(expandedTerms);
+            const personalization = await getPersonalizationSignals(req);
+
+            const candidateProducts = await Product.find({
+                ...query,
+                $or: clauses
+            })
+                .limit(180)
+                .populate('category', 'name slug');
+
+            const scoredProducts = candidateProducts
+                .map((product: any) => ({
+                    product,
+                    score: scoreProductResult(product, searchQuery, expandedTerms, personalization)
+                }))
+                .filter((entry) => entry.score > 0);
+
+            const sortedProducts = scoredProducts.sort((left, right) => {
+                if (sort === 'price-asc') {
+                    return (left.product.variants?.[0]?.sellingPrice || 0) - (right.product.variants?.[0]?.sellingPrice || 0);
+                }
+                if (sort === 'price-desc') {
+                    return (right.product.variants?.[0]?.sellingPrice || 0) - (left.product.variants?.[0]?.sellingPrice || 0);
+                }
+                if (sort === 'newest') {
+                    return new Date(right.product.createdAt).getTime() - new Date(left.product.createdAt).getTime();
+                }
+                return right.score - left.score;
+            });
+
+            total = sortedProducts.length;
+            products = sortedProducts.slice(skip, skip + limit).map((entry) => entry.product);
+        } else {
+            products = await Product.find(query)
+                .sort(sortQuery)
+                .skip(skip)
+                .limit(limit)
+                .populate('category', 'name slug');
+
+            total = await Product.countDocuments(query);
+        }
+
         console.log(`📦 Product Search Query: ${Date.now() - startTime}ms`);
 
         res.status(200).json({

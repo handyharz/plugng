@@ -45,6 +45,24 @@ export const protect = async (req: Request, res: Response, next: NextFunction) =
             return;
         }
 
+        if (currentUser.status === 'deleted') {
+            res.clearCookie('token');
+            res.status(401).json({
+                status: 'fail',
+                message: 'This account has been deleted.',
+            });
+            return;
+        }
+
+        if (currentUser.status === 'suspended') {
+            res.clearCookie('token');
+            res.status(403).json({
+                status: 'fail',
+                message: 'This account is suspended.',
+            });
+            return;
+        }
+
         // 4. Grant access
         req.user = currentUser;
         next();

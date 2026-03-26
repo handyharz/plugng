@@ -73,6 +73,46 @@ export const updateAddress = async (req: Request, res: Response, next: NextFunct
 };
 
 /**
+ * Update an existing address
+ */
+export const editAddress = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const { addressId } = req.params;
+        const { address, isDefault } = req.body;
+        const user = await User.findById(req.user!.id);
+
+        if (!user) {
+            res.status(404).json({ status: 'fail', message: 'User not found' });
+            return;
+        }
+
+        const existingAddress = user.addresses.id(addressId);
+        if (!existingAddress) {
+            res.status(404).json({ status: 'fail', message: 'Address not found' });
+            return;
+        }
+
+        if (isDefault) {
+            user.addresses.forEach((addr: any) => addr.isDefault = false);
+        }
+
+        existingAddress.set({
+            ...address,
+            isDefault: isDefault ?? existingAddress.isDefault
+        });
+
+        await user.save();
+
+        res.status(200).json({
+            status: 'success',
+            data: { user }
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+/**
  * Delete an address
  */
 export const deleteAddress = async (req: Request, res: Response, next: NextFunction) => {
@@ -151,6 +191,53 @@ export const updatePassword = async (req: Request, res: Response, next: NextFunc
         res.status(200).json({
             status: 'success',
             message: 'Password updated successfully'
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+/**
+ * Delete current user account (soft delete)
+ */
+export const deleteMe = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const { password, confirmation } = req.body;
+
+        if (!password) {
+            res.status(400).json({ status: 'fail', message: 'Current password is required' });
+            return;
+        }
+
+        if (confirmation !== 'DELETE') {
+            res.status(400).json({ status: 'fail', message: 'Type DELETE to confirm account deletion' });
+            return;
+        }
+
+        const user = await User.findById(req.user!.id).select('+password');
+        if (!user) {
+            res.status(404).json({ status: 'fail', message: 'User not found' });
+            return;
+        }
+
+        if (user.status === 'deleted') {
+            res.status(400).json({ status: 'fail', message: 'This account has already been deleted' });
+            return;
+        }
+
+        if (!(await user.comparePassword(password))) {
+            res.status(401).json({ status: 'fail', message: 'Current password is incorrect' });
+            return;
+        }
+
+        user.status = 'deleted';
+        user.deletedAt = new Date();
+        await user.save({ validateBeforeSave: false });
+
+        res.clearCookie('token');
+        res.status(200).json({
+            status: 'success',
+            message: 'Account deleted successfully'
         });
     } catch (error) {
         next(error);

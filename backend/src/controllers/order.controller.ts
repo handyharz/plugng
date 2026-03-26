@@ -27,7 +27,7 @@ const incrementCouponUsage = async (couponCode?: string) => {
 export const createOrder = async (req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<void> => {
     try {
         const userId = req.user._id || req.user.id;
-        const { shippingAddress, paymentMethod, couponCode } = req.body;
+        const { shippingAddress, paymentMethod, couponCode, callbackUrl } = req.body;
 
         // 1. Get user's cart
         const cart = await Cart.findOne({ user: userId });
@@ -266,13 +266,16 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response, next
             } else {
                 // Production mode: Initialize real Paystack payment
                 try {
+                    const resolvedCheckoutCallback =
+                        callbackUrl || `${process.env.FRONTEND_URL || 'http://localhost:3000'}/checkout/success`;
+
                     const paystackResponse = await axios.post(
                         'https://api.paystack.co/transaction/initialize',
                         {
                             email: req.user.email,
                             amount: total * 100, // Paystack expects kobo
                             reference: order.orderNumber, // Using human-readable order number as reference
-                            callback_url: `${process.env.FRONTEND_URL}/checkout/success`
+                            callback_url: resolvedCheckoutCallback
                         },
                         {
                             headers: {

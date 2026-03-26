@@ -126,6 +126,16 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
             return;
         }
 
+        if (user.status === 'deleted') {
+            res.status(403).json({ status: 'fail', message: 'This account has been deleted.' });
+            return;
+        }
+
+        if (user.status === 'suspended') {
+            res.status(403).json({ status: 'fail', message: 'This account is suspended.' });
+            return;
+        }
+
         const isMatch = await user.comparePassword(password);
         console.log(`📡 Login Attempt: ${identifier} | Match: ${isMatch}`);
 

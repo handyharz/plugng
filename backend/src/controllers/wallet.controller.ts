@@ -11,7 +11,7 @@ const PAYSTACK_SECRET_KEY = process.env.PAYSTACK_SECRET_KEY;
  */
 export const initializeTopup = async (req: any, res: Response, next: NextFunction) => {
     try {
-        const { amount } = req.body;
+        const { amount, callbackUrl } = req.body;
         if (!amount || amount < 100) {
             res.status(400).json({ status: 'fail', message: 'Minimum top-up is ₦100' });
             return;
@@ -21,15 +21,16 @@ export const initializeTopup = async (req: any, res: Response, next: NextFunctio
         const secretKey = process.env.PAYSTACK_SECRET_KEY || '';
         const isDevMode = !secretKey || secretKey === 'sk_test_placeholder';
 
-        // Dynamic base URL from request origin to support different ports (3000 vs 3005)
-        const baseUrl = req.headers.origin || process.env.FRONTEND_URL || 'http://localhost:3000';
+        // Prefer explicit callback URLs from native clients, then browser origin, then configured frontend URL.
+        const resolvedCallbackUrl = callbackUrl || req.headers.origin || process.env.FRONTEND_URL || 'http://localhost:3000';
+        const walletCallbackUrl = resolvedCallbackUrl.includes('://') ? resolvedCallbackUrl : `${resolvedCallbackUrl}/wallet`;
 
         let paymentData = null;
 
         if (isDevMode) {
             // Mock payment data for dev mode
             paymentData = {
-                authorization_url: `${baseUrl}/wallet?reference=${topupId}&status=dev_success`,
+                authorization_url: `${walletCallbackUrl}${walletCallbackUrl.includes('?') ? '&' : '?'}reference=${topupId}&status=dev_success`,
                 access_code: 'mock_code',
                 reference: topupId
             };
@@ -40,7 +41,7 @@ export const initializeTopup = async (req: any, res: Response, next: NextFunctio
                     email: req.user.email,
                     amount: amount * 100,
                     reference: topupId,
-                    callback_url: `${baseUrl}/wallet`,
+                    callback_url: walletCallbackUrl,
                     metadata: {
                         type: 'wallet_topup',
                         userId: req.user.id

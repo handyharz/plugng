@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "PlugNG",
+    "slug": "plugng-mobile",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "plugng",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

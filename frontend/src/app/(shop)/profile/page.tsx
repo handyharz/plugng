@@ -1004,6 +1004,22 @@ function ProfilePageContent() {
                                         <button onClick={() => { if (confirm('Exit session?')) setUser(null); }} className="w-full py-5 bg-red-500/10 border border-red-500/20 text-red-500 rounded-2xl font-black uppercase tracking-[0.3em] text-[10px] hover:bg-red-500 hover:text-white transition-all">
                                             Terminate Session
                                         </button>
+
+                                        <div className="rounded-[2rem] border border-red-500/20 bg-red-500/5 p-8 space-y-5">
+                                            <div className="flex items-center space-x-3">
+                                                <AlertCircle size={20} className="text-red-400" />
+                                                <h4 className="text-lg font-black text-white uppercase italic tracking-tight">Delete Account</h4>
+                                            </div>
+                                            <p className="text-sm leading-6 text-slate-400">
+                                                Permanently close your PlugNG account from the dedicated deletion flow. You will be asked to confirm with your current password and typed confirmation.
+                                            </p>
+                                            <Link
+                                                href="/account-deletion"
+                                                className="inline-flex w-full items-center justify-center rounded-2xl border border-red-500/20 bg-red-500/10 px-6 py-5 text-[10px] font-black uppercase tracking-[0.3em] text-red-400 transition-all hover:bg-red-500 hover:text-white"
+                                            >
+                                                Open Deletion Flow
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </motion.div>

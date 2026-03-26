@@ -1,0 +1,125 @@
+[{
+  "_id": {
+    "$oid": "697d4ded69dcacf8aec2aa1c"
+  },
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "product": {
+    "$oid": "697cc7ca47cdcd8480a4be0d"
+  },
+  "order": {
+    "$oid": "697d4bfd548a33f4146c7d38"
+  },
+  "rating": 5,
+  "comment": "Good Quality Product",
+  "images": [],
+  "status": "approved",
+  "createdAt": {
+    "$date": "2026-01-31T00:33:49.113Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:34:15.097Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d59635f421faea6833c84"
+  },
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "product": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "order": {
+    "$oid": "697d56edeadbba0ef2abd05a"
+  },
+  "rating": 5,
+  "comment": "love the product, quality stuff",
+  "images": [],
+  "status": "approved",
+  "createdAt": {
+    "$date": "2026-01-31T01:22:43.229Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:23:01.586Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d5c185f421faea6833feb"
+  },
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "product": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "order": {
+    "$oid": "697d555e27c8382211fb68ae"
+  },
+  "rating": 5,
+  "comment": "great",
+  "images": [],
+  "status": "rejected",
+  "createdAt": {
+    "$date": "2026-01-31T01:34:16.316Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:57:56.177Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d5c205f421faea683401c"
+  },
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "product": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "order": {
+    "$oid": "697d5469eae0490f58465161"
+  },
+  "rating": 5,
+  "comment": "Awesome",
+  "images": [],
+  "status": "approved",
+  "createdAt": {
+    "$date": "2026-01-31T01:34:24.144Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:57:02.808Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "698240bb94c85f268ef243bf"
+  },
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "product": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "order": {
+    "$oid": "69823fc394c85f268ef2405c"
+  },
+  "rating": 5,
+  "comment": "great product",
+  "images": [],
+  "status": "pending",
+  "createdAt": {
+    "$date": "2026-02-03T18:38:51.743Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-03T18:38:51.743Z"
+  },
+  "__v": 0
+}]

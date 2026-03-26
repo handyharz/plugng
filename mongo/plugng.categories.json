@@ -1,0 +1,5634 @@
+[{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71120"
+  },
+  "name": "Apple (iPhone)",
+  "slug": "apple",
+  "description": "Premium accessories for iPhone users",
+  "icon": "📱",
+  "parent": null,
+  "level": 1,
+  "order": 1,
+  "active": true,
+  "featured": true,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.813Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.813Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71121"
+  },
+  "name": "Samsung",
+  "slug": "samsung",
+  "description": "Quality accessories for Samsung Galaxy devices",
+  "icon": "📱",
+  "parent": null,
+  "level": 1,
+  "order": 2,
+  "active": true,
+  "featured": true,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.813Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.813Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71122"
+  },
+  "name": "Tecno",
+  "slug": "tecno",
+  "description": "Affordable accessories for Tecno smartphones",
+  "icon": "📱",
+  "parent": null,
+  "level": 1,
+  "order": 3,
+  "active": true,
+  "featured": true,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.813Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.813Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71123"
+  },
+  "name": "Infinix",
+  "slug": "infinix",
+  "description": "Stylish accessories for Infinix phones",
+  "icon": "📱",
+  "parent": null,
+  "level": 1,
+  "order": 4,
+  "active": true,
+  "featured": true,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.813Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.813Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71124"
+  },
+  "name": "Xiaomi",
+  "slug": "xiaomi",
+  "description": "Smart accessories for Xiaomi, Redmi & Poco",
+  "icon": "📱",
+  "parent": null,
+  "level": 1,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.813Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.813Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71125"
+  },
+  "name": "Oppo",
+  "slug": "oppo",
+  "description": "Trendy accessories for Oppo smartphones",
+  "icon": "📱",
+  "parent": null,
+  "level": 1,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.814Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.814Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71126"
+  },
+  "name": "Realme",
+  "slug": "realme",
+  "description": "Modern accessories for Realme devices",
+  "icon": "📱",
+  "parent": null,
+  "level": 1,
+  "order": 7,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.814Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.814Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71127"
+  },
+  "name": "Google Pixel",
+  "slug": "google-pixel",
+  "description": "Premium accessories for Google Pixel",
+  "icon": "📱",
+  "parent": null,
+  "level": 1,
+  "order": 8,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.814Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.814Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71128"
+  },
+  "name": "Oraimo",
+  "slug": "oraimo",
+  "description": "Authentic Oraimo power banks and accessories",
+  "icon": "🔋",
+  "parent": null,
+  "level": 1,
+  "order": 9,
+  "active": true,
+  "featured": true,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.814Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.814Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71129"
+  },
+  "name": "Other Brands",
+  "slug": "other-brands",
+  "description": "Accessories for other smartphone brands",
+  "icon": "📱",
+  "parent": null,
+  "level": 1,
+  "order": 10,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.814Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.814Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7112b"
+  },
+  "name": "Cases & Covers",
+  "slug": "apple-cases-covers",
+  "description": "Protective cases and stylish covers",
+  "icon": "🛡️",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71120"
+  },
+  "level": 2,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.839Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.839Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7112c"
+  },
+  "name": "Screen Protectors",
+  "slug": "apple-screen-protectors",
+  "description": "Tempered glass and film protectors",
+  "icon": "🔲",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71120"
+  },
+  "level": 2,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.839Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.839Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7112d"
+  },
+  "name": "Chargers & Cables",
+  "slug": "apple-chargers-cables",
+  "description": "Fast chargers and durable cables",
+  "icon": "🔌",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71120"
+  },
+  "level": 2,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.839Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.839Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7112e"
+  },
+  "name": "Power Banks",
+  "slug": "apple-power-banks",
+  "description": "Portable charging solutions",
+  "icon": "🔋",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71120"
+  },
+  "level": 2,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.839Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.839Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7112f"
+  },
+  "name": "Earphones & Headsets",
+  "slug": "apple-earphones-headsets",
+  "description": "Wired and wireless audio accessories",
+  "icon": "🎧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71120"
+  },
+  "level": 2,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.839Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.839Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71130"
+  },
+  "name": "Phone Holders & Mounts",
+  "slug": "apple-phone-holders-mounts",
+  "description": "Car mounts and desk stands",
+  "icon": "🚗",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71120"
+  },
+  "level": 2,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.839Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.839Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71131"
+  },
+  "name": "Memory Cards & Storage",
+  "slug": "apple-memory-storage",
+  "description": "Expand your phone storage",
+  "icon": "💾",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71120"
+  },
+  "level": 2,
+  "order": 7,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.839Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.839Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71132"
+  },
+  "name": "Repair Parts",
+  "slug": "apple-repair-parts",
+  "description": "Replacement screens and batteries",
+  "icon": "🔧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71120"
+  },
+  "level": 2,
+  "order": 8,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.839Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.839Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71133"
+  },
+  "name": "Cases & Covers",
+  "slug": "samsung-cases-covers",
+  "description": "Protective cases and stylish covers",
+  "icon": "🛡️",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71121"
+  },
+  "level": 2,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71134"
+  },
+  "name": "Screen Protectors",
+  "slug": "samsung-screen-protectors",
+  "description": "Tempered glass and film protectors",
+  "icon": "🔲",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71121"
+  },
+  "level": 2,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71135"
+  },
+  "name": "Chargers & Cables",
+  "slug": "samsung-chargers-cables",
+  "description": "Fast chargers and durable cables",
+  "icon": "🔌",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71121"
+  },
+  "level": 2,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71136"
+  },
+  "name": "Power Banks",
+  "slug": "samsung-power-banks",
+  "description": "Portable charging solutions",
+  "icon": "🔋",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71121"
+  },
+  "level": 2,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71137"
+  },
+  "name": "Earphones & Headsets",
+  "slug": "samsung-earphones-headsets",
+  "description": "Wired and wireless audio accessories",
+  "icon": "🎧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71121"
+  },
+  "level": 2,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71138"
+  },
+  "name": "Phone Holders & Mounts",
+  "slug": "samsung-phone-holders-mounts",
+  "description": "Car mounts and desk stands",
+  "icon": "🚗",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71121"
+  },
+  "level": 2,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71139"
+  },
+  "name": "Memory Cards & Storage",
+  "slug": "samsung-memory-storage",
+  "description": "Expand your phone storage",
+  "icon": "💾",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71121"
+  },
+  "level": 2,
+  "order": 7,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7113a"
+  },
+  "name": "Repair Parts",
+  "slug": "samsung-repair-parts",
+  "description": "Replacement screens and batteries",
+  "icon": "🔧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71121"
+  },
+  "level": 2,
+  "order": 8,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7113b"
+  },
+  "name": "Cases & Covers",
+  "slug": "tecno-cases-covers",
+  "description": "Protective cases and stylish covers",
+  "icon": "🛡️",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71122"
+  },
+  "level": 2,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7113c"
+  },
+  "name": "Screen Protectors",
+  "slug": "tecno-screen-protectors",
+  "description": "Tempered glass and film protectors",
+  "icon": "🔲",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71122"
+  },
+  "level": 2,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7113d"
+  },
+  "name": "Chargers & Cables",
+  "slug": "tecno-chargers-cables",
+  "description": "Fast chargers and durable cables",
+  "icon": "🔌",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71122"
+  },
+  "level": 2,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7113e"
+  },
+  "name": "Power Banks",
+  "slug": "tecno-power-banks",
+  "description": "Portable charging solutions",
+  "icon": "🔋",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71122"
+  },
+  "level": 2,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7113f"
+  },
+  "name": "Earphones & Headsets",
+  "slug": "tecno-earphones-headsets",
+  "description": "Wired and wireless audio accessories",
+  "icon": "🎧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71122"
+  },
+  "level": 2,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71140"
+  },
+  "name": "Phone Holders & Mounts",
+  "slug": "tecno-phone-holders-mounts",
+  "description": "Car mounts and desk stands",
+  "icon": "🚗",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71122"
+  },
+  "level": 2,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71141"
+  },
+  "name": "Memory Cards & Storage",
+  "slug": "tecno-memory-storage",
+  "description": "Expand your phone storage",
+  "icon": "💾",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71122"
+  },
+  "level": 2,
+  "order": 7,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71142"
+  },
+  "name": "Repair Parts",
+  "slug": "tecno-repair-parts",
+  "description": "Replacement screens and batteries",
+  "icon": "🔧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71122"
+  },
+  "level": 2,
+  "order": 8,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71143"
+  },
+  "name": "Cases & Covers",
+  "slug": "infinix-cases-covers",
+  "description": "Protective cases and stylish covers",
+  "icon": "🛡️",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71123"
+  },
+  "level": 2,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71144"
+  },
+  "name": "Screen Protectors",
+  "slug": "infinix-screen-protectors",
+  "description": "Tempered glass and film protectors",
+  "icon": "🔲",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71123"
+  },
+  "level": 2,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71145"
+  },
+  "name": "Chargers & Cables",
+  "slug": "infinix-chargers-cables",
+  "description": "Fast chargers and durable cables",
+  "icon": "🔌",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71123"
+  },
+  "level": 2,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71146"
+  },
+  "name": "Power Banks",
+  "slug": "infinix-power-banks",
+  "description": "Portable charging solutions",
+  "icon": "🔋",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71123"
+  },
+  "level": 2,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71147"
+  },
+  "name": "Earphones & Headsets",
+  "slug": "infinix-earphones-headsets",
+  "description": "Wired and wireless audio accessories",
+  "icon": "🎧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71123"
+  },
+  "level": 2,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71148"
+  },
+  "name": "Phone Holders & Mounts",
+  "slug": "infinix-phone-holders-mounts",
+  "description": "Car mounts and desk stands",
+  "icon": "🚗",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71123"
+  },
+  "level": 2,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71149"
+  },
+  "name": "Memory Cards & Storage",
+  "slug": "infinix-memory-storage",
+  "description": "Expand your phone storage",
+  "icon": "💾",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71123"
+  },
+  "level": 2,
+  "order": 7,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7114a"
+  },
+  "name": "Repair Parts",
+  "slug": "infinix-repair-parts",
+  "description": "Replacement screens and batteries",
+  "icon": "🔧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71123"
+  },
+  "level": 2,
+  "order": 8,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7114b"
+  },
+  "name": "Cases & Covers",
+  "slug": "xiaomi-cases-covers",
+  "description": "Protective cases and stylish covers",
+  "icon": "🛡️",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71124"
+  },
+  "level": 2,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.840Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7114c"
+  },
+  "name": "Screen Protectors",
+  "slug": "xiaomi-screen-protectors",
+  "description": "Tempered glass and film protectors",
+  "icon": "🔲",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71124"
+  },
+  "level": 2,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7114d"
+  },
+  "name": "Chargers & Cables",
+  "slug": "xiaomi-chargers-cables",
+  "description": "Fast chargers and durable cables",
+  "icon": "🔌",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71124"
+  },
+  "level": 2,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7114e"
+  },
+  "name": "Power Banks",
+  "slug": "xiaomi-power-banks",
+  "description": "Portable charging solutions",
+  "icon": "🔋",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71124"
+  },
+  "level": 2,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7114f"
+  },
+  "name": "Earphones & Headsets",
+  "slug": "xiaomi-earphones-headsets",
+  "description": "Wired and wireless audio accessories",
+  "icon": "🎧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71124"
+  },
+  "level": 2,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71150"
+  },
+  "name": "Phone Holders & Mounts",
+  "slug": "xiaomi-phone-holders-mounts",
+  "description": "Car mounts and desk stands",
+  "icon": "🚗",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71124"
+  },
+  "level": 2,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71151"
+  },
+  "name": "Memory Cards & Storage",
+  "slug": "xiaomi-memory-storage",
+  "description": "Expand your phone storage",
+  "icon": "💾",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71124"
+  },
+  "level": 2,
+  "order": 7,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71152"
+  },
+  "name": "Repair Parts",
+  "slug": "xiaomi-repair-parts",
+  "description": "Replacement screens and batteries",
+  "icon": "🔧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71124"
+  },
+  "level": 2,
+  "order": 8,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71153"
+  },
+  "name": "Cases & Covers",
+  "slug": "oppo-cases-covers",
+  "description": "Protective cases and stylish covers",
+  "icon": "🛡️",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71125"
+  },
+  "level": 2,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71154"
+  },
+  "name": "Screen Protectors",
+  "slug": "oppo-screen-protectors",
+  "description": "Tempered glass and film protectors",
+  "icon": "🔲",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71125"
+  },
+  "level": 2,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71155"
+  },
+  "name": "Chargers & Cables",
+  "slug": "oppo-chargers-cables",
+  "description": "Fast chargers and durable cables",
+  "icon": "🔌",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71125"
+  },
+  "level": 2,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71156"
+  },
+  "name": "Power Banks",
+  "slug": "oppo-power-banks",
+  "description": "Portable charging solutions",
+  "icon": "🔋",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71125"
+  },
+  "level": 2,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71157"
+  },
+  "name": "Earphones & Headsets",
+  "slug": "oppo-earphones-headsets",
+  "description": "Wired and wireless audio accessories",
+  "icon": "🎧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71125"
+  },
+  "level": 2,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71158"
+  },
+  "name": "Phone Holders & Mounts",
+  "slug": "oppo-phone-holders-mounts",
+  "description": "Car mounts and desk stands",
+  "icon": "🚗",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71125"
+  },
+  "level": 2,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71159"
+  },
+  "name": "Memory Cards & Storage",
+  "slug": "oppo-memory-storage",
+  "description": "Expand your phone storage",
+  "icon": "💾",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71125"
+  },
+  "level": 2,
+  "order": 7,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7115a"
+  },
+  "name": "Repair Parts",
+  "slug": "oppo-repair-parts",
+  "description": "Replacement screens and batteries",
+  "icon": "🔧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71125"
+  },
+  "level": 2,
+  "order": 8,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7115b"
+  },
+  "name": "Cases & Covers",
+  "slug": "realme-cases-covers",
+  "description": "Protective cases and stylish covers",
+  "icon": "🛡️",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71126"
+  },
+  "level": 2,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7115c"
+  },
+  "name": "Screen Protectors",
+  "slug": "realme-screen-protectors",
+  "description": "Tempered glass and film protectors",
+  "icon": "🔲",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71126"
+  },
+  "level": 2,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7115d"
+  },
+  "name": "Chargers & Cables",
+  "slug": "realme-chargers-cables",
+  "description": "Fast chargers and durable cables",
+  "icon": "🔌",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71126"
+  },
+  "level": 2,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7115e"
+  },
+  "name": "Power Banks",
+  "slug": "realme-power-banks",
+  "description": "Portable charging solutions",
+  "icon": "🔋",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71126"
+  },
+  "level": 2,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7115f"
+  },
+  "name": "Earphones & Headsets",
+  "slug": "realme-earphones-headsets",
+  "description": "Wired and wireless audio accessories",
+  "icon": "🎧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71126"
+  },
+  "level": 2,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71160"
+  },
+  "name": "Phone Holders & Mounts",
+  "slug": "realme-phone-holders-mounts",
+  "description": "Car mounts and desk stands",
+  "icon": "🚗",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71126"
+  },
+  "level": 2,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71161"
+  },
+  "name": "Memory Cards & Storage",
+  "slug": "realme-memory-storage",
+  "description": "Expand your phone storage",
+  "icon": "💾",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71126"
+  },
+  "level": 2,
+  "order": 7,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71162"
+  },
+  "name": "Repair Parts",
+  "slug": "realme-repair-parts",
+  "description": "Replacement screens and batteries",
+  "icon": "🔧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71126"
+  },
+  "level": 2,
+  "order": 8,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71163"
+  },
+  "name": "Cases & Covers",
+  "slug": "google-pixel-cases-covers",
+  "description": "Protective cases and stylish covers",
+  "icon": "🛡️",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71127"
+  },
+  "level": 2,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71164"
+  },
+  "name": "Screen Protectors",
+  "slug": "google-pixel-screen-protectors",
+  "description": "Tempered glass and film protectors",
+  "icon": "🔲",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71127"
+  },
+  "level": 2,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71165"
+  },
+  "name": "Chargers & Cables",
+  "slug": "google-pixel-chargers-cables",
+  "description": "Fast chargers and durable cables",
+  "icon": "🔌",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71127"
+  },
+  "level": 2,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71166"
+  },
+  "name": "Power Banks",
+  "slug": "google-pixel-power-banks",
+  "description": "Portable charging solutions",
+  "icon": "🔋",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71127"
+  },
+  "level": 2,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71167"
+  },
+  "name": "Earphones & Headsets",
+  "slug": "google-pixel-earphones-headsets",
+  "description": "Wired and wireless audio accessories",
+  "icon": "🎧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71127"
+  },
+  "level": 2,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71168"
+  },
+  "name": "Phone Holders & Mounts",
+  "slug": "google-pixel-phone-holders-mounts",
+  "description": "Car mounts and desk stands",
+  "icon": "🚗",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71127"
+  },
+  "level": 2,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71169"
+  },
+  "name": "Memory Cards & Storage",
+  "slug": "google-pixel-memory-storage",
+  "description": "Expand your phone storage",
+  "icon": "💾",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71127"
+  },
+  "level": 2,
+  "order": 7,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.841Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7116a"
+  },
+  "name": "Repair Parts",
+  "slug": "google-pixel-repair-parts",
+  "description": "Replacement screens and batteries",
+  "icon": "🔧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71127"
+  },
+  "level": 2,
+  "order": 8,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7116b"
+  },
+  "name": "Cases & Covers",
+  "slug": "oraimo-cases-covers",
+  "description": "Protective cases and stylish covers",
+  "icon": "🛡️",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71128"
+  },
+  "level": 2,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7116c"
+  },
+  "name": "Screen Protectors",
+  "slug": "oraimo-screen-protectors",
+  "description": "Tempered glass and film protectors",
+  "icon": "🔲",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71128"
+  },
+  "level": 2,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7116d"
+  },
+  "name": "Chargers & Cables",
+  "slug": "oraimo-chargers-cables",
+  "description": "Fast chargers and durable cables",
+  "icon": "🔌",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71128"
+  },
+  "level": 2,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7116e"
+  },
+  "name": "Power Banks",
+  "slug": "oraimo-power-banks",
+  "description": "Portable charging solutions",
+  "icon": "🔋",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71128"
+  },
+  "level": 2,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7116f"
+  },
+  "name": "Earphones & Headsets",
+  "slug": "oraimo-earphones-headsets",
+  "description": "Wired and wireless audio accessories",
+  "icon": "🎧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71128"
+  },
+  "level": 2,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71170"
+  },
+  "name": "Phone Holders & Mounts",
+  "slug": "oraimo-phone-holders-mounts",
+  "description": "Car mounts and desk stands",
+  "icon": "🚗",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71128"
+  },
+  "level": 2,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71171"
+  },
+  "name": "Memory Cards & Storage",
+  "slug": "oraimo-memory-storage",
+  "description": "Expand your phone storage",
+  "icon": "💾",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71128"
+  },
+  "level": 2,
+  "order": 7,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71172"
+  },
+  "name": "Repair Parts",
+  "slug": "oraimo-repair-parts",
+  "description": "Replacement screens and batteries",
+  "icon": "🔧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71128"
+  },
+  "level": 2,
+  "order": 8,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71173"
+  },
+  "name": "Cases & Covers",
+  "slug": "other-brands-cases-covers",
+  "description": "Protective cases and stylish covers",
+  "icon": "🛡️",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71129"
+  },
+  "level": 2,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71174"
+  },
+  "name": "Screen Protectors",
+  "slug": "other-brands-screen-protectors",
+  "description": "Tempered glass and film protectors",
+  "icon": "🔲",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71129"
+  },
+  "level": 2,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71175"
+  },
+  "name": "Chargers & Cables",
+  "slug": "other-brands-chargers-cables",
+  "description": "Fast chargers and durable cables",
+  "icon": "🔌",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71129"
+  },
+  "level": 2,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71176"
+  },
+  "name": "Power Banks",
+  "slug": "other-brands-power-banks",
+  "description": "Portable charging solutions",
+  "icon": "🔋",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71129"
+  },
+  "level": 2,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71177"
+  },
+  "name": "Earphones & Headsets",
+  "slug": "other-brands-earphones-headsets",
+  "description": "Wired and wireless audio accessories",
+  "icon": "🎧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71129"
+  },
+  "level": 2,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71178"
+  },
+  "name": "Phone Holders & Mounts",
+  "slug": "other-brands-phone-holders-mounts",
+  "description": "Car mounts and desk stands",
+  "icon": "🚗",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71129"
+  },
+  "level": 2,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71179"
+  },
+  "name": "Memory Cards & Storage",
+  "slug": "other-brands-memory-storage",
+  "description": "Expand your phone storage",
+  "icon": "💾",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71129"
+  },
+  "level": 2,
+  "order": 7,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7117a"
+  },
+  "name": "Repair Parts",
+  "slug": "other-brands-repair-parts",
+  "description": "Replacement screens and batteries",
+  "icon": "🔧",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71129"
+  },
+  "level": 2,
+  "order": 8,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.842Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7117c"
+  },
+  "name": "Silicone Cases",
+  "slug": "apple-cases-covers-silicone-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112b"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7117d"
+  },
+  "name": "Hard Shell Cases",
+  "slug": "apple-cases-covers-hard-shell-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112b"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7117e"
+  },
+  "name": "Flip/Wallet Cases",
+  "slug": "apple-cases-covers-flip-wallet-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112b"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7117f"
+  },
+  "name": "Transparent Cases",
+  "slug": "apple-cases-covers-transparent-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112b"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71180"
+  },
+  "name": "Rugged/Shockproof Cases",
+  "slug": "apple-cases-covers-rugged-shockproof-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112b"
+  },
+  "level": 3,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71181"
+  },
+  "name": "Tempered Glass",
+  "slug": "apple-screen-protectors-tempered-glass",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112c"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71182"
+  },
+  "name": "Hydrogel Film",
+  "slug": "apple-screen-protectors-hydrogel-film",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112c"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71183"
+  },
+  "name": "Privacy Screen",
+  "slug": "apple-screen-protectors-privacy-screen",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112c"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71184"
+  },
+  "name": "Camera Lens Protector",
+  "slug": "apple-screen-protectors-camera-lens-protector",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112c"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71185"
+  },
+  "name": "Fast Chargers (18W-65W)",
+  "slug": "apple-chargers-cables-fast-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112d"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71186"
+  },
+  "name": "USB Type-C Cables",
+  "slug": "apple-chargers-cables-usb-type-c-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112d"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71187"
+  },
+  "name": "Lightning Cables",
+  "slug": "apple-chargers-cables-lightning-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112d"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71188"
+  },
+  "name": "Micro-USB Cables",
+  "slug": "apple-chargers-cables-micro-usb-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112d"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71189"
+  },
+  "name": "Car Chargers",
+  "slug": "apple-chargers-cables-car-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112d"
+  },
+  "level": 3,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7118a"
+  },
+  "name": "Wireless Chargers",
+  "slug": "apple-chargers-cables-wireless-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112d"
+  },
+  "level": 3,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7118b"
+  },
+  "name": "Fast Charging Power Banks",
+  "slug": "apple-power-banks-fast-charging",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112e"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7118c"
+  },
+  "name": "High Capacity (20k-50k)",
+  "slug": "apple-power-banks-high-capacity",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112e"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7118d"
+  },
+  "name": "Mini/Portable Power Banks",
+  "slug": "apple-power-banks-mini-portable",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7112e"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7118e"
+  },
+  "name": "Silicone Cases",
+  "slug": "samsung-cases-covers-silicone-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71133"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7118f"
+  },
+  "name": "Hard Shell Cases",
+  "slug": "samsung-cases-covers-hard-shell-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71133"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71190"
+  },
+  "name": "Flip/Wallet Cases",
+  "slug": "samsung-cases-covers-flip-wallet-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71133"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71191"
+  },
+  "name": "Transparent Cases",
+  "slug": "samsung-cases-covers-transparent-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71133"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71192"
+  },
+  "name": "Rugged/Shockproof Cases",
+  "slug": "samsung-cases-covers-rugged-shockproof-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71133"
+  },
+  "level": 3,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71193"
+  },
+  "name": "Tempered Glass",
+  "slug": "samsung-screen-protectors-tempered-glass",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71134"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71194"
+  },
+  "name": "Hydrogel Film",
+  "slug": "samsung-screen-protectors-hydrogel-film",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71134"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71195"
+  },
+  "name": "Privacy Screen",
+  "slug": "samsung-screen-protectors-privacy-screen",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71134"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71196"
+  },
+  "name": "Camera Lens Protector",
+  "slug": "samsung-screen-protectors-camera-lens-protector",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71134"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71197"
+  },
+  "name": "Fast Chargers (18W-65W)",
+  "slug": "samsung-chargers-cables-fast-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71135"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71198"
+  },
+  "name": "USB Type-C Cables",
+  "slug": "samsung-chargers-cables-usb-type-c-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71135"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71199"
+  },
+  "name": "Lightning Cables",
+  "slug": "samsung-chargers-cables-lightning-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71135"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7119a"
+  },
+  "name": "Micro-USB Cables",
+  "slug": "samsung-chargers-cables-micro-usb-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71135"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7119b"
+  },
+  "name": "Car Chargers",
+  "slug": "samsung-chargers-cables-car-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71135"
+  },
+  "level": 3,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7119c"
+  },
+  "name": "Wireless Chargers",
+  "slug": "samsung-chargers-cables-wireless-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71135"
+  },
+  "level": 3,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7119d"
+  },
+  "name": "Fast Charging Power Banks",
+  "slug": "samsung-power-banks-fast-charging",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71136"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7119e"
+  },
+  "name": "High Capacity (20k-50k)",
+  "slug": "samsung-power-banks-high-capacity",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71136"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7119f"
+  },
+  "name": "Mini/Portable Power Banks",
+  "slug": "samsung-power-banks-mini-portable",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71136"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711a0"
+  },
+  "name": "Silicone Cases",
+  "slug": "tecno-cases-covers-silicone-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113b"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711a1"
+  },
+  "name": "Hard Shell Cases",
+  "slug": "tecno-cases-covers-hard-shell-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113b"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711a2"
+  },
+  "name": "Flip/Wallet Cases",
+  "slug": "tecno-cases-covers-flip-wallet-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113b"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711a3"
+  },
+  "name": "Transparent Cases",
+  "slug": "tecno-cases-covers-transparent-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113b"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711a4"
+  },
+  "name": "Rugged/Shockproof Cases",
+  "slug": "tecno-cases-covers-rugged-shockproof-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113b"
+  },
+  "level": 3,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711a5"
+  },
+  "name": "Tempered Glass",
+  "slug": "tecno-screen-protectors-tempered-glass",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113c"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711a6"
+  },
+  "name": "Hydrogel Film",
+  "slug": "tecno-screen-protectors-hydrogel-film",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113c"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711a7"
+  },
+  "name": "Privacy Screen",
+  "slug": "tecno-screen-protectors-privacy-screen",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113c"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711a8"
+  },
+  "name": "Camera Lens Protector",
+  "slug": "tecno-screen-protectors-camera-lens-protector",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113c"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.872Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711a9"
+  },
+  "name": "Fast Chargers (18W-65W)",
+  "slug": "tecno-chargers-cables-fast-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113d"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711aa"
+  },
+  "name": "USB Type-C Cables",
+  "slug": "tecno-chargers-cables-usb-type-c-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113d"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711ab"
+  },
+  "name": "Lightning Cables",
+  "slug": "tecno-chargers-cables-lightning-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113d"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711ac"
+  },
+  "name": "Micro-USB Cables",
+  "slug": "tecno-chargers-cables-micro-usb-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113d"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711ad"
+  },
+  "name": "Car Chargers",
+  "slug": "tecno-chargers-cables-car-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113d"
+  },
+  "level": 3,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711ae"
+  },
+  "name": "Wireless Chargers",
+  "slug": "tecno-chargers-cables-wireless-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113d"
+  },
+  "level": 3,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711af"
+  },
+  "name": "Fast Charging Power Banks",
+  "slug": "tecno-power-banks-fast-charging",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113e"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711b0"
+  },
+  "name": "High Capacity (20k-50k)",
+  "slug": "tecno-power-banks-high-capacity",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113e"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711b1"
+  },
+  "name": "Mini/Portable Power Banks",
+  "slug": "tecno-power-banks-mini-portable",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7113e"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711b2"
+  },
+  "name": "Silicone Cases",
+  "slug": "infinix-cases-covers-silicone-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71143"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711b3"
+  },
+  "name": "Hard Shell Cases",
+  "slug": "infinix-cases-covers-hard-shell-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71143"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711b4"
+  },
+  "name": "Flip/Wallet Cases",
+  "slug": "infinix-cases-covers-flip-wallet-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71143"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711b5"
+  },
+  "name": "Transparent Cases",
+  "slug": "infinix-cases-covers-transparent-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71143"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711b6"
+  },
+  "name": "Rugged/Shockproof Cases",
+  "slug": "infinix-cases-covers-rugged-shockproof-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71143"
+  },
+  "level": 3,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711b7"
+  },
+  "name": "Tempered Glass",
+  "slug": "infinix-screen-protectors-tempered-glass",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71144"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711b8"
+  },
+  "name": "Hydrogel Film",
+  "slug": "infinix-screen-protectors-hydrogel-film",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71144"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711b9"
+  },
+  "name": "Privacy Screen",
+  "slug": "infinix-screen-protectors-privacy-screen",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71144"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711ba"
+  },
+  "name": "Camera Lens Protector",
+  "slug": "infinix-screen-protectors-camera-lens-protector",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71144"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711bb"
+  },
+  "name": "Fast Chargers (18W-65W)",
+  "slug": "infinix-chargers-cables-fast-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71145"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711bc"
+  },
+  "name": "USB Type-C Cables",
+  "slug": "infinix-chargers-cables-usb-type-c-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71145"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711bd"
+  },
+  "name": "Lightning Cables",
+  "slug": "infinix-chargers-cables-lightning-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71145"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711be"
+  },
+  "name": "Micro-USB Cables",
+  "slug": "infinix-chargers-cables-micro-usb-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71145"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711bf"
+  },
+  "name": "Car Chargers",
+  "slug": "infinix-chargers-cables-car-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71145"
+  },
+  "level": 3,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711c0"
+  },
+  "name": "Wireless Chargers",
+  "slug": "infinix-chargers-cables-wireless-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71145"
+  },
+  "level": 3,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711c1"
+  },
+  "name": "Fast Charging Power Banks",
+  "slug": "infinix-power-banks-fast-charging",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71146"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711c2"
+  },
+  "name": "High Capacity (20k-50k)",
+  "slug": "infinix-power-banks-high-capacity",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71146"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711c3"
+  },
+  "name": "Mini/Portable Power Banks",
+  "slug": "infinix-power-banks-mini-portable",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71146"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711c4"
+  },
+  "name": "Silicone Cases",
+  "slug": "xiaomi-cases-covers-silicone-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114b"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711c5"
+  },
+  "name": "Hard Shell Cases",
+  "slug": "xiaomi-cases-covers-hard-shell-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114b"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711c6"
+  },
+  "name": "Flip/Wallet Cases",
+  "slug": "xiaomi-cases-covers-flip-wallet-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114b"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711c7"
+  },
+  "name": "Transparent Cases",
+  "slug": "xiaomi-cases-covers-transparent-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114b"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711c8"
+  },
+  "name": "Rugged/Shockproof Cases",
+  "slug": "xiaomi-cases-covers-rugged-shockproof-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114b"
+  },
+  "level": 3,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711c9"
+  },
+  "name": "Tempered Glass",
+  "slug": "xiaomi-screen-protectors-tempered-glass",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114c"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711ca"
+  },
+  "name": "Hydrogel Film",
+  "slug": "xiaomi-screen-protectors-hydrogel-film",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114c"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711cb"
+  },
+  "name": "Privacy Screen",
+  "slug": "xiaomi-screen-protectors-privacy-screen",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114c"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711cc"
+  },
+  "name": "Camera Lens Protector",
+  "slug": "xiaomi-screen-protectors-camera-lens-protector",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114c"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711cd"
+  },
+  "name": "Fast Chargers (18W-65W)",
+  "slug": "xiaomi-chargers-cables-fast-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114d"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711ce"
+  },
+  "name": "USB Type-C Cables",
+  "slug": "xiaomi-chargers-cables-usb-type-c-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114d"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711cf"
+  },
+  "name": "Lightning Cables",
+  "slug": "xiaomi-chargers-cables-lightning-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114d"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711d0"
+  },
+  "name": "Micro-USB Cables",
+  "slug": "xiaomi-chargers-cables-micro-usb-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114d"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711d1"
+  },
+  "name": "Car Chargers",
+  "slug": "xiaomi-chargers-cables-car-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114d"
+  },
+  "level": 3,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711d2"
+  },
+  "name": "Wireless Chargers",
+  "slug": "xiaomi-chargers-cables-wireless-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114d"
+  },
+  "level": 3,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711d3"
+  },
+  "name": "Fast Charging Power Banks",
+  "slug": "xiaomi-power-banks-fast-charging",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114e"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711d4"
+  },
+  "name": "High Capacity (20k-50k)",
+  "slug": "xiaomi-power-banks-high-capacity",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114e"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711d5"
+  },
+  "name": "Mini/Portable Power Banks",
+  "slug": "xiaomi-power-banks-mini-portable",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7114e"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711d6"
+  },
+  "name": "Silicone Cases",
+  "slug": "oppo-cases-covers-silicone-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71153"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711d7"
+  },
+  "name": "Hard Shell Cases",
+  "slug": "oppo-cases-covers-hard-shell-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71153"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711d8"
+  },
+  "name": "Flip/Wallet Cases",
+  "slug": "oppo-cases-covers-flip-wallet-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71153"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711d9"
+  },
+  "name": "Transparent Cases",
+  "slug": "oppo-cases-covers-transparent-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71153"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711da"
+  },
+  "name": "Rugged/Shockproof Cases",
+  "slug": "oppo-cases-covers-rugged-shockproof-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71153"
+  },
+  "level": 3,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711db"
+  },
+  "name": "Tempered Glass",
+  "slug": "oppo-screen-protectors-tempered-glass",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71154"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711dc"
+  },
+  "name": "Hydrogel Film",
+  "slug": "oppo-screen-protectors-hydrogel-film",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71154"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711dd"
+  },
+  "name": "Privacy Screen",
+  "slug": "oppo-screen-protectors-privacy-screen",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71154"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711de"
+  },
+  "name": "Camera Lens Protector",
+  "slug": "oppo-screen-protectors-camera-lens-protector",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71154"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711df"
+  },
+  "name": "Fast Chargers (18W-65W)",
+  "slug": "oppo-chargers-cables-fast-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71155"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711e0"
+  },
+  "name": "USB Type-C Cables",
+  "slug": "oppo-chargers-cables-usb-type-c-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71155"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711e1"
+  },
+  "name": "Lightning Cables",
+  "slug": "oppo-chargers-cables-lightning-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71155"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711e2"
+  },
+  "name": "Micro-USB Cables",
+  "slug": "oppo-chargers-cables-micro-usb-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71155"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711e3"
+  },
+  "name": "Car Chargers",
+  "slug": "oppo-chargers-cables-car-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71155"
+  },
+  "level": 3,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711e4"
+  },
+  "name": "Wireless Chargers",
+  "slug": "oppo-chargers-cables-wireless-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71155"
+  },
+  "level": 3,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711e5"
+  },
+  "name": "Fast Charging Power Banks",
+  "slug": "oppo-power-banks-fast-charging",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71156"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711e6"
+  },
+  "name": "High Capacity (20k-50k)",
+  "slug": "oppo-power-banks-high-capacity",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71156"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711e7"
+  },
+  "name": "Mini/Portable Power Banks",
+  "slug": "oppo-power-banks-mini-portable",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71156"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711e8"
+  },
+  "name": "Silicone Cases",
+  "slug": "realme-cases-covers-silicone-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115b"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711e9"
+  },
+  "name": "Hard Shell Cases",
+  "slug": "realme-cases-covers-hard-shell-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115b"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711ea"
+  },
+  "name": "Flip/Wallet Cases",
+  "slug": "realme-cases-covers-flip-wallet-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115b"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711eb"
+  },
+  "name": "Transparent Cases",
+  "slug": "realme-cases-covers-transparent-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115b"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711ec"
+  },
+  "name": "Rugged/Shockproof Cases",
+  "slug": "realme-cases-covers-rugged-shockproof-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115b"
+  },
+  "level": 3,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711ed"
+  },
+  "name": "Tempered Glass",
+  "slug": "realme-screen-protectors-tempered-glass",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115c"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711ee"
+  },
+  "name": "Hydrogel Film",
+  "slug": "realme-screen-protectors-hydrogel-film",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115c"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711ef"
+  },
+  "name": "Privacy Screen",
+  "slug": "realme-screen-protectors-privacy-screen",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115c"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711f0"
+  },
+  "name": "Camera Lens Protector",
+  "slug": "realme-screen-protectors-camera-lens-protector",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115c"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711f1"
+  },
+  "name": "Fast Chargers (18W-65W)",
+  "slug": "realme-chargers-cables-fast-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115d"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711f2"
+  },
+  "name": "USB Type-C Cables",
+  "slug": "realme-chargers-cables-usb-type-c-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115d"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711f3"
+  },
+  "name": "Lightning Cables",
+  "slug": "realme-chargers-cables-lightning-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115d"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711f4"
+  },
+  "name": "Micro-USB Cables",
+  "slug": "realme-chargers-cables-micro-usb-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115d"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711f5"
+  },
+  "name": "Car Chargers",
+  "slug": "realme-chargers-cables-car-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115d"
+  },
+  "level": 3,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711f6"
+  },
+  "name": "Wireless Chargers",
+  "slug": "realme-chargers-cables-wireless-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115d"
+  },
+  "level": 3,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711f7"
+  },
+  "name": "Fast Charging Power Banks",
+  "slug": "realme-power-banks-fast-charging",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115e"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711f8"
+  },
+  "name": "High Capacity (20k-50k)",
+  "slug": "realme-power-banks-high-capacity",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115e"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711f9"
+  },
+  "name": "Mini/Portable Power Banks",
+  "slug": "realme-power-banks-mini-portable",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7115e"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711fa"
+  },
+  "name": "Silicone Cases",
+  "slug": "oraimo-cases-covers-silicone-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116b"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711fb"
+  },
+  "name": "Hard Shell Cases",
+  "slug": "oraimo-cases-covers-hard-shell-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116b"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711fc"
+  },
+  "name": "Flip/Wallet Cases",
+  "slug": "oraimo-cases-covers-flip-wallet-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116b"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711fd"
+  },
+  "name": "Transparent Cases",
+  "slug": "oraimo-cases-covers-transparent-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116b"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711fe"
+  },
+  "name": "Rugged/Shockproof Cases",
+  "slug": "oraimo-cases-covers-rugged-shockproof-cases",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116b"
+  },
+  "level": 3,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c711ff"
+  },
+  "name": "Tempered Glass",
+  "slug": "oraimo-screen-protectors-tempered-glass",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116c"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71200"
+  },
+  "name": "Hydrogel Film",
+  "slug": "oraimo-screen-protectors-hydrogel-film",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116c"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71201"
+  },
+  "name": "Privacy Screen",
+  "slug": "oraimo-screen-protectors-privacy-screen",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116c"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71202"
+  },
+  "name": "Camera Lens Protector",
+  "slug": "oraimo-screen-protectors-camera-lens-protector",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116c"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71203"
+  },
+  "name": "Fast Chargers (18W-65W)",
+  "slug": "oraimo-chargers-cables-fast-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116d"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71204"
+  },
+  "name": "USB Type-C Cables",
+  "slug": "oraimo-chargers-cables-usb-type-c-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116d"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71205"
+  },
+  "name": "Lightning Cables",
+  "slug": "oraimo-chargers-cables-lightning-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116d"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71206"
+  },
+  "name": "Micro-USB Cables",
+  "slug": "oraimo-chargers-cables-micro-usb-cables",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116d"
+  },
+  "level": 3,
+  "order": 4,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71207"
+  },
+  "name": "Car Chargers",
+  "slug": "oraimo-chargers-cables-car-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116d"
+  },
+  "level": 3,
+  "order": 5,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71208"
+  },
+  "name": "Wireless Chargers",
+  "slug": "oraimo-chargers-cables-wireless-chargers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116d"
+  },
+  "level": 3,
+  "order": 6,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c71209"
+  },
+  "name": "Fast Charging Power Banks",
+  "slug": "oraimo-power-banks-fast-charging",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116e"
+  },
+  "level": 3,
+  "order": 1,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7120a"
+  },
+  "name": "High Capacity (20k-50k)",
+  "slug": "oraimo-power-banks-high-capacity",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116e"
+  },
+  "level": 3,
+  "order": 2,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697cc7c62af4a50e58c7120b"
+  },
+  "name": "Mini/Portable Power Banks",
+  "slug": "oraimo-power-banks-mini-portable",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c7116e"
+  },
+  "level": 3,
+  "order": 3,
+  "active": true,
+  "featured": false,
+  "productCount": 0,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:01:26.874Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697d42f2cc04ba648361762f"
+  },
+  "name": "Huawei",
+  "slug": "huawei",
+  "description": "Premium accessories for Huawei smartphones",
+  "image": "",
+  "parent": null,
+  "level": 1,
+  "order": 0,
+  "active": true,
+  "featured": false,
+  "metaTitle": "Huawei",
+  "metaDescription": "Premium accessories for Huawei smartphones",
+  "productCount": 0,
+  "createdAt": {
+    "$date": "2026-01-30T23:46:58.343Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T23:46:58.343Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d4306cc04ba648361763c"
+  },
+  "name": "Cases & Covers",
+  "slug": "cases-and-covers",
+  "description": "Protective cases for Huawei devices",
+  "image": "",
+  "parent": {
+    "$oid": "697d42f2cc04ba648361762f"
+  },
+  "level": 2,
+  "order": 0,
+  "active": true,
+  "featured": false,
+  "metaTitle": "Cases & Covers",
+  "metaDescription": "Protective cases for Huawei devices",
+  "productCount": 0,
+  "createdAt": {
+    "$date": "2026-01-30T23:47:18.818Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T23:47:18.818Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d4321cc04ba6483617649"
+  },
+  "name": "Silicone Cases",
+  "slug": "silicone-cases",
+  "description": "Soft silicone protective cases",
+  "image": "",
+  "parent": {
+    "$oid": "697d4306cc04ba648361763c"
+  },
+  "level": 3,
+  "order": 0,
+  "active": true,
+  "featured": false,
+  "metaTitle": "Silicone Cases",
+  "metaDescription": "Soft silicone protective cases",
+  "productCount": 0,
+  "createdAt": {
+    "$date": "2026-01-30T23:47:45.332Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T23:47:45.332Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d44e5cc04ba648361766a"
+  },
+  "name": "Sony",
+  "slug": "sony",
+  "description": "High-quality Japanese electronics and smartphone brand",
+  "image": "https://img.icons8.com/color/96/sony.png",
+  "parent": null,
+  "level": 1,
+  "order": 0,
+  "active": true,
+  "featured": false,
+  "metaTitle": "Sony",
+  "metaDescription": "High-quality Japanese electronics and smartphone brand",
+  "productCount": 0,
+  "createdAt": {
+    "$date": "2026-01-30T23:55:17.360Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T23:55:17.360Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d44e5cc04ba648361766f"
+  },
+  "name": "Audio & Sound",
+  "slug": "audio-and-sound",
+  "description": "Headphones",
+  "image": "Speakers and Audio Gear",
+  "parent": {
+    "$oid": "697d44e5cc04ba648361766a"
+  },
+  "level": 2,
+  "order": 0,
+  "active": true,
+  "featured": false,
+  "metaTitle": "Audio & Sound",
+  "metaDescription": "Headphones",
+  "productCount": 0,
+  "createdAt": {
+    "$date": "2026-01-30T23:55:17.374Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T23:55:17.374Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d44e5cc04ba6483617674"
+  },
+  "name": "Wireless Noise Cancelling",
+  "slug": "wireless-noise-cancelling",
+  "description": "Premium wireless audio experience",
+  "parent": {
+    "$oid": "697d44e5cc04ba648361766f"
+  },
+  "level": 3,
+  "order": 0,
+  "active": true,
+  "featured": false,
+  "metaTitle": "Wireless Noise Cancelling",
+  "metaDescription": "Premium wireless audio experience",
+  "productCount": 0,
+  "createdAt": {
+    "$date": "2026-01-30T23:55:17.386Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T23:55:17.386Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d44e5cc04ba6483617679"
+  },
+  "name": "Gaming Accessories",
+  "slug": "gaming-accessories",
+  "description": "Gaming controllers and mobile accessories",
+  "parent": {
+    "$oid": "697d44e5cc04ba648361766a"
+  },
+  "level": 2,
+  "order": 0,
+  "active": true,
+  "featured": false,
+  "metaTitle": "Gaming Accessories",
+  "metaDescription": "Gaming controllers and mobile accessories",
+  "productCount": 0,
+  "createdAt": {
+    "$date": "2026-01-30T23:55:17.410Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T23:55:17.410Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d44e5cc04ba648361767e"
+  },
+  "name": "Wearables",
+  "slug": "wearables",
+  "description": "Smart watches and fitness trackers",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71124"
+  },
+  "level": 2,
+  "order": 0,
+  "active": true,
+  "featured": false,
+  "metaTitle": "Wearables",
+  "metaDescription": "Smart watches and fitness trackers",
+  "productCount": 0,
+  "createdAt": {
+    "$date": "2026-01-30T23:55:17.424Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T23:55:17.424Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d44e5cc04ba6483617683"
+  },
+  "name": "Smart Watches",
+  "slug": "smart-watches",
+  "description": "High-resolution AMOLED smart watches",
+  "parent": {
+    "$oid": "697d44e5cc04ba648361767e"
+  },
+  "level": 3,
+  "order": 0,
+  "active": true,
+  "featured": false,
+  "metaTitle": "Smart Watches",
+  "metaDescription": "High-resolution AMOLED smart watches",
+  "productCount": 0,
+  "createdAt": {
+    "$date": "2026-01-30T23:55:17.437Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T23:55:17.437Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d44e5cc04ba6483617688"
+  },
+  "name": "Bands & Straps",
+  "slug": "bands-and-straps",
+  "description": "Durable and stylish fitness bands",
+  "parent": {
+    "$oid": "697d44e5cc04ba648361767e"
+  },
+  "level": 3,
+  "order": 0,
+  "active": true,
+  "featured": false,
+  "metaTitle": "Bands & Straps",
+  "metaDescription": "Durable and stylish fitness bands",
+  "productCount": 0,
+  "createdAt": {
+    "$date": "2026-01-30T23:55:17.461Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T23:55:17.461Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d44e5cc04ba648361768d"
+  },
+  "name": "Laptop Accessories",
+  "slug": "laptop-accessories",
+  "description": "Bags and chargers for Infinix laptops",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71123"
+  },
+  "level": 2,
+  "order": 0,
+  "active": true,
+  "featured": false,
+  "metaTitle": "Laptop Accessories",
+  "metaDescription": "Bags and chargers for Infinix laptops",
+  "productCount": 0,
+  "createdAt": {
+    "$date": "2026-01-30T23:55:17.474Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T23:55:17.474Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d44e5cc04ba6483617692"
+  },
+  "name": "Power Solutions",
+  "slug": "power-solutions",
+  "description": "High capacity charging bricks and solar banks",
+  "parent": {
+    "$oid": "697cc7c62af4a50e58c71128"
+  },
+  "level": 2,
+  "order": 0,
+  "active": true,
+  "featured": false,
+  "metaTitle": "Power Solutions",
+  "metaDescription": "High capacity charging bricks and solar banks",
+  "productCount": 0,
+  "createdAt": {
+    "$date": "2026-01-30T23:55:17.487Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T23:55:17.487Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d44e5cc04ba6483617697"
+  },
+  "name": "GaN Chargers",
+  "slug": "gan-chargers",
+  "description": "Compact and high-speed GaN technology",
+  "parent": {
+    "$oid": "697d44e5cc04ba6483617692"
+  },
+  "level": 3,
+  "order": 0,
+  "active": true,
+  "featured": false,
+  "metaTitle": "GaN Chargers",
+  "metaDescription": "Compact and high-speed GaN technology",
+  "productCount": 0,
+  "createdAt": {
+    "$date": "2026-01-30T23:55:17.511Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T23:55:17.511Z"
+  },
+  "__v": 0
+}]

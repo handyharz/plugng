@@ -37,7 +37,8 @@ export interface IUser extends Document {
     loyaltyTier: 'Enthusiast' | 'Elite' | 'Master';
     otp?: string;
     otpExpires?: Date;
-    status: 'active' | 'suspended';
+    status: 'active' | 'suspended' | 'deleted';
+    deletedAt?: Date;
     lastLogin?: Date;
     comparePassword: (password: string) => Promise<boolean>;
 }
@@ -82,7 +83,8 @@ const UserSchema: Schema = new Schema({
     },
     otp: { type: String, select: false },
     otpExpires: { type: Date, select: false },
-    status: { type: String, enum: ['active', 'suspended'], default: 'active' },
+    status: { type: String, enum: ['active', 'suspended', 'deleted'], default: 'active' },
+    deletedAt: { type: Date },
     lastLogin: { type: Date }
 }, { timestamps: true });
 

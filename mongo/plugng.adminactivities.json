@@ -1,0 +1,2496 @@
+[{
+  "_id": {
+    "$oid": "697c04d45da9b787f93ba0df"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "create",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697c04d45da9b787f93ba0d7"
+  },
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T01:09:40.911Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T01:09:40.911Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697c04da5da9b787f93ba0f6"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "delete",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697c04d45da9b787f93ba0d7"
+  },
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T01:09:46.449Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T01:09:46.449Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697c05e75da9b787f93ba149"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "create",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697c05e75da9b787f93ba13a"
+  },
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T01:14:15.936Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T01:14:15.936Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697c08d18895207742798dbc"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697c05e75da9b787f93ba13a"
+  },
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T01:26:41.869Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T01:26:41.869Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697c0eb45c2c05aade9723c9"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "create",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697c0eb45c2c05aade9723bd"
+  },
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T01:51:48.238Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T01:51:48.238Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697c0ee25c2c05aade972667"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697c0eb45c2c05aade9723bd"
+  },
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T01:52:34.293Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T01:52:34.293Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697c11445c2c05aade972f96"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697c0eb45c2c05aade9723bd"
+  },
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T02:02:44.033Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T02:02:44.033Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697c11a95c2c05aade973033"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697c0eb45c2c05aade9723bd"
+  },
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T02:04:25.259Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T02:04:25.259Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697c13c25c2c05aade97361f"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697c0eb45c2c05aade9723bd"
+  },
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T02:13:22.303Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T02:13:22.303Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697c13d15c2c05aade97364b"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697c0eb45c2c05aade9723bd"
+  },
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T02:13:37.731Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T02:13:37.731Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697c14285c2c05aade9738d9"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697c0eb45c2c05aade9723bd"
+  },
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T02:15:04.647Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T02:15:04.647Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697c169e5c2c05aade973950"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697c0eb45c2c05aade9723bd"
+  },
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T02:25:34.566Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T02:25:34.566Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697cb32ac7f6686c065333b4"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to delivered",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T13:33:30.515Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T13:33:30.515Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697cb333c7f6686c065333bc"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to processing",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T13:33:39.385Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T13:33:39.385Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697cb616007b911c21f3dbe8"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_update_products",
+  "resource": "product",
+  "details": "Bulk updated 1 products. Updates: {\"status\":\"draft\"}",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T13:45:58.112Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T13:45:58.112Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697cb6d6007b911c21f3dd7f"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_update_products",
+  "resource": "product",
+  "details": "Bulk updated 1 products. Updates: {\"status\":\"active\"}",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T13:49:10.741Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T13:49:10.741Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697cbfdd81423e7ceab24795"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697c0eb45c2c05aade9723bd"
+  },
+  "details": "Updated product: IPHONE 13 PRO SILICONE CASE WITH MAGSAFE",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T14:27:41.549Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T14:27:41.549Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697cbfec81423e7ceab247c3"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697a2f364e41b180499aba15"
+  },
+  "details": "Updated product: Samsung Galaxy S24 Ultra Grip Case",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T14:27:56.557Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T14:27:56.557Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697cc00081423e7ceab247e8"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697a2f364e41b180499aba22"
+  },
+  "details": "Updated product: Oraimo 20000mAh Power Bank",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T14:28:16.873Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T14:28:16.873Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697cc6ccea2a06d76c73ca23"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc5c8654ce9ba189aac8c"
+  },
+  "details": "Updated product: Oraimo 20000mAh Power Bank",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T14:57:16.661Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T14:57:16.661Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697cd327ea2a06d76c73ce5b"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "status_change",
+  "resource": "order",
+  "resourceId": {
+    "$oid": "697a7740e61d4706c0308934"
+  },
+  "changes": {
+    "before": {
+      "status": "processing"
+    },
+    "after": {
+      "status": "shipped",
+      "note": "Bulk update to processing"
+    }
+  },
+  "ipAddress": "::1",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15",
+  "createdAt": {
+    "$date": "2026-01-30T15:49:59.374Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:49:59.374Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697cd3a4ea2a06d76c73cea9"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be0d"
+  },
+  "details": "Adjusted stock for Samsung Galaxy S24 Ultra Grip Case (Default): 40 -> 85. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T15:52:04.206Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:52:04.206Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697cd3c0ea2a06d76c73ceb9"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be0d"
+  },
+  "details": "Adjusted stock for Samsung Galaxy S24 Ultra Grip Case (Default): 85 -> 135. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T15:52:32.500Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:52:32.500Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697cd3edea2a06d76c73cecc"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be16"
+  },
+  "details": "Adjusted stock for iPhone 14 Clear Case with MagSafe (Default): 60 -> 70. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T15:53:17.108Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T15:53:17.108Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1591ea2a06d76c73cf0a"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be10"
+  },
+  "details": "Adjusted stock for Apple 20W USB-C Power Adapter (Default): 100 -> 110. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T20:33:21.471Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T20:33:21.471Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d15e9ea2a06d76c73cf16"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be10"
+  },
+  "details": "Adjusted stock for Apple 20W USB-C Power Adapter (Default): 110 -> 120. Reason: return",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T20:34:49.174Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T20:34:49.174Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1609ea2a06d76c73cf26"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be10"
+  },
+  "details": "Adjusted stock for Apple 20W USB-C Power Adapter (Default): 120 -> 125. Reason: damaged",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T20:35:21.725Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T20:35:21.725Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1673ea2a06d76c73cf39"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be10"
+  },
+  "details": "Adjusted stock for Apple 20W USB-C Power Adapter (Default): 125 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T20:37:07.912Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T20:37:07.912Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1d3b397b9a3319e2ae1a"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be0d"
+  },
+  "details": "Adjusted stock for Samsung Galaxy S24 Ultra Grip Case (Default): 135 -> 138. Reason: return",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:06:03.316Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:06:03.316Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1d5a397b9a3319e2ae30"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be0d"
+  },
+  "details": "Adjusted stock for Samsung Galaxy S24 Ultra Grip Case (Default): 138 -> 5. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:06:34.683Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:06:34.683Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1d6c397b9a3319e2ae46"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be0d"
+  },
+  "details": "Adjusted stock for Samsung Galaxy S24 Ultra Grip Case (Default): 5 -> 45. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:06:52.413Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:06:52.413Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1d77397b9a3319e2ae52"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be13"
+  },
+  "details": "Adjusted stock for Oraimo 20000mAh Power Bank (Default): 75 -> 70. Reason: damaged",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:07:03.699Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:07:03.699Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1da4397b9a3319e2ae70"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "details": "Adjusted stock for iPhone 15 Pro Silicone Case with MagSafe (Default): 49 -> 50. Reason: return",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:07:48.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:07:48.874Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1dbf397b9a3319e2ae7f"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be13"
+  },
+  "details": "Adjusted stock for Oraimo 20000mAh Power Bank (Default): 70 -> 20. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:08:15.298Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:08:15.298Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1dd7397b9a3319e2ae98"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be10"
+  },
+  "details": "Adjusted stock for Apple 20W USB-C Power Adapter (Default): 0 -> 27. Reason: restock",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:08:39.640Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:08:39.640Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1df7397b9a3319e2aeae"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be10"
+  },
+  "details": "Adjusted stock for Apple 20W USB-C Power Adapter (Default): 27 -> 4. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:09:11.028Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:09:11.028Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1e09397b9a3319e2aec2"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "details": "Adjusted stock for iPhone 15 Pro Silicone Case with MagSafe (Default): 50 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:09:29.582Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:09:29.582Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1e1d397b9a3319e2aedd"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "details": "Adjusted stock for iPhone 15 Pro Silicone Case with MagSafe (Default): 0 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:09:49.059Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:09:49.059Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1e98397b9a3319e2aef6"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be0d"
+  },
+  "details": "Adjusted stock for Samsung Galaxy S24 Ultra Grip Case (Default): 45 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:11:52.056Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:11:52.056Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1ea6397b9a3319e2af20"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be13"
+  },
+  "details": "Adjusted stock for Oraimo 20000mAh Power Bank (Default): 20 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:12:06.936Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:12:06.936Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1eaf397b9a3319e2af3b"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "details": "Adjusted stock for iPhone 15 Pro Silicone Case with MagSafe (Default): 0 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:12:15.256Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:12:15.256Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1ebe397b9a3319e2af56"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "details": "Adjusted stock for iPhone 15 Pro Silicone Case with MagSafe (Default): 0 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:12:30.325Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:12:30.325Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1ee0397b9a3319e2af71"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "details": "Adjusted stock for iPhone 15 Pro Silicone Case with MagSafe (Default): 0 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:13:04.774Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:13:04.774Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1eea397b9a3319e2af8f"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "details": "Adjusted stock for iPhone 15 Pro Silicone Case with MagSafe (Default): 0 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:13:14.663Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:13:14.663Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1ef7397b9a3319e2afaa"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "details": "Adjusted stock for iPhone 15 Pro Silicone Case with MagSafe (Default): 0 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:13:27.731Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:13:27.731Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1f03397b9a3319e2afcf"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "details": "Adjusted stock for iPhone 15 Pro Silicone Case with MagSafe (Default): 0 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:13:39.787Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:13:39.787Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1f12397b9a3319e2afe5"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be13"
+  },
+  "details": "Adjusted stock for Oraimo 20000mAh Power Bank (Default): 0 -> 7. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:13:54.440Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:13:54.440Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1f9e397b9a3319e2aff6"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "details": "Adjusted stock for iPhone 15 Pro Silicone Case with MagSafe (Default): 0 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:16:14.975Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:16:14.975Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1fa9397b9a3319e2b005"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be13"
+  },
+  "details": "Adjusted stock for Oraimo 20000mAh Power Bank (Default): 7 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:16:25.225Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:16:25.225Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1fb3397b9a3319e2b011"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be16"
+  },
+  "details": "Adjusted stock for iPhone 14 Clear Case with MagSafe (Default): 70 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:16:35.113Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:16:35.113Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1fbf397b9a3319e2b022"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "details": "Adjusted stock for iPhone 15 Pro Silicone Case with MagSafe (Default): 0 -> 0. Reason: damaged",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:16:47.481Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:16:47.481Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1fcd397b9a3319e2b036"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "details": "Adjusted stock for iPhone 15 Pro Silicone Case with MagSafe (Default): 0 -> 45. Reason: restock",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:17:01.754Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:17:01.754Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1fd5397b9a3319e2b047"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "details": "Adjusted stock for iPhone 15 Pro Silicone Case with MagSafe (Default): 45 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:17:09.820Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:17:09.820Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d1fec397b9a3319e2b05b"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "details": "Adjusted stock for iPhone 15 Pro Silicone Case with MagSafe (Default): 0 -> 1. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:17:32.656Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:17:32.656Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d2067397b9a3319e2b079"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "details": "Adjusted stock for iPhone 15 Pro Silicone Case with MagSafe (Default): 0 -> 34. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:19:35.255Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:19:35.255Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d2071397b9a3319e2b085"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be13"
+  },
+  "details": "Adjusted stock for Oraimo 20000mAh Power Bank (Default): 0 -> 55. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:19:45.553Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:19:45.553Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d207c397b9a3319e2b091"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be16"
+  },
+  "details": "Adjusted stock for iPhone 14 Clear Case with MagSafe (Default): 0 -> 65. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:19:56.044Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:19:56.044Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d2082397b9a3319e2b0a0"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be13"
+  },
+  "details": "Adjusted stock for Oraimo 20000mAh Power Bank (Default): 55 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:20:02.090Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:20:02.090Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d2087397b9a3319e2b0ac"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be0d"
+  },
+  "details": "Adjusted stock for Samsung Galaxy S24 Ultra Grip Case (Default): 0 -> 76. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:20:07.623Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:20:07.623Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d2092397b9a3319e2b0b8"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be10"
+  },
+  "details": "Adjusted stock for Apple 20W USB-C Power Adapter (Default): 4 -> 9. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:20:18.033Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:20:18.033Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d2527edd600e07b730a20"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be05"
+  },
+  "details": "Adjusted stock for iPhone 15 Pro Silicone Case with MagSafe (APL-IP15P-SIL-BLU): 0 -> 9. Reason: return",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:39:51.246Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:39:51.246Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d26d2edd600e07b730a2f"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be13"
+  },
+  "details": "Adjusted stock for Oraimo 20000mAh Power Bank (ORA-PB-20K): 0 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:46:58.853Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:46:58.853Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d2772edd600e07b730a57"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be0d"
+  },
+  "details": "Adjusted stock for Samsung Galaxy S24 Ultra Grip Case (SAM-S24U-SIL-GRY): 76 -> 0. Reason: correction",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:49:38.174Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:49:38.174Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d2787edd600e07b730a66"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "inventory_adjust",
+  "resource": "product",
+  "resourceId": {
+    "$oid": "697cc7ca47cdcd8480a4be0d"
+  },
+  "details": "Adjusted stock for Samsung Galaxy S24 Ultra Grip Case (SAM-S24U-SIL-GRY): 0 -> 14. Reason: restock",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-30T21:49:59.483Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T21:49:59.483Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d4915cc04ba6483617706"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "create_coupon",
+  "resource": "coupon",
+  "resourceId": {
+    "$oid": "697d4915cc04ba6483617704"
+  },
+  "details": "Created coupon code: WELCOM20",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:13:09.632Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:13:09.632Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d49e2cc04ba648361784a"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_ticket",
+  "resource": "ticket",
+  "resourceId": {
+    "$oid": "697d4973cc04ba64836177a7"
+  },
+  "details": "Updated ticket #697d4973cc04ba64836177a7: status=resolved, priority=undefined",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:16:34.075Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:16:34.075Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d49e6cc04ba6483617853"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_ticket",
+  "resource": "ticket",
+  "resourceId": {
+    "$oid": "697d4973cc04ba64836177a7"
+  },
+  "details": "Updated ticket #697d4973cc04ba64836177a7: status=resolved, priority=undefined",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:16:38.944Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:16:38.944Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d49e7cc04ba648361785c"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_ticket",
+  "resource": "ticket",
+  "resourceId": {
+    "$oid": "697d4973cc04ba64836177a7"
+  },
+  "details": "Updated ticket #697d4973cc04ba64836177a7: status=closed, priority=undefined",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:16:39.896Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:16:39.896Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d49ebcc04ba6483617865"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_ticket",
+  "resource": "ticket",
+  "resourceId": {
+    "$oid": "697d4973cc04ba64836177a7"
+  },
+  "details": "Updated ticket #697d4973cc04ba64836177a7: status=closed, priority=undefined",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:16:43.635Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:16:43.635Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d4c6688fc4562101a6f36"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to processing",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:27:18.553Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:27:18.553Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d4c8469dcacf8aec2a84a"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to shipped",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:27:48.483Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:27:48.483Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d4c9769dcacf8aec2a8c3"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to delivered",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:28:07.302Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:28:07.302Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d4e0769dcacf8aec2aa49"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_review_status",
+  "resource": "review",
+  "resourceId": {
+    "$oid": "697d4ded69dcacf8aec2aa1c"
+  },
+  "details": "Updated review status to: approved",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:34:15.101Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:34:15.101Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d4f8137b231230ab7714b"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to processing",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:40:33.140Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:40:33.140Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d4fc937b231230ab772c3"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to shipped",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:41:45.567Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:41:45.567Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d4ff137b231230ab7746e"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to delivered",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:42:25.328Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:42:25.328Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d50e3da9f217b3c56fe16"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to processing",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:46:27.465Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:46:27.465Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d5109da9f217b3c56fe66"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to shipped",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:47:05.007Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:47:05.007Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d511eda9f217b3c56fee5"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to delivered",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:47:26.214Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:47:26.214Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d51bcda9f217b3c570014"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to processing",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:50:04.433Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:50:04.433Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d51d9da9f217b3c5700bd"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to shipped",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:50:33.954Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:50:33.954Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d51e4da9f217b3c57013d"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to delivered",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:50:44.451Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:50:44.451Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d51f7da9f217b3c5701bd"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to processing",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:51:03.708Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:51:03.708Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d5247da9f217b3c570362"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to shipped",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T00:52:23.412Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:52:23.412Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d543aeae0490f58464f30"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to processing",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:00:42.865Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:00:42.865Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d5447eae0490f58464fad"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to shipped",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:00:55.203Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:00:55.203Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d544feae0490f5846502a"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to delivered",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:01:03.794Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:01:03.794Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d547feae0490f58465266"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to processing",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:01:51.949Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:01:51.949Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d5490eae0490f584652eb"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to shipped",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:02:08.101Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:02:08.101Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d54c4eae0490f584654c2"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to delivered",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:03:00.200Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:03:00.200Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d55a927c8382211fb6a66"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to shipped",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:06:49.766Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:06:49.766Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d55bf27c8382211fb6ae9"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to delivered",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:07:11.937Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:07:11.937Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d5713eadbba0ef2abd0f9"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to shipped",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:12:51.712Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:12:51.712Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d576aeadbba0ef2abd198"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to delivered",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:14:18.118Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:14:18.118Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d57eaeadbba0ef2abd22a"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "status_change",
+  "resource": "order",
+  "resourceId": {
+    "$oid": "697d56edeadbba0ef2abd05a"
+  },
+  "changes": {
+    "before": {
+      "status": "delivered"
+    },
+    "after": {
+      "status": "processing",
+      "note": "Bulk update to delivered"
+    }
+  },
+  "ipAddress": "::1",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15",
+  "createdAt": {
+    "$date": "2026-01-31T01:16:26.681Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:16:26.681Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d5801eadbba0ef2abd2b5"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "status_change",
+  "resource": "order",
+  "resourceId": {
+    "$oid": "697d56edeadbba0ef2abd05a"
+  },
+  "changes": {
+    "before": {
+      "status": "processing"
+    },
+    "after": {
+      "status": "shipped",
+      "note": "Bulk update to delivered"
+    }
+  },
+  "ipAddress": "::1",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15",
+  "createdAt": {
+    "$date": "2026-01-31T01:16:49.195Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:16:49.195Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d5812eadbba0ef2abd347"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "status_change",
+  "resource": "order",
+  "resourceId": {
+    "$oid": "697d56edeadbba0ef2abd05a"
+  },
+  "changes": {
+    "before": {
+      "status": "shipped"
+    },
+    "after": {
+      "status": "delivered",
+      "note": "Bulk update to delivered"
+    }
+  },
+  "ipAddress": "::1",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15",
+  "createdAt": {
+    "$date": "2026-01-31T01:17:06.028Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:17:06.028Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d58f45f421faea6833943"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to shipped",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:20:52.737Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:20:52.737Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d58ff5f421faea68339e2"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "bulk_status_change",
+  "resource": "order",
+  "details": "Bulk updated 1 orders to delivered",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:21:03.866Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:21:03.866Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d59755f421faea6833ca5"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_review_status",
+  "resource": "review",
+  "resourceId": {
+    "$oid": "697d59635f421faea6833c84"
+  },
+  "details": "Updated review status to: approved",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:23:01.594Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:23:01.594Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d60ba1de93d0655f40fbf"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_ticket",
+  "resource": "ticket",
+  "resourceId": {
+    "$oid": "697d5fd21de93d0655f40c87"
+  },
+  "details": "Updated ticket #697d5fd21de93d0655f40c87: status=resolved, priority=undefined",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:54:02.290Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:54:02.290Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d60cd1de93d0655f41011"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_ticket",
+  "resource": "ticket",
+  "resourceId": {
+    "$oid": "697d5fd21de93d0655f40c87"
+  },
+  "details": "Updated ticket #697d5fd21de93d0655f40c87: status=closed, priority=undefined",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:54:21.936Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:54:21.936Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d616e1de93d0655f411c4"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_review_status",
+  "resource": "review",
+  "resourceId": {
+    "$oid": "697d5c205f421faea683401c"
+  },
+  "details": "Updated review status to: approved",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:57:02.821Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:57:02.821Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d61701de93d0655f411cd"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_review_status",
+  "resource": "review",
+  "resourceId": {
+    "$oid": "697d5c185f421faea6833feb"
+  },
+  "details": "Updated review status to: approved",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:57:04.504Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:57:04.504Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d61a41de93d0655f412c9"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_review_status",
+  "resource": "review",
+  "resourceId": {
+    "$oid": "697d5c185f421faea6833feb"
+  },
+  "details": "Updated review status to: rejected",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:57:56.180Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:57:56.180Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d61f71de93d0655f413df"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_settings",
+  "resource": "system",
+  "details": "Updated 2 store settings",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:59:19.520Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:59:19.520Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697d621a1de93d0655f414ed"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_settings",
+  "resource": "system",
+  "details": "Updated 2 store settings",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T01:59:54.184Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:59:54.184Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697de86f5dd8c5a004b04828"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_ticket",
+  "resource": "ticket",
+  "resourceId": {
+    "$oid": "697d5fd21de93d0655f40c87"
+  },
+  "details": "Updated ticket #697d5fd21de93d0655f40c87: status=resolved, priority=undefined",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T11:33:03.327Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T11:33:03.327Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697de9015dd8c5a004b0486e"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_ticket",
+  "resource": "ticket",
+  "resourceId": {
+    "$oid": "697d5fd21de93d0655f40c87"
+  },
+  "details": "Updated ticket #697d5fd21de93d0655f40c87: status=closed, priority=undefined",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T11:35:29.379Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T11:35:29.379Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697dea445dd8c5a004b0488d"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_ticket",
+  "resource": "ticket",
+  "resourceId": {
+    "$oid": "697d5fd21de93d0655f40c87"
+  },
+  "details": "Updated ticket #697d5fd21de93d0655f40c87: status=resolved, priority=undefined",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T11:40:52.868Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T11:40:52.868Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697dea785dd8c5a004b048fd"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_ticket",
+  "resource": "ticket",
+  "resourceId": {
+    "$oid": "697dea605dd8c5a004b048ba"
+  },
+  "details": "Updated ticket #697dea605dd8c5a004b048ba: status=resolved, priority=undefined",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T11:41:44.180Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T11:41:44.180Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697dea9b5dd8c5a004b04922"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_ticket",
+  "resource": "ticket",
+  "resourceId": {
+    "$oid": "697dea605dd8c5a004b048ba"
+  },
+  "details": "Updated ticket #697dea605dd8c5a004b048ba: status=closed, priority=undefined",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T11:42:19.374Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T11:42:19.374Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697decc58d31ee1f74e844ce"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_ticket",
+  "resource": "ticket",
+  "resourceId": {
+    "$oid": "697dea605dd8c5a004b048ba"
+  },
+  "details": "Updated ticket #697dea605dd8c5a004b048ba: status=undefined, priority=high",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T11:51:33.499Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T11:51:33.499Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697decc68d31ee1f74e844d8"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "update_ticket",
+  "resource": "ticket",
+  "resourceId": {
+    "$oid": "697dea605dd8c5a004b048ba"
+  },
+  "details": "Updated ticket #697dea605dd8c5a004b048ba: status=undefined, priority=low",
+  "ipAddress": "::1",
+  "createdAt": {
+    "$date": "2026-01-31T11:51:34.351Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T11:51:34.351Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6982401594c85f268ef24111"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "status_change",
+  "resource": "order",
+  "resourceId": {
+    "$oid": "69823fc394c85f268ef2405c"
+  },
+  "changes": {
+    "before": {
+      "status": "processing"
+    },
+    "after": {
+      "status": "shipped"
+    }
+  },
+  "ipAddress": "::1",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15",
+  "createdAt": {
+    "$date": "2026-02-03T18:36:05.160Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-03T18:36:05.160Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6982407e94c85f268ef242d9"
+  },
+  "admin": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "action": "status_change",
+  "resource": "order",
+  "resourceId": {
+    "$oid": "69823fc394c85f268ef2405c"
+  },
+  "changes": {
+    "before": {
+      "status": "shipped"
+    },
+    "after": {
+      "status": "delivered"
+    }
+  },
+  "ipAddress": "::1",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15",
+  "createdAt": {
+    "$date": "2026-02-03T18:37:50.892Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-03T18:37:50.892Z"
+  },
+  "__v": 0
+}]

@@ -316,6 +316,10 @@ export const userApi = {
     updatePassword: async (passwordData: any) => {
         const { data } = await api.patch<{ status: string; message: string }>('/users/password', passwordData);
         return data;
+    },
+    deleteAccount: async (payload: { password: string; confirmation: string }) => {
+        const { data } = await api.delete<{ status: string; message: string }>('/users/me', { data: payload });
+        return data;
     }
 };
 
@@ -374,7 +378,36 @@ export const reviewApi = {
 
 export const searchApi = {
     getInstantResults: async (query: string) => {
-        const { data } = await api.get<{ status: string; data: { products: any[]; categories: any[]; brands: string[] } }>(`/search/instant?q=${encodeURIComponent(query)}`);
+        const { data } = await api.get<{
+            status: string;
+            data: {
+                products: any[];
+                categories: any[];
+                brands: string[];
+                suggestions: string[];
+                trending: {
+                    terms: string[];
+                    categories: any[];
+                    brands: string[];
+                };
+                queryMeta: {
+                    normalizedQuery: string;
+                    expandedTerms: string[];
+                    personalized: boolean;
+                };
+            };
+        }>(`/search/instant?q=${encodeURIComponent(query)}`);
+        return data.data;
+    },
+    getTrending: async () => {
+        const { data } = await api.get<{
+            status: string;
+            data: {
+                terms: string[];
+                categories: any[];
+                brands: string[];
+            };
+        }>('/search/trending');
         return data.data;
     }
 };

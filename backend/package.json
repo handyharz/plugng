@@ -14,7 +14,8 @@
     "lint:fix": "eslint src/**/*.ts --fix",
     "format": "prettier --write \"src/**/*.ts\"",
     "seed": "ts-node scripts/seed.ts",
-    "seed:categories": "ts-node scripts/seedCategories.ts"
+    "seed:categories": "ts-node scripts/seedCategories.ts",
+    "backfill:search-aliases": "ts-node scripts/backfillSearchAliases.ts"
   },
   "keywords": [
     "ecommerce",

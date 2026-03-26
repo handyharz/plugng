@@ -1,0 +1,1553 @@
+[{
+  "_id": {
+    "$oid": "69795742bfbff9f50d5e421a"
+  },
+  "orderNumber": "ORD-1769559874677-789",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "69790b3c9a21222ca86a5ed8"
+      },
+      "name": "Oraimo 20000mAh Power Bank (Fast Charging)",
+      "sku": "ORA-PB-20K",
+      "price": 25000,
+      "quantity": 1,
+      "image": "/products/oraimo-powerbank.png",
+      "variantAttributes": {
+        "Capacity": "20000mAh"
+      },
+      "_id": {
+        "$oid": "69795742bfbff9f50d5e421b"
+      }
+    }
+  ],
+  "subtotal": 25000,
+  "deliveryFee": 0,
+  "discount": 0,
+  "total": 25000,
+  "paymentMethod": "card",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Harz Kane",
+    "phone": "08106070150",
+    "address": "Aminu Kano",
+    "city": "Abuja",
+    "state": "Abuja",
+    "landmark": ""
+  },
+  "deliveryStatus": "pending",
+  "createdAt": {
+    "$date": "2026-01-28T00:24:34.684Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-28T00:24:53.949Z"
+  },
+  "__v": 0,
+  "paidAt": {
+    "$date": "2026-01-28T00:24:53.938Z"
+  },
+  "paymentReference": "5780272119"
+},
+{
+  "_id": {
+    "$oid": "697959e43c1faf019628994f"
+  },
+  "orderNumber": "ORD-1769560548951-3",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "69790b3c9a21222ca86a5ec9"
+      },
+      "name": "Samsung Galaxy S24 Ultra Silicone Grip Case",
+      "sku": "SAM-S24U-SIL-GRY",
+      "price": 35000,
+      "quantity": 1,
+      "image": "/products/samsung-case-gray.png",
+      "variantAttributes": {
+        "Color": "Titanium Gray"
+      },
+      "_id": {
+        "$oid": "697959e43c1faf0196289950"
+      }
+    },
+    {
+      "product": {
+        "$oid": "69790b3c9a21222ca86a5ed8"
+      },
+      "name": "Oraimo 20000mAh Power Bank (Fast Charging)",
+      "sku": "ORA-PB-20K",
+      "price": 25000,
+      "quantity": 1,
+      "image": "/products/oraimo-powerbank.png",
+      "variantAttributes": {
+        "Capacity": "20000mAh"
+      },
+      "_id": {
+        "$oid": "697959e43c1faf0196289951"
+      }
+    }
+  ],
+  "subtotal": 60000,
+  "deliveryFee": 0,
+  "discount": 0,
+  "total": 60000,
+  "paymentMethod": "card",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Harz Kane",
+    "phone": "08107060160",
+    "address": "Aminu Kanu",
+    "city": "Wuse 2",
+    "state": "Abuja",
+    "landmark": ""
+  },
+  "deliveryStatus": "pending",
+  "createdAt": {
+    "$date": "2026-01-28T00:35:48.955Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-28T00:36:03.738Z"
+  },
+  "__v": 0,
+  "paidAt": {
+    "$date": "2026-01-28T00:36:03.715Z"
+  },
+  "paymentReference": "5780280968"
+},
+{
+  "_id": {
+    "$oid": "69795d8b826dca09deb47f06"
+  },
+  "orderNumber": "ORD-1769561483473-20",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "69790b3c9a21222ca86a5ec9"
+      },
+      "name": "Samsung Galaxy S24 Ultra Silicone Grip Case",
+      "sku": "samsung-s24-ultra-silicone-case",
+      "price": 35000,
+      "quantity": 1,
+      "image": "/products/samsung-case-gray.png",
+      "_id": {
+        "$oid": "69795d8b826dca09deb47f07"
+      }
+    },
+    {
+      "product": {
+        "$oid": "69790b3c9a21222ca86a5ed8"
+      },
+      "name": "Oraimo 20000mAh Power Bank (Fast Charging)",
+      "sku": "oraimo-20000mah-power-bank",
+      "price": 25000,
+      "quantity": 1,
+      "image": "/products/oraimo-powerbank.png",
+      "_id": {
+        "$oid": "69795d8b826dca09deb47f08"
+      }
+    }
+  ],
+  "subtotal": 60000,
+  "deliveryFee": 0,
+  "discount": 0,
+  "total": 60000,
+  "paymentMethod": "card",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Aminu Kano",
+    "phone": "08105984860",
+    "address": "Aminu Kano",
+    "city": "Wuse 2",
+    "state": "Abuja",
+    "landmark": ""
+  },
+  "deliveryStatus": "pending",
+  "createdAt": {
+    "$date": "2026-01-28T00:51:23.477Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-28T00:51:37.274Z"
+  },
+  "__v": 0,
+  "paidAt": {
+    "$date": "2026-01-28T00:51:37.251Z"
+  },
+  "paymentReference": "5780295925"
+},
+{
+  "_id": {
+    "$oid": "69795eef826dca09deb47f92"
+  },
+  "orderNumber": "ORD-1769561839893-772",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "69790b3c9a21222ca86a5ed8"
+      },
+      "name": "Oraimo 20000mAh Power Bank (Fast Charging)",
+      "sku": "ORA-PB-20K",
+      "price": 25000,
+      "quantity": 1,
+      "image": "/products/oraimo-powerbank.png",
+      "variantAttributes": {
+        "Capacity": "20000mAh"
+      },
+      "_id": {
+        "$oid": "69795eef826dca09deb47f93"
+      }
+    }
+  ],
+  "subtotal": 25000,
+  "deliveryFee": 0,
+  "discount": 0,
+  "total": 25000,
+  "paymentMethod": "card",
+  "paymentStatus": "pending",
+  "shippingAddress": {
+    "fullName": "Harz kane",
+    "phone": "08105040958",
+    "address": "Aminu Kano",
+    "city": "Wuse 2",
+    "state": "Abuja",
+    "landmark": ""
+  },
+  "deliveryStatus": "pending",
+  "createdAt": {
+    "$date": "2026-01-28T00:57:19.896Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-28T00:57:19.896Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "697961ea836b5b5742d836a6"
+  },
+  "orderNumber": "ORD-1769562602425-573",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "69790b3c9a21222ca86a5ed1"
+      },
+      "name": "Apple 20W USB-C Power Adapter",
+      "sku": "apple-20w-usb-c-adapter",
+      "price": 28500,
+      "quantity": 1,
+      "image": "/products/apple-adapter.png",
+      "_id": {
+        "$oid": "697961ea836b5b5742d836a7"
+      }
+    }
+  ],
+  "subtotal": 28500,
+  "deliveryFee": 0,
+  "discount": 0,
+  "total": 28500,
+  "paymentMethod": "card",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Harz Kane",
+    "phone": "08107060160",
+    "address": "Aminu Kano",
+    "city": "Wuse 2",
+    "state": "Abuja",
+    "landmark": ""
+  },
+  "deliveryStatus": "pending",
+  "createdAt": {
+    "$date": "2026-01-28T01:10:02.428Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-28T01:10:13.860Z"
+  },
+  "__v": 0,
+  "paidAt": {
+    "$date": "2026-01-28T01:10:13.848Z"
+  },
+  "paymentReference": "5780312718"
+},
+{
+  "_id": {
+    "$oid": "697962e3116f53c22709bd90"
+  },
+  "orderNumber": "ORD-1769562851847-418",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "69790b3c9a21222ca86a5ed1"
+      },
+      "name": "Apple 20W USB-C Power Adapter",
+      "sku": "APL-20W-ADPT-US",
+      "price": 28500,
+      "quantity": 1,
+      "image": "/products/apple-adapter-us.png",
+      "variantAttributes": {
+        "Plug Type": "US Plug"
+      },
+      "_id": {
+        "$oid": "697962e3116f53c22709bd91"
+      }
+    }
+  ],
+  "subtotal": 28500,
+  "deliveryFee": 0,
+  "discount": 0,
+  "total": 28500,
+  "paymentMethod": "card",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "harz kane",
+    "phone": "08107060160",
+    "address": "Aminu Kano",
+    "city": "Wuse 2",
+    "state": "Abuja",
+    "landmark": ""
+  },
+  "deliveryStatus": "pending",
+  "createdAt": {
+    "$date": "2026-01-28T01:14:11.852Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-28T21:40:14.613Z"
+  },
+  "__v": 0,
+  "paidAt": {
+    "$date": "2026-01-28T21:40:14.608Z"
+  },
+  "paymentReference": "DEV-1769636414609"
+},
+{
+  "_id": {
+    "$oid": "697964754f476b2b40fc9ff1"
+  },
+  "orderNumber": "ORD-1769563253021-3",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "69790b3c9a21222ca86a5ec9"
+      },
+      "name": "Samsung Galaxy S24 Ultra Silicone Grip Case",
+      "sku": "SAM-S24U-SIL-WHT",
+      "price": 35000,
+      "quantity": 1,
+      "image": "/products/samsung-case-white.png",
+      "variantAttributes": {
+        "Color": "Cream White"
+      },
+      "_id": {
+        "$oid": "697964754f476b2b40fc9ff2"
+      }
+    }
+  ],
+  "subtotal": 35000,
+  "deliveryFee": 0,
+  "discount": 0,
+  "total": 35000,
+  "paymentMethod": "card",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "John Doe",
+    "phone": "08107060160",
+    "address": "Aminu Kano",
+    "city": "Abuja",
+    "state": "Abuja",
+    "landmark": ""
+  },
+  "deliveryStatus": "processing",
+  "createdAt": {
+    "$date": "2026-01-28T01:20:53.028Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:51:03.703Z"
+  },
+  "__v": 0,
+  "paidAt": {
+    "$date": "2026-01-28T01:21:08.445Z"
+  },
+  "paymentReference": "DEV-1769563268445",
+  "adminNote": "Bulk update to processing"
+},
+{
+  "_id": {
+    "$oid": "697a7740e61d4706c0308934"
+  },
+  "orderNumber": "ORD-1769633600916-222",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "697a2f364e41b180499aba01"
+      },
+      "name": "iPhone 15 Pro Silicone Case with MagSafe",
+      "sku": "APL-IP15P-SIL-BLK",
+      "price": 35000,
+      "quantity": 1,
+      "image": "/products/iphone-case-black.png",
+      "variantAttributes": {
+        "Color": "Black"
+      },
+      "_id": {
+        "$oid": "697a7740e61d4706c0308935"
+      }
+    },
+    {
+      "product": {
+        "$oid": "697a2f364e41b180499aba01"
+      },
+      "name": "iPhone 15 Pro Silicone Case with MagSafe",
+      "sku": "APL-IP15P-SIL-GRN",
+      "price": 48000,
+      "quantity": 1,
+      "image": "/products/iphone-case-green.png",
+      "variantAttributes": {
+        "Color": "Green"
+      },
+      "_id": {
+        "$oid": "697a7740e61d4706c0308936"
+      }
+    }
+  ],
+  "subtotal": 83000,
+  "deliveryFee": 0,
+  "discount": 0,
+  "total": 83000,
+  "paymentMethod": "card",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Haruna Jibril",
+    "phone": "8107060160",
+    "address": "Aminu Kano Wuse 2",
+    "city": "AbuJA",
+    "state": "Lagos",
+    "landmark": ""
+  },
+  "deliveryStatus": "delivered",
+  "createdAt": {
+    "$date": "2026-01-28T20:53:20.929Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:50:44.449Z"
+  },
+  "__v": 1,
+  "paidAt": {
+    "$date": "2026-01-28T20:54:00.869Z"
+  },
+  "paymentReference": "DEV-1769633640869",
+  "adminNote": "Bulk update to delivered",
+  "trackingEvents": [
+    {
+      "status": "shipped",
+      "location": "Central Hub",
+      "message": "Order status moved from processing to shipped.",
+      "timestamp": {
+        "$date": "2026-01-30T15:49:59.366Z"
+      },
+      "_id": {
+        "$oid": "697cd327ea2a06d76c73ce59"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "697a8ae0c74935e027430d1a"
+  },
+  "orderNumber": "ORD-1769638624239-584",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "697a2f364e41b180499aba01"
+      },
+      "name": "iPhone 15 Pro Silicone Case with MagSafe",
+      "sku": "iphone-15-pro-silicone-case",
+      "price": 35000,
+      "quantity": 2,
+      "image": "/products/iphone-case-black.png",
+      "_id": {
+        "$oid": "697a8ae0c74935e027430d1b"
+      }
+    },
+    {
+      "product": {
+        "$oid": "697a2f364e41b180499aba15"
+      },
+      "name": "Samsung Galaxy S24 Ultra Grip Case",
+      "sku": "samsung-s24-ultra-silicone-case",
+      "price": 28000,
+      "quantity": 1,
+      "image": "/products/samsung-case-gray.png",
+      "_id": {
+        "$oid": "697a8ae0c74935e027430d1c"
+      }
+    },
+    {
+      "product": {
+        "$oid": "697a2f364e41b180499aba22"
+      },
+      "name": "Oraimo 20000mAh Power Bank",
+      "sku": "oraimo-20000mah-power-bank",
+      "price": 25000,
+      "quantity": 1,
+      "image": "/products/oraimo-powerbank.png",
+      "_id": {
+        "$oid": "697a8ae0c74935e027430d1d"
+      }
+    }
+  ],
+  "subtotal": 123000,
+  "deliveryFee": 0,
+  "discount": 0,
+  "total": 123000,
+  "paymentMethod": "card",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Haruna Jibril",
+    "phone": "8107060160",
+    "address": "Aminu Kano Wuse 2",
+    "city": "AbuJA",
+    "state": "Lagos",
+    "landmark": ""
+  },
+  "deliveryStatus": "delivered",
+  "trackingEvents": [
+    {
+      "status": "pending",
+      "location": "Central Vault",
+      "message": "Manifest received. Awaiting clearance.",
+      "timestamp": {
+        "$date": "2026-01-28T22:17:04.239Z"
+      },
+      "_id": {
+        "$oid": "697a8ae0c74935e027430d1e"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-01-28T22:17:04.244Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T03:25:27.008Z"
+  },
+  "__v": 0,
+  "paidAt": {
+    "$date": "2026-01-28T22:17:16.416Z"
+  },
+  "paymentReference": "DEV-1769638636416",
+  "adminNote": "Bulk update to delivered"
+},
+{
+  "_id": {
+    "$oid": "697b4b118fb0f590734c8a07"
+  },
+  "orderNumber": "ORD-1769687825169-851",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "697a2f364e41b180499aba01"
+      },
+      "name": "iPhone 15 Pro Silicone Case with MagSafe",
+      "sku": "APL-IP15P-SIL-BLK",
+      "price": 35000,
+      "quantity": 1,
+      "image": "/products/iphone-case-black.png",
+      "variantAttributes": {
+        "Color": "Black"
+      },
+      "_id": {
+        "$oid": "697b4b118fb0f590734c8a08"
+      }
+    }
+  ],
+  "subtotal": 35000,
+  "deliveryFee": 0,
+  "discount": 0,
+  "total": 35000,
+  "paymentMethod": "card",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Haruna Jibril",
+    "phone": "8107060160",
+    "address": "Aminu Kano Wuse 2",
+    "city": "AbuJA",
+    "state": "Lagos",
+    "landmark": ""
+  },
+  "deliveryStatus": "delivered",
+  "trackingEvents": [
+    {
+      "status": "pending",
+      "location": "Central Plug",
+      "message": "Manifest received. Awaiting clearance.",
+      "timestamp": {
+        "$date": "2026-01-29T11:57:05.169Z"
+      },
+      "_id": {
+        "$oid": "697b4b118fb0f590734c8a09"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-01-29T11:57:05.174Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T13:33:30.506Z"
+  },
+  "__v": 0,
+  "paidAt": {
+    "$date": "2026-01-29T11:57:13.100Z"
+  },
+  "paymentReference": "DEV-1769687833100",
+  "adminNote": "Bulk update to delivered"
+},
+{
+  "_id": {
+    "$oid": "697c0b895280547fc099222b"
+  },
+  "orderNumber": "ORD-1769737097817-413",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "697c05e75da9b787f93ba13a"
+      },
+      "name": "IPHONE 14 PRO SILICONE CASE WITH MAGSAFE",
+      "sku": "IPH-HSWU9Q",
+      "price": 3500,
+      "quantity": 1,
+      "image": "https://pub-ee85663618094082bba43fdd49c9b766.r2.dev/products/1769735426622-292190080.png",
+      "variantAttributes": {
+        "Color": "Black"
+      },
+      "_id": {
+        "$oid": "697c0b895280547fc099222c"
+      }
+    }
+  ],
+  "subtotal": 3500,
+  "deliveryFee": 1200,
+  "discount": 70,
+  "total": 4630,
+  "paymentMethod": "wallet",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Haruna Jibril",
+    "phone": "8107060160",
+    "address": "Aminu Kano Wuse 2",
+    "city": "AbuJA",
+    "state": "Lagos",
+    "landmark": ""
+  },
+  "deliveryStatus": "delivered",
+  "trackingEvents": [
+    {
+      "status": "pending",
+      "location": "Central Plug",
+      "message": "Manifest received. Awaiting clearance.",
+      "timestamp": {
+        "$date": "2026-01-30T01:38:17.817Z"
+      },
+      "_id": {
+        "$oid": "697c0b895280547fc099222d"
+      }
+    },
+    {
+      "status": "processing",
+      "location": "Secure Wallet",
+      "message": "Internal funds verified and debited. Order cleared for processing.",
+      "timestamp": {
+        "$date": "2026-01-30T01:38:17.836Z"
+      },
+      "_id": {
+        "$oid": "697c0b895280547fc099223d"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-01-30T01:38:17.826Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-30T03:24:07.947Z"
+  },
+  "__v": 1,
+  "paidAt": {
+    "$date": "2026-01-30T01:38:17.836Z"
+  },
+  "paymentReference": "WALLET-1769737097836",
+  "adminNote": "Bulk update to delivered"
+},
+{
+  "_id": {
+    "$oid": "697cadf3f29222f73d0d6619"
+  },
+  "orderNumber": "ORD-1769778675118-403",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "697c0eb45c2c05aade9723bd"
+      },
+      "name": "IPHONE 13 PRO SILICONE CASE WITH MAGSAFE",
+      "sku": "IPH-K85DSV",
+      "price": 4500,
+      "quantity": 1,
+      "image": "https://pub-ee85663618094082bba43fdd49c9b766.r2.dev/products/1769737693959-464077063.png",
+      "variantAttributes": {
+        "Color": "Rose"
+      },
+      "_id": {
+        "$oid": "697cadf3f29222f73d0d661a"
+      }
+    }
+  ],
+  "subtotal": 4500,
+  "deliveryFee": 1200,
+  "discount": 0,
+  "total": 5700,
+  "paymentMethod": "card",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Haruna Jibril",
+    "phone": "8107060160",
+    "address": "Aminu Kano Wuse 2",
+    "city": "AbuJA",
+    "state": "Lagos",
+    "landmark": ""
+  },
+  "deliveryStatus": "delivered",
+  "trackingEvents": [
+    {
+      "status": "pending",
+      "location": "Central Plug",
+      "message": "Manifest received. Awaiting clearance.",
+      "timestamp": {
+        "$date": "2026-01-30T13:11:15.118Z"
+      },
+      "_id": {
+        "$oid": "697cadf3f29222f73d0d661b"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-01-30T13:11:15.123Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:47:26.203Z"
+  },
+  "__v": 0,
+  "adminNote": "Bulk update to delivered"
+},
+{
+  "_id": {
+    "$oid": "697cceb6ea2a06d76c73cd4d"
+  },
+  "orderNumber": "ORD-1769787062073-670",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "697cc7ca47cdcd8480a4be05"
+      },
+      "name": "iPhone 15 Pro Silicone Case with MagSafe",
+      "sku": "APL-IP15P-SIL-BLK",
+      "price": 35000,
+      "quantity": 1,
+      "image": "/products/iphone-case-black.png",
+      "variantAttributes": {
+        "Color": "Black"
+      },
+      "_id": {
+        "$oid": "697cceb6ea2a06d76c73cd4e"
+      }
+    }
+  ],
+  "subtotal": 35000,
+  "deliveryFee": 0,
+  "discount": 0,
+  "total": 35000,
+  "paymentMethod": "wallet",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Haruna Jibril",
+    "phone": "8107060160",
+    "address": "Aminu Kano Wuse 2",
+    "city": "AbuJA",
+    "state": "Lagos",
+    "landmark": ""
+  },
+  "deliveryStatus": "delivered",
+  "trackingEvents": [
+    {
+      "status": "pending",
+      "location": "Central Plug",
+      "message": "Manifest received. Awaiting clearance.",
+      "timestamp": {
+        "$date": "2026-01-30T15:31:02.073Z"
+      },
+      "_id": {
+        "$oid": "697cceb6ea2a06d76c73cd4f"
+      }
+    },
+    {
+      "status": "processing",
+      "location": "Secure Wallet",
+      "message": "Internal funds verified and debited. Order cleared for processing.",
+      "timestamp": {
+        "$date": "2026-01-30T15:31:02.085Z"
+      },
+      "_id": {
+        "$oid": "697cceb6ea2a06d76c73cd60"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-01-30T15:31:02.077Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:42:25.324Z"
+  },
+  "__v": 1,
+  "paidAt": {
+    "$date": "2026-01-30T15:31:02.085Z"
+  },
+  "paymentReference": "WALLET-1769787062085",
+  "adminNote": "Bulk update to delivered"
+},
+{
+  "_id": {
+    "$oid": "697d4bfd548a33f4146c7d38"
+  },
+  "orderNumber": "ORD-1769819133548-278",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "697cc7ca47cdcd8480a4be0d"
+      },
+      "name": "Samsung Galaxy S24 Ultra Grip Case",
+      "sku": "SAM-S24U-SIL-GRY",
+      "price": 28000,
+      "quantity": 1,
+      "image": "/products/samsung-case-gray.png",
+      "variantAttributes": {
+        "Color": "Gray"
+      },
+      "_id": {
+        "$oid": "697d4bfd548a33f4146c7d39"
+      }
+    }
+  ],
+  "subtotal": 28000,
+  "deliveryFee": 0,
+  "discount": 560,
+  "total": 27440,
+  "paymentMethod": "wallet",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Haruna Jibril",
+    "phone": "8107060160",
+    "address": "Aminu Kano Wuse 2",
+    "city": "AbuJA",
+    "state": "Lagos",
+    "landmark": ""
+  },
+  "deliveryStatus": "delivered",
+  "trackingEvents": [
+    {
+      "status": "pending",
+      "location": "Central Plug",
+      "message": "Manifest received. Awaiting clearance.",
+      "timestamp": {
+        "$date": "2026-01-31T00:25:33.548Z"
+      },
+      "_id": {
+        "$oid": "697d4bfd548a33f4146c7d3a"
+      }
+    },
+    {
+      "status": "processing",
+      "location": "Secure Wallet",
+      "message": "Internal funds verified and debited. Order cleared for processing.",
+      "timestamp": {
+        "$date": "2026-01-31T00:25:33.561Z"
+      },
+      "_id": {
+        "$oid": "697d4bfd548a33f4146c7d4c"
+      }
+    }
+  ],
+  "couponCode": "WELCOM20",
+  "couponDiscount": 560,
+  "createdAt": {
+    "$date": "2026-01-31T00:25:33.552Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:28:07.266Z"
+  },
+  "__v": 1,
+  "paidAt": {
+    "$date": "2026-01-31T00:25:33.561Z"
+  },
+  "paymentReference": "WALLET-1769819133561",
+  "adminNote": "Bulk update to delivered"
+},
+{
+  "_id": {
+    "$oid": "697d5230da9f217b3c5702d6"
+  },
+  "orderNumber": "ORD-1769820720237-144",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "697cc7ca47cdcd8480a4be10"
+      },
+      "name": "Apple 20W USB-C Power Adapter",
+      "sku": "APL-20W-ADPT-UK",
+      "price": 28500,
+      "quantity": 1,
+      "image": "/products/apple-adapter.png",
+      "variantAttributes": {
+        "Plug Type": "UK Plug"
+      },
+      "_id": {
+        "$oid": "697d5230da9f217b3c5702d7"
+      }
+    }
+  ],
+  "subtotal": 28500,
+  "deliveryFee": 0,
+  "discount": 570,
+  "total": 27930,
+  "paymentMethod": "wallet",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Haruna Jibril",
+    "phone": "8107060160",
+    "address": "Aminu Kano Wuse 2",
+    "city": "AbuJA",
+    "state": "Lagos",
+    "landmark": ""
+  },
+  "deliveryStatus": "delivered",
+  "trackingEvents": [
+    {
+      "status": "pending",
+      "location": "Central Plug",
+      "message": "Manifest received. Awaiting clearance.",
+      "timestamp": {
+        "$date": "2026-01-31T00:52:00.237Z"
+      },
+      "_id": {
+        "$oid": "697d5230da9f217b3c5702d8"
+      }
+    },
+    {
+      "status": "processing",
+      "location": "Secure Wallet",
+      "message": "Internal funds verified and debited. Order cleared for processing.",
+      "timestamp": {
+        "$date": "2026-01-31T00:52:00.248Z"
+      },
+      "_id": {
+        "$oid": "697d5230da9f217b3c5702eb"
+      }
+    }
+  ],
+  "couponCode": "WELCOM20",
+  "couponDiscount": 570,
+  "createdAt": {
+    "$date": "2026-01-31T00:52:00.244Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:01:03.791Z"
+  },
+  "__v": 1,
+  "paidAt": {
+    "$date": "2026-01-31T00:52:00.248Z"
+  },
+  "paymentReference": "WALLET-1769820720248",
+  "adminNote": "Bulk update to delivered"
+},
+{
+  "_id": {
+    "$oid": "697d5469eae0490f58465161"
+  },
+  "orderNumber": "ORD-1769821289597-895",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "697cc7ca47cdcd8480a4be05"
+      },
+      "name": "iPhone 15 Pro Silicone Case with MagSafe",
+      "sku": "APL-IP15P-SIL-BLU",
+      "price": 45000,
+      "quantity": 1,
+      "image": "/products/iphone-case-blue.png",
+      "variantAttributes": {
+        "Color": "Blue"
+      },
+      "_id": {
+        "$oid": "697d5469eae0490f58465162"
+      }
+    }
+  ],
+  "subtotal": 45000,
+  "deliveryFee": 0,
+  "discount": 900,
+  "total": 44100,
+  "paymentMethod": "wallet",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Haruna Jibril",
+    "phone": "8107060160",
+    "address": "Aminu Kano Wuse 2",
+    "city": "AbuJA",
+    "state": "Lagos",
+    "landmark": ""
+  },
+  "deliveryStatus": "delivered",
+  "trackingEvents": [
+    {
+      "status": "pending",
+      "location": "Central Plug",
+      "message": "Manifest received. Awaiting clearance.",
+      "timestamp": {
+        "$date": "2026-01-31T01:01:29.597Z"
+      },
+      "_id": {
+        "$oid": "697d5469eae0490f58465163"
+      }
+    },
+    {
+      "status": "processing",
+      "location": "Secure Wallet",
+      "message": "Internal funds verified and debited. Order cleared for processing.",
+      "timestamp": {
+        "$date": "2026-01-31T01:01:29.608Z"
+      },
+      "_id": {
+        "$oid": "697d5469eae0490f58465177"
+      }
+    }
+  ],
+  "couponCode": "WELCOM20",
+  "couponDiscount": 900,
+  "createdAt": {
+    "$date": "2026-01-31T01:01:29.600Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:03:00.197Z"
+  },
+  "__v": 1,
+  "paidAt": {
+    "$date": "2026-01-31T01:01:29.608Z"
+  },
+  "paymentReference": "WALLET-1769821289608",
+  "adminNote": "Bulk update to delivered"
+},
+{
+  "_id": {
+    "$oid": "697d555e27c8382211fb68ae"
+  },
+  "orderNumber": "ORD-1769821534872-412",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "697cc7ca47cdcd8480a4be05"
+      },
+      "name": "iPhone 15 Pro Silicone Case with MagSafe",
+      "sku": "APL-IP15P-SIL-BLK",
+      "price": 35000,
+      "quantity": 1,
+      "image": "/products/iphone-case-black.png",
+      "variantAttributes": {
+        "Color": "Black"
+      },
+      "_id": {
+        "$oid": "697d555e27c8382211fb68af"
+      }
+    }
+  ],
+  "subtotal": 35000,
+  "deliveryFee": 0,
+  "discount": 700,
+  "total": 34300,
+  "paymentMethod": "card",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Haruna Jibril",
+    "phone": "8107060160",
+    "address": "Aminu Kano Wuse 2",
+    "city": "AbuJA",
+    "state": "Lagos",
+    "landmark": ""
+  },
+  "deliveryStatus": "delivered",
+  "trackingEvents": [
+    {
+      "status": "pending",
+      "location": "Central Plug",
+      "message": "Manifest received. Awaiting clearance.",
+      "timestamp": {
+        "$date": "2026-01-31T01:05:34.872Z"
+      },
+      "_id": {
+        "$oid": "697d555e27c8382211fb68b0"
+      }
+    },
+    {
+      "status": "processing",
+      "location": "Payment Hook",
+      "message": "Internal verification complete. Order moved to processing.",
+      "timestamp": {
+        "$date": "2026-01-31T01:05:56.453Z"
+      },
+      "_id": {
+        "$oid": "697d557427c8382211fb68ea"
+      }
+    },
+    {
+      "status": "shipped",
+      "location": "Central Hub",
+      "message": "Order status updated to shipped via bulk action.",
+      "timestamp": {
+        "$date": "2026-01-31T01:20:52.725Z"
+      },
+      "_id": {
+        "$oid": "697d58f45f421faea6833941"
+      }
+    },
+    {
+      "status": "delivered",
+      "location": "Central Hub",
+      "message": "Order status updated to delivered via bulk action.",
+      "timestamp": {
+        "$date": "2026-01-31T01:21:03.858Z"
+      },
+      "_id": {
+        "$oid": "697d58ff5f421faea68339e0"
+      }
+    }
+  ],
+  "couponCode": "WELCOM20",
+  "couponDiscount": 700,
+  "createdAt": {
+    "$date": "2026-01-31T01:05:34.876Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:21:03.858Z"
+  },
+  "__v": 1,
+  "paidAt": {
+    "$date": "2026-01-31T01:05:56.424Z"
+  },
+  "paymentReference": "DEV-1769821556424",
+  "adminNote": "Bulk update to delivered"
+},
+{
+  "_id": {
+    "$oid": "697d56edeadbba0ef2abd05a"
+  },
+  "orderNumber": "ORD-1769821933270-178",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "697cc7ca47cdcd8480a4be05"
+      },
+      "name": "iPhone 15 Pro Silicone Case with MagSafe",
+      "sku": "APL-IP15P-SIL-BLK",
+      "price": 35000,
+      "quantity": 1,
+      "image": "/products/iphone-case-black.png",
+      "variantAttributes": {
+        "Color": "Black"
+      },
+      "_id": {
+        "$oid": "697d56edeadbba0ef2abd05b"
+      }
+    }
+  ],
+  "subtotal": 35000,
+  "deliveryFee": 0,
+  "discount": 700,
+  "total": 34300,
+  "paymentMethod": "wallet",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Haruna Jibril",
+    "phone": "8107060160",
+    "address": "Aminu Kano Wuse 2",
+    "city": "AbuJA",
+    "state": "Lagos",
+    "landmark": ""
+  },
+  "deliveryStatus": "delivered",
+  "trackingEvents": [
+    {
+      "status": "pending",
+      "location": "Central Plug",
+      "message": "Manifest received. Awaiting clearance.",
+      "timestamp": {
+        "$date": "2026-01-31T01:12:13.270Z"
+      },
+      "_id": {
+        "$oid": "697d56edeadbba0ef2abd05c"
+      }
+    },
+    {
+      "status": "processing",
+      "location": "Secure Wallet",
+      "message": "Internal funds verified and debited. Order cleared for processing.",
+      "timestamp": {
+        "$date": "2026-01-31T01:12:13.286Z"
+      },
+      "_id": {
+        "$oid": "697d56edeadbba0ef2abd071"
+      }
+    },
+    {
+      "status": "processing",
+      "location": "Central Hub",
+      "message": "Order moved to PROCESSING.",
+      "timestamp": {
+        "$date": "2026-01-31T01:16:26.676Z"
+      },
+      "_id": {
+        "$oid": "697d57eaeadbba0ef2abd228"
+      }
+    },
+    {
+      "status": "shipped",
+      "location": "Logistics Center",
+      "message": "Package is in transit and on its way to you.",
+      "timestamp": {
+        "$date": "2026-01-31T01:16:49.189Z"
+      },
+      "_id": {
+        "$oid": "697d5801eadbba0ef2abd2b3"
+      }
+    },
+    {
+      "status": "delivered",
+      "location": "Final Destination",
+      "message": "Delivery confirmed. Thank you for shopping with PlugNG!",
+      "timestamp": {
+        "$date": "2026-01-31T01:17:06.024Z"
+      },
+      "_id": {
+        "$oid": "697d5812eadbba0ef2abd345"
+      }
+    }
+  ],
+  "couponCode": "WELCOM20",
+  "couponDiscount": 700,
+  "createdAt": {
+    "$date": "2026-01-31T01:12:13.279Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:17:06.025Z"
+  },
+  "__v": 4,
+  "paidAt": {
+    "$date": "2026-01-31T01:12:13.286Z"
+  },
+  "paymentReference": "WALLET-1769821933286",
+  "adminNote": "Bulk update to delivered",
+  "shippedAt": {
+    "$date": "2026-01-31T01:16:49.189Z"
+  },
+  "deliveredAt": {
+    "$date": "2026-01-31T01:17:06.024Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "697d62511de93d0655f41641"
+  },
+  "orderNumber": "ORD-1769824849271-48",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "697cc7ca47cdcd8480a4be0d"
+      },
+      "name": "Samsung Galaxy S24 Ultra Grip Case",
+      "sku": "SAM-S24U-SIL-GRY",
+      "price": 28000,
+      "quantity": 1,
+      "image": "/products/samsung-case-gray.png",
+      "variantAttributes": {
+        "Color": "Gray"
+      },
+      "_id": {
+        "$oid": "697d62511de93d0655f41642"
+      }
+    }
+  ],
+  "subtotal": 28000,
+  "deliveryFee": 0,
+  "discount": 0,
+  "total": 28000,
+  "paymentMethod": "wallet",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Haruna Jibril",
+    "phone": "8107060160",
+    "address": "Aminu Kano Wuse 2",
+    "city": "Abuja",
+    "state": "Lagos",
+    "landmark": ""
+  },
+  "deliveryStatus": "processing",
+  "trackingEvents": [
+    {
+      "status": "pending",
+      "location": "Central Plug",
+      "message": "Manifest received. Awaiting clearance.",
+      "timestamp": {
+        "$date": "2026-01-31T02:00:49.271Z"
+      },
+      "_id": {
+        "$oid": "697d62511de93d0655f41643"
+      }
+    },
+    {
+      "status": "processing",
+      "location": "Secure Wallet",
+      "message": "Internal funds verified and debited. Order cleared for processing.",
+      "timestamp": {
+        "$date": "2026-01-31T02:00:49.279Z"
+      },
+      "_id": {
+        "$oid": "697d62511de93d0655f41659"
+      }
+    }
+  ],
+  "couponDiscount": 0,
+  "createdAt": {
+    "$date": "2026-01-31T02:00:49.274Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T02:00:49.280Z"
+  },
+  "__v": 1,
+  "paidAt": {
+    "$date": "2026-01-31T02:00:49.279Z"
+  },
+  "paymentReference": "WALLET-1769824849279"
+},
+{
+  "_id": {
+    "$oid": "69823fc394c85f268ef2405c"
+  },
+  "orderNumber": "ORD-1770143683378-603",
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "697cc7ca47cdcd8480a4be05"
+      },
+      "name": "iPhone 15 Pro Silicone Case with MagSafe",
+      "sku": "iphone-15-pro-silicone-case",
+      "price": 35000,
+      "quantity": 1,
+      "image": "/products/iphone-case-black.png",
+      "_id": {
+        "$oid": "69823fc394c85f268ef2405d"
+      }
+    }
+  ],
+  "subtotal": 35000,
+  "deliveryFee": 0,
+  "discount": 500,
+  "total": 34500,
+  "paymentMethod": "wallet",
+  "paymentStatus": "paid",
+  "shippingAddress": {
+    "fullName": "Haruna Jibril",
+    "phone": "8107060160",
+    "address": "Aminu Kano Wuse 2",
+    "city": "AbuJA",
+    "state": "Lagos",
+    "landmark": ""
+  },
+  "deliveryStatus": "delivered",
+  "trackingEvents": [
+    {
+      "status": "pending",
+      "location": "Central Plug",
+      "message": "Manifest received. Awaiting clearance.",
+      "timestamp": {
+        "$date": "2026-02-03T18:34:43.378Z"
+      },
+      "_id": {
+        "$oid": "69823fc394c85f268ef2405e"
+      }
+    },
+    {
+      "status": "processing",
+      "location": "Secure Wallet",
+      "message": "Internal funds verified and debited. Order cleared for processing.",
+      "timestamp": {
+        "$date": "2026-02-03T18:34:43.518Z"
+      },
+      "_id": {
+        "$oid": "69823fc394c85f268ef24075"
+      }
+    },
+    {
+      "status": "shipped",
+      "location": "Logistics Center",
+      "message": "Package is in transit and on its way to you.",
+      "timestamp": {
+        "$date": "2026-02-03T18:36:04.968Z"
+      },
+      "_id": {
+        "$oid": "6982401494c85f268ef2410f"
+      }
+    },
+    {
+      "status": "delivered",
+      "location": "Final Destination",
+      "message": "Delivery confirmed. Thank you for shopping with PlugNG!",
+      "timestamp": {
+        "$date": "2026-02-03T18:37:50.858Z"
+      },
+      "_id": {
+        "$oid": "6982407e94c85f268ef242d7"
+      }
+    }
+  ],
+  "couponCode": "WELCOME500",
+  "couponDiscount": 500,
+  "createdAt": {
+    "$date": "2026-02-03T18:34:43.465Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-03T18:37:50.877Z"
+  },
+  "__v": 3,
+  "paidAt": {
+    "$date": "2026-02-03T18:34:43.516Z"
+  },
+  "paymentReference": "WALLET-1770143683517",
+  "shippedAt": {
+    "$date": "2026-02-03T18:36:04.968Z"
+  },
+  "deliveredAt": {
+    "$date": "2026-02-03T18:37:50.858Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69824a52a25f82c1e67ae45b"
+  },
+  "orderNumber": "ORD-1770146386822-269",
+  "user": {
+    "$oid": "698242a394c85f268ef24506"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "697cc7ca47cdcd8480a4be10"
+      },
+      "name": "Apple 20W USB-C Power Adapter",
+      "sku": "APL-20W-ADPT-UK",
+      "price": 28500,
+      "quantity": 1,
+      "image": "/products/apple-adapter.png",
+      "_id": {
+        "$oid": "69824a52a25f82c1e67ae45c"
+      }
+    }
+  ],
+  "subtotal": 28500,
+  "deliveryFee": 0,
+  "discount": 500,
+  "total": 28000,
+  "paymentMethod": "cash_on_delivery",
+  "paymentStatus": "pending",
+  "shippingAddress": {
+    "fullName": "Test User",
+    "phone": "08123456780",
+    "address": "123 Test St",
+    "city": "Lagos",
+    "state": "Lagos"
+  },
+  "deliveryStatus": "pending",
+  "trackingEvents": [
+    {
+      "status": "pending",
+      "location": "Central Plug",
+      "message": "Manifest received. Awaiting clearance.",
+      "timestamp": {
+        "$date": "2026-02-03T19:19:46.822Z"
+      },
+      "_id": {
+        "$oid": "69824a52a25f82c1e67ae45d"
+      }
+    }
+  ],
+  "couponCode": "WELCOME500",
+  "couponDiscount": 500,
+  "createdAt": {
+    "$date": "2026-02-03T19:19:46.823Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-03T19:19:46.823Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,47 @@
+[{
+  "_id": {
+    "$oid": "697d4915cc04ba6483617704"
+  },
+  "code": "WELCOM20",
+  "type": "percentage",
+  "value": 2,
+  "minOrderAmount": 2000,
+  "expiryDate": {
+    "$date": "2026-12-31T00:00:00.000Z"
+  },
+  "usageLimit": 0,
+  "usageCount": 5,
+  "isActive": true,
+  "description": "Promo",
+  "createdAt": {
+    "$date": "2026-01-31T00:13:09.624Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T01:12:13.304Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69823e10ab3e333d4a085a44"
+  },
+  "code": "WELCOME500",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2026-02-03T18:27:28.358Z"
+  },
+  "description": "New Customer Welcome Discount",
+  "expiryDate": {
+    "$date": "2026-12-31T00:00:00.000Z"
+  },
+  "isActive": true,
+  "minOrderAmount": 2000,
+  "type": "fixed",
+  "updatedAt": {
+    "$date": "2026-02-03T19:05:52.755Z"
+  },
+  "usageCount": 1,
+  "usageLimit": 0,
+  "value": 500,
+  "limitPerUser": 1
+}]

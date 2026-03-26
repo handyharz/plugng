@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "697bc2bf94855d9e78ac349e"
+  },
+  "user": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "697cc7ca47cdcd8480a4be05"
+      },
+      "variantId": "697cc7ca47cdcd8480a4be0b",
+      "quantity": 2,
+      "selectedOptions": {
+        "Color": "Black"
+      },
+      "_id": {
+        "$oid": "697cce89ea2a06d76c73cb74"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-01-29T20:27:43.764Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:13:35.667Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6982403494c85f268ef241b7"
+  },
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "697cc7ca47cdcd8480a4be10"
+      },
+      "variantId": "697cc7ca47cdcd8480a4be12",
+      "quantity": 1,
+      "selectedOptions": {
+        "Plug Type": "UK Plug"
+      },
+      "_id": {
+        "$oid": "698243ed0c3269e118b430ef"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-02-03T18:36:36.362Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-03T18:52:29.249Z"
+  },
+  "__v": 1
+}]

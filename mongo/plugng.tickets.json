@@ -1,0 +1,133 @@
+[{
+  "_id": {
+    "$oid": "697d4973cc04ba64836177a7"
+  },
+  "user": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "subject": "Order lost",
+  "description": "I need help to find my order",
+  "status": "closed",
+  "priority": "medium",
+  "comments": [
+    {
+      "user": {
+        "$oid": "697bb246773003715beb45e4"
+      },
+      "message": "We are really sorry about this, could you please send us your order reference number",
+      "isAdmin": true,
+      "isInternal": false,
+      "date": {
+        "$date": "2026-01-31T00:15:49.837Z"
+      },
+      "_id": {
+        "$oid": "697d49b5cc04ba6483617809"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-01-31T00:14:43.144Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T00:16:43.629Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "697d5fd21de93d0655f40c87"
+  },
+  "user": {
+    "$oid": "6978f675475225fe9b224972"
+  },
+  "subject": "Order Delayed",
+  "description": "I haven't seen my Order, it is almost 2 months now",
+  "status": "closed",
+  "priority": "medium",
+  "comments": [
+    {
+      "user": {
+        "$oid": "697bb246773003715beb45e4"
+      },
+      "message": "We are working on this",
+      "isAdmin": true,
+      "isInternal": false,
+      "date": {
+        "$date": "2026-01-31T01:51:09.272Z"
+      },
+      "_id": {
+        "$oid": "697d600d1de93d0655f40ce0"
+      }
+    },
+    {
+      "user": {
+        "$oid": "6978f675475225fe9b224972"
+      },
+      "message": "thank you",
+      "isAdmin": false,
+      "isInternal": false,
+      "date": {
+        "$date": "2026-01-31T01:51:32.699Z"
+      },
+      "_id": {
+        "$oid": "697d60241de93d0655f40d91"
+      }
+    },
+    {
+      "user": {
+        "$oid": "697bb246773003715beb45e4"
+      },
+      "message": "WE WILL GET BACK TO YOU SHORTLY",
+      "isAdmin": true,
+      "isInternal": false,
+      "date": {
+        "$date": "2026-01-31T01:52:18.355Z"
+      },
+      "_id": {
+        "$oid": "697d60521de93d0655f40de4"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-01-31T01:50:10.727Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-03T14:44:47.518Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "697dea605dd8c5a004b048ba"
+  },
+  "user": {
+    "$oid": "697bb246773003715beb45e4"
+  },
+  "subject": "Payment issues",
+  "description": "Payment issues",
+  "status": "closed",
+  "priority": "low",
+  "comments": [
+    {
+      "user": {
+        "$oid": "697bb246773003715beb45e4"
+      },
+      "message": "resolved",
+      "isAdmin": true,
+      "isInternal": false,
+      "date": {
+        "$date": "2026-01-31T11:41:34.001Z"
+      },
+      "_id": {
+        "$oid": "697dea6e5dd8c5a004b048d6"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-01-31T11:41:20.331Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-31T11:51:34.348Z"
+  },
+  "__v": 1
+}]
