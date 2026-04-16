@@ -1,6 +1,22 @@
 import axios from 'axios';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8085/api/v1';
+const AUTH_TOKEN_KEY = 'plugng_auth_token';
+
+export const getStoredAuthToken = () => {
+    if (typeof window === 'undefined') return null;
+    return window.localStorage.getItem(AUTH_TOKEN_KEY);
+};
+
+export const setStoredAuthToken = (token?: string) => {
+    if (typeof window === 'undefined' || !token) return;
+    window.localStorage.setItem(AUTH_TOKEN_KEY, token);
+};
+
+export const clearStoredAuthToken = () => {
+    if (typeof window === 'undefined') return;
+    window.localStorage.removeItem(AUTH_TOKEN_KEY);
+};
 
 export const api = axios.create({
     baseURL: API_BASE_URL,
@@ -13,6 +29,10 @@ export const api = axios.create({
 // Request interceptor for debugging
 api.interceptors.request.use(
     (config) => {
+        const token = getStoredAuthToken();
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
         console.log('🚀 API Request:', config.method?.toUpperCase(), config.url);
         return config;
     },
@@ -137,11 +157,13 @@ export interface User {
 export const authApi = {
     register: async (userData: any) => {
         const { data } = await api.post<{ status: string; token: string; data: { user: User } }>('/auth/register', userData);
+        setStoredAuthToken(data.token);
         return data;
     },
 
     login: async (credentials: any) => {
         const { data } = await api.post<{ status: string; token: string; data: { user: User } }>('/auth/login', credentials);
+        setStoredAuthToken(data.token);
         return data;
     },
 
@@ -162,6 +184,7 @@ export const authApi = {
 
     logout: async () => {
         const { data } = await api.get<{ status: string }>('/auth/logout');
+        clearStoredAuthToken();
         return data;
     },
 };
