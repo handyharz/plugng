@@ -11,10 +11,11 @@ import { orderApi } from '@/lib/api';
 function SuccessContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
-    const reference = searchParams.get('reference');
+    const reference = searchParams.get('reference') || searchParams.get('trxref');
     const { clearCart } = useCart();
 
     const [status, setStatus] = React.useState<'loading' | 'success' | 'failed'>('loading');
+    const [errorMessage, setErrorMessage] = React.useState('We couldn\'t confirm your payment. Please contact support if you believe this is an error.');
     const [orderNumber, setOrderNumber] = React.useState<string | null>(null);
     const [countdown, setCountdown] = useState(5);
     const hasRun = useRef(false);
@@ -34,8 +35,9 @@ function SuccessContent() {
                 clearCart();
                 setStatus('success');
             })
-            .catch((err: Error) => {
+            .catch((err: any) => {
                 console.error('Verification failed', err);
+                setErrorMessage(err.response?.data?.message || err.message || 'Payment verification failed.');
                 setStatus('failed');
             });
     }, [reference, clearCart]);
@@ -66,7 +68,10 @@ function SuccessContent() {
                     <Package className="w-12 h-12 text-red-500" />
                 </div>
                 <h1 className="text-3xl font-bold text-white">Verification Failed</h1>
-                <p className="text-slate-400">We couldn't confirm your payment. Please contact support if you believe this is an error.</p>
+                <p className="text-slate-400">{errorMessage}</p>
+                {reference && (
+                    <p className="text-xs text-slate-500 font-mono break-all">Reference: {reference}</p>
+                )}
                 <Link href="/" className="inline-block px-8 py-3 bg-white text-black rounded-lg font-bold">Return Home</Link>
             </div>
         );

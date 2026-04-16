@@ -5,11 +5,13 @@ import { createOrder, verifyPayment, getMyOrders, getOrderById } from '../contro
 
 const router: Router = express.Router();
 
-// Protect all order routes (User must be logged in)
+// Paystack redirects back to this route, so verification must not depend on a browser session.
+router.get('/verify', verifyPayment);
+
+// Protect all other order routes (User must be logged in)
 router.use(protect);
 
 router.post('/', createOrder);
-router.get('/verify', verifyPayment);
 router.get('/my-orders', getMyOrders);
 router.get('/:id', getOrderById);
 

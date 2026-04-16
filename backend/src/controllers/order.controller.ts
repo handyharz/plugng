@@ -24,6 +24,14 @@ const incrementCouponUsage = async (couponCode?: string) => {
     }
 };
 
+const getVerificationOrderData = (order: any) => ({
+    _id: order._id,
+    orderNumber: order.orderNumber,
+    paymentStatus: order.paymentStatus,
+    paymentReference: order.paymentReference,
+    deliveryStatus: order.deliveryStatus
+});
+
 export const createOrder = async (req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<void> => {
     try {
         const userId = req.user._id || req.user.id;
@@ -431,7 +439,7 @@ export const verifyPayment = async (req: Request, res: Response, next: NextFunct
 
         // If order already paid, return immediately
         if (order && order.paymentStatus === 'paid') {
-            res.status(200).json({ status: 'success', data: { order } });
+            res.status(200).json({ status: 'success', data: { order: getVerificationOrderData(order) } });
             return;
         }
 
@@ -483,7 +491,7 @@ export const verifyPayment = async (req: Request, res: Response, next: NextFunct
                     `/orders/${order._id}`
                 );
             }
-            res.status(200).json({ status: 'success', data: { order } });
+            res.status(200).json({ status: 'success', data: { order: getVerificationOrderData(order) } });
             return;
         }
 
@@ -559,7 +567,7 @@ export const verifyPayment = async (req: Request, res: Response, next: NextFunct
                         );
                     }
 
-                    res.status(200).json({ status: 'success', data: { order } });
+                    res.status(200).json({ status: 'success', data: { order: getVerificationOrderData(order) } });
                     return;
                 }
             }
@@ -568,7 +576,12 @@ export const verifyPayment = async (req: Request, res: Response, next: NextFunct
             console.error('Paystack Verification Error:', error.response?.data?.message || error.message);
         }
 
-        res.status(400).json({ status: 'fail', message: 'Payment verification failed' });
+        res.status(400).json({
+            status: 'fail',
+            message: order
+                ? 'Payment is still pending. If Paystack charged you, please contact support with this reference.'
+                : 'Payment reference was not found. Please contact support with this reference.'
+        });
     } catch (error) {
         next(error);
     }

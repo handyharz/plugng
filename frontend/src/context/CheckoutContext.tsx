@@ -26,7 +26,8 @@ export function CheckoutProvider({ children }: { children: React.ReactNode }) {
             const data = await orderApi.create({
                 shippingAddress: shippingDetails,
                 paymentMethod: paymentMethod,
-                couponCode: couponCode
+                couponCode: couponCode,
+                callbackUrl: `${window.location.origin}/checkout/success`
             });
 
             if (data.paymentUrl) {
