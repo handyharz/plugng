@@ -10,10 +10,19 @@ import { Application, Request, Response, NextFunction } from 'express';
 
 const app: Application = express();
 
+const allowedOrigins = [
+    process.env.FRONTEND_URL,
+    ...(process.env.CORS_ORIGINS || '').split(','),
+    'http://localhost:3000',
+    'http://localhost:3005',
+    'https://plugng.shop',
+    'https://www.plugng.shop'
+].filter((origin): origin is string => Boolean(origin?.trim()));
+
 // Middlewares
 app.use(helmet());
 app.use(cors({
-    origin: [process.env.FRONTEND_URL || 'http://localhost:3000', 'http://localhost:3005'],
+    origin: allowedOrigins,
     credentials: true
 }));
 app.use(morgan('dev'));

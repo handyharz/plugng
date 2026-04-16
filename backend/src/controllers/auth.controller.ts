@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction, CookieOptions } from 'express';
 import jwt from 'jsonwebtoken';
 import User, { IUser } from '../models/User';
 import notificationService from '../services/notificationService';
@@ -18,14 +18,16 @@ const signToken = (id: string) => {
 
 const createSendToken = (user: IUser, statusCode: number, res: Response) => {
     const token = signToken(user._id as unknown as string);
+    const isProduction = process.env.NODE_ENV === 'production';
+    const sameSite: CookieOptions['sameSite'] = isProduction ? 'none' : 'lax';
 
-    const cookieOptions = {
+    const cookieOptions: CookieOptions = {
         expires: new Date(
             Date.now() + 7 * 24 * 60 * 60 * 1000
         ),
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax' as const
+        secure: isProduction,
+        sameSite
     };
 
     res.cookie('token', token, cookieOptions);
