@@ -47,6 +47,34 @@ export default function OrderDetailPage() {
         setStatusModal({ isOpen: true, type, title, message });
     };
 
+    const getPaymentBadgeClass = (paymentStatus?: string) => {
+        switch (paymentStatus) {
+            case 'paid':
+                return 'bg-green-500/10 text-green-400 border-green-500/20';
+            case 'failed':
+                return 'bg-red-500/10 text-red-400 border-red-500/20';
+            case 'refunded':
+                return 'bg-purple-500/10 text-purple-400 border-purple-500/20';
+            default:
+                return 'bg-amber-500/10 text-amber-400 border-amber-500/20';
+        }
+    };
+
+    const getDeliveryBadgeClass = (deliveryStatus?: string) => {
+        switch (deliveryStatus) {
+            case 'delivered':
+                return 'bg-green-500/10 text-green-400 border-green-500/20';
+            case 'shipped':
+                return 'bg-blue-500/10 text-blue-400 border-blue-500/20';
+            case 'processing':
+                return 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20';
+            case 'cancelled':
+                return 'bg-red-500/10 text-red-400 border-red-500/20';
+            default:
+                return 'bg-amber-500/10 text-amber-400 border-amber-500/20';
+        }
+    };
+
     const { data: order, isLoading } = useQuery({
         queryKey: ['adminOrder', orderId],
         queryFn: () => getOrderById(orderId),
@@ -126,13 +154,13 @@ export default function OrderDetailPage() {
                         <ArrowLeft className="w-5 h-5" />
                     </Link>
                     <div>
-                        <h1 className="text-2xl font-bold text-white flex items-center gap-3">
+                        <h1 className="text-2xl font-bold text-white flex flex-wrap items-center gap-3">
                             Order #{typedOrder.orderNumber}
-                            <span className={`text-sm px-3 py-1 rounded-full border ${typedOrder.paymentStatus === 'paid'
-                                ? 'bg-green-500/10 text-green-400 border-green-500/20'
-                                : 'bg-amber-500/10 text-amber-400 border-amber-500/20'
-                                }`}>
-                                {typedOrder.paymentStatus?.toUpperCase()}
+                            <span className={`text-[10px] px-3 py-1 rounded-full border font-black uppercase tracking-widest ${getDeliveryBadgeClass(typedOrder.deliveryStatus)}`}>
+                                Fulfillment: {typedOrder.deliveryStatus || 'pending'}
+                            </span>
+                            <span className={`text-[10px] px-3 py-1 rounded-full border font-black uppercase tracking-widest ${getPaymentBadgeClass(typedOrder.paymentStatus)}`}>
+                                Payment: {typedOrder.paymentStatus || 'pending'}
                             </span>
                         </h1>
                         <p className="text-slate-400 mt-1 flex items-center gap-2">
