@@ -8,6 +8,18 @@ import { useSearchParams } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import { orderApi } from '@/lib/api';
 
+type VerifyResponse = {
+    status?: 'success' | 'pending' | 'fail';
+    data?: {
+        order?: {
+            orderNumber?: string;
+            paymentMethod?: string;
+            afriExchange?: Record<string, unknown>;
+        };
+        provider?: string;
+    };
+};
+
 function SuccessContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -28,14 +40,17 @@ function SuccessContent() {
         hasRun.current = true;
 
         let attempts = 0;
-        const maxAttempts = provider === 'afriexchange' ? 20 : 8;
 
         const verify = async () => {
             attempts += 1;
 
             try {
-                const res: any = await orderApi.verify(reference);
+                const res = await orderApi.verify(reference) as VerifyResponse;
                 const orderData = res?.data?.order;
+                const resolvedProvider =
+                    res?.data?.provider ||
+                    (orderData?.paymentMethod === 'afriexchange' || orderData?.afriExchange ? 'afriexchange' : provider);
+                const maxAttempts = resolvedProvider === 'afriexchange' ? 20 : 8;
 
                 if (orderData?.orderNumber) {
                     setOrderNumber(orderData.orderNumber);
@@ -49,7 +64,7 @@ function SuccessContent() {
 
                 if (res?.status === 'pending' && attempts < maxAttempts) {
                     setStatusMessage(
-                        provider === 'afriexchange'
+                        resolvedProvider === 'afriexchange'
                             ? 'Waiting for AfriExchange webhook confirmation...'
                             : 'Payment is still being confirmed...'
                     );
@@ -57,10 +72,10 @@ function SuccessContent() {
                     return;
                 }
 
-
                 setStatus('failed');
-            } catch (err: any) {
+            } catch (err) {
                 console.error('Verification failed', err);
+                const maxAttempts = provider === 'afriexchange' ? 20 : 8;
 
                 if (attempts < maxAttempts) {
                     setStatusMessage(

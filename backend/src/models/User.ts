@@ -15,6 +15,7 @@ export interface IUserAddress {
     phone: string;
     address: string;
     city: string;
+    country?: string;
     state: string;
     landmark?: string;
 }
@@ -70,6 +71,7 @@ const UserSchema: Schema = new Schema({
         phone: String,
         address: String,
         city: String,
+        country: { type: String, uppercase: true, default: 'NG' },
         state: String,
         landmark: String
     }],

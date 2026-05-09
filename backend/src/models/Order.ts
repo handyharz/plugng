@@ -26,6 +26,13 @@ export interface IOrder extends Document {
         paymentUrl?: string;
         tokenType?: string;
         amount?: number;
+        quote?: {
+            source_currency?: string;
+            source_amount?: number;
+            settlement_currency?: string;
+            settlement_amount?: number;
+            exchange_rate?: number;
+        };
         status?: string;
         lastWebhookEvent?: string;
         lastWebhookAt?: Date;
@@ -42,6 +49,7 @@ export interface IOrder extends Document {
         phone: string;
         address: string;
         city: string;
+        country?: string;
         state: string;
         landmark?: string;
     };
@@ -97,6 +105,13 @@ const OrderSchema: Schema = new Schema({
         paymentUrl: { type: String },
         tokenType: { type: String },
         amount: { type: Number },
+        quote: {
+            source_currency: { type: String },
+            source_amount: { type: Number },
+            settlement_currency: { type: String },
+            settlement_amount: { type: Number },
+            exchange_rate: { type: Number }
+        },
         status: { type: String },
         lastWebhookEvent: { type: String },
         lastWebhookAt: { type: Date },
@@ -113,6 +128,7 @@ const OrderSchema: Schema = new Schema({
         phone: { type: String, required: true },
         address: { type: String, required: true },
         city: { type: String, required: true },
+        country: { type: String, uppercase: true, default: 'NG' },
         state: { type: String, required: true },
         landmark: { type: String }
     },

@@ -37,7 +37,8 @@ export function CheckoutProvider({ children }: { children: React.ReactNode }) {
             } else if (data.reference) {
                 // Dev mode successful order - Success page handles clearing
                 setIsCartOpen(false);
-                router.push(`/checkout/success?reference=${data.reference}`);
+                const providerQuery = data.provider ? `&provider=${encodeURIComponent(data.provider)}` : '';
+                router.push(`/checkout/success?reference=${encodeURIComponent(data.reference)}${providerQuery}`);
             } else {
                 // Fallback for safety
                 alert('Order created! No reference returned.');

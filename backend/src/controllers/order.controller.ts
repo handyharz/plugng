@@ -19,6 +19,47 @@ interface AuthenticatedRequest extends Request {
 }
 
 const PAYSTACK_SECRET_KEY = process.env.PAYSTACK_SECRET_KEY;
+const XOF_COUNTRIES = new Set(['SN', 'CI', 'BJ', 'BF', 'ML', 'NE', 'TG', 'GW']);
+
+const normalizeCountry = (country?: string) => String(country || 'NG').trim().toUpperCase();
+
+const getCheckoutMarket = (country?: string) => {
+    const normalizedCountry = normalizeCountry(country);
+
+    if (normalizedCountry === 'NG') {
+        return { country: normalizedCountry, market: 'ng' as const };
+    }
+
+    if (XOF_COUNTRIES.has(normalizedCountry)) {
+        return { country: normalizedCountry, market: 'xof' as const };
+    }
+
+    return { country: normalizedCountry, market: 'unsupported' as const };
+};
+
+const getNgnToXofRate = () => {
+    const rawRate = process.env.AFRIEXCHANGE_NGN_TO_XOF_RATE || process.env.NGN_TO_XOF_RATE || '';
+    const rate = Number(rawRate);
+
+    if (!Number.isFinite(rate) || rate <= 0) {
+        return null;
+    }
+
+    return rate;
+};
+
+const convertNgnToXof = (amountInNgn: number) => {
+    const rate = getNgnToXofRate();
+
+    if (!rate) {
+        return null;
+    }
+
+    return {
+        rate,
+        amount: Math.round(amountInNgn * rate)
+    };
+};
 
 const incrementCouponUsage = async (couponCode?: string) => {
     if (couponCode) {
@@ -36,7 +77,6 @@ const getVerificationOrderData = (order: any) => ({
     paymentReference: order.paymentReference,
     deliveryStatus: order.deliveryStatus
 });
-
 const markOrderAsPaid = async ({
     order,
     paymentReference,
@@ -121,9 +161,34 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response, next
         const userId = req.user._id || req.user.id;
         const { shippingAddress, paymentMethod, couponCode, callbackUrl } = req.body;
         const normalizedPaymentMethod = String(paymentMethod || '').toLowerCase();
+        const { country: checkoutCountry, market: checkoutMarket } = getCheckoutMarket(shippingAddress?.country);
 
         if (!['card', 'bank_transfer', 'wallet', 'cash_on_delivery', 'afriexchange'].includes(normalizedPaymentMethod)) {
             res.status(400).json({ status: 'fail', message: 'Unsupported payment method' });
+            return;
+        }
+
+        if (checkoutMarket === 'unsupported') {
+            res.status(400).json({
+                status: 'fail',
+                message: 'We currently support checkout in Nigeria and selected XOF countries only'
+            });
+            return;
+        }
+
+        if (checkoutMarket === 'ng' && normalizedPaymentMethod === 'afriexchange') {
+            res.status(400).json({
+                status: 'fail',
+                message: 'AfriExchange checkout is currently available for selected XOF countries only'
+            });
+            return;
+        }
+
+        if (checkoutMarket === 'xof' && normalizedPaymentMethod !== 'afriexchange') {
+            res.status(400).json({
+                status: 'fail',
+                message: 'Selected XOF checkout currently uses AfriExchange only'
+            });
             return;
         }
 
@@ -189,18 +254,20 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response, next
         // Apply Business Rules from PROJECT CONTEXT
         // 1. Delivery Fee Logic
         let deliveryFee = 2000; // Default Tier 3/4
-        const userState = shippingAddress.state?.trim().toLowerCase() || '';
+        if (checkoutMarket === 'ng') {
+            const userState = shippingAddress.state?.trim().toLowerCase() || '';
 
-        if (userState === 'lagos' || userState === 'fct' || userState === 'abuja') {
-            deliveryFee = 1200; // Tier 1
-        } else if (['rivers', 'oyo', 'edo', 'enugu', 'kano'].includes(userState)) {
-            deliveryFee = 1500; // Tier 2
-        }
+            if (userState === 'lagos' || userState === 'fct' || userState === 'abuja') {
+                deliveryFee = 1200; // Tier 1
+            } else if (['rivers', 'oyo', 'edo', 'enugu', 'kano'].includes(userState)) {
+                deliveryFee = 1500; // Tier 2
+            }
 
-        // Free delivery if order total > ₦5,000
-        const FREE_DELIVERY_THRESHOLD = 5000;
-        if (subtotal >= FREE_DELIVERY_THRESHOLD) {
-            deliveryFee = 0;
+            // Free delivery if order total > ₦5,000
+            const FREE_DELIVERY_THRESHOLD = 5000;
+            if (subtotal >= FREE_DELIVERY_THRESHOLD) {
+                deliveryFee = 0;
+            }
         }
 
         // 2. Discounts
@@ -280,6 +347,15 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response, next
         }
 
         const total = subtotal + deliveryFee - discount;
+        const xofQuote = checkoutMarket === 'xof' ? convertNgnToXof(total) : null;
+
+        if (checkoutMarket === 'xof' && !xofQuote) {
+            res.status(500).json({
+                status: 'error',
+                message: 'XOF checkout is not configured yet. Missing NGN to XOF conversion rate.'
+            });
+            return;
+        }
 
         // 3. Create Pending Order
         const orderNumber = `ORD-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
@@ -293,7 +369,10 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response, next
             total,
             paymentMethod: normalizedPaymentMethod,
             paymentStatus: 'pending',
-            shippingAddress,
+            shippingAddress: {
+                ...shippingAddress,
+                country: checkoutCountry
+            },
             couponCode: appliedCoupon?.code,
             couponDiscount: couponDiscountAmount,
             deliveryStatus: 'pending',
@@ -394,9 +473,11 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response, next
 
             try {
                 const afriExchangePayment = await createAfriExchangePaymentRequest({
-                    amount: total,
+                    amount: xofQuote?.amount || total,
                     tokenType: process.env.AFRIEXCHANGE_DEFAULT_TOKEN_TYPE || 'CT',
-                    description: `PlugNG Order ${orderNumber}`,
+                    description: xofQuote
+                        ? `PlugNG Order ${orderNumber} (${total} NGN, quoted ${xofQuote.amount} XOF)`
+                        : `PlugNG Order ${orderNumber}`,
                     customerEmail: req.user.email,
                     reference: orderNumber
                 });
@@ -406,16 +487,34 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response, next
                     reference: orderNumber,
                     paymentUrl: afriExchangePayment.payment_url,
                     tokenType: afriExchangePayment.token_type || process.env.AFRIEXCHANGE_DEFAULT_TOKEN_TYPE || 'CT',
-                    amount: Number(afriExchangePayment.amount || total),
+                    amount: Number(afriExchangePayment.amount || xofQuote?.amount || total),
                     status: 'payment.pending'
                 };
                 order.paymentReference = orderNumber;
+                if (xofQuote) {
+                    order.set('afriExchange.quote', {
+                        source_currency: 'NGN',
+                        source_amount: total,
+                        settlement_currency: 'XOF',
+                        settlement_amount: xofQuote.amount,
+                        exchange_rate: xofQuote.rate
+                    });
+                }
                 await order.save();
 
                 paymentData = {
                     authorization_url: afriExchangePayment.payment_url,
                     reference: orderNumber,
-                    provider: 'afriexchange'
+                    provider: 'afriexchange',
+                    quote: xofQuote
+                        ? {
+                            sourceCurrency: 'NGN',
+                            sourceAmount: total,
+                            settlementCurrency: 'XOF',
+                            settlementAmount: xofQuote.amount,
+                            exchangeRate: xofQuote.rate
+                        }
+                        : undefined
                 };
             } catch (error: any) {
                 console.error('AfriExchange payment request error:', error.response?.data || error.message);
@@ -463,7 +562,8 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response, next
                 order,
                 paymentUrl: paymentData?.authorization_url,
                 accessCode: paymentData?.access_code,
-                reference: paymentData?.reference || order.paymentReference || order.orderNumber
+                reference: paymentData?.reference || order.paymentReference || order.orderNumber,
+                provider: paymentData?.provider
             }
         });
         return;
@@ -494,6 +594,17 @@ export const verifyPayment = async (req: Request, res: Response, next: NextFunct
         // If order already paid, return immediately
         if (order && order.paymentStatus === 'paid') {
             res.status(200).json({ status: 'success', data: { order: getVerificationOrderData(order) } });
+            return;
+        }
+
+        if (order?.paymentMethod === 'afriexchange') {
+            res.status(202).json({
+                status: 'pending',
+                data: {
+                    order,
+                    provider: 'afriexchange'
+                }
+            });
             return;
         }
 
@@ -571,6 +682,98 @@ export const verifyPayment = async (req: Request, res: Response, next: NextFunct
                 ? 'Payment is still pending. If Paystack charged you, please contact support with this reference.'
                 : 'Payment reference was not found. Please contact support with this reference.'
         });
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const handleAfriExchangeWebhook = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+        const rawBody = Buffer.isBuffer(req.body) ? req.body.toString('utf8') : JSON.stringify(req.body || {});
+        const timestamp = req.headers['x-afriexchange-timestamp'] as string | undefined;
+        const signature = req.headers['x-afriexchange-signature'] as string | undefined;
+
+        if (!verifyAfriExchangeWebhookSignature({ rawBody, timestamp, signature })) {
+            res.status(401).json({ status: 'fail', message: 'Invalid AfriExchange webhook signature' });
+            return;
+        }
+
+        const payload = JSON.parse(rawBody || '{}');
+        const eventType = payload?.event || payload?.type || 'unknown';
+        const eventId = payload?.id || payload?.event_id || payload?.data?.id || payload?.data?.event_id;
+        const data = payload?.data || {};
+        const reference =
+            data.reference ||
+            data.order_reference ||
+            data.metadata?.reference ||
+            payload?.reference;
+        const transactionId =
+            data.transaction_id ||
+            data.id ||
+            data.transaction?.id;
+
+        const orderFilters: Record<string, string>[] = [];
+        if (reference) {
+            orderFilters.push(
+                { orderNumber: reference },
+                { paymentReference: reference },
+                { 'afriExchange.reference': reference }
+            );
+        }
+        if (transactionId) {
+            orderFilters.push({ 'afriExchange.transactionId': String(transactionId) });
+        }
+
+        const order = orderFilters.length
+            ? await Order.findOne({ $or: orderFilters })
+            : null;
+
+        if (!order) {
+            res.status(200).json({ status: 'ignored', message: 'No matching order found' });
+            return;
+        }
+
+        order.afriExchange = {
+            ...(order.afriExchange || {}),
+            reference: order.afriExchange?.reference || reference || order.orderNumber,
+            transactionId: order.afriExchange?.transactionId || (transactionId ? String(transactionId) : undefined),
+            status: eventType,
+            lastWebhookEvent: eventType,
+            lastWebhookAt: new Date(),
+            webhookEvents: order.afriExchange?.webhookEvents || []
+        };
+
+        const webhookEvents = order.afriExchange.webhookEvents || [];
+
+        const alreadyProcessedEvent = eventId
+            ? webhookEvents.some((event: any) => event.eventId === String(eventId))
+            : false;
+
+        if (!alreadyProcessedEvent) {
+            webhookEvents.push({
+                eventId: eventId ? String(eventId) : undefined,
+                type: eventType,
+                receivedAt: new Date(),
+                status: order.paymentStatus
+            });
+        }
+        order.afriExchange.webhookEvents = webhookEvents;
+
+        if (eventType === 'collection.completed' && order.paymentStatus !== 'paid') {
+            order.afriExchange.verifiedAt = new Date();
+            await markOrderAsPaid({
+                order,
+                paymentReference: order.paymentReference || order.orderNumber,
+                paymentStatusSource: 'AfriExchange Webhook',
+                userIdForNotification: order.user.toString(),
+                notificationTitle: 'AfriExchange Payment Confirmed',
+                notificationMessage: `AfriExchange confirmed payment for order #${order.orderNumber}.`
+            });
+        } else {
+            await order.save();
+        }
+
+        res.status(200).json({ status: 'success' });
     } catch (error) {
         next(error);
     }

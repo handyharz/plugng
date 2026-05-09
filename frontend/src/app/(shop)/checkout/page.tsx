@@ -15,6 +15,7 @@ interface ShippingDetails {
     phone: string;
     address: string;
     city: string;
+    country: string;
     state: string;
     landmark: string;
 }
@@ -35,6 +36,20 @@ type ApiErrorShape = {
     message?: string;
 };
 
+const XOF_COUNTRIES = [
+    { code: 'SN', label: 'Senegal' },
+    { code: 'CI', label: "Cote d'Ivoire" },
+    { code: 'BJ', label: 'Benin' },
+    { code: 'BF', label: 'Burkina Faso' },
+    { code: 'ML', label: 'Mali' },
+    { code: 'NE', label: 'Niger' },
+    { code: 'TG', label: 'Togo' },
+    { code: 'GW', label: 'Guinea-Bissau' }
+];
+
+const COUNTRY_OPTIONS = [{ code: 'NG', label: 'Nigeria' }, ...XOF_COUNTRIES];
+const NIGERIA_STATES = ['Lagos', 'Abuja', 'Rivers'];
+const NGN_TO_XOF_RATE = Number(process.env.NEXT_PUBLIC_NGN_TO_XOF_RATE || '0');
 export default function CheckoutPage() {
     const { cart, totalAmount } = useCart();
     const { initiateCheckout, isProcessing } = useCheckout();
@@ -53,9 +68,14 @@ export default function CheckoutPage() {
         phone: user?.phone || '',
         address: '',
         city: '',
+        country: user?.addresses?.[0]?.country || 'NG',
         state: 'Lagos', // Default
         landmark: ''
     });
+
+    const selectedCountry = shippingDetails.country || 'NG';
+    const isNigeriaCheckout = selectedCountry === 'NG';
+    const isXofCheckout = XOF_COUNTRIES.some((country) => country.code === selectedCountry);
 
     // Auto-fill form with default address on mount or when user loads
     useEffect(() => {
@@ -66,11 +86,22 @@ export default function CheckoutPage() {
                 phone: defaultAddress.phone || user.phone,
                 address: defaultAddress.address,
                 city: defaultAddress.city,
+                country: defaultAddress.country || 'NG',
                 state: defaultAddress.state,
                 landmark: defaultAddress.landmark || ''
             });
         }
     }, [user]);
+
+    useEffect(() => {
+        if (isNigeriaCheckout && paymentMethod === 'afriexchange') {
+            setPaymentMethod('card');
+        }
+
+        if (isXofCheckout && paymentMethod !== 'afriexchange') {
+            setPaymentMethod('afriexchange');
+        }
+    }, [isNigeriaCheckout, isXofCheckout, paymentMethod]);
 
     const handleAddressSelect = (addr: UserAddress) => {
         setShippingDetails({
@@ -78,6 +109,7 @@ export default function CheckoutPage() {
             phone: addr.phone,
             address: addr.address,
             city: addr.city,
+            country: addr.country || 'NG',
             state: addr.state,
             landmark: addr.landmark || ''
         });
@@ -85,7 +117,17 @@ export default function CheckoutPage() {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        setShippingDetails(prev => ({ ...prev, [name]: value }));
+        setShippingDetails(prev => {
+            if (name === 'country') {
+                return {
+                    ...prev,
+                    country: value,
+                    state: value === 'NG' ? (NIGERIA_STATES.includes(prev.state) ? prev.state : 'Lagos') : value
+                };
+            }
+
+            return { ...prev, [name]: value };
+        });
     };
 
     const handleApplyCoupon = async () => {
@@ -126,6 +168,9 @@ export default function CheckoutPage() {
 
     const couponDiscount = calculateDiscount();
     const finalTotal = totalAmount - couponDiscount;
+    const estimatedXofTotal = isXofCheckout && Number.isFinite(NGN_TO_XOF_RATE) && NGN_TO_XOF_RATE > 0
+        ? Math.round(finalTotal * NGN_TO_XOF_RATE)
+        : null;
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -281,18 +326,47 @@ export default function CheckoutPage() {
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-widest text-slate-500">State</label>
+                                    <label className="text-xs font-bold uppercase tracking-widest text-slate-500">Country</label>
                                     <select
-                                        name="state"
-                                        value={shippingDetails.state}
+                                        name="country"
+                                        value={shippingDetails.country}
                                         onChange={handleInputChange}
                                         className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white focus:outline-none focus:border-blue-500 transition-colors appearance-none"
                                     >
-                                        <option value="Lagos" className="bg-black">Lagos</option>
-                                        <option value="Abuja" className="bg-black">Abuja</option>
-                                        <option value="Rivers" className="bg-black">Rivers</option>
-                                        {/* Add more states as needed */}
+                                        {COUNTRY_OPTIONS.map((country) => (
+                                            <option key={country.code} value={country.code} className="bg-black">
+                                                {country.label}
+                                            </option>
+                                        ))}
                                     </select>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 gap-4">
+                                <div className="space-y-2">
+                                    <label className="text-xs font-bold uppercase tracking-widest text-slate-500">State</label>
+                                    {isNigeriaCheckout ? (
+                                        <select
+                                            name="state"
+                                            value={shippingDetails.state}
+                                            onChange={handleInputChange}
+                                            className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white focus:outline-none focus:border-blue-500 transition-colors appearance-none"
+                                        >
+                                            {NIGERIA_STATES.map((state) => (
+                                                <option key={state} value={state} className="bg-black">{state}</option>
+                                            ))}
+                                        </select>
+                                    ) : (
+                                        <input
+                                            type="text"
+                                            name="state"
+                                            required
+                                            value={shippingDetails.state}
+                                            onChange={handleInputChange}
+                                            className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                                            placeholder="Region / State"
+                                        />
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -302,60 +376,64 @@ export default function CheckoutPage() {
                                 <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-1">
                                     Payment Method
                                 </label>
-                                <div className={`grid grid-cols-1 gap-4 ${afriExchangeEnabled ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
-                                    <button
-                                        type="button"
-                                        onClick={() => setPaymentMethod('card')}
-                                        className={`p-6 rounded-3xl border-2 text-left transition-all duration-300 flex flex-col justify-between h-32 ${paymentMethod === 'card'
-                                            ? 'border-blue-600 bg-blue-600/10 scale-[1.02] shadow-lg shadow-blue-500/10'
-                                            : 'border-white/10 bg-white/5 hover:border-white/30'
-                                            }`}
-                                    >
-                                        <div className="flex justify-between items-start">
-                                            <div className="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center">
-                                                <Lock className={`w-5 h-5 ${paymentMethod === 'card' ? 'text-blue-500' : 'text-slate-400'}`} />
-                                            </div>
-                                            {paymentMethod === 'card' && (
-                                                <div className="w-4 h-4 rounded-full bg-blue-600 flex items-center justify-center">
-                                                    <div className="w-2 h-2 rounded-full bg-white" />
+                                <div className={`grid grid-cols-1 gap-4 ${isNigeriaCheckout ? 'md:grid-cols-2' : 'md:grid-cols-1'}`}>
+                                    {isNigeriaCheckout && (
+                                        <>
+                                            <button
+                                                type="button"
+                                                onClick={() => setPaymentMethod('card')}
+                                                className={`p-6 rounded-3xl border-2 text-left transition-all duration-300 flex flex-col justify-between h-32 ${paymentMethod === 'card'
+                                                    ? 'border-blue-600 bg-blue-600/10 scale-[1.02] shadow-lg shadow-blue-500/10'
+                                                    : 'border-white/10 bg-white/5 hover:border-white/30'
+                                                    }`}
+                                            >
+                                                <div className="flex justify-between items-start">
+                                                    <div className="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center">
+                                                        <Lock className={`w-5 h-5 ${paymentMethod === 'card' ? 'text-blue-500' : 'text-slate-400'}`} />
+                                                    </div>
+                                                    {paymentMethod === 'card' && (
+                                                        <div className="w-4 h-4 rounded-full bg-blue-600 flex items-center justify-center">
+                                                            <div className="w-2 h-2 rounded-full bg-white" />
+                                                        </div>
+                                                    )}
                                                 </div>
-                                            )}
-                                        </div>
-                                        <div>
-                                            <h4 className="font-black text-sm uppercase italic">Secure Card</h4>
-                                            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Paystack Gateway</p>
-                                        </div>
-                                    </button>
-
-                                    <button
-                                        type="button"
-                                        onClick={() => setPaymentMethod('wallet')}
-                                        className={`p-6 rounded-3xl border-2 text-left transition-all duration-300 flex flex-col justify-between h-32 ${paymentMethod === 'wallet'
-                                            ? 'border-blue-600 bg-blue-600/10 scale-[1.02] shadow-lg shadow-blue-500/10'
-                                            : 'border-white/10 bg-white/5 hover:border-white/30'
-                                            }`}
-                                    >
-                                        <div className="flex justify-between items-start">
-                                            <div className="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center">
-                                                <Image src="/logo.png" alt="Wallet" width={20} height={20} className={paymentMethod === 'wallet' ? '' : 'opacity-50 grayscale'} />
-                                            </div>
-                                            {paymentMethod === 'wallet' && (
-                                                <div className="w-4 h-4 rounded-full bg-blue-600 flex items-center justify-center">
-                                                    <div className="w-2 h-2 rounded-full bg-white" />
+                                                <div>
+                                                    <h4 className="font-black text-sm uppercase italic">Secure Card</h4>
+                                                    <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Paystack Gateway</p>
                                                 </div>
-                                            )}
-                                        </div>
-                                        <div>
-                                            <h4 className="font-black text-sm uppercase italic">Wallet Fund</h4>
-                                            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">
-                                                Balance: <span className={user?.wallet?.balance && user.wallet.balance >= totalAmount ? 'text-emerald-500' : 'text-rose-500'}>
-                                                    {new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN', maximumFractionDigits: 0 }).format(user?.wallet?.balance || 0)}
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </button>
+                                            </button>
 
-                                    {afriExchangeEnabled && (
+                                            <button
+                                                type="button"
+                                                onClick={() => setPaymentMethod('wallet')}
+                                                className={`p-6 rounded-3xl border-2 text-left transition-all duration-300 flex flex-col justify-between h-32 ${paymentMethod === 'wallet'
+                                                    ? 'border-blue-600 bg-blue-600/10 scale-[1.02] shadow-lg shadow-blue-500/10'
+                                                    : 'border-white/10 bg-white/5 hover:border-white/30'
+                                                    }`}
+                                            >
+                                                <div className="flex justify-between items-start">
+                                                    <div className="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center">
+                                                        <Image src="/logo.png" alt="Wallet" width={20} height={20} className={paymentMethod === 'wallet' ? '' : 'opacity-50 grayscale'} />
+                                                    </div>
+                                                    {paymentMethod === 'wallet' && (
+                                                        <div className="w-4 h-4 rounded-full bg-blue-600 flex items-center justify-center">
+                                                            <div className="w-2 h-2 rounded-full bg-white" />
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-black text-sm uppercase italic">Wallet Fund</h4>
+                                                    <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+                                                        Balance: <span className={user?.wallet?.balance && user.wallet.balance >= totalAmount ? 'text-emerald-500' : 'text-rose-500'}>
+                                                            {new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN', maximumFractionDigits: 0 }).format(user?.wallet?.balance || 0)}
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </button>
+                                        </>
+                                    )}
+
+                                    {afriExchangeEnabled && isXofCheckout && (
                                         <button
                                             type="button"
                                             onClick={() => setPaymentMethod('afriexchange')}
@@ -383,21 +461,46 @@ export default function CheckoutPage() {
                                         </button>
                                     )}
                                 </div>
-                                {paymentMethod === 'wallet' && user?.wallet?.balance !== undefined && user.wallet.balance < totalAmount && (
+                                {isNigeriaCheckout && paymentMethod === 'wallet' && user?.wallet?.balance !== undefined && user.wallet.balance < totalAmount && (
                                     <p className="text-[10px] font-black uppercase text-rose-500 pl-1 animate-pulse">
                                         ⚠️ Insufficient Balance. Please top up or use Card.
                                     </p>
                                 )}
-                                {paymentMethod === 'afriexchange' && (
-                                    <p className="text-[10px] font-black uppercase text-cyan-400 pl-1">
-                                        You will be redirected to AfriExchange to complete secure CT payment.
+                                {isNigeriaCheckout && (
+                                    <p className="text-[10px] font-black uppercase text-slate-500 pl-1">
+                                        Nigeria checkout currently supports Paystack card and internal wallet.
                                     </p>
+                                )}
+                                {isXofCheckout && !afriExchangeEnabled && (
+                                    <p className="text-[10px] font-black uppercase text-rose-500 pl-1">
+                                        AfriExchange checkout is not enabled for XOF markets yet.
+                                    </p>
+                                )}
+                                {paymentMethod === 'afriexchange' && (
+                                    <div className="space-y-1 pl-1">
+                                        <p className="text-[10px] font-black uppercase text-cyan-400">
+                                            You will be redirected to AfriExchange to complete secure CT payment for this XOF market checkout.
+                                        </p>
+                                        {estimatedXofTotal ? (
+                                            <p className="text-[10px] font-black uppercase text-cyan-200">
+                                                Estimated settlement quote: {estimatedXofTotal.toLocaleString()} XOF for {new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN', maximumFractionDigits: 0 }).format(finalTotal)}
+                                            </p>
+                                        ) : (
+                                            <p className="text-[10px] font-black uppercase text-amber-400">
+                                                XOF quote preview is unavailable until the NGN to XOF rate is configured.
+                                            </p>
+                                        )}
+                                    </div>
                                 )}
                             </div>
 
                             <button
                                 type="submit"
-                                disabled={isProcessing || (paymentMethod === 'wallet' && (user?.wallet?.balance || 0) < totalAmount)}
+                                disabled={
+                                    isProcessing ||
+                                    (paymentMethod === 'wallet' && (user?.wallet?.balance || 0) < totalAmount) ||
+                                    (isXofCheckout && (!afriExchangeEnabled || paymentMethod !== 'afriexchange'))
+                                }
                                 className="w-full py-4 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl shadow-blue-900/20 active:scale-95 transition-all flex items-center justify-center space-x-2"
                             >
                                 {isProcessing ? (
@@ -529,6 +632,16 @@ export default function CheckoutPage() {
                                 <span>Delivery</span>
                                 <span>Calculated at next step (Free)</span>
                             </div>
+                            {isXofCheckout && (
+                                <div className="flex justify-between text-sm text-cyan-300">
+                                    <span>Estimated AfriExchange Quote</span>
+                                    <span>
+                                        {estimatedXofTotal
+                                            ? `${estimatedXofTotal.toLocaleString()} XOF`
+                                            : 'Set NEXT_PUBLIC_NGN_TO_XOF_RATE'}
+                                    </span>
+                                </div>
+                            )}
                             <div className="flex justify-between text-xl font-black text-white pt-2 border-t border-white/10 mt-2">
                                 <span>Total</span>
                                 <span>{new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN', maximumFractionDigits: 0 }).format(finalTotal)}</span>

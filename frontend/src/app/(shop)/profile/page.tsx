@@ -20,6 +20,17 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 type TabType = 'profile' | 'addresses' | 'orders' | 'wallet' | 'security' | 'wishlist' | 'support' | 'reviews' | 'notifications';
+const PROFILE_COUNTRY_OPTIONS = [
+    { code: 'NG', label: 'Nigeria' },
+    { code: 'SN', label: 'Senegal' },
+    { code: 'CI', label: "Cote d'Ivoire" },
+    { code: 'BJ', label: 'Benin' },
+    { code: 'BF', label: 'Burkina Faso' },
+    { code: 'ML', label: 'Mali' },
+    { code: 'NE', label: 'Niger' },
+    { code: 'TG', label: 'Togo' },
+    { code: 'GW', label: 'Guinea-Bissau' }
+];
 
 function ProfilePageContent() {
     const { user, setUser, isLoading: authLoading } = useAuth();
@@ -91,6 +102,7 @@ function ProfilePageContent() {
         phone: '',
         address: '',
         city: '',
+        country: 'NG',
         state: 'Lagos',
         landmark: ''
     });
@@ -308,6 +320,7 @@ function ProfilePageContent() {
                 phone: user.phone,
                 address: '',
                 city: '',
+                country: 'NG',
                 state: 'Lagos',
                 landmark: ''
             });
@@ -596,6 +609,22 @@ function ProfilePageContent() {
                                                 <input type="text" value={newAddress.city} onChange={(e) => setNewAddress({ ...newAddress, city: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required />
                                             </div>
                                             <div className="space-y-3">
+                                                <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2">Country</label>
+                                                <select value={newAddress.country} onChange={(e) => setNewAddress({ ...newAddress, country: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required>
+                                                    {PROFILE_COUNTRY_OPTIONS.map((country) => (
+                                                        <option key={country.code} value={country.code} className="bg-black">
+                                                            {country.label}
+                                                        </option>
+                                                    ))}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                            <div className="space-y-3">
+                                                <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2">State / Region</label>
+                                                <input type="text" value={newAddress.state} onChange={(e) => setNewAddress({ ...newAddress, state: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required />
+                                            </div>
+                                            <div className="space-y-3">
                                                 <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2">Phone</label>
                                                 <input type="text" value={newAddress.phone} onChange={(e) => setNewAddress({ ...newAddress, phone: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required />
                                             </div>
@@ -631,7 +660,7 @@ function ProfilePageContent() {
                                                         </div>
                                                         <div className="space-y-1">
                                                             <h4 className="text-lg font-black text-white italic tracking-tight">{addr.fullName}</h4>
-                                                            <p className="text-slate-400 text-xs font-bold leading-relaxed max-w-lg">{addr.address}, {addr.city}, {addr.state}</p>
+                                                            <p className="text-slate-400 text-xs font-bold leading-relaxed max-w-lg">{addr.address}, {addr.city}, {addr.state}{addr.country ? `, ${addr.country}` : ''}</p>
                                                         </div>
                                                         <div className="flex items-center space-x-2 text-slate-500">
                                                             <Phone size={10} />
