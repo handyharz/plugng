@@ -7,6 +7,11 @@ import Cart from '../models/Cart';
 import User from '../models/User';
 import Coupon from '../models/Coupon';
 import notificationService from '../services/notificationService';
+import {
+    createAfriExchangePaymentRequest,
+    isAfriExchangeEnabled,
+    verifyAfriExchangeWebhookSignature
+} from '../services/afriExchangeService';
 
 interface AuthenticatedRequest extends Request {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -32,10 +37,95 @@ const getVerificationOrderData = (order: any) => ({
     deliveryStatus: order.deliveryStatus
 });
 
+const markOrderAsPaid = async ({
+    order,
+    paymentReference,
+    paymentStatusSource,
+    userIdForNotification,
+    notificationTitle,
+    notificationMessage
+}: {
+    order: any;
+    paymentReference?: string;
+    paymentStatusSource: string;
+    userIdForNotification: string;
+    notificationTitle: string;
+    notificationMessage: string;
+}) => {
+    if (order.paymentStatus === 'paid') {
+        return order;
+    }
+
+    order.paymentStatus = 'paid';
+    order.paidAt = new Date();
+    if (paymentReference) {
+        order.paymentReference = paymentReference;
+    }
+    order.deliveryStatus = 'processing';
+    order.trackingEvents.push({
+        status: 'processing',
+        location: paymentStatusSource,
+        message: notificationMessage,
+        timestamp: new Date()
+    });
+    order.markModified('trackingEvents');
+
+    for (const item of order.items) {
+        const product = await Product.findById(item.product);
+        if (!product) continue;
+
+        const variantIndex = product.variants.findIndex((v: any) => v.sku === item.sku);
+        if (variantIndex > -1) {
+            const variant = product.variants[variantIndex];
+            if (variant) {
+                (variant as any).stock -= item.quantity;
+            }
+        }
+        await product.save();
+    }
+
+    if ((order as any).couponCode) {
+        await incrementCouponUsage((order as any).couponCode);
+    }
+
+    await order.save();
+
+    await (User as any).updateLoyaltyStatus(order.user, order.total);
+
+    await notificationService.sendInApp(
+        userIdForNotification,
+        'payment_success',
+        notificationTitle,
+        notificationMessage,
+        `/orders/${order._id}`
+    );
+
+    return order;
+};
+
+const findOrderByReference = async (reference?: string) => {
+    if (!reference) return null;
+
+    return Order.findOne({
+        $or: [
+            { orderNumber: reference },
+            { paymentReference: reference },
+            { 'afriExchange.reference': reference },
+            { 'afriExchange.transactionId': reference }
+        ]
+    });
+};
+
 export const createOrder = async (req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<void> => {
     try {
         const userId = req.user._id || req.user.id;
         const { shippingAddress, paymentMethod, couponCode, callbackUrl } = req.body;
+        const normalizedPaymentMethod = String(paymentMethod || '').toLowerCase();
+
+        if (!['card', 'bank_transfer', 'wallet', 'cash_on_delivery', 'afriexchange'].includes(normalizedPaymentMethod)) {
+            res.status(400).json({ status: 'fail', message: 'Unsupported payment method' });
+            return;
+        }
 
         // 1. Get user's cart
         const cart = await Cart.findOne({ user: userId });
@@ -117,7 +207,7 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response, next
         let discount = 0;
 
         // Wallet-Only Discount Logic
-        if (paymentMethod === 'wallet') {
+        if (normalizedPaymentMethod === 'wallet') {
             for (const item of orderItems) {
                 // Fetch product again to ensure secure discount application or use cached data if available
                 // We just verified products above, but need to check discount field
@@ -133,7 +223,7 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response, next
         }
 
         // Bank Transfer Discount (incentivized with ₦200)
-        if (paymentMethod === 'bank_transfer') {
+        if (normalizedPaymentMethod === 'bank_transfer') {
             discount += 200;
         }
 
@@ -201,7 +291,7 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response, next
             deliveryFee,
             discount,
             total,
-            paymentMethod,
+            paymentMethod: normalizedPaymentMethod,
             paymentStatus: 'pending',
             shippingAddress,
             couponCode: appliedCoupon?.code,
@@ -220,57 +310,20 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response, next
         const secretKey = process.env.PAYSTACK_SECRET_KEY || '';
         const isDevMode = !secretKey || secretKey === 'sk_test_placeholder';
 
-        if (paymentMethod === 'card' || paymentMethod === 'bank_transfer') {
+        if (normalizedPaymentMethod === 'card' || normalizedPaymentMethod === 'bank_transfer') {
             // In development mode with placeholder keys, skip payment initialization
             if (isDevMode) {
                 console.log('⚠️  DEV MODE: Skipping Paystack payment initialization (placeholder API key)');
                 console.log(`📦 Order created: ${orderNumber} | Total: ₦${total.toLocaleString()}`);
                 // For dev mode, we'll mark as paid immediately for testing
-                order.paymentStatus = 'paid';
-                order.paidAt = new Date();
-                order.paymentReference = `DEV-${Date.now()}`;
-
-                // Deduct stock immediately in dev mode
-                for (const item of order.items) {
-                    const product = await Product.findById(item.product);
-                    if (product) {
-                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                        const variantIndex = product.variants.findIndex((v: any) => v.sku === item.sku);
-                        if (variantIndex > -1) {
-                            const variant = product.variants[variantIndex];
-                            if (variant) {
-                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                (variant as any).stock -= item.quantity;
-                            }
-                        }
-                        await product.save();
-                    }
-                }
-
-                // Increment coupon usage
-                if ((order as any).couponCode) {
-                    await incrementCouponUsage((order as any).couponCode);
-                }
-
-                order.trackingEvents.push({
-                    status: 'processing',
-                    location: 'Local Debugger',
-                    message: 'Development override: Payment bypass active. Manifest validated.',
-                    timestamp: new Date()
+                await markOrderAsPaid({
+                    order,
+                    paymentReference: `DEV-${Date.now()}`,
+                    paymentStatusSource: 'Local Debugger',
+                    userIdForNotification: userId.toString(),
+                    notificationTitle: 'Payment Confirmed',
+                    notificationMessage: `Development override: Payment bypass active for order #${orderNumber}.`
                 });
-                await order.save();
-
-                // Update Loyalty Status
-                await (User as any).updateLoyaltyStatus(userId, order.total);
-
-                // Send In-App Notification
-                await notificationService.sendInApp(
-                    userId.toString(),
-                    'order_update',
-                    'Order Placed Successfully',
-                    `Your order #${orderNumber} has been placed and confirmed (Dev Mode).`,
-                    `/orders/${order._id}`
-                );
             } else {
                 // Production mode: Initialize real Paystack payment
                 try {
@@ -300,7 +353,7 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response, next
                     return;
                 }
             }
-        } else if (paymentMethod === 'wallet') {
+        } else if (normalizedPaymentMethod === 'wallet') {
             // Wallet Payment Logic
             const user = await User.findById(userId);
             if (!user) {
@@ -323,68 +376,74 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response, next
                 date: new Date()
             });
 
-            // 2. Update order status
-            order.paymentStatus = 'paid';
-            order.paidAt = new Date();
-            order.paymentReference = `WALLET-${Date.now()}`;
-            order.deliveryStatus = 'processing';
-            order.trackingEvents.push({
-                status: 'processing',
-                location: 'Secure Wallet',
-                message: 'Internal funds verified and debited. Order cleared for processing.',
-                timestamp: new Date()
-            });
-
-            order.markModified('trackingEvents');
-            await order.save();
-
-            // 3. Deduct Stock
-            for (const item of order.items) {
-                const product = await Product.findById(item.product);
-                if (product) {
-                    const variantIndex = product.variants.findIndex((v: any) => v.sku === item.sku);
-                    if (variantIndex > -1) {
-                        const variant = product.variants[variantIndex];
-                        if (variant) {
-                            (variant as any).stock -= item.quantity;
-                        }
-                    }
-                    await product.save();
-                }
-            }
-
-            // Increment coupon usage
-            if ((order as any).couponCode) {
-                await incrementCouponUsage((order as any).couponCode);
-            }
-
             await user.save({ validateBeforeSave: false });
-            await order.save();
+            await markOrderAsPaid({
+                order,
+                paymentReference: `WALLET-${Date.now()}`,
+                paymentStatusSource: 'Secure Wallet',
+                userIdForNotification: userId.toString(),
+                notificationTitle: 'Order Paid via Wallet',
+                notificationMessage: `Your order #${orderNumber} has been paid successfully using your wallet balance.`
+            });
+        } else if (normalizedPaymentMethod === 'afriexchange') {
+            if (!isAfriExchangeEnabled()) {
+                await Order.findByIdAndDelete(order._id);
+                res.status(400).json({ status: 'fail', message: 'AfriExchange payments are not enabled yet' });
+                return;
+            }
 
-            // 4. Update Loyalty Status
-            await (User as any).updateLoyaltyStatus(userId, order.total);
+            try {
+                const afriExchangePayment = await createAfriExchangePaymentRequest({
+                    amount: total,
+                    tokenType: process.env.AFRIEXCHANGE_DEFAULT_TOKEN_TYPE || 'CT',
+                    description: `PlugNG Order ${orderNumber}`,
+                    customerEmail: req.user.email,
+                    reference: orderNumber
+                });
 
-            // 5. Send Notification
-            await notificationService.sendInApp(
-                userId.toString(),
-                'order_update',
-                'Order Paid via Wallet',
-                `Your order #${orderNumber} has been paid successfully using your wallet balance.`,
-                `/orders/${order._id}`
-            );
+                order.afriExchange = {
+                    transactionId: afriExchangePayment.transaction_id,
+                    reference: orderNumber,
+                    paymentUrl: afriExchangePayment.payment_url,
+                    tokenType: afriExchangePayment.token_type || process.env.AFRIEXCHANGE_DEFAULT_TOKEN_TYPE || 'CT',
+                    amount: Number(afriExchangePayment.amount || total),
+                    status: 'payment.pending'
+                };
+                order.paymentReference = orderNumber;
+                await order.save();
+
+                paymentData = {
+                    authorization_url: afriExchangePayment.payment_url,
+                    reference: orderNumber,
+                    provider: 'afriexchange'
+                };
+            } catch (error: any) {
+                console.error('AfriExchange payment request error:', error.response?.data || error.message);
+                await Order.findByIdAndDelete(order._id);
+                res.status(500).json({ status: 'error', message: 'AfriExchange payment initialization failed' });
+                return;
+            }
         }
 
         // 5. Clear Cart
         await Cart.findOneAndDelete({ user: userId });
 
         // Send In-App Notification for order creation
-        if (paymentMethod !== 'card' && paymentMethod !== 'bank_transfer') {
+        if (normalizedPaymentMethod !== 'card' && normalizedPaymentMethod !== 'bank_transfer' && normalizedPaymentMethod !== 'afriexchange') {
             // Probably COD or other method not handled yet
             await notificationService.sendInApp(
                 userId.toString(),
                 'order_update',
                 'Order Placed',
                 `Your order #${orderNumber} has been placed.`,
+                `/orders/${order._id}`
+            );
+        } else if (normalizedPaymentMethod === 'afriexchange') {
+            await notificationService.sendInApp(
+                userId.toString(),
+                'order_update',
+                'AfriExchange Payment Started',
+                `Your order #${orderNumber} is waiting for AfriExchange payment confirmation.`,
                 `/orders/${order._id}`
             );
         } else if (!isDevMode) {
@@ -428,12 +487,7 @@ export const verifyPayment = async (req: Request, res: Response, next: NextFunct
         const isDevMode = !secretKey || secretKey === 'sk_test_placeholder' || process.env.NODE_ENV === 'development';
 
         // 1. First level check: Is this already a paid order in our DB?
-        let order = await Order.findOne({
-            $or: [
-                { orderNumber: reference as string },
-                { paymentReference: reference as string }
-            ]
-        });
+        let order = await findOrderByReference(reference as string);
 
         console.log(`🔍 [Verify] DB Lookup: ${order ? 'Found' : 'Not Found'} | Status: ${order?.paymentStatus}`);
 
@@ -443,53 +497,29 @@ export const verifyPayment = async (req: Request, res: Response, next: NextFunct
             return;
         }
 
+        if (order?.paymentMethod === 'afriexchange') {
+            res.status(202).json({
+                status: 'pending',
+                data: {
+                    order,
+                    provider: 'afriexchange'
+                }
+            });
+            return;
+        }
+
         // 2. Extra safety for Dev Mode: 
         if (order && isDevMode && (reference as string).startsWith('ORD-')) {
             console.log(`⚠️  [Verify] Dev Mode auto-confirm for ${reference}`);
             if (order.paymentStatus !== 'paid') {
-                order.paymentStatus = 'paid';
-                order.paidAt = new Date();
-                order.paymentReference = order.paymentReference || `DEV-${Date.now()}`;
-
-                for (const item of order.items) {
-                    const product = await Product.findById(item.product);
-                    if (product) {
-                        const variantIndex = product.variants.findIndex((v: any) => v.sku === item.sku);
-                        if (variantIndex > -1) {
-                            const variant = product.variants[variantIndex];
-                            if (variant) (variant as any).stock -= item.quantity;
-                        }
-                        await product.save();
-                    }
-                }
-
-                // Increment coupon usage
-                if ((order as any).couponCode) {
-                    await incrementCouponUsage((order as any).couponCode);
-                }
-
-                order.deliveryStatus = 'processing';
-                order.trackingEvents.push({
-                    status: 'processing',
-                    location: 'Payment Hook',
-                    message: 'Internal verification complete. Order moved to processing.',
-                    timestamp: new Date()
+                await markOrderAsPaid({
+                    order,
+                    paymentReference: order.paymentReference || `DEV-${Date.now()}`,
+                    paymentStatusSource: 'Payment Hook',
+                    userIdForNotification: order.user.toString(),
+                    notificationTitle: 'Payment Confirmed',
+                    notificationMessage: `Payment for order #${order.orderNumber} has been verified.`
                 });
-
-                order.markModified('trackingEvents');
-                await order.save();
-
-                // Update Loyalty Status
-                await (User as any).updateLoyaltyStatus(order.user, order.total);
-
-                // Send In-App Notification
-                await notificationService.sendInApp(
-                    order.user.toString(),
-                    'payment_success',
-                    'Payment Confirmed',
-                    `Payment for order #${order.orderNumber} has been verified.`,
-                    `/orders/${order._id}`
-                );
             }
             res.status(200).json({ status: 'success', data: { order: getVerificationOrderData(order) } });
             return;
@@ -511,60 +541,19 @@ export const verifyPayment = async (req: Request, res: Response, next: NextFunct
 
             if (data.status === 'success') {
                 if (!order) {
-                    order = await Order.findOne({
-                        $or: [
-                            { orderNumber: data.reference },
-                            { _id: data.reference }
-                        ]
-                    });
+                    order = await findOrderByReference(data.reference);
                 }
 
                 if (order) {
                     if (order.paymentStatus !== 'paid') {
-                        order.paymentStatus = 'paid';
-                        order.paidAt = new Date();
-                        order.paymentReference = data.id.toString();
-
-                        for (const item of order.items) {
-                            const product = await Product.findById(item.product);
-                            if (product) {
-                                const variantIndex = product.variants.findIndex((v: any) => v.sku === item.sku);
-                                if (variantIndex > -1) {
-                                    const variant = product.variants[variantIndex];
-                                    if (variant) {
-                                        (variant as any).stock -= item.quantity;
-                                    }
-                                }
-                                await product.save();
-                            }
-                        }
-
-                        // Increment coupon usage
-                        if ((order as any).couponCode) {
-                            await incrementCouponUsage((order as any).couponCode);
-                        }
-
-                        order.deliveryStatus = 'processing';
-                        order.trackingEvents.push({
-                            status: 'processing',
-                            location: 'Gate 7 Distribution',
-                            message: 'Security cleared. Payment confirmed. Transitioning to processing.',
-                            timestamp: new Date()
+                        await markOrderAsPaid({
+                            order,
+                            paymentReference: data.id.toString(),
+                            paymentStatusSource: 'Gate 7 Distribution',
+                            userIdForNotification: order.user.toString(),
+                            notificationTitle: 'Payment Confirmed',
+                            notificationMessage: `Payment for order #${order.orderNumber} has been verified successfully.`
                         });
-                        order.markModified('trackingEvents');
-                        await order.save();
-
-                        // Update Loyalty Status
-                        await (User as any).updateLoyaltyStatus(order.user, order.total);
-
-                        // Send In-App Notification
-                        await notificationService.sendInApp(
-                            order.user.toString(),
-                            'payment_success',
-                            'Payment Confirmed',
-                            `Payment for order #${order.orderNumber} has been verified successfully.`,
-                            `/orders/${order._id}`
-                        );
                     }
 
                     res.status(200).json({ status: 'success', data: { order: getVerificationOrderData(order) } });
@@ -582,6 +571,98 @@ export const verifyPayment = async (req: Request, res: Response, next: NextFunct
                 ? 'Payment is still pending. If Paystack charged you, please contact support with this reference.'
                 : 'Payment reference was not found. Please contact support with this reference.'
         });
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const handleAfriExchangeWebhook = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+        const rawBody = Buffer.isBuffer(req.body) ? req.body.toString('utf8') : JSON.stringify(req.body || {});
+        const timestamp = req.headers['x-afriexchange-timestamp'] as string | undefined;
+        const signature = req.headers['x-afriexchange-signature'] as string | undefined;
+
+        if (!verifyAfriExchangeWebhookSignature({ rawBody, timestamp, signature })) {
+            res.status(401).json({ status: 'fail', message: 'Invalid AfriExchange webhook signature' });
+            return;
+        }
+
+        const payload = JSON.parse(rawBody || '{}');
+        const eventType = payload?.event || payload?.type || 'unknown';
+        const eventId = payload?.id || payload?.event_id || payload?.data?.id || payload?.data?.event_id;
+        const data = payload?.data || {};
+        const reference =
+            data.reference ||
+            data.order_reference ||
+            data.metadata?.reference ||
+            payload?.reference;
+        const transactionId =
+            data.transaction_id ||
+            data.id ||
+            data.transaction?.id;
+
+        const orderFilters: Record<string, string>[] = [];
+        if (reference) {
+            orderFilters.push(
+                { orderNumber: reference },
+                { paymentReference: reference },
+                { 'afriExchange.reference': reference }
+            );
+        }
+        if (transactionId) {
+            orderFilters.push({ 'afriExchange.transactionId': String(transactionId) });
+        }
+
+        const order = orderFilters.length
+            ? await Order.findOne({ $or: orderFilters })
+            : null;
+
+        if (!order) {
+            res.status(200).json({ status: 'ignored', message: 'No matching order found' });
+            return;
+        }
+
+        order.afriExchange = {
+            ...(order.afriExchange || {}),
+            reference: order.afriExchange?.reference || reference || order.orderNumber,
+            transactionId: order.afriExchange?.transactionId || (transactionId ? String(transactionId) : undefined),
+            status: eventType,
+            lastWebhookEvent: eventType,
+            lastWebhookAt: new Date(),
+            webhookEvents: order.afriExchange?.webhookEvents || []
+        };
+
+        const webhookEvents = order.afriExchange.webhookEvents || [];
+
+        const alreadyProcessedEvent = eventId
+            ? webhookEvents.some((event: any) => event.eventId === String(eventId))
+            : false;
+
+        if (!alreadyProcessedEvent) {
+            webhookEvents.push({
+                eventId: eventId ? String(eventId) : undefined,
+                type: eventType,
+                receivedAt: new Date(),
+                status: order.paymentStatus
+            });
+        }
+        order.afriExchange.webhookEvents = webhookEvents;
+
+        if (eventType === 'collection.completed' && order.paymentStatus !== 'paid') {
+            order.afriExchange.verifiedAt = new Date();
+            await markOrderAsPaid({
+                order,
+                paymentReference: order.paymentReference || order.orderNumber,
+                paymentStatusSource: 'AfriExchange Webhook',
+                userIdForNotification: order.user.toString(),
+                notificationTitle: 'AfriExchange Payment Confirmed',
+                notificationMessage: `AfriExchange confirmed payment for order #${order.orderNumber}.`
+            });
+        } else {
+            await order.save();
+        }
+
+        res.status(200).json({ status: 'success' });
     } catch (error) {
         next(error);
     }

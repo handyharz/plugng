@@ -277,12 +277,12 @@ export const cartApi = {
 
 export const orderApi = {
     create: async (orderData: { shippingAddress: any; paymentMethod: string; couponCode?: string; callbackUrl?: string }) => {
-        const { data } = await api.post<{ status: string; data: { order: any; paymentUrl?: string; accessCode?: string; reference?: string } }>('/orders', orderData);
+        const { data } = await api.post<{ status: string; data: { order: any; paymentUrl?: string; accessCode?: string; reference?: string; provider?: string } }>('/orders', orderData);
         return data.data;
     },
     verify: async (reference: string) => {
-        const { data } = await api.get<{ status: string; data: { order: any } }>(`/orders/verify?reference=${encodeURIComponent(reference)}`);
-        return data.data.order;
+        const { data } = await api.get<{ status: string; data: { order: any; provider?: string } }>(`/orders/verify?reference=${encodeURIComponent(reference)}`);
+        return data;
     },
     getMyOrders: async (params?: { page: number; limit: number }) => {
         const { data } = await api.get<{

@@ -12,12 +12,14 @@ function SuccessContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const reference = searchParams.get('reference') || searchParams.get('trxref');
+    const provider = searchParams.get('provider');
     const { clearCart } = useCart();
 
     const [status, setStatus] = React.useState<'loading' | 'success' | 'failed'>('loading');
     const [errorMessage, setErrorMessage] = React.useState('We couldn\'t confirm your payment. Please contact support if you believe this is an error.');
     const [orderNumber, setOrderNumber] = React.useState<string | null>(null);
     const [countdown, setCountdown] = useState(5);
+    const [statusMessage, setStatusMessage] = useState('Verifying Transaction...');
     const hasRun = useRef(false);
 
     useEffect(() => {
@@ -25,22 +27,57 @@ function SuccessContent() {
         if (!reference || hasRun.current) return;
         hasRun.current = true;
 
-        orderApi.verify(reference)
-            .then((res: any) => {
-                // If it's already an order object, don't try to access .data
-                const orderData = res.order || res.data?.order || res;
-                setOrderNumber(orderData?.orderNumber || null);
+        let attempts = 0;
+        const maxAttempts = provider === 'afriexchange' ? 20 : 8;
 
-                // Clear cart only AFTER successful verification
-                clearCart();
-                setStatus('success');
-            })
-            .catch((err: any) => {
-                console.error('Verification failed', err);
-                setErrorMessage(err.response?.data?.message || err.message || 'Payment verification failed.');
+        const verify = async () => {
+            attempts += 1;
+
+            try {
+                const res: any = await orderApi.verify(reference);
+                const orderData = res?.data?.order;
+
+                if (orderData?.orderNumber) {
+                    setOrderNumber(orderData.orderNumber);
+                }
+
+                if (res?.status === 'success') {
+                    clearCart();
+                    setStatus('success');
+                    return;
+                }
+
+                if (res?.status === 'pending' && attempts < maxAttempts) {
+                    setStatusMessage(
+                        provider === 'afriexchange'
+                            ? 'Waiting for AfriExchange webhook confirmation...'
+                            : 'Payment is still being confirmed...'
+                    );
+                    window.setTimeout(verify, 2500);
+                    return;
+                }
+
+
                 setStatus('failed');
-            });
-    }, [reference, clearCart]);
+            } catch (err: any) {
+                console.error('Verification failed', err);
+
+                if (attempts < maxAttempts) {
+                    setStatusMessage(
+                        provider === 'afriexchange'
+                            ? 'Waiting for AfriExchange confirmation...'
+                            : 'Retrying payment verification...'
+                    );
+                    window.setTimeout(verify, 2500);
+                    return;
+                }
+
+                setStatus('failed');
+            }
+        };
+
+        verify();
+    }, [reference, provider, clearCart]);
 
     // Countdown and Auto-Redirect
     useEffect(() => {
@@ -56,7 +93,7 @@ function SuccessContent() {
         return (
             <div className="flex flex-col items-center justify-center space-y-4">
                 <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
-                <p className="text-slate-400 font-bold uppercase tracking-widest animate-pulse">Verifying Transaction...</p>
+                <p className="text-slate-400 font-bold uppercase tracking-widest animate-pulse">{statusMessage}</p>
             </div>
         );
     }

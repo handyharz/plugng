@@ -16,10 +16,27 @@ export interface IOrder extends Document {
     deliveryFee: number;
     discount: number;
     total: number;
-    paymentMethod: 'card' | 'bank_transfer' | 'wallet' | 'cash_on_delivery';
+    paymentMethod: 'card' | 'bank_transfer' | 'wallet' | 'cash_on_delivery' | 'afriexchange';
     paymentStatus: 'pending' | 'paid' | 'failed' | 'refunded';
     paymentReference?: string;
     paidAt?: Date;
+    afriExchange?: {
+        transactionId?: string;
+        reference?: string;
+        paymentUrl?: string;
+        tokenType?: string;
+        amount?: number;
+        status?: string;
+        lastWebhookEvent?: string;
+        lastWebhookAt?: Date;
+        verifiedAt?: Date;
+        webhookEvents?: {
+            eventId?: string;
+            type?: string;
+            receivedAt?: Date;
+            status?: string;
+        }[];
+    };
     shippingAddress: {
         fullName: string;
         phone: string;
@@ -64,7 +81,7 @@ const OrderSchema: Schema = new Schema({
     total: { type: Number, required: true },
     paymentMethod: {
         type: String,
-        enum: ['card', 'bank_transfer', 'wallet', 'cash_on_delivery'],
+        enum: ['card', 'bank_transfer', 'wallet', 'cash_on_delivery', 'afriexchange'],
         required: true
     },
     paymentStatus: {
@@ -74,6 +91,23 @@ const OrderSchema: Schema = new Schema({
     },
     paymentReference: { type: String },
     paidAt: { type: Date },
+    afriExchange: {
+        transactionId: { type: String },
+        reference: { type: String, index: true },
+        paymentUrl: { type: String },
+        tokenType: { type: String },
+        amount: { type: Number },
+        status: { type: String },
+        lastWebhookEvent: { type: String },
+        lastWebhookAt: { type: Date },
+        verifiedAt: { type: Date },
+        webhookEvents: [{
+            eventId: { type: String },
+            type: { type: String },
+            receivedAt: { type: Date, default: Date.now },
+            status: { type: String }
+        }]
+    },
     shippingAddress: {
         fullName: { type: String, required: true },
         phone: { type: String, required: true },

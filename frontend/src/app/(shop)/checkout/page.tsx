@@ -5,7 +5,7 @@ import { useCart, CartItem } from '@/context/CartContext';
 import { useCheckout } from '@/context/CheckoutContext';
 import { useAuth } from '@/context/AuthContext';
 import { UserAddress } from '@/lib/api';
-import { ArrowRight, Lock, MapPin, Phone, User as UserIcon, Loader2, Tag, XCircle, CheckCircle2 } from 'lucide-react';
+import { Lock, MapPin, Phone, User as UserIcon, Loader2, Tag, XCircle, CheckCircle2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { couponApi } from '@/lib/api';
@@ -19,15 +19,32 @@ interface ShippingDetails {
     landmark: string;
 }
 
+interface AppliedCoupon {
+    code: string;
+    type: 'percentage' | 'fixed';
+    value: number;
+    maxDiscountAmount?: number;
+}
+
+type ApiErrorShape = {
+    response?: {
+        data?: {
+            message?: string;
+        };
+    };
+    message?: string;
+};
+
 export default function CheckoutPage() {
     const { cart, totalAmount } = useCart();
     const { initiateCheckout, isProcessing } = useCheckout();
     const { user } = useAuth();
     const router = useRouter();
+    const afriExchangeEnabled = process.env.NEXT_PUBLIC_AFRIEXCHANGE_ENABLED === 'true';
 
-    const [paymentMethod, setPaymentMethod] = useState<'card' | 'wallet'>('card');
+    const [paymentMethod, setPaymentMethod] = useState<'card' | 'wallet' | 'afriexchange'>('card');
     const [couponCode, setCouponCode] = useState('');
-    const [appliedCoupon, setAppliedCoupon] = useState<any>(null);
+    const [appliedCoupon, setAppliedCoupon] = useState<AppliedCoupon | null>(null);
     const [couponError, setCouponError] = useState('');
     const [isValidatingCoupon, setIsValidatingCoupon] = useState(false);
 
@@ -83,8 +100,9 @@ export default function CheckoutPage() {
                 setCouponError(response.message || 'Invalid coupon');
                 setAppliedCoupon(null);
             }
-        } catch (error: any) {
-            setCouponError(error.response?.data?.message || 'Failed to validate coupon');
+        } catch (error: unknown) {
+            const apiError = error as ApiErrorShape;
+            setCouponError(apiError.response?.data?.message || apiError.message || 'Failed to validate coupon');
             setAppliedCoupon(null);
         } finally {
             setIsValidatingCoupon(false);
@@ -139,7 +157,7 @@ export default function CheckoutPage() {
                 </div>
                 <div className="space-y-2">
                     <h1 className="text-4xl font-black tracking-tighter uppercase italic">Your Plug is <span className="text-blue-500">Empty</span></h1>
-                    <p className="text-slate-500 max-w-xs mx-auto">Looks like you haven't secured any deals yet. Head back to the shop to find your next plug.</p>
+                    <p className="text-slate-500 max-w-xs mx-auto">Looks like you haven&apos;t secured any deals yet. Head back to the shop to find your next plug.</p>
                 </div>
                 <button
                     onClick={() => router.push('/')}
@@ -284,7 +302,7 @@ export default function CheckoutPage() {
                                 <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-1">
                                     Payment Method
                                 </label>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className={`grid grid-cols-1 gap-4 ${afriExchangeEnabled ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
                                     <button
                                         type="button"
                                         onClick={() => setPaymentMethod('card')}
@@ -336,10 +354,43 @@ export default function CheckoutPage() {
                                             </p>
                                         </div>
                                     </button>
+
+                                    {afriExchangeEnabled && (
+                                        <button
+                                            type="button"
+                                            onClick={() => setPaymentMethod('afriexchange')}
+                                            className={`p-6 rounded-3xl border-2 text-left transition-all duration-300 flex flex-col justify-between h-32 ${paymentMethod === 'afriexchange'
+                                                ? 'border-cyan-500 bg-cyan-500/10 scale-[1.02] shadow-lg shadow-cyan-500/10'
+                                                : 'border-white/10 bg-white/5 hover:border-white/30'
+                                                }`}
+                                        >
+                                            <div className="flex justify-between items-start">
+                                                <div className="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center">
+                                                    <Image src="/logo.png" alt="AfriExchange" width={20} height={20} className={paymentMethod === 'afriexchange' ? '' : 'opacity-50 grayscale'} />
+                                                </div>
+                                                {paymentMethod === 'afriexchange' && (
+                                                    <div className="w-4 h-4 rounded-full bg-cyan-500 flex items-center justify-center">
+                                                        <div className="w-2 h-2 rounded-full bg-white" />
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div>
+                                                <h4 className="font-black text-sm uppercase italic">AfriExchange CT</h4>
+                                                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+                                                    Hosted CT payment
+                                                </p>
+                                            </div>
+                                        </button>
+                                    )}
                                 </div>
                                 {paymentMethod === 'wallet' && user?.wallet?.balance !== undefined && user.wallet.balance < totalAmount && (
                                     <p className="text-[10px] font-black uppercase text-rose-500 pl-1 animate-pulse">
                                         ⚠️ Insufficient Balance. Please top up or use Card.
+                                    </p>
+                                )}
+                                {paymentMethod === 'afriexchange' && (
+                                    <p className="text-[10px] font-black uppercase text-cyan-400 pl-1">
+                                        You will be redirected to AfriExchange to complete secure CT payment.
                                     </p>
                                 )}
                             </div>
@@ -358,7 +409,11 @@ export default function CheckoutPage() {
                                     <>
                                         <Lock className="w-4 h-4" />
                                         <span>
-                                            {paymentMethod === 'wallet' ? 'Confirm Wallet Payment' : `Pay ${new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(finalTotal)}`}
+                                            {paymentMethod === 'wallet'
+                                                ? 'Confirm Wallet Payment'
+                                                : paymentMethod === 'afriexchange'
+                                                    ? 'Continue to AfriExchange'
+                                                    : `Pay ${new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(finalTotal)}`}
                                         </span>
                                     </>
                                 )}

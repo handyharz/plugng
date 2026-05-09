@@ -7,6 +7,7 @@ import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import { rateLimit } from 'express-rate-limit';
 import { Application, Request, Response, NextFunction } from 'express';
+import afriExchangeWebhookRoutes from './routes/afriExchangeWebhook.routes';
 
 const app: Application = express();
 
@@ -28,6 +29,7 @@ app.use(cors({
 app.use(morgan('dev'));
 app.use(compression());
 app.use(cookieParser());
+app.use('/api/v1/webhooks/afriexchange', express.raw({ type: 'application/json', limit: '1mb' }), afriExchangeWebhookRoutes);
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(mongoSanitize());
