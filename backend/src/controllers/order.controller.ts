@@ -102,43 +102,79 @@ const markOrderAsPaid = async ({
         order.paymentReference = paymentReference;
     }
     order.deliveryStatus = 'processing';
+    const paymentConfirmedAt = new Date();
     order.trackingEvents.push({
         status: 'processing',
         location: paymentStatusSource,
         message: notificationMessage,
-        timestamp: new Date()
+        timestamp: paymentConfirmedAt
     });
     order.markModified('trackingEvents');
 
-    for (const item of order.items) {
-        const product = await Product.findById(item.product);
-        if (!product) continue;
+    // Persist the payment state first so a downstream side-effect failure
+    // cannot leave a genuinely completed payment stuck in "pending".
+    await order.save();
 
-        const variantIndex = product.variants.findIndex((v: any) => v.sku === item.sku);
-        if (variantIndex > -1) {
-            const variant = product.variants[variantIndex];
-            if (variant) {
-                (variant as any).stock -= item.quantity;
+    for (const item of order.items) {
+        try {
+            const product = await Product.findById(item.product);
+            if (!product) {
+                console.warn(
+                    `[Order Payment] Product ${item.product} was not found while finalizing order ${order.orderNumber}`
+                );
+                continue;
             }
+
+            const variantIndex = product.variants.findIndex((v: any) => v.sku === item.sku);
+            if (variantIndex > -1) {
+                const variant = product.variants[variantIndex];
+                if (variant) {
+                    (variant as any).stock -= item.quantity;
+                }
+            }
+            await product.save();
+        } catch (error: any) {
+            console.error(
+                `[Order Payment] Failed to update stock for order ${order.orderNumber}:`,
+                error?.message || error
+            );
         }
-        await product.save();
     }
 
     if ((order as any).couponCode) {
-        await incrementCouponUsage((order as any).couponCode);
+        try {
+            await incrementCouponUsage((order as any).couponCode);
+        } catch (error: any) {
+            console.error(
+                `[Order Payment] Failed to increment coupon usage for order ${order.orderNumber}:`,
+                error?.message || error
+            );
+        }
     }
 
-    await order.save();
+    try {
+        await (User as any).updateLoyaltyStatus(order.user, order.total);
+    } catch (error: any) {
+        console.error(
+            `[Order Payment] Failed to update loyalty status for order ${order.orderNumber}:`,
+            error?.message || error
+        );
+    }
 
-    await (User as any).updateLoyaltyStatus(order.user, order.total);
-
-    await notificationService.sendInApp(
-        userIdForNotification,
-        'payment_success',
-        notificationTitle,
-        notificationMessage,
-        `/orders/${order._id}`
-    );
+    try {
+        await notificationService.sendInApp(
+            userIdForNotification,
+            'payment_success',
+            notificationTitle,
+            notificationMessage,
+            `/orders/${order._id}`
+        );
+    } catch (error: any) {
+        console.error(
+            `[Order Payment] Failed to send payment notification for order ${order.orderNumber}:`,
+            error?.message || error
+        );
+    }
 
     return order;
 };
