@@ -24,6 +24,24 @@ const getApiBaseUrl = () => {
     return (process.env.AFRIEXCHANGE_API_BASE_URL || 'https://afrix-iqvq.onrender.com/api/v1').replace(/\/+$/, '');
 };
 
+const normalizeReturnUrl = (value?: string) => {
+    const candidate = String(value || '').trim();
+
+    if (!candidate) {
+        return undefined;
+    }
+
+    try {
+        const parsed = new URL(candidate);
+        if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+            return undefined;
+        }
+        return parsed.toString();
+    } catch (_) {
+        return undefined;
+    }
+};
+
 const getMerchantHeaders = () => {
     const apiKey = process.env.AFRIEXCHANGE_MERCHANT_API_KEY;
 
@@ -49,6 +67,8 @@ export const createAfriExchangePaymentRequest = async ({
     reference,
     returnUrl
 }: CreatePaymentRequestInput): Promise<AfriExchangePaymentRequest> => {
+    const normalizedReturnUrl = normalizeReturnUrl(returnUrl);
+
     const response = await axios.post(
         `${getApiBaseUrl()}/merchants/payment-request`,
         {
@@ -57,7 +77,7 @@ export const createAfriExchangePaymentRequest = async ({
             description,
             customer_email: customerEmail,
             reference,
-            return_url: returnUrl
+            return_url: normalizedReturnUrl
         },
         {
             headers: getMerchantHeaders(),
