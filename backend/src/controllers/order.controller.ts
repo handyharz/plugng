@@ -479,7 +479,10 @@ export const createOrder = async (req: AuthenticatedRequest, res: Response, next
                         ? `PlugNG Order ${orderNumber} (${total} NGN, quoted ${xofQuote.amount} XOF)`
                         : `PlugNG Order ${orderNumber}`,
                     customerEmail: req.user.email,
-                    reference: orderNumber
+                    reference: orderNumber,
+                    returnUrl:
+                        process.env.AFRIEXCHANGE_RETURN_URL ||
+                        `${process.env.FRONTEND_URL || 'http://localhost:3000'}/checkout/success?provider=afriexchange`
                 });
 
                 order.afriExchange = {
@@ -867,7 +870,10 @@ export const retryAfriExchangePayment = async (req: AuthenticatedRequest, res: R
                     ? `PlugNG Order ${order.orderNumber} (${order.total} NGN, quoted ${quote.settlement_amount} XOF)`
                     : `PlugNG Order ${order.orderNumber}`,
                 customerEmail: req.user.email,
-                reference: order.orderNumber
+                reference: order.orderNumber,
+                returnUrl:
+                    process.env.AFRIEXCHANGE_RETURN_URL ||
+                    `${process.env.FRONTEND_URL || 'http://localhost:3000'}/checkout/success?provider=afriexchange`
             });
         } catch (error: any) {
             console.error(

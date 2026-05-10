@@ -7,6 +7,7 @@ type CreatePaymentRequestInput = {
     description: string;
     customerEmail: string;
     reference: string;
+    returnUrl?: string;
 };
 
 type AfriExchangePaymentRequest = {
@@ -45,7 +46,8 @@ export const createAfriExchangePaymentRequest = async ({
     tokenType,
     description,
     customerEmail,
-    reference
+    reference,
+    returnUrl
 }: CreatePaymentRequestInput): Promise<AfriExchangePaymentRequest> => {
     const response = await axios.post(
         `${getApiBaseUrl()}/merchants/payment-request`,
@@ -54,7 +56,8 @@ export const createAfriExchangePaymentRequest = async ({
             token_type: tokenType,
             description,
             customer_email: customerEmail,
-            reference
+            reference,
+            return_url: returnUrl
         },
         {
             headers: getMerchantHeaders(),
