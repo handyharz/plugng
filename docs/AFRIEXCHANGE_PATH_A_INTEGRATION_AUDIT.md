@@ -1,6 +1,6 @@
 # PlugNG x AfriExchange Path A Audit
 
-Date: May 9, 2026
+Date: May 10, 2026
 
 Related follow-up docs:
 
@@ -9,47 +9,60 @@ Related follow-up docs:
 
 ## Summary
 
-`plugng-shop` is not yet integrated with AfriExchange Path A.
+`plugng-shop` is now integrated with AfriExchange Path A using the hosted buyer checkout model.
 
 The current payment stack is:
 
 - `card` via Paystack initialization in the PlugNG backend
 - `wallet` via PlugNG internal wallet balance
-- `bank_transfer` exists in the backend business logic, but is not currently exposed as a checkout option in the shop frontend
+- `afriexchange` for supported XOF-country checkout via hosted AfriExchange payment page
 
-Path A can be added cleanly, but it needs both checkout-contract work and a webhook/reconciliation path before we should test against the live AfriExchange merchant platform.
+The AfriExchange rollout now includes:
+
+- checkout payment-method gating by buyer country
+- AfriExchange payment request creation from PlugNG backend
+- hosted buyer redirect to AfriExchange `/pay/:transactionId`
+- buyer return redirect back to PlugNG success page
+- signed webhook verification
+- webhook-driven order reconciliation
+- pending-order resume / retry behavior
+- admin visibility for AfriExchange orders and revenue
 
 ## What Exists Today
 
 ### Frontend checkout
 
-The shop checkout page only exposes two payment methods:
+The shop checkout page is now provider-aware.
 
-- `card`
-- `wallet`
+Current checkout behavior:
+
+- `NG` buyer country shows `card` and `wallet`
+- supported XOF buyer countries show `AfriExchange`
 
 References:
 
 - [frontend/src/app/(shop)/checkout/page.tsx](../frontend/src/app/(shop)/checkout/page.tsx)
 - [frontend/src/context/CheckoutContext.tsx](../frontend/src/context/CheckoutContext.tsx)
 
-Current flow:
+Current hosted AfriExchange flow:
 
-1. User selects payment method on the checkout page.
+1. Buyer selects XOF shipping country and `AfriExchange`.
 2. Frontend calls `orderApi.create(...)`.
-3. Backend creates a pending order.
-4. Backend either:
-   - redirects to Paystack for `card`
-   - debits PlugNG wallet immediately for `wallet`
+3. Backend creates a pending order and creates AfriExchange payment request.
+4. Frontend redirects buyer to the returned hosted `paymentUrl`.
+5. Buyer logs in and pays on AfriExchange hosted page.
+6. AfriExchange redirects buyer back to PlugNG success page.
+7. PlugNG waits for signed webhook confirmation before showing final success.
 
 ### Backend order flow
 
-The backend order controller currently supports:
+The backend order controller now supports:
 
 - `card`
 - `bank_transfer`
 - `wallet`
-- `cash_on_delivery` in the schema enum
+- `cash_on_delivery`
+- `afriexchange`
 
 References:
 
@@ -60,92 +73,80 @@ References:
 Important current behavior:
 
 1. Orders are created with `paymentStatus: 'pending'`.
-2. `card` and `bank_transfer` both go through Paystack initialization.
+2. `card` and `bank_transfer` use Paystack flow.
 3. `wallet` is settled immediately inside PlugNG.
-4. Payment verification is currently fallback/polling style through `GET /api/v1/orders/verify`.
+4. `afriexchange` creates hosted payment request and stays pending until webhook reconciliation.
+5. Success page polls `GET /api/v1/orders/verify` and waits for order state transition to `paid`.
 
 ### Webhook surface
 
-There is no AfriExchange webhook receiver route in the backend today.
+PlugNG now has a dedicated AfriExchange webhook receiver route:
 
-There also does not appear to be a dedicated Paystack webhook route mounted in `app.ts`, despite the project docs mentioning one.
+- `POST /api/v1/webhooks/afriexchange`
 
 References:
 
 - [backend/src/app.ts](../backend/src/app.ts)
+This is the core merchant-side reconciliation surface required by Path A.
 
-This matters because Path A relies on merchant-side webhook delivery for reconciliation.
+## What Was Added During Integration
 
-## Gaps Before Path A Testing
+### 1. AfriExchange payment method in checkout UI
 
-These are the main gaps we need to close before PlugNG can act as a proper Path A merchant.
-
-### 1. No AfriExchange payment method in checkout UI
-
-The checkout page state is currently typed as:
-
-- `'card' | 'wallet'`
-
-Reference:
+Implemented in:
 
 - [frontend/src/app/(shop)/checkout/page.tsx](../frontend/src/app/(shop)/checkout/page.tsx)
 
-So users cannot choose AfriExchange yet.
+### 2. AfriExchange order-init path in backend
 
-### 2. No AfriExchange order-init path in backend
-
-The backend currently initializes:
-
-- Paystack for `card` / `bank_transfer`
-- internal wallet debit for `wallet`
-
-There is no `afriexchange` branch that:
-
-- creates an AfriExchange merchant payment request
-- stores the returned AfriExchange request/reference
-- returns the AfriExchange `payment_url` to the frontend
-
-Reference:
+Implemented in:
 
 - [backend/src/controllers/order.controller.ts](../backend/src/controllers/order.controller.ts)
+- [backend/src/services/afriExchangeService.ts](../backend/src/services/afriExchangeService.ts)
 
-### 3. No AfriExchange webhook verification/reconciliation
+### 3. Signed webhook verification and reconciliation
 
-Path A requires PlugNG to receive AfriExchange webhook events and reconcile the related order idempotently.
+Implemented in:
 
-Current missing pieces:
+- [backend/src/routes/afriExchangeWebhook.routes.ts](../backend/src/routes/afriExchangeWebhook.routes.ts)
+- [backend/src/controllers/order.controller.ts](../backend/src/controllers/order.controller.ts)
+- [backend/src/app.ts](../backend/src/app.ts)
 
-- webhook route
-- signature verification
-- event persistence / audit log
-- idempotency guard
-- order update logic for duplicate or retried events
+### 4. AfriExchange-specific order metadata
 
-### 4. No AfriExchange-specific order metadata
-
-The current `Order` model does not have a structured place for AfriExchange merchant fields such as:
-
-- AfriExchange payment request id
-- AfriExchange reference
-- AfriExchange webhook event id
-- AfriExchange settlement / collection status snapshot
-
-Reference:
+Implemented in:
 
 - [backend/src/models/Order.ts](../backend/src/models/Order.ts)
 
-### 5. Success page is Paystack-style, not provider-aware
+Stored fields now include:
 
-The existing success page assumes the current verification model and does not yet distinguish:
+- transaction id
+- reference
+- payment URL
+- token type
+- amount
+- quote
+- status
+- last webhook event
+- last webhook timestamp
+- verified timestamp
+- webhook event history
 
-- `provider=paystack`
-- `provider=afriexchange`
+### 5. Provider-aware success page
 
-Reference:
+Implemented in:
 
 - [frontend/src/app/(shop)/checkout/success/page.tsx](../frontend/src/app/(shop)/checkout/success/page.tsx)
 
-## Recommended Path A Contract For PlugNG
+### 6. Pending-payment resume flow
+
+Implemented in:
+
+- customer orders list
+- customer order detail
+- backend retry endpoint for AfriExchange hosted payment refresh
+
+## Final Path A Contract For PlugNG
 
 To keep this integration clean, PlugNG should treat AfriExchange as a separate external payment rail.
 
@@ -162,101 +163,38 @@ This should be added consistently to:
 - order schema enum
 - admin reporting filters
 
-### Suggested backend env vars
+### Backend env vars
 
 Use these as the core Path A config:
 
 - `AFRIEXCHANGE_ENABLED`
 - `AFRIEXCHANGE_API_BASE_URL`
 - `AFRIEXCHANGE_MERCHANT_API_KEY`
-- `AFRIEXCHANGE_MERCHANT_ID`
 - `AFRIEXCHANGE_WEBHOOK_SECRET`
-- `AFRIEXCHANGE_WEBHOOK_URL`
 - `AFRIEXCHANGE_RETURN_URL`
+- `FRONTEND_URL`
 
-### Suggested order metadata shape
+## What Was Hardened During Rollout
 
-Add an `afriExchange` object to the order model with fields like:
+These were real rollout fixes, not just planned design ideas:
 
-- `paymentRequestId`
-- `reference`
-- `paymentUrl`
-- `status`
-- `lastWebhookEvent`
-- `lastWebhookAt`
-- `verifiedAt`
+1. Hosted buyer payment page support on AfriExchange.
+2. Buyer return redirect support using merchant `return_url`.
+3. URL sanitization fixes for stored `return_url`.
+4. Idempotent merchant payment request reuse by `reference`.
+5. Public access to pending hosted payment requests on AfriExchange.
+6. PlugNG success-page waiting logic for webhook confirmation.
+7. Pending-order resume and retry support.
+8. Webhook reconciliation hardening so non-critical side effects do not keep completed payments stuck in `pending`.
 
-This avoids overloading generic `paymentReference`.
+## Remaining Optional Work
 
-### Suggested backend route additions
+Path A is now implemented.
 
-Recommended new internal surfaces:
+What remains is mostly operational or product polish:
 
-- `POST /api/v1/orders`
-  - accept `paymentMethod: 'afriexchange'`
-  - create PlugNG order in `pending`
-  - call AfriExchange merchant API to create a payment request
-  - store AfriExchange request metadata on the order
-  - return `paymentUrl`
-
-- `POST /api/v1/webhooks/afriexchange`
-  - verify signature
-  - find order by AfriExchange request id / reference
-  - process `collection.completed`
-  - mark order paid idempotently
-  - deduct stock once
-
-- `GET /api/v1/orders/verify?reference=...`
-  - should become provider-aware
-  - for AfriExchange, prefer internal order state already updated by webhook
-
-## Suggested Implementation Order
-
-### Phase 1: Safe staging
-
-1. Add env templates.
-2. Add `afriexchange` to shared payment method types.
-3. Add order-model metadata fields for AfriExchange.
-4. Add feature flag so the UI can stay off until backend is ready.
-
-### Phase 2: Backend contract
-
-1. Build AfriExchange service wrapper in PlugNG backend.
-2. Extend `createOrder` with `paymentMethod === 'afriexchange'`.
-3. Add webhook route and signature verification.
-4. Add idempotent order settlement logic.
-
-### Phase 3: Frontend checkout
-
-1. Add AfriExchange payment tile to checkout.
-2. Show provider-specific copy for CT checkout.
-3. Redirect user to AfriExchange `payment_url`.
-4. Make success page provider-aware.
-
-### Phase 4: Proving the flow
-
-1. Create a dedicated PlugNG pilot customer.
-2. Create a PlugNG order using `afriexchange`.
-3. Complete payment through AfriExchange.
-4. Confirm webhook receipt.
-5. Confirm PlugNG order becomes `paid`.
-6. Confirm stock deducted once.
-7. Confirm order history and admin surfaces show correct status.
-
-## High-Priority Findings
-
-1. The checkout frontend is still hard-coded to `card | wallet`, so Path A is impossible from the UI today.
-2. The backend has no AfriExchange init branch and no merchant webhook endpoint.
-3. The current order verification model is Paystack-oriented and should not be reused blindly for AfriExchange.
-4. The backend docs mention webhook behavior that is not clearly present in the mounted route tree, so we should trust the live code over the docs during implementation.
-
-## Recommended Next Step
-
-The next practical step is to implement the backend Path A contract first:
-
-1. order metadata support
-2. AfriExchange service wrapper
-3. `paymentMethod: 'afriexchange'` order creation path
-4. webhook receiver
+1. dedicated AfriExchange collections reporting page in PlugNG admin
+2. richer stale-pending / expiry policy
+3. future linked-wallet checkout mode
 
 Only after that should we expose the AfriExchange payment option in the PlugNG checkout UI.

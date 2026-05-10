@@ -16,10 +16,12 @@ Flow:
 
 1. Buyer selects `AfriExchange` in PlugNG checkout.
 2. PlugNG creates an AfriExchange payment request.
-3. Buyer is redirected to AfriExchange.
-4. Buyer completes payment there.
-5. AfriExchange sends webhook back to PlugNG.
-6. PlugNG marks the order paid.
+3. Buyer is redirected to AfriExchange hosted payment page `/pay/:transactionId`.
+4. Buyer logs in there with a normal AfriExchange buyer account.
+5. Buyer completes payment there.
+6. AfriExchange redirects buyer back to PlugNG success page.
+7. AfriExchange sends webhook back to PlugNG.
+8. PlugNG marks the order paid after webhook confirmation.
 
 Benefits:
 
@@ -32,6 +34,7 @@ Tradeoffs:
 
 - buyer leaves PlugNG to complete payment
 - repeat checkout is less seamless than a linked-wallet flow
+- buyer success state depends on webhook reconciliation, not just redirect return
 
 ## Mode B
 
@@ -72,6 +75,7 @@ Why:
 - it matches standard Path A merchant behavior
 - it is already integrated
 - it is easier to test and support
+- it now has hosted return flow and pending-order resume support
 
 ### Phase 2
 
