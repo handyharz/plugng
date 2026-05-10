@@ -311,6 +311,17 @@ export const orderApi = {
     getById: async (id: string) => {
         const { data } = await api.get<{ status: string; data: { order: any } }>(`/orders/${id}`);
         return data.data.order;
+    },
+    retryAfriExchangePayment: async (id: string) => {
+        const { data } = await api.post<{
+            status: string;
+            data: {
+                paymentUrl?: string;
+                reference?: string;
+                provider?: string;
+            };
+        }>(`/orders/${id}/afriexchange/retry`);
+        return data.data;
     }
 };
 

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { orderApi } from '@/lib/api';
 import {
     Package, ChevronRight, Clock, CheckCircle2,
-    AlertCircle, ShoppingBag, ChevronLeft
+    AlertCircle, ShoppingBag, ChevronLeft, ExternalLink
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -15,6 +15,7 @@ export default function OrdersPage() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [totalOrders, setTotalOrders] = useState(0);
+    const [retryingOrderId, setRetryingOrderId] = useState<string | null>(null);
     const limit = 5;
 
     const fetchOrders = async (page: number) => {
@@ -35,6 +36,22 @@ export default function OrdersPage() {
     useEffect(() => {
         fetchOrders(currentPage);
     }, [currentPage]);
+
+    const handleContinuePayment = async (orderId: string) => {
+        setRetryingOrderId(orderId);
+        try {
+            const data = await orderApi.retryAfriExchangePayment(orderId);
+            if (!data.paymentUrl) {
+                throw new Error('No payment URL returned');
+            }
+            window.location.assign(data.paymentUrl);
+        } catch (error) {
+            console.error('Failed to continue AfriExchange payment:', error);
+            alert('We could not refresh your AfriExchange payment link. Please try again.');
+        } finally {
+            setRetryingOrderId(null);
+        }
+    };
 
     if (isLoading && orders.length === 0) {
         return (
@@ -151,13 +168,28 @@ export default function OrdersPage() {
                                                 <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Total Amount</p>
                                                 <p className="text-3xl font-black text-white italic">₦{order.total.toLocaleString()}</p>
                                             </div>
-                                            <Link
-                                                href={`/orders/${order._id}`}
-                                                className="inline-flex items-center space-x-2 text-[10px] font-black uppercase tracking-widest text-blue-500 hover:text-blue-400 transition-colors group-hover:translate-x-1 duration-300"
-                                            >
-                                                <span>View Details</span>
-                                                <ChevronRight size={14} />
-                                            </Link>
+                                            <div className="flex flex-col items-end gap-3">
+                                                {order.paymentMethod === 'afriexchange' &&
+                                                    order.paymentStatus === 'pending' &&
+                                                    order.afriExchange?.paymentUrl && (
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => handleContinuePayment(order._id)}
+                                                            disabled={retryingOrderId === order._id}
+                                                            className="inline-flex items-center space-x-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-[10px] font-black uppercase tracking-widest text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+                                                        >
+                                                            <span>{retryingOrderId === order._id ? 'Refreshing...' : 'Continue Payment'}</span>
+                                                            <ExternalLink size={14} />
+                                                        </button>
+                                                    )}
+                                                <Link
+                                                    href={`/orders/${order._id}`}
+                                                    className="inline-flex items-center space-x-2 text-[10px] font-black uppercase tracking-widest text-blue-500 hover:text-blue-400 transition-colors group-hover:translate-x-1 duration-300"
+                                                >
+                                                    <span>View Details</span>
+                                                    <ChevronRight size={14} />
+                                                </Link>
+                                            </div>
                                         </div>
                                     </div>
 

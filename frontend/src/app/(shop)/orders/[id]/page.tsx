@@ -16,6 +16,7 @@ export default function OrderDetailsPage() {
     const router = useRouter();
     const [order, setOrder] = useState<any>(null);
     const [loading, setLoading] = useState(true);
+    const [isRefreshingPayment, setIsRefreshingPayment] = useState(false);
 
     useEffect(() => {
         const fetchOrder = async () => {
@@ -69,6 +70,28 @@ export default function OrderDetailsPage() {
         }
     };
 
+    const isPendingAfriExchange =
+        order?.paymentMethod === 'afriexchange' &&
+        order?.paymentStatus === 'pending' &&
+        order?.afriExchange?.paymentUrl;
+
+    const handleContinuePayment = async () => {
+        if (!order?._id) return;
+        setIsRefreshingPayment(true);
+        try {
+            const data = await orderApi.retryAfriExchangePayment(order._id);
+            if (!data.paymentUrl) {
+                throw new Error('No payment URL returned');
+            }
+            window.location.assign(data.paymentUrl);
+        } catch (error) {
+            console.error('Failed to continue AfriExchange payment:', error);
+            alert('We could not refresh your AfriExchange payment link. Please try again.');
+        } finally {
+            setIsRefreshingPayment(false);
+        }
+    };
+
     return (
         <div className="max-w-5xl mx-auto px-6 pt-10 pb-32 space-y-12">
             {/* Header */}
@@ -101,8 +124,39 @@ export default function OrderDetailsPage() {
                         <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Total Amount</p>
                         <p className="text-3xl font-black text-white italic">₦{order.total.toLocaleString()}</p>
                     </div>
+                    {isPendingAfriExchange && (
+                        <button
+                            type="button"
+                            onClick={handleContinuePayment}
+                            disabled={isRefreshingPayment}
+                            className="px-5 py-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-emerald-400 text-[10px] font-black uppercase tracking-widest hover:bg-emerald-500/20 transition-colors inline-flex items-center gap-2"
+                        >
+                            <span>{isRefreshingPayment ? 'Refreshing...' : 'Continue Payment'}</span>
+                            <ExternalLink size={14} />
+                        </button>
+                    )}
                 </div>
             </div>
+
+            {isPendingAfriExchange && (
+                <div className="glass-card bg-emerald-500/5 border border-emerald-500/20 rounded-[2rem] p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div className="space-y-1">
+                        <p className="text-[10px] font-black text-emerald-400 uppercase tracking-[0.2em]">AfriExchange Payment Pending</p>
+                        <p className="text-sm text-slate-300">
+                            Your payment request has already been created. You can continue and complete payment on AfriExchange.
+                        </p>
+                    </div>
+                    <button
+                        type="button"
+                        onClick={handleContinuePayment}
+                        disabled={isRefreshingPayment}
+                        className="px-5 py-3 bg-white text-black rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-200 transition-colors inline-flex items-center gap-2"
+                    >
+                        <span>{isRefreshingPayment ? 'Refreshing...' : 'Continue Payment'}</span>
+                        <ExternalLink size={14} />
+                    </button>
+                </div>
+            )}
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 {/* Left Column: Tracking & Items */}
@@ -245,6 +299,22 @@ export default function OrderDetailsPage() {
                                 <div className="space-y-1 bg-black/20 p-4 rounded-xl border border-white/5">
                                     <p className="text-[8px] font-black text-slate-600 uppercase tracking-widest">Transaction Ref</p>
                                     <p className="text-[10px] font-mono font-bold text-slate-400 break-all">{order.paymentReference}</p>
+                                </div>
+                            )}
+                            {order.paymentMethod === 'afriexchange' && order.afriExchange && (
+                                <div className="space-y-3 bg-black/20 p-4 rounded-xl border border-white/5">
+                                    <div>
+                                        <p className="text-[8px] font-black text-slate-600 uppercase tracking-widest">Provider Status</p>
+                                        <p className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">
+                                            {order.afriExchange.status || 'payment.pending'}
+                                        </p>
+                                    </div>
+                                    {order.afriExchange.reference && (
+                                        <div>
+                                            <p className="text-[8px] font-black text-slate-600 uppercase tracking-widest">AfriExchange Reference</p>
+                                            <p className="text-[10px] font-mono font-bold text-slate-400 break-all">{order.afriExchange.reference}</p>
+                                        </div>
+                                    )}
                                 </div>
                             )}
                         </div>

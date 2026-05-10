@@ -1,7 +1,7 @@
 
 import express, { Router } from 'express';
 import { protect } from '../middleware/auth.middleware';
-import { createOrder, verifyPayment, getMyOrders, getOrderById } from '../controllers/order.controller';
+import { createOrder, verifyPayment, getMyOrders, getOrderById, retryAfriExchangePayment } from '../controllers/order.controller';
 
 const router: Router = express.Router();
 
@@ -13,6 +13,7 @@ router.use(protect);
 
 router.post('/', createOrder);
 router.get('/my-orders', getMyOrders);
+router.post('/:id/afriexchange/retry', retryAfriExchangePayment);
 router.get('/:id', getOrderById);
 
 export default router;

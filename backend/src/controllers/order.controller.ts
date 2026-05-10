@@ -821,3 +821,80 @@ export const getOrderById = async (req: AuthenticatedRequest, res: Response, nex
         next(error);
     }
 };
+
+export const retryAfriExchangePayment = async (req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<void> => {
+    try {
+        const userId = req.user._id || req.user.id;
+        const order = await Order.findOne({ _id: req.params.id, user: userId });
+
+        if (!order) {
+            res.status(404).json({ status: 'fail', message: 'Order not found' });
+            return;
+        }
+
+        if (order.paymentMethod !== 'afriexchange') {
+            res.status(400).json({ status: 'fail', message: 'This order does not use AfriExchange checkout' });
+            return;
+        }
+
+        if (order.paymentStatus === 'paid') {
+            res.status(400).json({ status: 'fail', message: 'This order has already been paid' });
+            return;
+        }
+
+        if (!isAfriExchangeEnabled()) {
+            res.status(400).json({ status: 'fail', message: 'AfriExchange payments are not enabled yet' });
+            return;
+        }
+
+        const quote = order.afriExchange?.quote;
+        const tokenType = order.afriExchange?.tokenType || process.env.AFRIEXCHANGE_DEFAULT_TOKEN_TYPE || 'CT';
+        const amount = Number(order.afriExchange?.amount || quote?.settlement_amount || order.total);
+
+        if (!Number.isFinite(amount) || amount <= 0) {
+            res.status(400).json({ status: 'fail', message: 'Unable to regenerate AfriExchange payment request for this order' });
+            return;
+        }
+
+        const refreshedPayment = await createAfriExchangePaymentRequest({
+            amount,
+            tokenType,
+            description: quote
+                ? `PlugNG Order ${order.orderNumber} (${order.total} NGN, quoted ${quote.settlement_amount} XOF)`
+                : `PlugNG Order ${order.orderNumber}`,
+            customerEmail: req.user.email,
+            reference: order.orderNumber
+        });
+
+        order.afriExchange = {
+            ...(order.afriExchange || {}),
+            transactionId: refreshedPayment.transaction_id || order.afriExchange?.transactionId,
+            reference: order.afriExchange?.reference || order.orderNumber,
+            paymentUrl: refreshedPayment.payment_url || order.afriExchange?.paymentUrl,
+            tokenType: refreshedPayment.token_type || tokenType,
+            amount: Number(refreshedPayment.amount || amount),
+            status: 'payment.pending'
+        };
+
+        order.paymentReference = order.orderNumber;
+        order.trackingEvents.push({
+            status: 'pending',
+            location: 'AfriExchange Checkout',
+            message: 'AfriExchange payment link refreshed for this order.',
+            timestamp: new Date()
+        });
+        order.markModified('trackingEvents');
+        await order.save();
+
+        res.status(200).json({
+            status: 'success',
+            data: {
+                paymentUrl: order.afriExchange.paymentUrl,
+                reference: order.orderNumber,
+                provider: 'afriexchange'
+            }
+        });
+    } catch (error) {
+        next(error);
+    }
+};
