@@ -113,7 +113,7 @@ const markOrderAsPaid = async ({
 
     // Persist the payment state first so a downstream side-effect failure
     // cannot leave a genuinely completed payment stuck in "pending".
-    await order.save();
+    await order.save({ validateBeforeSave: false });
 
     for (const item of order.items) {
         try {
@@ -761,18 +761,32 @@ export const handleAfriExchangeWebhook = async (req: Request, res: Response, nex
             return;
         }
 
+        const existingAfriExchange =
+            typeof (order.afriExchange as any)?.toObject === 'function'
+                ? (order.afriExchange as any).toObject()
+                : (order.afriExchange || {});
+
+        const existingWebhookEvents = Array.isArray(existingAfriExchange?.webhookEvents)
+            ? existingAfriExchange.webhookEvents.map((event: any) => ({
+                eventId: event?.eventId,
+                type: event?.type,
+                receivedAt: event?.receivedAt,
+                status: event?.status
+            }))
+            : [];
+
         const nextAfriExchange: Record<string, unknown> = {
-            ...(order.afriExchange || {}),
-            reference: order.afriExchange?.reference || reference || order.orderNumber,
-            transactionId: order.afriExchange?.transactionId || (transactionId ? String(transactionId) : undefined),
+            ...existingAfriExchange,
+            reference: existingAfriExchange?.reference || reference || order.orderNumber,
+            transactionId: existingAfriExchange?.transactionId || (transactionId ? String(transactionId) : undefined),
             status: eventType,
             lastWebhookEvent: eventType,
             lastWebhookAt: new Date(),
-            webhookEvents: order.afriExchange?.webhookEvents || []
+            webhookEvents: existingWebhookEvents
         };
 
-        if (order.afriExchange?.quote) {
-            nextAfriExchange.quote = order.afriExchange.quote;
+        if (existingAfriExchange?.quote) {
+            nextAfriExchange.quote = existingAfriExchange.quote;
         }
 
         const afriExchangeState = nextAfriExchange as any;
@@ -805,11 +819,12 @@ export const handleAfriExchangeWebhook = async (req: Request, res: Response, nex
                 notificationMessage: `AfriExchange confirmed payment for order #${order.orderNumber}.`
             });
         } else {
-            await order.save();
+            await order.save({ validateBeforeSave: false });
         }
 
         res.status(200).json({ status: 'success' });
     } catch (error) {
+        console.error('[AfriExchange Webhook] Failed to process webhook:', error);
         next(error);
     }
 };
