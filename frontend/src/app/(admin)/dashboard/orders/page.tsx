@@ -12,6 +12,7 @@ export default function OrdersPage() {
     const [page, setPage] = useState(1);
     const [status, setStatus] = useState('all');
     const [paymentStatus, setPaymentStatus] = useState('all');
+    const [paymentMethod, setPaymentMethod] = useState('all');
     const [search, setSearch] = useState('');
     const [debouncedSearch, setDebouncedSearch] = useState('');
 
@@ -86,12 +87,13 @@ export default function OrdersPage() {
     };
 
     const { data: ordersData, isLoading } = useQuery({
-        queryKey: ['adminOrders', page, status, paymentStatus, debouncedSearch],
+        queryKey: ['adminOrders', page, status, paymentStatus, paymentMethod, debouncedSearch],
         queryFn: () => getAllOrders({
             page,
             limit: 20,
             deliveryStatus: status === 'all' ? undefined : status,
             paymentStatus: paymentStatus === 'all' ? undefined : paymentStatus,
+            paymentMethod: paymentMethod === 'all' ? undefined : paymentMethod,
             search: debouncedSearch
         })
     });
@@ -110,6 +112,15 @@ export default function OrdersPage() {
         { label: 'Paid', value: 'paid' },
         { label: 'Unpaid', value: 'pending' },
         { label: 'Failed', value: 'failed' }
+    ];
+
+    const paymentMethodFilters = [
+        { label: 'All Rails', value: 'all' },
+        { label: 'Card', value: 'card' },
+        { label: 'Wallet', value: 'wallet' },
+        { label: 'AfriExchange', value: 'afriexchange' },
+        { label: 'Bank Transfer', value: 'bank_transfer' },
+        { label: 'COD', value: 'cash_on_delivery' }
     ];
 
     return (
@@ -161,6 +172,25 @@ export default function OrdersPage() {
                             }}
                             className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-tight transition-all whitespace-nowrap ${paymentStatus === filter.value
                                 ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20'
+                                : 'bg-slate-900 border border-white/10 text-slate-500 hover:text-white hover:bg-white/5'
+                                }`}
+                        >
+                            {filter.label}
+                        </button>
+                    ))}
+                </div>
+
+                <div className="flex overflow-x-auto pb-2 lg:pb-0 gap-2 no-scrollbar items-center">
+                    <span className="text-[10px] font-black uppercase text-slate-600 mr-2 tracking-widest">Rail</span>
+                    {paymentMethodFilters.map((filter) => (
+                        <button
+                            key={filter.value}
+                            onClick={() => {
+                                setPaymentMethod(filter.value);
+                                setPage(1);
+                            }}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-tight transition-all whitespace-nowrap ${paymentMethod === filter.value
+                                ? 'bg-violet-600 text-white shadow-lg shadow-violet-500/20'
                                 : 'bg-slate-900 border border-white/10 text-slate-500 hover:text-white hover:bg-white/5'
                                 }`}
                         >

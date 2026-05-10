@@ -33,6 +33,7 @@ export const getAllOrders = async (params?: {
     limit?: number;
     paymentStatus?: string;
     deliveryStatus?: string;
+    paymentMethod?: string;
     search?: string;
 }) => {
     const queryParams = new URLSearchParams();
@@ -40,6 +41,7 @@ export const getAllOrders = async (params?: {
     if (params?.limit) queryParams.append('limit', params.limit.toString());
     if (params?.paymentStatus) queryParams.append('paymentStatus', params.paymentStatus);
     if (params?.deliveryStatus) queryParams.append('deliveryStatus', params.deliveryStatus);
+    if (params?.paymentMethod) queryParams.append('paymentMethod', params.paymentMethod);
     if (params?.search) queryParams.append('search', params.search);
 
     const response = await api.get(`/admin/orders?${queryParams.toString()}`);

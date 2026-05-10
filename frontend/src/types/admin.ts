@@ -34,12 +34,39 @@ export interface AdminOrder {
         phone: string;
         address: string;
         city: string;
+        country?: string;
         state: string;
         landmark?: string;
     };
     paymentStatus: 'pending' | 'paid' | 'failed' | 'refunded';
     deliveryStatus: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
     paymentMethod: string;
+    paymentReference?: string;
+    paidAt?: string;
+    afriExchange?: {
+        transactionId?: string;
+        reference?: string;
+        paymentUrl?: string;
+        tokenType?: string;
+        amount?: number;
+        quote?: {
+            source_currency?: string;
+            source_amount?: number;
+            settlement_currency?: string;
+            settlement_amount?: number;
+            exchange_rate?: number;
+        };
+        status?: string;
+        lastWebhookEvent?: string;
+        lastWebhookAt?: string;
+        verifiedAt?: string;
+        webhookEvents?: {
+            eventId?: string;
+            type?: string;
+            receivedAt?: string;
+            status?: string;
+        }[];
+    };
     adminNote?: string;
     trackingEvents: {
         status: string;

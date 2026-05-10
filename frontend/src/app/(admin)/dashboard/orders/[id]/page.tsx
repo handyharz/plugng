@@ -142,6 +142,12 @@ export default function OrderDetailPage() {
         });
     };
 
+    const formatPaymentMethod = (method?: string) => {
+        if (!method) return 'Unknown';
+        if (method === 'afriexchange') return 'AfriExchange';
+        return method.replace(/_/g, ' ');
+    };
+
     return (
         <div className="p-8 mx-auto">
             {/* Header */}
@@ -287,6 +293,67 @@ export default function OrderDetailPage() {
                             </div>
                         </div>
                     </div>
+
+                    {typedOrder.paymentMethod === 'afriexchange' && typedOrder.afriExchange && (
+                        <div className="bg-slate-900 border border-emerald-500/20 rounded-xl overflow-hidden">
+                            <div className="p-6 border-b border-emerald-500/10">
+                                <h3 className="font-bold text-white flex items-center gap-2">
+                                    <CreditCard className="w-5 h-5 text-emerald-400" />
+                                    AfriExchange Payment Details
+                                </h3>
+                            </div>
+                            <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="bg-slate-950/50 border border-white/5 rounded-lg p-4">
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Payment Method</p>
+                                    <p className="text-white font-bold">{formatPaymentMethod(typedOrder.paymentMethod)}</p>
+                                </div>
+                                <div className="bg-slate-950/50 border border-white/5 rounded-lg p-4">
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Provider Status</p>
+                                    <p className="text-white font-bold">{typedOrder.afriExchange.status || typedOrder.paymentStatus || 'pending'}</p>
+                                </div>
+                                <div className="bg-slate-950/50 border border-white/5 rounded-lg p-4">
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Collection Reference</p>
+                                    <p className="text-white font-mono text-sm break-all">{typedOrder.afriExchange.reference || typedOrder.paymentReference || 'N/A'}</p>
+                                </div>
+                                <div className="bg-slate-950/50 border border-white/5 rounded-lg p-4">
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Transaction ID</p>
+                                    <p className="text-white font-mono text-sm break-all">{typedOrder.afriExchange.transactionId || 'N/A'}</p>
+                                </div>
+                                <div className="bg-slate-950/50 border border-white/5 rounded-lg p-4">
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Token / Amount</p>
+                                    <p className="text-white font-bold">
+                                        {typedOrder.afriExchange.amount ? `${typedOrder.afriExchange.amount} ${typedOrder.afriExchange.tokenType || ''}`.trim() : 'N/A'}
+                                    </p>
+                                </div>
+                                <div className="bg-slate-950/50 border border-white/5 rounded-lg p-4">
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Last Webhook</p>
+                                    <p className="text-white font-bold">{typedOrder.afriExchange.lastWebhookEvent || 'N/A'}</p>
+                                    {typedOrder.afriExchange.lastWebhookAt && (
+                                        <p className="text-xs text-slate-500 mt-1">{formatDate(typedOrder.afriExchange.lastWebhookAt)}</p>
+                                    )}
+                                </div>
+                                {typedOrder.afriExchange.quote && (
+                                    <div className="md:col-span-2 bg-slate-950/50 border border-white/5 rounded-lg p-4">
+                                        <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2">Settlement Quote</p>
+                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                                            <div>
+                                                <span className="text-slate-500">Source</span>
+                                                <p className="text-white font-bold">{typedOrder.afriExchange.quote.source_amount || 0} {typedOrder.afriExchange.quote.source_currency || 'NGN'}</p>
+                                            </div>
+                                            <div>
+                                                <span className="text-slate-500">Settlement</span>
+                                                <p className="text-white font-bold">{typedOrder.afriExchange.quote.settlement_amount || 0} {typedOrder.afriExchange.quote.settlement_currency || typedOrder.afriExchange.tokenType || 'CT'}</p>
+                                            </div>
+                                            <div>
+                                                <span className="text-slate-500">Exchange Rate</span>
+                                                <p className="text-white font-bold">{typedOrder.afriExchange.quote.exchange_rate || 'N/A'}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    )}
                 </div>
 
                 {/* Sidebar */}
@@ -359,6 +426,10 @@ export default function OrderDetailPage() {
                         ) : (
                             <div className="space-y-4">
                                 <div>
+                                    <p className="text-xs text-slate-500 uppercase font-bold tracking-wider mb-1">Payment Rail</p>
+                                    <p className="text-white font-medium capitalize">{formatPaymentMethod(typedOrder.paymentMethod)}</p>
+                                </div>
+                                <div>
                                     <p className="text-xs text-slate-500 uppercase font-bold tracking-wider mb-1">Status</p>
                                     <div className="flex items-center gap-2">
                                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium border ${typedOrder.deliveryStatus === 'delivered' ? 'bg-green-500/10 text-green-400 border-green-500/20' :
@@ -415,7 +486,7 @@ export default function OrderDetailPage() {
                                 <div className="text-sm text-slate-300 leading-relaxed pl-6 border-l-2 border-slate-800">
                                     <p>{typedOrder.shippingAddress.fullName}</p>
                                     <p>{typedOrder.shippingAddress.address}</p>
-                                    <p>{typedOrder.shippingAddress.city}, {typedOrder.shippingAddress.state}</p>
+                                    <p>{typedOrder.shippingAddress.city}, {typedOrder.shippingAddress.state}{typedOrder.shippingAddress.country ? `, ${typedOrder.shippingAddress.country}` : ''}</p>
                                     {typedOrder.shippingAddress.landmark && <p>{typedOrder.shippingAddress.landmark}</p>}
                                     <p className="mt-1">{typedOrder.shippingAddress.phone}</p>
                                 </div>

@@ -8,7 +8,11 @@ import {
     TrendingUp,
     TrendingDown,
     Minus,
-    AlertCircle
+    AlertCircle,
+    CreditCard,
+    CheckCircle2,
+    Clock3,
+    XCircle
 } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import MetricCard from '@/components/admin/dashboard/MetricCard';
@@ -65,6 +69,12 @@ export default function AdminDashboard() {
             growth: 0,
             byMethod: {},
             byDeliveryStatus: {}
+        },
+        afriExchange: {
+            paidOrders: 0,
+            paidRevenue: 0,
+            pendingOrders: 0,
+            failedOrders: 0
         },
         orders: { total: 0, byStatus: {}, avgValue: 0 },
         products: { total: 0, active: 0, outOfStock: 0 },
@@ -124,6 +134,45 @@ export default function AdminDashboard() {
                         change="Lost opportunities"
                         changeType="negative"
                         icon={TrendingDown}
+                        iconColor="text-red-400 bg-red-500/10"
+                    />
+                </div>
+            </div>
+
+            {/* AfriExchange Overview */}
+            <div className="mb-6">
+                <h2 className="text-xl font-semibold text-white mb-4">AfriExchange Overview (This Month)</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                    <MetricCard
+                        title="AfriExchange Revenue"
+                        value={formatCurrency(stats.afriExchange?.paidRevenue || 0)}
+                        change={`${stats.afriExchange?.paidOrders || 0} paid orders`}
+                        changeType="positive"
+                        icon={CreditCard}
+                        iconColor="text-emerald-400 bg-emerald-500/10"
+                    />
+                    <MetricCard
+                        title="AfriExchange Paid"
+                        value={stats.afriExchange?.paidOrders || 0}
+                        change="Completed collections"
+                        changeType="positive"
+                        icon={CheckCircle2}
+                        iconColor="text-green-400 bg-green-500/10"
+                    />
+                    <MetricCard
+                        title="AfriExchange Pending"
+                        value={stats.afriExchange?.pendingOrders || 0}
+                        change="Awaiting payment completion"
+                        changeType="neutral"
+                        icon={Clock3}
+                        iconColor="text-amber-400 bg-amber-500/10"
+                    />
+                    <MetricCard
+                        title="AfriExchange Failed"
+                        value={stats.afriExchange?.failedOrders || 0}
+                        change="Needs review or retry"
+                        changeType={(stats.afriExchange?.failedOrders || 0) > 0 ? 'negative' : 'neutral'}
+                        icon={XCircle}
                         iconColor="text-red-400 bg-red-500/10"
                     />
                 </div>

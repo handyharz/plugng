@@ -2,6 +2,11 @@
 
 Date: May 9, 2026
 
+Related follow-up docs:
+
+- [PLUGNG_AFRIEXCHANGE_INTEGRATION_GUIDE.md](./PLUGNG_AFRIEXCHANGE_INTEGRATION_GUIDE.md)
+- [PLUGNG_AFRIEXCHANGE_CHECKOUT_MODES.md](./PLUGNG_AFRIEXCHANGE_CHECKOUT_MODES.md)
+
 ## Summary
 
 `plugng-shop` is not yet integrated with AfriExchange Path A.

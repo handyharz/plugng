@@ -68,6 +68,12 @@ export default function OrdersTable({ orders, isLoading, onBulkStatusUpdate }: O
         });
     };
 
+    const formatPaymentMethod = (method?: string) => {
+        if (!method) return 'Unknown';
+        if (method === 'afriexchange') return 'AfriExchange';
+        return method.replace(/_/g, ' ');
+    };
+
     const getStatusBadge = (status: string, type: 'payment' | 'delivery') => {
         if (type === 'payment') {
             switch (status) {
@@ -170,7 +176,12 @@ export default function OrdersTable({ orders, isLoading, onBulkStatusUpdate }: O
                                     <span className="text-slate-500 text-xs ml-1">({order.items.length} items)</span>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    {getStatusBadge(order.paymentStatus, 'payment')}
+                                    <div className="space-y-2">
+                                        {getStatusBadge(order.paymentStatus, 'payment')}
+                                        <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                                            {formatPaymentMethod(order.paymentMethod)}
+                                        </div>
+                                    </div>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     {getStatusBadge(order.deliveryStatus, 'delivery')}

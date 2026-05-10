@@ -81,6 +81,18 @@ export const getDashboardStats = async (_req: Request, res: Response) => {
                 return acc;
             }, {} as Record<string, { revenue: number; count: number }>);
 
+        const afriExchangeOrders = thisMonthOrders.filter(o => o.paymentMethod === 'afriexchange');
+        const afriExchangePaidOrders = afriExchangeOrders.filter(o => o.paymentStatus === 'paid');
+        const afriExchangePendingOrders = afriExchangeOrders.filter(o => o.paymentStatus === 'pending');
+        const afriExchangeFailedOrders = afriExchangeOrders.filter(o => o.paymentStatus === 'failed');
+
+        const afriExchangeSummary = {
+            paidOrders: afriExchangePaidOrders.length,
+            paidRevenue: afriExchangePaidOrders.reduce((sum, order) => sum + order.total, 0),
+            pendingOrders: afriExchangePendingOrders.length,
+            failedOrders: afriExchangeFailedOrders.length
+        };
+
         // Get total orders by delivery status (all payment statuses)
         const orderStats = await Order.aggregate([
             {
@@ -135,6 +147,7 @@ export const getDashboardStats = async (_req: Request, res: Response) => {
                     byMethod: revenueByMethod,
                     byDeliveryStatus: revenueByDeliveryStatus
                 },
+                afriExchange: afriExchangeSummary,
                 orders: {
                     total: ordersByStatus.pending + ordersByStatus.processing + ordersByStatus.shipped + ordersByStatus.delivered,
                     byStatus: ordersByStatus,
@@ -412,7 +425,7 @@ export const getAllOrders = async (req: Request, res: Response) => {
         const limit = parseInt(req.query.limit as string) || 20;
         const skip = (page - 1) * limit;
 
-        const { status, deliveryStatus, paymentStatus, startDate, endDate, search } = req.query;
+        const { status, deliveryStatus, paymentStatus, paymentMethod, startDate, endDate, search } = req.query;
 
         const query: any = {};
 
@@ -423,6 +436,10 @@ export const getAllOrders = async (req: Request, res: Response) => {
 
         if (paymentStatus && paymentStatus !== 'all') {
             query.paymentStatus = paymentStatus;
+        }
+
+        if (paymentMethod && paymentMethod !== 'all') {
+            query.paymentMethod = paymentMethod;
         }
 
         if (startDate || endDate) {
@@ -1509,7 +1526,8 @@ export const getWalletPaymentComparison = async (_req: Request, res: Response) =
             wallet: { orders: 0, revenue: 0, avgValue: 0 },
             card: { orders: 0, revenue: 0, avgValue: 0 },
             bank_transfer: { orders: 0, revenue: 0, avgValue: 0 },
-            cash_on_delivery: { orders: 0, revenue: 0, avgValue: 0 }
+            cash_on_delivery: { orders: 0, revenue: 0, avgValue: 0 },
+            afriexchange: { orders: 0, revenue: 0, avgValue: 0 }
         };
 
         comparison.forEach(item => {
