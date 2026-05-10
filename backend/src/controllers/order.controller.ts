@@ -608,17 +608,6 @@ export const verifyPayment = async (req: Request, res: Response, next: NextFunct
             return;
         }
 
-        if (order?.paymentMethod === 'afriexchange') {
-            res.status(202).json({
-                status: 'pending',
-                data: {
-                    order,
-                    provider: 'afriexchange'
-                }
-            });
-            return;
-        }
-
         // 2. Extra safety for Dev Mode: 
         if (order && isDevMode && (reference as string).startsWith('ORD-')) {
             console.log(`⚠️  [Verify] Dev Mode auto-confirm for ${reference}`);
@@ -682,98 +671,6 @@ export const verifyPayment = async (req: Request, res: Response, next: NextFunct
                 ? 'Payment is still pending. If Paystack charged you, please contact support with this reference.'
                 : 'Payment reference was not found. Please contact support with this reference.'
         });
-    } catch (error) {
-        next(error);
-    }
-};
-
-export const handleAfriExchangeWebhook = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    try {
-        const rawBody = Buffer.isBuffer(req.body) ? req.body.toString('utf8') : JSON.stringify(req.body || {});
-        const timestamp = req.headers['x-afriexchange-timestamp'] as string | undefined;
-        const signature = req.headers['x-afriexchange-signature'] as string | undefined;
-
-        if (!verifyAfriExchangeWebhookSignature({ rawBody, timestamp, signature })) {
-            res.status(401).json({ status: 'fail', message: 'Invalid AfriExchange webhook signature' });
-            return;
-        }
-
-        const payload = JSON.parse(rawBody || '{}');
-        const eventType = payload?.event || payload?.type || 'unknown';
-        const eventId = payload?.id || payload?.event_id || payload?.data?.id || payload?.data?.event_id;
-        const data = payload?.data || {};
-        const reference =
-            data.reference ||
-            data.order_reference ||
-            data.metadata?.reference ||
-            payload?.reference;
-        const transactionId =
-            data.transaction_id ||
-            data.id ||
-            data.transaction?.id;
-
-        const orderFilters: Record<string, string>[] = [];
-        if (reference) {
-            orderFilters.push(
-                { orderNumber: reference },
-                { paymentReference: reference },
-                { 'afriExchange.reference': reference }
-            );
-        }
-        if (transactionId) {
-            orderFilters.push({ 'afriExchange.transactionId': String(transactionId) });
-        }
-
-        const order = orderFilters.length
-            ? await Order.findOne({ $or: orderFilters })
-            : null;
-
-        if (!order) {
-            res.status(200).json({ status: 'ignored', message: 'No matching order found' });
-            return;
-        }
-
-        order.afriExchange = {
-            ...(order.afriExchange || {}),
-            reference: order.afriExchange?.reference || reference || order.orderNumber,
-            transactionId: order.afriExchange?.transactionId || (transactionId ? String(transactionId) : undefined),
-            status: eventType,
-            lastWebhookEvent: eventType,
-            lastWebhookAt: new Date(),
-            webhookEvents: order.afriExchange?.webhookEvents || []
-        };
-
-        const webhookEvents = order.afriExchange.webhookEvents || [];
-
-        const alreadyProcessedEvent = eventId
-            ? webhookEvents.some((event: any) => event.eventId === String(eventId))
-            : false;
-
-        if (!alreadyProcessedEvent) {
-            webhookEvents.push({
-                eventId: eventId ? String(eventId) : undefined,
-                type: eventType,
-                receivedAt: new Date(),
-                status: order.paymentStatus
-            });
-        }
-        order.afriExchange.webhookEvents = webhookEvents;
-
-        if (eventType === 'collection.completed' && order.paymentStatus !== 'paid') {
-            order.afriExchange.verifiedAt = new Date();
-            await markOrderAsPaid({
-                order,
-                paymentReference: order.paymentReference || order.orderNumber,
-                paymentStatusSource: 'AfriExchange Webhook',
-                userIdForNotification: order.user.toString(),
-                notificationTitle: 'AfriExchange Payment Confirmed',
-                notificationMessage: `AfriExchange confirmed payment for order #${order.orderNumber}.`
-            });
-        } else {
-            await order.save();
-        }
-
-        res.status(200).json({ status: 'success' });
     } catch (error) {
         next(error);
     }
