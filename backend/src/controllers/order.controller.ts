@@ -850,21 +850,58 @@ export const retryAfriExchangePayment = async (req: AuthenticatedRequest, res: R
         const quote = order.afriExchange?.quote;
         const tokenType = order.afriExchange?.tokenType || process.env.AFRIEXCHANGE_DEFAULT_TOKEN_TYPE || 'CT';
         const amount = Number(order.afriExchange?.amount || quote?.settlement_amount || order.total);
+        const existingPaymentUrl = order.afriExchange?.paymentUrl;
 
         if (!Number.isFinite(amount) || amount <= 0) {
             res.status(400).json({ status: 'fail', message: 'Unable to regenerate AfriExchange payment request for this order' });
             return;
         }
 
-        const refreshedPayment = await createAfriExchangePaymentRequest({
-            amount,
-            tokenType,
-            description: quote
-                ? `PlugNG Order ${order.orderNumber} (${order.total} NGN, quoted ${quote.settlement_amount} XOF)`
-                : `PlugNG Order ${order.orderNumber}`,
-            customerEmail: req.user.email,
-            reference: order.orderNumber
-        });
+        let refreshedPayment;
+
+        try {
+            refreshedPayment = await createAfriExchangePaymentRequest({
+                amount,
+                tokenType,
+                description: quote
+                    ? `PlugNG Order ${order.orderNumber} (${order.total} NGN, quoted ${quote.settlement_amount} XOF)`
+                    : `PlugNG Order ${order.orderNumber}`,
+                customerEmail: req.user.email,
+                reference: order.orderNumber
+            });
+        } catch (error: any) {
+            console.error(
+                'AfriExchange retry payment request error:',
+                error.response?.data || error.message
+            );
+
+            if (existingPaymentUrl) {
+                order.trackingEvents.push({
+                    status: 'pending',
+                    location: 'AfriExchange Checkout',
+                    message: 'Reused the previous AfriExchange payment link after refresh failed.',
+                    timestamp: new Date()
+                });
+                order.markModified('trackingEvents');
+                await order.save();
+
+                res.status(200).json({
+                    status: 'success',
+                    data: {
+                        paymentUrl: existingPaymentUrl,
+                        reference: order.orderNumber,
+                        provider: 'afriexchange'
+                    }
+                });
+                return;
+            }
+
+            res.status(502).json({
+                status: 'fail',
+                message: error.response?.data?.message || 'Unable to refresh AfriExchange payment link right now'
+            });
+            return;
+        }
 
         order.afriExchange = {
             ...(order.afriExchange || {}),
