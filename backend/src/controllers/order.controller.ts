@@ -725,7 +725,7 @@ export const handleAfriExchangeWebhook = async (req: Request, res: Response, nex
             return;
         }
 
-        order.afriExchange = {
+        const nextAfriExchange: Record<string, unknown> = {
             ...(order.afriExchange || {}),
             reference: order.afriExchange?.reference || reference || order.orderNumber,
             transactionId: order.afriExchange?.transactionId || (transactionId ? String(transactionId) : undefined),
@@ -735,7 +735,14 @@ export const handleAfriExchangeWebhook = async (req: Request, res: Response, nex
             webhookEvents: order.afriExchange?.webhookEvents || []
         };
 
-        const webhookEvents = order.afriExchange.webhookEvents || [];
+        if (order.afriExchange?.quote) {
+            nextAfriExchange.quote = order.afriExchange.quote;
+        }
+
+        const afriExchangeState = nextAfriExchange as any;
+        order.afriExchange = afriExchangeState;
+
+        const webhookEvents = afriExchangeState.webhookEvents || [];
 
         const alreadyProcessedEvent = eventId
             ? webhookEvents.some((event: any) => event.eventId === String(eventId))
@@ -749,10 +756,10 @@ export const handleAfriExchangeWebhook = async (req: Request, res: Response, nex
                 status: order.paymentStatus
             });
         }
-        order.afriExchange.webhookEvents = webhookEvents;
+        afriExchangeState.webhookEvents = webhookEvents;
 
         if (eventType === 'collection.completed' && order.paymentStatus !== 'paid') {
-            order.afriExchange.verifiedAt = new Date();
+            afriExchangeState.verifiedAt = new Date();
             await markOrderAsPaid({
                 order,
                 paymentReference: order.paymentReference || order.orderNumber,
