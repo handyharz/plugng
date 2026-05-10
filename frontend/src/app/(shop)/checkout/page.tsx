@@ -52,7 +52,7 @@ const NIGERIA_STATES = ['Lagos', 'Abuja', 'Rivers'];
 const NGN_TO_XOF_RATE = Number(process.env.NEXT_PUBLIC_NGN_TO_XOF_RATE || '0');
 export default function CheckoutPage() {
     const { cart, totalAmount } = useCart();
-    const { initiateCheckout, isProcessing } = useCheckout();
+    const { initiateCheckout, isProcessing, processingMessage, redirectUrl } = useCheckout();
     const { user } = useAuth();
     const router = useRouter();
     const afriExchangeEnabled = process.env.NEXT_PUBLIC_AFRIEXCHANGE_ENABLED === 'true';
@@ -188,8 +188,40 @@ export default function CheckoutPage() {
                     <h1 className="text-2xl font-black uppercase italic tracking-tighter text-white animate-pulse">
                         Securing <span className="text-blue-500">Transaction</span>
                     </h1>
-                    <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">Bridging to Secure Gateway...</p>
+                    <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">{processingMessage}</p>
                 </div>
+                {redirectUrl && (
+                    <button
+                        type="button"
+                        onClick={() => window.location.assign(redirectUrl)}
+                        className="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-xs font-black uppercase tracking-widest hover:bg-white/10 transition-all"
+                    >
+                        Continue to Payment
+                    </button>
+                )}
+                <p className="text-[10px] text-slate-600 font-bold uppercase tracking-widest text-center max-w-xs">
+                    If redirect is slow, stay on this page or use the button above.
+                </p>
+            </div>
+        );
+    }
+
+    if (!isProcessing && redirectUrl) {
+        return (
+            <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center space-y-6 px-6 text-center">
+                <div className="space-y-2">
+                    <h1 className="text-2xl font-black uppercase italic tracking-tighter text-white">
+                        Redirect <span className="text-blue-500">Ready</span>
+                    </h1>
+                    <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">{processingMessage}</p>
+                </div>
+                <button
+                    type="button"
+                    onClick={() => window.location.assign(redirectUrl)}
+                    className="px-6 py-3 bg-white text-black rounded-xl text-xs font-black uppercase tracking-widest hover:bg-slate-200 transition-all"
+                >
+                    Continue to Payment
+                </button>
             </div>
         );
     }
