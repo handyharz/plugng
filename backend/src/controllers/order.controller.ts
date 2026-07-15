@@ -918,6 +918,7 @@ export const retryAfriExchangePayment = async (req: AuthenticatedRequest, res: R
             return;
         }
 
+        const newReference = `${order.orderNumber}-retry-${Date.now()}`;
         let refreshedPayment;
 
         try {
@@ -928,7 +929,7 @@ export const retryAfriExchangePayment = async (req: AuthenticatedRequest, res: R
                     ? `PlugNG Order ${order.orderNumber} (${order.total} NGN, quoted ${quote.settlement_amount} XOF)`
                     : `PlugNG Order ${order.orderNumber}`,
                 customerEmail: req.user.email,
-                reference: order.orderNumber,
+                reference: newReference,
                 returnUrl:
                     process.env.AFRIEXCHANGE_RETURN_URL ||
                     `${process.env.FRONTEND_URL || 'http://localhost:3000'}/checkout/success?provider=afriexchange`
@@ -970,7 +971,7 @@ export const retryAfriExchangePayment = async (req: AuthenticatedRequest, res: R
         order.afriExchange = {
             ...(order.afriExchange || {}),
             transactionId: refreshedPayment.transaction_id || order.afriExchange?.transactionId,
-            reference: order.afriExchange?.reference || order.orderNumber,
+            reference: newReference,
             paymentUrl: refreshedPayment.payment_url || order.afriExchange?.paymentUrl,
             tokenType: refreshedPayment.token_type || tokenType,
             amount: Number(refreshedPayment.amount || amount),
