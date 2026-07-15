@@ -248,7 +248,7 @@ export default function CheckoutPage() {
 
     return (
         <div className="min-h-screen bg-black text-white pt-3 pb-20 px-4 md:px-8">
-            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
 
                 {/* Left: Shipping Form */}
                 <div className="space-y-8">

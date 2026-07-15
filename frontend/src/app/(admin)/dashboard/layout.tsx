@@ -20,13 +20,15 @@ import {
     ArrowLeft,
     MonitorIcon,
     Star,
-    Wallet
+    Wallet,
+    CreditCard
 } from 'lucide-react';
 
 const storeNav = [
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
     { name: 'Products', href: '/dashboard/products', icon: Package },
     { name: 'Orders', href: '/dashboard/orders', icon: ShoppingCart },
+    { name: 'Transactions', href: '/dashboard/transactions', icon: CreditCard },
     { name: 'Wallet', href: '/dashboard/wallet', icon: Wallet },
     { name: 'Inventory', href: '/dashboard/inventory', icon: Boxes },
     { name: 'Categories', href: '/dashboard/categories', icon: MonitorIcon },

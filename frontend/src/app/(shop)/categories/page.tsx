@@ -38,7 +38,7 @@ export default function CategoriesPage() {
 
     if (isLoading) {
         return (
-            <div className="min-h-screen pt-3 px-6 max-w-7xl mx-auto space-y-12">
+            <div className="min-h-screen pt-3 px-6 max-w-[1440px] mx-auto space-y-12">
                 <div className="h-12 w-64 bg-white/5 animate-pulse rounded-2xl" />
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -50,7 +50,7 @@ export default function CategoriesPage() {
     }
 
     return (
-        <div className="min-h-screen pt-3 pb-20 px-6 max-w-7xl mx-auto">
+        <div className="min-h-screen pt-3 pb-20 px-6 max-w-[1440px] mx-auto">
             {/* Cinematic Header */}
             <div className="mb-16 space-y-4 relative">
                 <div className="absolute -top-20 -left-20 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />

@@ -55,7 +55,7 @@ export default function OrdersPage() {
 
     if (isLoading && orders.length === 0) {
         return (
-            <div className="max-w-7xl mx-auto px-6 py-12 space-y-8">
+            <div className="max-w-[1440px] mx-auto px-6 py-12 space-y-8">
                 <div className="h-12 w-48 bg-white/5 animate-pulse rounded-xl" />
                 <div className="space-y-4">
                     {[1, 2, 3].map((i) => (
@@ -67,7 +67,7 @@ export default function OrdersPage() {
     }
 
     return (
-        <div className="max-w-7xl mx-auto px-6 pt-3 pb-32 space-y-12">
+        <div className="max-w-[1440px] mx-auto px-6 pt-3 pb-32 space-y-12">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div className="space-y-2">
                     <h1 className="text-5xl font-black text-white italic uppercase tracking-tighter">

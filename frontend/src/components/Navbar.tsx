@@ -25,7 +25,7 @@ export function Navbar() {
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
-            <div className="max-w-7xl mx-auto glass-card rounded-[2rem] px-8 py-4 flex items-center justify-between border-white/20 shadow-blue-500/5">
+            <div className="max-w-[1440px] mx-auto glass-card rounded-[2rem] px-8 py-4 flex items-center justify-between border-white/20 shadow-blue-500/5">
                 <Link href="/" className="flex items-center space-x-2 group shrink-0">
                     <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
                         <Zap className="text-white w-6 h-6 fill-current" />

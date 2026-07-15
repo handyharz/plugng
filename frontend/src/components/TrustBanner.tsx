@@ -74,7 +74,7 @@ const TrustBanner: React.FC = () => {
     ];
 
     return (
-        <section className="px-6 max-w-7xl mx-auto py-8">
+        <section className="px-6 max-w-[1440px] mx-auto py-8">
             <div className="glass-card rounded-3xl p-8 md:p-12 border border-white/10 relative overflow-hidden">
                 {/* Background Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 pointer-events-none" />

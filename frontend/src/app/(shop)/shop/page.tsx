@@ -122,7 +122,7 @@ function ShopContent() {
     };
 
     return (
-        <div className="min-h-screen pt-3 pb-20 px-6 max-w-7xl mx-auto">
+        <div className="min-h-screen pt-3 pb-20 px-6 max-w-[1440px] mx-auto">
             {/* Header */}
             <div className="mb-12 space-y-4">
                 <div className="flex items-center space-x-2 text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">

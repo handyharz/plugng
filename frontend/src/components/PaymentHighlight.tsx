@@ -34,7 +34,7 @@ const PaymentHighlight: React.FC = () => {
     ];
 
     return (
-        <section className="px-6 max-w-7xl mx-auto py-8">
+        <section className="px-6 max-w-[1440px] mx-auto py-8">
             <div className="relative overflow-hidden rounded-[3rem] p-8 md:p-12 border border-emerald-500/20 bg-gradient-to-br from-emerald-500/10 via-transparent to-green-500/10">
                 {/* Animated Background Elements */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/20 rounded-full blur-[100px] pointer-events-none" />

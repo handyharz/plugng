@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 const WalletPromotion: React.FC = () => {
     return (
-        <section className="px-6 max-w-7xl mx-auto py-8">
+        <section className="px-6 max-w-[1440px] mx-auto py-8">
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}

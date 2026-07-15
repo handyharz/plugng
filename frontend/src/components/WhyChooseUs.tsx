@@ -41,7 +41,7 @@ const WhyChooseUs: React.FC = () => {
     ];
 
     return (
-        <section className="px-6 max-w-7xl mx-auto py-12 border-t border-white/5">
+        <section className="px-6 max-w-[1440px] mx-auto py-12 border-t border-white/5">
             <div className="text-center mb-12">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

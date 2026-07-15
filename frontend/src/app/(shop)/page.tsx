@@ -81,7 +81,7 @@ export default function Home() {
   return (
     <div className="space-y-0 relative">
       {/* 1. Hero Section (Search + Value Props) */}
-      <section className="px-6 max-w-7xl mx-auto pt-10 pb-3 relative z-20">
+      <section className="px-6 max-w-[1440px] mx-auto pt-10 pb-3 relative z-20">
         <motion.div
           layout
           style={{ scale: heroScale, opacity: heroOpacity }}
@@ -133,7 +133,7 @@ export default function Home() {
       <PaymentHighlight />
 
       {/* 4. On Sale (Carousel) */}
-      <div className="px-6 max-w-7xl mx-auto space-y-0" id="on-sale">
+      <div className="px-6 max-w-[1440px] mx-auto space-y-0" id="on-sale">
         <ProductSection
           title="On Sale"
           icon={<Flame size={32} />}
@@ -147,7 +147,7 @@ export default function Home() {
       </div>
 
       {/* 5. Featured Products (Grid) */}
-      <div className="px-6 max-w-7xl mx-auto space-y-0">
+      <div className="px-6 max-w-[1440px] mx-auto space-y-0">
         <ProductSection
           title="Featured"
           icon={<Star size={32} />}
@@ -167,7 +167,7 @@ export default function Home() {
       <ShopByBrand />
 
       {/* 8. Trending Now (Carousel) */}
-      <div className="px-6 max-w-7xl mx-auto space-y-0">
+      <div className="px-6 max-w-[1440px] mx-auto space-y-0">
         <ProductSection
           title="Trending Now"
           icon={<TrendingUp size={32} />}
@@ -181,7 +181,7 @@ export default function Home() {
       </div>
 
       {/* 9. New Arrivals (Grid) */}
-      <div className="px-6 max-w-7xl mx-auto space-y-0">
+      <div className="px-6 max-w-[1440px] mx-auto space-y-0">
         <ProductSection
           title="New Arrivals"
           icon={<Sparkles size={32} />}
@@ -198,7 +198,7 @@ export default function Home() {
       <WhyChooseUs />
 
       {/* 11. Category Showcase "The Archive" */}
-      <section className="px-6 max-w-7xl mx-auto py-16 border-t border-white/5">
+      <section className="px-6 max-w-[1440px] mx-auto py-16 border-t border-white/5">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
           <div className="space-y-2">
             <h2 className="text-4xl md:text-5xl font-black text-white italic uppercase tracking-tighter">

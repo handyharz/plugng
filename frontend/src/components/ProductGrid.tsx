@@ -28,7 +28,7 @@ export function ProductGrid() {
     }, [data]);
 
     return (
-        <section id="products-section" className="pb-20 px-6 max-w-7xl mx-auto">
+        <section id="products-section" className="pb-20 px-6 max-w-[1440px] mx-auto">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                 <div className="space-y-4">
                     <span className="bg-blue-600/10 text-blue-500 text-[10px] font-black px-3 py-1 rounded-full border border-blue-500/20 uppercase tracking-widest">

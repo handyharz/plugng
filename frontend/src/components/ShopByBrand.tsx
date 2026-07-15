@@ -89,7 +89,7 @@ const ShopByBrand: React.FC = () => {
 
     if (isLoading) {
         return (
-            <section className="px-6 max-w-7xl mx-auto py-12">
+            <section className="px-6 max-w-[1440px] mx-auto py-12">
                 <div className="animate-pulse">
                     <div className="h-8 bg-white/10 rounded w-48 mb-8"></div>
                     <div className="flex gap-4">
@@ -107,7 +107,7 @@ const ShopByBrand: React.FC = () => {
     }
 
     return (
-        <section className="px-6 max-w-7xl mx-auto py-12">
+        <section className="px-6 max-w-[1440px] mx-auto py-12">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
                 <div className="space-y-2">
                     <motion.div
