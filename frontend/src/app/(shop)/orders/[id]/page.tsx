@@ -84,9 +84,10 @@ export default function OrderDetailsPage() {
                 throw new Error('No payment URL returned');
             }
             window.location.assign(data.paymentUrl);
-        } catch (error) {
+        } catch (error: any) {
             console.error('Failed to continue AfriExchange payment:', error);
-            alert('We could not refresh your AfriExchange payment link. Please try again.');
+            const errMsg = error.response?.data?.message || error.message || 'We could not refresh your AfriExchange payment link. Please try again.';
+            alert(errMsg);
         } finally {
             setIsRefreshingPayment(false);
         }

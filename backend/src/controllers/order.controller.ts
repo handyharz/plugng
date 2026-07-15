@@ -963,7 +963,7 @@ export const retryAfriExchangePayment = async (req: AuthenticatedRequest, res: R
 
             res.status(502).json({
                 status: 'fail',
-                message: error.response?.data?.message || 'Unable to refresh AfriExchange payment link right now'
+                message: error.response?.data?.error?.message || error.response?.data?.message || error.message || 'Unable to refresh AfriExchange payment link right now'
             });
             return;
         }
