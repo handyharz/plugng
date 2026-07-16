@@ -16,9 +16,11 @@ interface RevenueChartProps {
         revenue: number;
         orders: number;
     }[];
+    timeframe: number;
+    onTimeframeChange: (days: number) => void;
 }
 
-export default function RevenueChart({ data }: RevenueChartProps) {
+export default function RevenueChart({ data, timeframe, onTimeframeChange }: RevenueChartProps) {
     // Format date to short format (e.g., "Jan 23")
     const formattedData = data.map(item => ({
         ...item,
@@ -38,7 +40,23 @@ export default function RevenueChart({ data }: RevenueChartProps) {
 
     return (
         <div className="bg-slate-900 border border-white/10 rounded-xl p-6">
-            <h3 className="text-lg font-bold text-white mb-6">Revenue Trend</h3>
+            <div className="flex items-center justify-between mb-6">
+                <h3 className="text-lg font-bold text-white">Revenue Trend</h3>
+                <div className="flex gap-1 bg-slate-950 p-1 rounded-lg border border-white/5">
+                    {[7, 30, 90].map((days) => (
+                        <button
+                            key={days}
+                            onClick={() => onTimeframeChange(days)}
+                            className={`px-2.5 py-1 rounded text-[10px] font-black uppercase tracking-wider transition-all ${timeframe === days
+                                ? 'bg-blue-600 text-white shadow'
+                                : 'text-slate-400 hover:text-white'
+                                }`}
+                        >
+                            {days}D
+                        </button>
+                    ))}
+                </div>
+            </div>
             <div className="h-[300px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
                     <AreaChart

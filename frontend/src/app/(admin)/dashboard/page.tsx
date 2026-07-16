@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import {
     LayoutDashboard,
     ShoppingCart,
@@ -27,6 +28,8 @@ import {
 } from '@/lib/adminApi';
 
 export default function AdminDashboard() {
+    const [timeframe, setTimeframe] = useState<number>(30);
+
     // Fetch Dashboard Stats
     const { data: statsData, isLoading: statsLoading } = useQuery({
         queryKey: ['adminDashboardStats'],
@@ -35,8 +38,8 @@ export default function AdminDashboard() {
 
     // Fetch Revenue Chart Data
     const { data: chartData, isLoading: chartLoading } = useQuery({
-        queryKey: ['adminRevenueChart'],
-        queryFn: () => getRevenueChart(30)
+        queryKey: ['adminRevenueChart', timeframe],
+        queryFn: () => getRevenueChart(timeframe)
     });
 
     // Fetch Recent Orders
@@ -318,7 +321,11 @@ export default function AdminDashboard() {
             {/* Charts & Alerts */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
                 <div className="lg:col-span-2">
-                    <RevenueChart data={chartData?.data || []} />
+                    <RevenueChart
+                        data={chartData?.data || []}
+                        timeframe={timeframe}
+                        onTimeframeChange={setTimeframe}
+                    />
                 </div>
                 <div className="lg:col-span-1">
                     <LowStockAlerts products={lowStockData?.data || []} />
