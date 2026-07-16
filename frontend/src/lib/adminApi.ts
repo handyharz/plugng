@@ -7,8 +7,8 @@ export const getCategories = async (params?: { level?: number; parent?: string }
 };
 
 // Dashboard
-export const getDashboardStats = async () => {
-    const response = await api.get('/admin/dashboard/stats');
+export const getDashboardStats = async (days: number = 30) => {
+    const response = await api.get(`/admin/dashboard/stats?days=${days}`);
     return response.data;
 };
 

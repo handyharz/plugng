@@ -32,8 +32,8 @@ export default function AdminDashboard() {
 
     // Fetch Dashboard Stats
     const { data: statsData, isLoading: statsLoading } = useQuery({
-        queryKey: ['adminDashboardStats'],
-        queryFn: getDashboardStats
+        queryKey: ['adminDashboardStats', timeframe],
+        queryFn: () => getDashboardStats(timeframe)
     });
 
     // Fetch Revenue Chart Data
@@ -106,19 +106,35 @@ export default function AdminDashboard() {
 
     return (
         <div className="p-8">
-            <div className="mb-8">
-                <h1 className="text-3xl font-bold text-white mb-2">Dashboard Overview</h1>
-                <p className="text-slate-400">Welcome back! Here's what's happening today.</p>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h1 className="text-3xl font-bold text-white mb-2">Dashboard Overview</h1>
+                    <p className="text-slate-400">Welcome back! Here's what's happening today.</p>
+                </div>
+                <div className="flex items-center gap-1.5 bg-slate-900 p-1 rounded-lg border border-white/5 self-start sm:self-auto">
+                    {[7, 30, 90].map((days) => (
+                        <button
+                            key={days}
+                            onClick={() => setTimeframe(days)}
+                            className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all ${timeframe === days
+                                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+                                : 'text-slate-400 hover:text-white'
+                                }`}
+                        >
+                            {days} Days
+                        </button>
+                    ))}
+                </div>
             </div>
 
             {/* Revenue Breakdown - Three Cards */}
             <div className="mb-6">
-                <h2 className="text-xl font-semibold text-white mb-4">Revenue Overview (This Month)</h2>
+                <h2 className="text-xl font-semibold text-white mb-4">Revenue Overview (Last {timeframe} Days)</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <MetricCard
                         title="Paid Revenue"
                         value={formatCurrency(stats.revenue?.paid || 0)}
-                        change={`${formatPercentage(stats.revenue?.growth || 0)} vs last month`}
+                        change={`${formatPercentage(stats.revenue?.growth || 0)} vs previous period`}
                         changeType={stats.revenue?.growth >= 0 ? 'positive' : 'negative'}
                         icon={TrendingUp}
                         iconColor="text-green-400 bg-green-500/10"
@@ -144,7 +160,7 @@ export default function AdminDashboard() {
 
             {/* AfriExchange Overview */}
             <div className="mb-6">
-                <h2 className="text-xl font-semibold text-white mb-4">AfriExchange Overview (This Month)</h2>
+                <h2 className="text-xl font-semibold text-white mb-4">AfriExchange Overview (Last {timeframe} Days)</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
                     <MetricCard
                         title="AfriExchange Revenue"

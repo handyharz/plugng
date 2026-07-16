@@ -16,22 +16,27 @@ import axios from 'axios';
  * Get dashboard statistics
  * GET /api/v1/admin/dashboard/stats
  */
-export const getDashboardStats = async (_req: Request, res: Response) => {
+export const getDashboardStats = async (req: Request, res: Response) => {
     try {
+        const days = parseInt(req.query.days as string) || 30;
         const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        today.setHours(23, 59, 59, 999);
 
-        const thisWeekStart = new Date(today);
-        thisWeekStart.setDate(today.getDate() - today.getDay());
+        const currentPeriodStart = new Date();
+        currentPeriodStart.setDate(today.getDate() - days);
+        currentPeriodStart.setHours(0, 0, 0, 0);
 
-        const thisMonthStart = new Date(today.getFullYear(), today.getMonth(), 1);
-        const lastMonthStart = new Date(today.getFullYear(), today.getMonth() - 1, 1);
-        const lastMonthEnd = new Date(today.getFullYear(), today.getMonth(), 0, 23, 59, 59);
+        const previousPeriodStart = new Date(currentPeriodStart);
+        previousPeriodStart.setDate(currentPeriodStart.getDate() - days);
+        previousPeriodStart.setHours(0, 0, 0, 0);
 
-        // Get all orders for this month
-        const thisMonthOrders = await Order.find({ createdAt: { $gte: thisMonthStart } });
+        const previousPeriodEnd = new Date(currentPeriodStart);
+        previousPeriodEnd.setMilliseconds(-1);
+
+        // Get all orders for this period vs last period
+        const thisMonthOrders = await Order.find({ createdAt: { $gte: currentPeriodStart, $lte: today } });
         const lastMonthOrders = await Order.find({
-            createdAt: { $gte: lastMonthStart, $lte: lastMonthEnd }
+            createdAt: { $gte: previousPeriodStart, $lte: previousPeriodEnd }
         });
 
         // Revenue by payment status (this month)
@@ -125,7 +130,7 @@ export const getDashboardStats = async (_req: Request, res: Response) => {
         const totalCustomers = await User.countDocuments({ role: 'customer' });
         const newCustomersThisMonth = await User.countDocuments({
             role: 'customer',
-            createdAt: { $gte: thisMonthStart }
+            createdAt: { $gte: currentPeriodStart }
         });
 
         // Calculate KPIs

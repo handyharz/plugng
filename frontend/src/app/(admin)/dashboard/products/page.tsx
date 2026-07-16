@@ -105,7 +105,7 @@ export default function AdminProductsPage() {
     };
 
     const products = data?.data || [];
-    const pagination = data?.pagination || { total: 0, pages: 1 };
+    const meta = data?.meta || { total: 0, totalPages: 1 };
 
     return (
         <div className="p-8  mx-auto min-h-screen">
@@ -113,7 +113,7 @@ export default function AdminProductsPage() {
             <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
                 <div>
                     <h1 className="text-2xl font-bold text-white mb-1">Products Management</h1>
-                    <p className="text-slate-400">Total Products: {pagination.total}</p>
+                    <p className="text-slate-400">Total Products: {meta.total}</p>
                 </div>
                 <div className="flex items-center gap-3">
                     <button
@@ -197,21 +197,21 @@ export default function AdminProductsPage() {
 
             {/* Pagination */}
             {
-                pagination.pages > 1 && (
+                meta.totalPages > 1 && (
                     <div className="mt-8 flex items-center justify-between text-slate-400">
                         <p className="text-sm">
-                            Showing {(page - 1) * 10 + 1} to {Math.min(page * 10, pagination.total)} of {pagination.total} results
+                            Showing {(page - 1) * 10 + 1} to {Math.min(page * 10, meta.total)} of {meta.total} results
                         </p>
                         <div className="flex items-center gap-2">
                             <button
                                 disabled={page === 1}
                                 onClick={() => setPage(page - 1)}
-                                className="px-4 py-2 bg-slate-900 border border-white/10 rounded-lg hober:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                className="px-4 py-2 bg-slate-900 border border-white/10 rounded-lg hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                             >
                                 Previous
                             </button>
                             <div className="flex items-center gap-1 mx-2">
-                                {Array.from({ length: pagination.pages }, (_, i) => i + 1).map((p) => (
+                                {Array.from({ length: meta.totalPages }, (_, i) => i + 1).map((p) => (
                                     <button
                                         key={p}
                                         onClick={() => setPage(p)}
@@ -225,7 +225,7 @@ export default function AdminProductsPage() {
                                 ))}
                             </div>
                             <button
-                                disabled={page === pagination.pages}
+                                disabled={page === meta.totalPages}
                                 onClick={() => setPage(page + 1)}
                                 className="px-4 py-2 bg-slate-900 border border-white/10 rounded-lg hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                             >
