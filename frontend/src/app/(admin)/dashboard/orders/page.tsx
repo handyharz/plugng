@@ -141,75 +141,99 @@ export default function OrdersPage() {
                 </div>
             </div>
 
-            {/* Filters & Search */}
-            <div className="mb-6 flex flex-col lg:flex-row gap-4 justify-between">
-                <div className="flex overflow-x-auto pb-2 lg:pb-0 gap-2 no-scrollbar">
-                    {statusFilters.map((filter) => (
-                        <button
-                            key={filter.value}
-                            onClick={() => {
-                                setStatus(filter.value);
-                                setPage(1);
-                            }}
-                            className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-tight transition-all whitespace-nowrap ${status === filter.value
-                                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
-                                : 'bg-slate-900 border border-white/10 text-slate-500 hover:text-white hover:bg-white/5'
-                                }`}
-                        >
-                            {filter.label}
-                        </button>
-                    ))}
-                </div>
-
-                <div className="flex overflow-x-auto pb-2 lg:pb-0 gap-2 no-scrollbar items-center">
-                    <span className="text-[10px] font-black uppercase text-slate-600 mr-2 tracking-widest">Payment</span>
-                    {paymentFilters.map((filter) => (
-                        <button
-                            key={filter.value}
-                            onClick={() => {
-                                setPaymentStatus(filter.value);
-                                setPage(1);
-                            }}
-                            className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-tight transition-all whitespace-nowrap ${paymentStatus === filter.value
-                                ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20'
-                                : 'bg-slate-900 border border-white/10 text-slate-500 hover:text-white hover:bg-white/5'
-                                }`}
-                        >
-                            {filter.label}
-                        </button>
-                    ))}
-                </div>
-
-                <div className="flex overflow-x-auto pb-2 lg:pb-0 gap-2 no-scrollbar items-center">
-                    <span className="text-[10px] font-black uppercase text-slate-600 mr-2 tracking-widest">Rail</span>
-                    {paymentMethodFilters.map((filter) => (
-                        <button
-                            key={filter.value}
-                            onClick={() => {
-                                setPaymentMethod(filter.value);
-                                setPage(1);
-                            }}
-                            className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-tight transition-all whitespace-nowrap ${paymentMethod === filter.value
-                                ? 'bg-violet-600 text-white shadow-lg shadow-violet-500/20'
-                                : 'bg-slate-900 border border-white/10 text-slate-500 hover:text-white hover:bg-white/5'
-                                }`}
-                        >
-                            {filter.label}
-                        </button>
-                    ))}
-                </div>
-
-                <div className="relative w-full lg:w-80">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <Search className="h-4 w-4 text-slate-500" />
+            {/* Filters & Search Card */}
+            <div className="bg-slate-900/50 border border-white/5 rounded-2xl p-6 mb-6 space-y-6">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    {/* Search Input */}
+                    <div className="relative flex-1 max-w-md">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <Search className="h-4 w-4 text-slate-500" />
+                        </div>
+                        <input
+                            type="text"
+                            placeholder="Search by Order # or Customer Email..."
+                            value={search}
+                            onChange={handleSearch}
+                            className="block w-full pl-10 pr-3 py-2.5 bg-slate-950/80 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all text-sm"
+                        />
                     </div>
-                    <input
-                        type="text"
-                        placeholder="Search orders..."
-                        value={search}
-                        onChange={handleSearch}
-                        className="block w-full pl-10 pr-3 py-2 bg-slate-900 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all text-sm"
-                    />
+                </div>
+
+                <div className="h-px bg-white/5" />
+
+                {/* Filter Rows */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    {/* Delivery Status Tab Pills */}
+                    <div className="space-y-2">
+                        <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider flex items-center gap-1.5">
+                            <Clock className="w-3.5 h-3.5" /> Delivery Status
+                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                            {statusFilters.map((filter) => (
+                                <button
+                                    key={filter.value}
+                                    onClick={() => {
+                                        setStatus(filter.value);
+                                        setPage(1);
+                                    }}
+                                    className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-tight transition-all whitespace-nowrap ${status === filter.value
+                                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+                                        : 'bg-slate-950 border border-white/5 text-slate-400 hover:text-white hover:bg-white/5'
+                                        }`}
+                                >
+                                    {filter.label}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Payment Status Pills */}
+                    <div className="space-y-2">
+                        <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider flex items-center gap-1.5">
+                            <CheckCircle2 className="w-3.5 h-3.5" /> Payment Status
+                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                            {paymentFilters.map((filter) => (
+                                <button
+                                    key={filter.value}
+                                    onClick={() => {
+                                        setPaymentStatus(filter.value);
+                                        setPage(1);
+                                    }}
+                                    className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-tight transition-all whitespace-nowrap ${paymentStatus === filter.value
+                                        ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20'
+                                        : 'bg-slate-950 border border-white/5 text-slate-400 hover:text-white hover:bg-white/5'
+                                        }`}
+                                >
+                                    {filter.label}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Payment Rails Pills */}
+                    <div className="space-y-2">
+                        <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider flex items-center gap-1.5">
+                            <CreditCard className="w-3.5 h-3.5" /> Payment Rail
+                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                            {paymentMethodFilters.map((filter) => (
+                                <button
+                                    key={filter.value}
+                                    onClick={() => {
+                                        setPaymentMethod(filter.value);
+                                        setPage(1);
+                                    }}
+                                    className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-tight transition-all whitespace-nowrap ${paymentMethod === filter.value
+                                        ? 'bg-violet-600 text-white shadow-lg shadow-violet-500/20'
+                                        : 'bg-slate-950 border border-white/5 text-slate-400 hover:text-white hover:bg-white/5'
+                                        }`}
+                                >
+                                    {filter.label}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
 
