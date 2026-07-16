@@ -968,15 +968,17 @@ export const retryAfriExchangePayment = async (req: AuthenticatedRequest, res: R
             return;
         }
 
-        order.afriExchange = {
-            ...(order.afriExchange || {}),
-            transactionId: refreshedPayment.transaction_id || order.afriExchange?.transactionId,
-            reference: newReference,
-            paymentUrl: refreshedPayment.payment_url || order.afriExchange?.paymentUrl,
-            tokenType: refreshedPayment.token_type || tokenType,
-            amount: Number(refreshedPayment.amount || amount),
-            status: 'payment.pending'
-        };
+        if (!order.afriExchange) {
+            order.afriExchange = {};
+        }
+        order.afriExchange.transactionId = refreshedPayment.transaction_id || order.afriExchange.transactionId;
+        order.afriExchange.reference = newReference;
+        order.afriExchange.paymentUrl = refreshedPayment.payment_url || order.afriExchange.paymentUrl;
+        order.afriExchange.tokenType = refreshedPayment.token_type || tokenType;
+        order.afriExchange.amount = Number(refreshedPayment.amount || amount);
+        order.afriExchange.status = 'payment.pending';
+
+        order.markModified('afriExchange');
 
         order.paymentReference = order.orderNumber;
         order.trackingEvents.push({
