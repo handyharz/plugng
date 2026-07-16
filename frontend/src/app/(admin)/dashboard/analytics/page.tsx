@@ -376,6 +376,7 @@ export default function BusinessIntelligencePage() {
                             {stats.topProducts.map((p: any, idx: number) => {
                                 const isTopThree = idx < 3;
                                 const medals = ['🥇', '🥈', '🥉'];
+                                const isLast = idx >= Math.max(1, stats.topProducts.length - 2);
                                 return (
                                     <tr key={p._id} className="hover:bg-white/5 transition-all group">
                                         <td className="px-8 py-6">
@@ -405,7 +406,7 @@ export default function BusinessIntelligencePage() {
                                             </span>
                                         </td>
                                         <td className="px-8 py-6 text-right">
-                                            <ProductActionMenu productId={p._id} productName={p.name} />
+                                            <ProductActionMenu productId={p._id} productName={p.name} isLast={isLast} />
                                         </td>
                                     </tr>
                                 );
@@ -459,7 +460,7 @@ function KPICard({ title, value, icon, trend, trendLabel, color }: {
 }
 
 // Product Action Menu Component
-function ProductActionMenu({ productId, productName }: { productId: string; productName: string }) {
+function ProductActionMenu({ productId, productName, isLast }: { productId: string; productName: string; isLast: boolean }) {
     const [isOpen, setIsOpen] = useState(false);
 
     const actions = [
@@ -499,7 +500,7 @@ function ProductActionMenu({ productId, productName }: { productId: string; prod
                         className="fixed inset-0 z-10"
                         onClick={() => setIsOpen(false)}
                     />
-                    <div className="absolute right-0 top-full mt-2 w-56 bg-slate-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-20 backdrop-blur-xl">
+                    <div className={`absolute right-0 w-56 bg-slate-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-20 backdrop-blur-xl ${isLast ? 'bottom-full mb-2' : 'top-full mt-2'}`}>
                         <div className="p-3 border-b border-white/5 bg-white/5">
                             <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Quick Actions</p>
                         </div>
