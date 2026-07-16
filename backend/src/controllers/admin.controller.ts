@@ -10,6 +10,7 @@ import Notification from '../models/Notification';
 import AdminActivity from '../models/AdminActivity';
 import Category from '../models/Category';
 import { optimizeAndUploadImage } from '../services/storageService';
+import axios from 'axios';
 
 /**
  * Get dashboard statistics
@@ -616,6 +617,83 @@ export const updateOrderStatus = async (req: Request, res: Response) => {
                 } else if (status === 'cancelled') {
                     message = 'Order has been cancelled.';
                     location = 'Admin Terminal';
+
+                    if (order.paymentStatus === 'paid') {
+                        try {
+                            if (order.paymentMethod === 'afriexchange') {
+                                const transactionId = order.afriExchange?.transactionId;
+                                if (transactionId) {
+                                    const afriBaseUrl = (process.env.AFRIEXCHANGE_API_BASE_URL || 'http://localhost:5001/api/v1').replace(/\/+$/, '');
+                                    const apiKey = process.env.AFRIEXCHANGE_MERCHANT_API_KEY;
+                                    
+                                    await axios.post(
+                                        `${afriBaseUrl}/merchants/collections/${transactionId}/refund`,
+                                        { reason: adminNote || `Order #${order.orderNumber} cancelled by admin.` },
+                                        {
+                                            headers: {
+                                                Authorization: `Bearer ${apiKey}`,
+                                                'Content-Type': 'application/json'
+                                            }
+                                        }
+                                    );
+                                    order.paymentStatus = 'refunded';
+                                    order.trackingEvents.push({
+                                        status: 'refunded',
+                                        location: 'AfriExchange',
+                                        message: 'Refund successfully processed via AfriExchange.',
+                                        timestamp: new Date()
+                                    });
+                                    eventPushedCount++;
+                                }
+                            } else if (order.paymentMethod === 'card' || order.paymentMethod === 'bank_transfer') {
+                                const reference = order.paymentReference || order.orderNumber;
+                                const paystackSecret = process.env.PAYSTACK_SECRET_KEY;
+                                
+                                if (paystackSecret && !paystackSecret.includes('placeholder')) {
+                                    await axios.post(
+                                        'https://api.paystack.co/refund',
+                                        {
+                                            transaction: reference,
+                                            amount: order.total * 100
+                                        },
+                                        {
+                                            headers: {
+                                                Authorization: `Bearer ${paystackSecret}`,
+                                                'Content-Type': 'application/json'
+                                            }
+                                        }
+                                    );
+                                    order.paymentStatus = 'refunded';
+                                    order.trackingEvents.push({
+                                        status: 'refunded',
+                                        location: 'Paystack',
+                                        message: 'Refund successfully processed via Paystack.',
+                                        timestamp: new Date()
+                                    });
+                                    eventPushedCount++;
+                                } else {
+                                    console.log('⚠️ [Refund] Dev mode: skipping real Paystack refund (placeholder API key)');
+                                    order.paymentStatus = 'refunded';
+                                    order.trackingEvents.push({
+                                        status: 'refunded',
+                                        location: 'Paystack (Dev)',
+                                        message: 'Refund simulated in development mode.',
+                                        timestamp: new Date()
+                                    });
+                                    eventPushedCount++;
+                                }
+                            }
+                        } catch (refundError: any) {
+                            console.error('Refund processing error:', refundError.response?.data || refundError.message);
+                            order.trackingEvents.push({
+                                status: 'cancelled',
+                                location: 'Refund System',
+                                message: `Order cancelled, but automatic gateway refund failed: ${refundError.response?.data?.error?.message || refundError.response?.data?.message || refundError.message}`,
+                                timestamp: new Date()
+                            });
+                            eventPushedCount++;
+                        }
+                    }
                 }
 
                 order.trackingEvents.push({

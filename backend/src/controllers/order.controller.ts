@@ -818,6 +818,16 @@ export const handleAfriExchangeWebhook = async (req: Request, res: Response, nex
                 notificationTitle: 'AfriExchange Payment Confirmed',
                 notificationMessage: `AfriExchange confirmed payment for order #${order.orderNumber}.`
             });
+        } else if (eventType === 'collection.reversed' && order.paymentStatus !== 'refunded') {
+            order.paymentStatus = 'refunded';
+            order.trackingEvents.push({
+                status: 'refunded',
+                location: 'AfriExchange Webhook',
+                message: `Payment reversed/refunded via AfriExchange: ${data.refundReason || 'No reason specified'}.`,
+                timestamp: new Date()
+            });
+            order.markModified('trackingEvents');
+            await order.save({ validateBeforeSave: false });
         } else {
             await order.save({ validateBeforeSave: false });
         }
