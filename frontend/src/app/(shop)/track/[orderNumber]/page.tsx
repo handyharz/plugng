@@ -100,7 +100,7 @@ export default function TrackingResultsPage() {
 
     return (
         <>
-            <div className="max-w-5xl mx-auto px-6 pt-10 pb-32 space-y-12">
+            <div className="max-w-[1440px] mx-auto px-6 pt-10 pb-32 space-y-12">
                 {/* Header */}
                 <div className="space-y-6">
                     <button
