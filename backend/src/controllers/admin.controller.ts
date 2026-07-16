@@ -259,17 +259,28 @@ export const getRevenueChart = async (req: Request, res: Response) => {
  */
 export const getRecentOrders = async (req: Request, res: Response) => {
     try {
+        const page = parseInt(req.query.page as string) || 1;
         const limit = parseInt(req.query.limit as string) || 10;
+        const skip = (page - 1) * limit;
 
         const orders = await Order.find()
             .populate('user', 'firstName lastName email')
             .sort({ createdAt: -1 })
+            .skip(skip)
             .limit(limit)
             .lean();
 
+        const total = await Order.countDocuments();
+
         res.status(200).json({
             success: true,
-            data: orders
+            data: orders,
+            meta: {
+                total,
+                page,
+                limit,
+                totalPages: Math.ceil(total / limit)
+            }
         });
     } catch (error) {
         console.error('Error fetching recent orders:', error);

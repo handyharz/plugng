@@ -29,6 +29,7 @@ import {
 
 export default function AdminDashboard() {
     const [timeframe, setTimeframe] = useState<number>(30);
+    const [recentOrdersPage, setRecentOrdersPage] = useState<number>(1);
 
     // Fetch Dashboard Stats
     const { data: statsData, isLoading: statsLoading } = useQuery({
@@ -44,8 +45,8 @@ export default function AdminDashboard() {
 
     // Fetch Recent Orders
     const { data: ordersData, isLoading: ordersLoading } = useQuery({
-        queryKey: ['adminRecentOrders'],
-        queryFn: () => getRecentOrders(10)
+        queryKey: ['adminRecentOrders', recentOrdersPage],
+        queryFn: () => getRecentOrders(recentOrdersPage, 10)
     });
 
     // Fetch Low Stock Alerts
@@ -112,7 +113,7 @@ export default function AdminDashboard() {
                     <p className="text-slate-400">Welcome back! Here's what's happening today.</p>
                 </div>
                 <div className="flex items-center gap-1.5 bg-slate-900 p-1 rounded-lg border border-white/5 self-start sm:self-auto">
-                    {[7, 30, 90].map((days) => (
+                    {[7, 30, 90, 365].map((days) => (
                         <button
                             key={days}
                             onClick={() => setTimeframe(days)}
@@ -121,7 +122,7 @@ export default function AdminDashboard() {
                                 : 'text-slate-400 hover:text-white'
                                 }`}
                         >
-                            {days} Days
+                            {days === 365 ? '1 Year' : `${days} Days`}
                         </button>
                     ))}
                 </div>
@@ -350,7 +351,13 @@ export default function AdminDashboard() {
 
             {/* Recent Orders */}
             <div className="mb-8">
-                <RecentOrders orders={ordersData?.data || []} />
+                <RecentOrders
+                    orders={ordersData?.data || []}
+                    page={recentOrdersPage}
+                    totalPages={ordersData?.meta?.totalPages || 1}
+                    total={ordersData?.meta?.total || 0}
+                    onPageChange={setRecentOrdersPage}
+                />
             </div>
         </div>
     );

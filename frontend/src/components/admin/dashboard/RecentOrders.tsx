@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Eye } from 'lucide-react';
+import { Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Order {
     _id: string;
@@ -19,9 +19,13 @@ interface Order {
 
 interface RecentOrdersProps {
     orders: Order[];
+    page: number;
+    totalPages: number;
+    total: number;
+    onPageChange: (page: number) => void;
 }
 
-export default function RecentOrders({ orders }: RecentOrdersProps) {
+export default function RecentOrders({ orders, page, totalPages, total, onPageChange }: RecentOrdersProps) {
     const getStatusColor = (status: string) => {
         switch (status) {
             case 'paid':
@@ -132,6 +136,31 @@ export default function RecentOrders({ orders }: RecentOrdersProps) {
                     </tbody>
                 </table>
             </div>
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+                <div className="bg-white/5 px-6 py-4 flex items-center justify-between border-t border-white/10">
+                    <p className="text-xs text-slate-500 italic">
+                        Showing {((page - 1) * 10) + 1} to {Math.min(page * 10, total)} of {total} orders
+                    </p>
+                    <div className="flex gap-2">
+                        <button
+                            onClick={() => onPageChange(page - 1)}
+                            disabled={page === 1}
+                            className="p-2 rounded-lg bg-slate-950 border border-white/10 text-slate-400 disabled:opacity-30 disabled:cursor-not-allowed hover:text-white transition-colors"
+                        >
+                            <ChevronLeft className="w-4 h-4" />
+                        </button>
+                        <button
+                            onClick={() => onPageChange(page + 1)}
+                            disabled={page === totalPages}
+                            className="p-2 rounded-lg bg-slate-950 border border-white/10 text-slate-400 disabled:opacity-30 disabled:cursor-not-allowed hover:text-white transition-colors"
+                        >
+                            <ChevronRight className="w-4 h-4" />
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

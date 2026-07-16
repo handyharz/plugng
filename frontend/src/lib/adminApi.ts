@@ -17,8 +17,8 @@ export const getRevenueChart = async (days: number = 30) => {
     return response.data;
 };
 
-export const getRecentOrders = async (limit: number = 10) => {
-    const response = await api.get(`/admin/dashboard/recent-orders?limit=${limit}`);
+export const getRecentOrders = async (page: number = 1, limit: number = 10) => {
+    const response = await api.get(`/admin/dashboard/recent-orders?page=${page}&limit=${limit}`);
     return response.data;
 };
 

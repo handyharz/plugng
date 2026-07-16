@@ -43,7 +43,7 @@ export default function RevenueChart({ data, timeframe, onTimeframeChange }: Rev
             <div className="flex items-center justify-between mb-6">
                 <h3 className="text-lg font-bold text-white">Revenue Trend</h3>
                 <div className="flex gap-1 bg-slate-950 p-1 rounded-lg border border-white/5">
-                    {[7, 30, 90].map((days) => (
+                    {[7, 30, 90, 365].map((days) => (
                         <button
                             key={days}
                             onClick={() => onTimeframeChange(days)}
@@ -52,7 +52,7 @@ export default function RevenueChart({ data, timeframe, onTimeframeChange }: Rev
                                 : 'text-slate-400 hover:text-white'
                                 }`}
                         >
-                            {days}D
+                            {days === 365 ? '1Y' : `${days}D`}
                         </button>
                     ))}
                 </div>
