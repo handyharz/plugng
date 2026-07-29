@@ -378,66 +378,77 @@ function ProfilePageContent() {
     };
 
     return (
-        <div className="max-w-[1440px] mx-auto px-3 sm:px-6 pb-12 space-y-8 sm:space-y-12">
+        <div className="max-w-[1440px] mx-auto px-3 pb-24 sm:pb-12 space-y-5 sm:space-y-8">
             {/* Header */}
-            <div className="space-y-4 sm:space-y-6">
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6">
-                    <div className="space-y-1">
-                        <h1 className="text-3xl sm:text-4xl font-black text-white italic uppercase tracking-tighter">
+            <div className="space-y-3 sm:space-y-6">
+                <div className="flex items-center justify-between gap-4">
+                    <div className="space-y-0.5">
+                        <h1 className="text-2xl sm:text-4xl font-black text-white italic uppercase tracking-tighter">
                             Control <span className="text-blue-500">Center</span>
                         </h1>
-                        <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Manage your premium shop account</p>
+                        <p className="text-slate-500 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] hidden sm:block">Manage your premium shop account</p>
                     </div>
+                </div>
 
-                    <div className="flex bg-white/5 p-1.5 rounded-2xl border border-white/10 w-full md:w-fit overflow-x-auto scrollbar-hide gap-1.5 flex-nowrap whitespace-nowrap">
-                        {[
-                            { id: 'profile', label: 'General', icon: Mail },
-                            { id: 'addresses', label: 'Addresses', icon: MapPin },
-                            { id: 'orders', label: 'Orders', icon: ShoppingBag },
-                            { id: 'wallet', label: 'Wallet', icon: CreditCard },
-                            { id: 'security', label: 'Security', icon: Lock },
-                            { id: 'wishlist', label: 'Wishlist', icon: Heart },
-                            { id: 'support', label: 'Support', icon: MessageSquare },
-                            { id: 'reviews', label: 'Reviews', icon: Star },
-                            { id: 'notifications', label: 'Alerts', icon: Bell },
-                        ].map((tab) => (
-                            <button
-                                key={tab.id}
-                                id={`tab-${tab.id}`}
-                                onClick={() => setActiveTab(tab.id as TabType)}
-                                className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all shrink-0 ${activeTab === tab.id ? 'bg-white text-black shadow-lg scale-105' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
-                            >
-                                <tab.icon size={13} className="shrink-0" />
-                                <span>{tab.label}</span>
-                            </button>
-                        ))}
-                    </div>
+                {/* Tab bar - scrollable, icon-only on mobile */}
+                <div className="flex bg-white/5 p-1.5 rounded-2xl border border-white/10 overflow-x-auto scrollbar-hide gap-1 flex-nowrap">
+                    {[
+                        { id: 'profile', label: 'General', icon: Mail },
+                        { id: 'addresses', label: 'Addresses', icon: MapPin },
+                        { id: 'orders', label: 'Orders', icon: ShoppingBag },
+                        { id: 'wallet', label: 'Wallet', icon: CreditCard },
+                        { id: 'security', label: 'Security', icon: Lock },
+                        { id: 'wishlist', label: 'Wishlist', icon: Heart },
+                        { id: 'support', label: 'Support', icon: MessageSquare },
+                        { id: 'reviews', label: 'Reviews', icon: Star },
+                        { id: 'notifications', label: 'Alerts', icon: Bell },
+                    ].map((tab) => (
+                        <button
+                            key={tab.id}
+                            id={`tab-${tab.id}`}
+                            onClick={() => setActiveTab(tab.id as TabType)}
+                            className={`flex items-center justify-center sm:space-x-2 px-2.5 sm:px-3.5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all shrink-0 ${activeTab === tab.id ? 'bg-white text-black shadow-lg scale-105' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
+                        >
+                            <tab.icon size={14} className="shrink-0" />
+                            <span className="hidden sm:inline ml-1.5">{tab.label}</span>
+                        </button>
+                    ))}
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 items-start">
-                {/* Sidebar Stats */}
-                <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-32">
-                    <div className="glass-card bg-white/5 border border-white/10 rounded-3xl p-8 text-center space-y-6 overflow-hidden relative">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-12 items-start">
+                {/* Sidebar Stats - horizontal card on mobile, vertical sidebar on desktop */}
+                <div className="lg:col-span-1 lg:sticky lg:top-32">
+                    <div className="glass-card bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-8 overflow-hidden relative">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/10 rounded-full blur-3xl -mr-16 -mt-16" />
 
-                        <div className="relative inline-block">
-                            <div className="w-24 h-24 bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl flex items-center justify-center text-white text-3xl font-black italic shadow-2xl shadow-blue-500/20 rotate-3">
-                                {user.firstName[0]}{user.lastName[0]}
-                            </div>
-                            {user.phoneVerified && (
-                                <div className="absolute -bottom-2 -right-2 bg-green-500 text-white p-2 rounded-xl border-4 border-black shadow-lg">
-                                    <ShieldCheck className="w-4 h-4" />
+                        {/* Mobile: horizontal layout */}
+                        <div className="flex items-center gap-4 lg:flex-col lg:text-center lg:gap-6">
+                            <div className="relative shrink-0">
+                                <div className="w-14 h-14 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl sm:rounded-3xl flex items-center justify-center text-white text-xl sm:text-3xl font-black italic shadow-2xl shadow-blue-500/20 rotate-3">
+                                    {user.firstName[0]}{user.lastName[0]}
                                 </div>
-                            )}
+                                {user.phoneVerified && (
+                                    <div className="absolute -bottom-1.5 -right-1.5 bg-green-500 text-white p-1.5 rounded-xl border-4 border-black shadow-lg">
+                                        <ShieldCheck className="w-3 h-3" />
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="flex-1 min-w-0">
+                                <h2 className="text-base sm:text-xl font-black text-white truncate">{user.firstName} {user.lastName}</h2>
+                                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">{user.role} User</p>
+                                {/* Mobile quick stats row */}
+                                <div className="flex items-center gap-3 mt-2 lg:hidden">
+                                    <span className="text-xs font-black text-white italic">₦{user.wallet?.balance?.toLocaleString() || '0'}</span>
+                                    <span className="w-1 h-1 rounded-full bg-slate-700" />
+                                    <span className="text-[10px] font-black text-slate-400 uppercase">{user.loyaltyTier || 'Enthusiast'}</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <div>
-                            <h2 className="text-xl font-black text-white">{user.firstName} {user.lastName}</h2>
-                            <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">{user.role} User</p>
-                        </div>
-
-                        <div className="pt-6 border-t border-white/5 space-y-4">
+                        {/* Desktop stats - hidden on mobile */}
+                        <div className="hidden lg:block pt-6 border-t border-white/5 space-y-4 mt-6">
                             <div className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5 group">
                                 <div className="flex flex-col items-start">
                                     <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1">Total Balance</span>
@@ -493,60 +504,60 @@ function ProfilePageContent() {
                 </div>
 
                 {/* Main Content Area */}
-                <div className="lg:col-span-3 min-h-[500px]">
+                <div className="lg:col-span-3 min-h-[400px] sm:min-h-[500px]">
                     <AnimatePresence mode="wait">
                         {activeTab === 'profile' && (
-                            <motion.div key="profile" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-8">
+                            <motion.div key="profile" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6 sm:space-y-8">
                                 <div className="flex items-center justify-between mb-2">
-                                    <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter">General Info</h3>
+                                    <h3 className="text-xl sm:text-2xl font-black text-white italic uppercase tracking-tighter">General Info</h3>
                                 </div>
-                                <form onSubmit={handleUpdate} className="glass-card bg-white/5 border border-white/10 rounded-[2.5rem] p-10 space-y-10">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <div className="space-y-3">
+                                <form onSubmit={handleUpdate} className="glass-card bg-white/5 border border-white/10 rounded-2xl sm:rounded-[2.5rem] p-5 sm:p-10 space-y-6 sm:space-y-10">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+                                        <div className="space-y-2 sm:space-y-3">
                                             <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2">First Name</label>
                                             <input
                                                 type="text"
                                                 value={formData.firstName}
                                                 onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white font-bold focus:border-blue-500/50 outline-none transition-all placeholder:text-slate-800"
+                                                className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3.5 sm:py-4 text-white font-bold focus:border-blue-500/50 outline-none transition-all placeholder:text-slate-800"
                                                 required
                                             />
                                         </div>
-                                        <div className="space-y-3">
+                                        <div className="space-y-2 sm:space-y-3">
                                             <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2">Last Name</label>
                                             <input
                                                 type="text"
                                                 value={formData.lastName}
                                                 onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white font-bold focus:border-blue-500/50 outline-none transition-all placeholder:text-slate-800"
+                                                className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3.5 sm:py-4 text-white font-bold focus:border-blue-500/50 outline-none transition-all placeholder:text-slate-800"
                                                 required
                                             />
                                         </div>
                                     </div>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <div className="flex items-center space-x-5 p-5 bg-white/5 rounded-3xl border border-white/5 group hover:border-white/10 transition-all">
-                                            <div className="w-12 h-12 bg-slate-900 rounded-2xl flex items-center justify-center text-slate-500 group-hover:text-blue-500 transition-colors shadow-inner">
-                                                <Mail className="w-6 h-6" />
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+                                        <div className="flex items-center space-x-3 sm:space-x-5 p-4 sm:p-5 bg-white/5 rounded-2xl sm:rounded-3xl border border-white/5">
+                                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-900 rounded-xl sm:rounded-2xl flex items-center justify-center text-slate-500 shadow-inner shrink-0">
+                                                <Mail className="w-5 h-5" />
                                             </div>
-                                            <div className="space-y-1">
-                                                <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest">Email Address</p>
-                                                <p className="text-white font-bold">{user.email}</p>
+                                            <div className="space-y-0.5 min-w-0">
+                                                <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest">Email</p>
+                                                <p className="text-white font-bold text-sm truncate">{user.email}</p>
                                             </div>
-                                            <div className="ml-auto">
+                                            <div className="ml-auto shrink-0">
                                                 <div className="p-1 px-2 bg-white/5 rounded-lg border border-white/5 text-[7px] font-black text-slate-700 uppercase tracking-widest">Read Only</div>
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center space-x-5 p-5 bg-white/5 rounded-3xl border border-white/5 group hover:border-white/10 transition-all">
-                                            <div className="w-12 h-12 bg-slate-900 rounded-2xl flex items-center justify-center text-slate-500 group-hover:text-blue-500 transition-colors shadow-inner">
-                                                <Phone className="w-6 h-6" />
+                                        <div className="flex items-center space-x-3 sm:space-x-5 p-4 sm:p-5 bg-white/5 rounded-2xl sm:rounded-3xl border border-white/5">
+                                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-900 rounded-xl sm:rounded-2xl flex items-center justify-center text-slate-500 shadow-inner shrink-0">
+                                                <Phone className="w-5 h-5" />
                                             </div>
-                                            <div className="space-y-1">
-                                                <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest">Phone Number</p>
-                                                <p className="text-white font-bold">{user.phone}</p>
+                                            <div className="space-y-0.5 min-w-0">
+                                                <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest">Phone</p>
+                                                <p className="text-white font-bold text-sm truncate">{user.phone}</p>
                                             </div>
-                                            <div className="ml-auto">
+                                            <div className="ml-auto shrink-0">
                                                 <div className="p-1 px-2 bg-white/5 rounded-lg border border-white/5 text-[7px] font-black text-slate-700 uppercase tracking-widest">Read Only</div>
                                             </div>
                                         </div>
@@ -554,7 +565,7 @@ function ProfilePageContent() {
 
                                     {error && <p className="text-red-500 text-[10px] font-black uppercase tracking-widest text-center">{error}</p>}
 
-                                    <div className="flex items-center justify-between pt-6 border-t border-white/5">
+                                    <div className="flex items-center justify-between pt-4 sm:pt-6 border-t border-white/5">
                                         <div className="h-4">
                                             {success && (
                                                 <motion.p initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="text-green-500 text-[10px] font-black uppercase tracking-widest">
@@ -565,7 +576,7 @@ function ProfilePageContent() {
                                         <button
                                             type="submit"
                                             disabled={isSaving}
-                                            className="px-10 py-5 bg-white text-black rounded-[1.5rem] font-black uppercase tracking-widest text-xs hover:bg-slate-200 active:scale-95 shadow-xl shadow-white/5 transition-all flex items-center space-x-3 disabled:opacity-50"
+                                            className="px-6 sm:px-10 py-3.5 sm:py-5 bg-white text-black rounded-xl sm:rounded-[1.5rem] font-black uppercase tracking-widest text-xs hover:bg-slate-200 active:scale-95 shadow-xl shadow-white/5 transition-all flex items-center space-x-2 sm:space-x-3 disabled:opacity-50"
                                         >
                                             {isSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
                                             <span>Update Profile</span>
@@ -576,9 +587,9 @@ function ProfilePageContent() {
                         )}
 
                         {activeTab === 'addresses' && (
-                            <motion.div key="addresses" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-8">
+                            <motion.div key="addresses" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-5 sm:space-y-8">
                                 <div className="flex items-center justify-between mb-2">
-                                    <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter">Saved Addresses</h3>
+                                    <h3 className="text-xl sm:text-2xl font-black text-white italic uppercase tracking-tighter">Saved Addresses</h3>
                                     <button
                                         onClick={() => setShowAddressForm(!showAddressForm)}
                                         className="inline-flex items-center space-x-2 px-5 py-2.5 bg-blue-600/10 text-blue-500 border border-blue-500/20 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-blue-600/20 transition-all"
@@ -588,29 +599,29 @@ function ProfilePageContent() {
                                 </div>
 
                                 {showAddressForm && (
-                                    <form onSubmit={handleAddAddress} className="glass-card bg-blue-600/5 border border-blue-500/20 rounded-[2.5rem] p-10 space-y-8 relative overflow-hidden">
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                            <div className="space-y-3">
+                                    <form onSubmit={handleAddAddress} className="glass-card bg-blue-600/5 border border-blue-500/20 rounded-2xl sm:rounded-[2.5rem] p-5 sm:p-10 space-y-5 sm:space-y-8 relative overflow-hidden">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+                                            <div className="space-y-2">
                                                 <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2">Label (e.g. Home, Office)</label>
-                                                <input type="text" value={newAddress.label} onChange={(e) => setNewAddress({ ...newAddress, label: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required />
+                                                <input type="text" value={newAddress.label} onChange={(e) => setNewAddress({ ...newAddress, label: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required />
                                             </div>
-                                            <div className="space-y-3">
+                                            <div className="space-y-2">
                                                 <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2">Full Recipient Name</label>
-                                                <input type="text" value={newAddress.fullName} onChange={(e) => setNewAddress({ ...newAddress, fullName: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required />
+                                                <input type="text" value={newAddress.fullName} onChange={(e) => setNewAddress({ ...newAddress, fullName: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required />
                                             </div>
                                         </div>
-                                        <div className="space-y-3">
+                                        <div className="space-y-2">
                                             <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2">Street Address</label>
-                                            <input type="text" value={newAddress.address} onChange={(e) => setNewAddress({ ...newAddress, address: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required />
+                                            <input type="text" value={newAddress.address} onChange={(e) => setNewAddress({ ...newAddress, address: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required />
                                         </div>
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                            <div className="space-y-3">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+                                            <div className="space-y-2">
                                                 <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2">City</label>
-                                                <input type="text" value={newAddress.city} onChange={(e) => setNewAddress({ ...newAddress, city: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required />
+                                                <input type="text" value={newAddress.city} onChange={(e) => setNewAddress({ ...newAddress, city: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required />
                                             </div>
-                                            <div className="space-y-3">
+                                            <div className="space-y-2">
                                                 <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2">Country</label>
-                                                <select value={newAddress.country} onChange={(e) => setNewAddress({ ...newAddress, country: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required>
+                                                <select value={newAddress.country} onChange={(e) => setNewAddress({ ...newAddress, country: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required>
                                                     {PROFILE_COUNTRY_OPTIONS.map((country) => (
                                                         <option key={country.code} value={country.code} className="bg-black">
                                                             {country.label}
@@ -619,17 +630,17 @@ function ProfilePageContent() {
                                                 </select>
                                             </div>
                                         </div>
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                            <div className="space-y-3">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+                                            <div className="space-y-2">
                                                 <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2">State / Region</label>
-                                                <input type="text" value={newAddress.state} onChange={(e) => setNewAddress({ ...newAddress, state: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required />
+                                                <input type="text" value={newAddress.state} onChange={(e) => setNewAddress({ ...newAddress, state: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required />
                                             </div>
-                                            <div className="space-y-3">
+                                            <div className="space-y-2">
                                                 <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2">Phone</label>
-                                                <input type="text" value={newAddress.phone} onChange={(e) => setNewAddress({ ...newAddress, phone: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required />
+                                                <input type="text" value={newAddress.phone} onChange={(e) => setNewAddress({ ...newAddress, phone: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm outline-none focus:border-blue-500/50 transition-all" required />
                                             </div>
                                         </div>
-                                        <button type="submit" disabled={isSaving} className="w-full py-5 bg-white text-black rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-200 transition-all flex items-center justify-center space-x-3 shadow-2xl">
+                                        <button type="submit" disabled={isSaving} className="w-full py-4 bg-white text-black rounded-xl font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-200 transition-all flex items-center justify-center space-x-3 shadow-2xl">
                                             {isSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
                                             <span>Secure Address</span>
                                         </button>
@@ -638,7 +649,7 @@ function ProfilePageContent() {
 
                                 <div className="space-y-5 max-h-[600px] overflow-y-auto pr-2 scrollbar-hide">
                                     {user.addresses?.length === 0 ? (
-                                        <div className="glass-card bg-white/5 border border-white/10 rounded-[2.5rem] p-20 text-center space-y-6">
+                                        <div className="glass-card bg-white/5 border border-white/10 rounded-2xl sm:rounded-[2.5rem] p-12 sm:p-20 text-center space-y-6">
                                             <div className="w-20 h-20 bg-white/5 rounded-3xl flex items-center justify-center mx-auto opacity-20">
                                                 <MapPin className="w-10 h-10 text-slate-600" />
                                             </div>
@@ -649,18 +660,18 @@ function ProfilePageContent() {
                                         </div>
                                     ) : (
                                         user.addresses?.map((addr: any) => (
-                                            <div key={addr._id} className="glass-card bg-white/5 border border-white/10 rounded-[2rem] p-8 group transition-all hover:bg-white/[0.08] relative overflow-hidden">
+                                            <div key={addr._id} className="glass-card bg-white/5 border border-white/10 rounded-2xl sm:rounded-[2rem] p-4 sm:p-8 group transition-all hover:bg-white/[0.08] relative overflow-hidden">
                                                 {addr.isDefault && (
-                                                    <div className="absolute top-0 right-10 bg-blue-600 text-white text-[7px] font-black uppercase px-3 py-1.5 rounded-b-xl tracking-tighter shadow-lg">Default Hub</div>
+                                                    <div className="absolute top-0 right-8 bg-blue-600 text-white text-[7px] font-black uppercase px-3 py-1.5 rounded-b-xl tracking-tighter shadow-lg">Default</div>
                                                 )}
-                                                <div className="flex items-start justify-between">
-                                                    <div className="space-y-3">
-                                                        <div className="flex items-center space-x-3">
-                                                            <div className="px-3 py-1 bg-white/10 rounded-lg text-[9px] font-black text-slate-400 uppercase tracking-widest border border-white/5">{addr.label}</div>
+                                                <div className="flex items-start justify-between gap-3">
+                                                    <div className="space-y-2 min-w-0">
+                                                        <div className="flex items-center space-x-2">
+                                                            <div className="px-2.5 py-1 bg-white/10 rounded-lg text-[9px] font-black text-slate-400 uppercase tracking-widest border border-white/5">{addr.label}</div>
                                                         </div>
-                                                        <div className="space-y-1">
-                                                            <h4 className="text-lg font-black text-white italic tracking-tight">{addr.fullName}</h4>
-                                                            <p className="text-slate-400 text-xs font-bold leading-relaxed max-w-lg">{addr.address}, {addr.city}, {addr.state}{addr.country ? `, ${addr.country}` : ''}</p>
+                                                        <div className="space-y-0.5">
+                                                            <h4 className="text-base font-black text-white italic tracking-tight">{addr.fullName}</h4>
+                                                            <p className="text-slate-400 text-xs font-bold leading-relaxed">{addr.address}, {addr.city}, {addr.state}{addr.country ? `, ${addr.country}` : ''}</p>
                                                         </div>
                                                         <div className="flex items-center space-x-2 text-slate-500">
                                                             <Phone size={10} />
@@ -668,14 +679,14 @@ function ProfilePageContent() {
                                                         </div>
                                                     </div>
 
-                                                    <div className="flex items-center space-x-2">
+                                                    <div className="flex items-center space-x-2 shrink-0">
                                                         {!addr.isDefault && (
-                                                            <button onClick={() => handleSetDefault(addr._id)} className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-500 hover:text-white hover:bg-blue-600 transition-all" title="Set as Default">
-                                                                <ShieldCheck size={18} />
+                                                            <button onClick={() => handleSetDefault(addr._id)} className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-slate-500 hover:text-white hover:bg-blue-600 transition-all active:scale-95" title="Set as Default">
+                                                                <ShieldCheck size={16} />
                                                             </button>
                                                         )}
-                                                        <button onClick={() => handleDeleteAddress(addr._id)} className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-500 hover:text-red-500 hover:bg-red-500/10 transition-all transition-all" title="Delete">
-                                                            <MapPin className="w-4 h-4" />
+                                                        <button onClick={() => handleDeleteAddress(addr._id)} className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-slate-500 hover:text-red-500 hover:bg-red-500/10 transition-all active:scale-95" title="Delete">
+                                                            <Trash2 className="w-4 h-4" />
                                                         </button>
                                                     </div>
                                                 </div>
@@ -687,9 +698,9 @@ function ProfilePageContent() {
                         )}
 
                         {activeTab === 'orders' && (
-                            <motion.div key="orders" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-8">
+                            <motion.div key="orders" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-5 sm:space-y-8">
                                 <div className="flex items-center justify-between mb-2">
-                                    <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter">Order History</h3>
+                                    <h3 className="text-xl sm:text-2xl font-black text-white italic uppercase tracking-tighter">Order History</h3>
                                     <button onClick={() => fetchOrders()} className="text-[10px] font-black text-blue-500 uppercase tracking-widest hover:text-blue-400 transition-colors">Refresh</button>
                                 </div>
 
@@ -710,15 +721,15 @@ function ProfilePageContent() {
                                 ) : (
                                     <div className="space-y-6 max-h-[600px] overflow-y-auto pr-2 scrollbar-hide">
                                         {orders.map((order, index) => (
-                                            <div key={order._id} className="glass-card bg-white/5 border border-white/10 rounded-[2.5rem] overflow-hidden group hover:border-blue-500/30 transition-all">
-                                                <div className="p-8 flex flex-col md:flex-row md:items-center gap-8">
-                                                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 ${order.deliveryStatus === 'delivered' ? 'bg-green-500/10 text-green-500 shadow-[inset_0_0_20px_rgba(34,197,94,0.1)]' :
+                                            <div key={order._id} className="glass-card bg-white/5 border border-white/10 rounded-2xl sm:rounded-[2.5rem] overflow-hidden group hover:border-blue-500/30 transition-all">
+                                                <div className="p-4 sm:p-8 flex flex-row items-center gap-4 sm:gap-8">
+                                                    <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0 ${order.deliveryStatus === 'delivered' ? 'bg-green-500/10 text-green-500' :
                                                         order.deliveryStatus === 'cancelled' ? 'bg-red-500/10 text-red-500' :
-                                                            'bg-blue-500/10 text-blue-500 shadow-[inset_0_0_20px_rgba(59,130,246,0.1)]'
+                                                            'bg-blue-500/10 text-blue-500'
                                                         }`}>
-                                                        {order.deliveryStatus === 'delivered' ? <CheckCircle2 size={32} /> :
-                                                            order.deliveryStatus === 'cancelled' ? <AlertCircle size={32} /> :
-                                                                <Clock size={32} className="animate-pulse" />}
+                                                        {order.deliveryStatus === 'delivered' ? <CheckCircle2 size={24} /> :
+                                                            order.deliveryStatus === 'cancelled' ? <AlertCircle size={24} /> :
+                                                                <Clock size={24} className="animate-pulse" />}
                                                     </div>
 
                                                     <div className="flex-grow space-y-2">
@@ -860,10 +871,10 @@ function ProfilePageContent() {
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+                                <div className="grid grid-cols-1 sm:grid-cols-5 gap-5 sm:gap-10">
                                     {/* Top up Form */}
-                                    <div className="lg:col-span-2">
-                                        <form onSubmit={handleFundWallet} className="glass-card bg-gradient-to-br from-blue-600/10 to-transparent border border-white/10 rounded-[2.5rem] p-10 space-y-8 relative overflow-hidden group">
+                                    <div className="sm:col-span-2">
+                                        <form onSubmit={handleFundWallet} className="glass-card bg-gradient-to-br from-blue-600/10 to-transparent border border-white/10 rounded-2xl sm:rounded-[2.5rem] p-5 sm:p-10 space-y-5 sm:space-y-8 relative overflow-hidden group">
                                             <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-600/5 rounded-full blur-3xl group-hover:scale-110 transition-transform" />
                                             <div className="space-y-2">
                                                 <h4 className="text-lg font-black text-white uppercase italic tracking-tight">Deploy Capital</h4>
@@ -895,7 +906,7 @@ function ProfilePageContent() {
                                     </div>
 
                                     {/* History */}
-                                    <div className="lg:col-span-3 space-y-6">
+                                    <div className="sm:col-span-3 space-y-4 sm:space-y-6">
                                         <div className="flex items-center space-x-3 px-2">
                                             <History size={18} className="text-blue-500" />
                                             <h4 className="text-lg font-black text-white uppercase italic tracking-tight">Transaction Log</h4>
@@ -961,13 +972,13 @@ function ProfilePageContent() {
                         {activeTab === 'security' && (
                             <motion.div key="security" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-8">
                                 <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter">Security Center</h3>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                                    <div className="glass-card bg-white/5 border border-white/10 rounded-[2.5rem] p-10 space-y-8">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-10">
+                                    <div className="glass-card bg-white/5 border border-white/10 rounded-2xl sm:rounded-[2.5rem] p-5 sm:p-10 space-y-5 sm:space-y-8">
                                         <div className="flex items-center space-x-3">
                                             <Lock size={20} className="text-blue-500" />
                                             <h4 className="text-lg font-black text-white uppercase italic tracking-tight">Access Control</h4>
                                         </div>
-                                        <form onSubmit={handlePasswordUpdate} className="space-y-6">
+                                        <form onSubmit={handlePasswordUpdate} className="space-y-5 sm:space-y-6">
                                             <div className="space-y-3">
                                                 <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2">Existing Password</label>
                                                 <input
@@ -1011,7 +1022,7 @@ function ProfilePageContent() {
                                     </div>
 
                                     <div className="space-y-6">
-                                        <div className="glass-card bg-white/5 border border-white/10 rounded-[2.5rem] p-10 space-y-8">
+                                        <div className="glass-card bg-white/5 border border-white/10 rounded-2xl sm:rounded-[2.5rem] p-5 sm:p-10 space-y-5 sm:space-y-8">
                                             <div className="flex items-center space-x-3">
                                                 <ShieldCheck size={20} className="text-green-500" />
                                                 <h4 className="text-lg font-black text-white uppercase italic tracking-tight">System Status</h4>
@@ -1088,7 +1099,7 @@ function ProfilePageContent() {
                                                     />
                                                 </div>
                                                 <div className="flex-grow space-y-2">
-                                                    <h4 className="text-sm font-black text-white uppercase italic tracking-tight truncate max-w-[150px]">{item.product.name}</h4>
+                                                    <h4 className="text-sm font-black text-white uppercase italic tracking-tight truncate">{item.product.name}</h4>
                                                     <p className="text-lg font-black text-blue-500 italic">₦{item.product.variants?.[0]?.sellingPrice?.toLocaleString()}</p>
                                                     <div className="flex items-center gap-2">
                                                         <Link href={`/product/${item.product.slug}`} className="p-2 bg-white/5 rounded-lg text-slate-500 hover:text-white hover:bg-blue-600 transition-all">
