@@ -64,7 +64,7 @@ const PaymentHighlight: React.FC = () => {
                     </div>
 
                     {/* Payment Methods Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4 mb-6 sm:mb-8">
                         {paymentMethods.map((method, index) => (
                             <motion.div
                                 key={method.name}
@@ -72,35 +72,44 @@ const PaymentHighlight: React.FC = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}
                                 viewport={{ once: true }}
-                                className={`relative overflow-hidden glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6 border ${method.recommended
-                                    ? 'border-emerald-500/50 ring-2 ring-emerald-500/20'
+                                className={`relative overflow-hidden glass-card rounded-xl sm:rounded-2xl p-3.5 sm:p-6 border ${method.recommended
+                                    ? 'border-emerald-500/50 ring-1 sm:ring-2 ring-emerald-500/20'
                                     : 'border-white/10'
                                     } transition-all hover:scale-[1.02]`}
                             >
-                                {method.recommended && (
-                                    <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30">
-                                        <span className="text-[8px] sm:text-[10px] font-black text-emerald-400 uppercase tracking-wider">
-                                            Recommended
-                                        </span>
-                                    </div>
-                                )}
-
                                 <div className={`absolute inset-0 bg-gradient-to-br ${method.color} opacity-50`} />
 
-                                <div className="relative z-10 flex flex-col items-center text-center space-y-3 sm:space-y-4">
-                                    <div className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 ${method.recommended ? 'ring-2 ring-emerald-500/30' : ''}`}>
-                                        <method.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${method.iconColor}`} />
-                                    </div>
+                                <div className="relative z-10 flex flex-row sm:flex-col items-center text-left sm:text-center justify-between sm:justify-center gap-3 sm:gap-4">
+                                    <div className="flex items-center space-x-3 sm:flex-col sm:space-x-0 sm:space-y-4">
+                                        <div className={`p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 shrink-0 ${method.recommended ? 'ring-1 sm:ring-2 ring-emerald-500/30' : ''}`}>
+                                            <method.icon className={`w-5 h-5 sm:w-8 sm:h-8 ${method.iconColor}`} />
+                                        </div>
 
-                                    <div>
-                                        <h3 className="text-base sm:text-lg font-black text-white mb-1">
-                                            {method.name}
-                                        </h3>
-                                        <div className={`text-xl sm:text-2xl font-black ${method.recommended ? 'text-emerald-400' : 'text-slate-400'
-                                            }`}>
-                                            {method.discount}
+                                        <div>
+                                            <div className="flex items-center space-x-2 sm:justify-center">
+                                                <h3 className="text-xs sm:text-lg font-black text-white">
+                                                    {method.name}
+                                                </h3>
+                                                {method.recommended && (
+                                                    <span className="sm:hidden text-[7px] font-black text-emerald-400 uppercase bg-emerald-500/20 border border-emerald-500/30 px-1.5 py-0.5 rounded-full">
+                                                        Best
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <div className={`text-sm sm:text-2xl font-black ${method.recommended ? 'text-emerald-400' : 'text-slate-400'
+                                                }`}>
+                                                {method.discount}
+                                            </div>
                                         </div>
                                     </div>
+
+                                    {method.recommended && (
+                                        <div className="hidden sm:block absolute top-3 right-3 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30">
+                                            <span className="text-[10px] font-black text-emerald-400 uppercase tracking-wider">
+                                                Recommended
+                                            </span>
+                                        </div>
+                                    )}
                                 </div>
                             </motion.div>
                         ))}

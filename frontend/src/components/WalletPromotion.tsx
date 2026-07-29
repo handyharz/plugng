@@ -72,12 +72,12 @@ const WalletPromotion: React.FC = () => {
                     </div>
 
                     {/* Right Side - Visual */}
-                    <div className="flex-shrink-0">
+                    <div className="flex-shrink-0 mt-2 sm:mt-0">
                         <div className="relative">
                             {/* Wallet Icon Illustration */}
                             <motion.div
                                 animate={{
-                                    y: [0, -10, 0],
+                                    y: [0, -8, 0],
                                 }}
                                 transition={{
                                     duration: 3,
@@ -86,30 +86,30 @@ const WalletPromotion: React.FC = () => {
                                 }}
                                 className="relative"
                             >
-                                <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 flex items-center justify-center backdrop-blur-sm">
-                                    <Wallet className="w-24 h-24 md:w-32 md:h-32 text-purple-400" />
+                                <div className="w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 flex items-center justify-center backdrop-blur-sm mx-auto">
+                                    <Wallet className="w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 text-purple-400" />
                                 </div>
 
                                 {/* Floating Coins */}
                                 <motion.div
                                     animate={{
-                                        y: [0, -20, 0],
-                                        x: [0, 10, 0],
+                                        y: [0, -14, 0],
+                                        x: [0, 8, 0],
                                     }}
                                     transition={{
                                         duration: 2.5,
                                         repeat: Infinity,
                                         ease: "easeInOut"
                                     }}
-                                    className="absolute -top-4 -right-4 w-16 h-16 rounded-full bg-gradient-to-br from-yellow-500/30 to-orange-500/30 border border-yellow-500/50 flex items-center justify-center text-2xl"
+                                    className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-10 h-10 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-yellow-500/30 to-orange-500/30 border border-yellow-500/50 flex items-center justify-center text-lg sm:text-2xl"
                                 >
                                     💰
                                 </motion.div>
 
                                 <motion.div
                                     animate={{
-                                        y: [0, -15, 0],
-                                        x: [0, -10, 0],
+                                        y: [0, -10, 0],
+                                        x: [0, -8, 0],
                                     }}
                                     transition={{
                                         duration: 3.5,
@@ -117,7 +117,7 @@ const WalletPromotion: React.FC = () => {
                                         ease: "easeInOut",
                                         delay: 0.5
                                     }}
-                                    className="absolute -bottom-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500/30 to-green-500/30 border border-emerald-500/50 flex items-center justify-center text-xl"
+                                    className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-emerald-500/30 to-green-500/30 border border-emerald-500/50 flex items-center justify-center text-base sm:text-xl"
                                 >
                                     💸
                                 </motion.div>
