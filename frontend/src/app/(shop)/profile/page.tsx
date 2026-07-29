@@ -1217,52 +1217,89 @@ function ProfilePageContent() {
                             </motion.div>
                         )}
                         {activeTab === 'reviews' && (
-                            <motion.div key="reviews" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-8">
+                            <motion.div key="reviews" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6 sm:space-y-8">
                                 <div className="flex items-center justify-between mb-2">
-                                    <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter">My Reviews</h3>
+                                    <h3 className="text-xl sm:text-2xl font-black text-white italic uppercase tracking-tighter">My Reviews</h3>
                                     <button onClick={fetchReviews} className="text-[10px] font-black text-blue-500 uppercase tracking-widest hover:text-blue-400 transition-colors">Refresh</button>
                                 </div>
 
                                 {reviewsLoading ? (
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        {[1, 2, 3, 4].map(i => <div key={i} className="h-40 bg-white/5 animate-pulse rounded-[2rem]" />)}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                                        {[1, 2, 3, 4].map(i => <div key={i} className="h-44 bg-white/5 animate-pulse rounded-2xl sm:rounded-3xl" />)}
                                     </div>
                                 ) : myReviews.length === 0 ? (
-                                    <div className="glass-card bg-white/5 border border-white/10 rounded-[2.5rem] p-20 text-center space-y-6">
-                                        <div className="w-20 h-20 bg-amber-500/10 rounded-3xl flex items-center justify-center mx-auto text-amber-500">
-                                            <Star className="w-10 h-10" />
+                                    <div className="glass-card bg-white/5 border border-white/10 rounded-2xl sm:rounded-[2.5rem] p-12 sm:p-20 text-center space-y-4 sm:space-y-6">
+                                        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-amber-500/10 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto text-amber-500">
+                                            <Star className="w-8 h-8 sm:w-10 sm:h-10" />
                                         </div>
-                                        <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">No feedback left yet</p>
+                                        <div className="space-y-1">
+                                            <p className="text-slate-400 text-sm font-bold">No feedback left yet</p>
+                                            <p className="text-slate-600 text-[10px] font-black uppercase tracking-widest">Your submitted product reviews will appear here</p>
+                                        </div>
                                     </div>
                                 ) : (
-                                    <div className="grid grid-cols-1 gap-4 max-h-[600px] overflow-y-auto pr-1 scrollbar-hide">
-                                        {myReviews.map(review => (
-                                            <div key={review._id} className="glass-card bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3 group">
-                                                <div className="flex items-center gap-4">
-                                                    <div className="w-12 h-12 relative rounded-xl overflow-hidden shrink-0 border border-white/5">
-                                                        <Image
-                                                            src={review.product?.images?.[0]?.url || '/placeholder.png'}
-                                                            alt=""
-                                                            fill
-                                                            className="object-cover"
-                                                        />
-                                                    </div>
-                                                    <div className="flex-grow space-y-1">
-                                                        <h4 className="text-xs font-black text-white uppercase italic tracking-tight line-clamp-1">{review.product?.name}</h4>
-                                                        <div className="flex text-amber-500">
-                                                            {[...Array(5)].map((_, i) => (
-                                                                <Star key={i} size={10} fill={i < review.rating ? 'currentColor' : 'none'} className={i >= review.rating ? 'text-slate-700' : ''} />
-                                                            ))}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-h-[650px] overflow-y-auto pr-1 scrollbar-hide">
+                                        {myReviews.map(review => {
+                                            const imgUrl = typeof review.product?.images?.[0] === 'string'
+                                                ? review.product.images[0]
+                                                : (review.product?.images?.[0]?.url || '/placeholder.png');
+
+                                            return (
+                                                <div key={review._id} className="glass-card bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 flex flex-col justify-between space-y-4 group hover:border-white/20 transition-all">
+                                                    <div className="space-y-3">
+                                                        <div className="flex items-center gap-3">
+                                                            <div className="w-14 h-14 sm:w-16 sm:h-16 relative rounded-xl overflow-hidden shrink-0 border border-white/10 bg-black/40">
+                                                                <Image
+                                                                    src={imgUrl}
+                                                                    alt={review.product?.name || 'Product'}
+                                                                    fill
+                                                                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                                                />
+                                                            </div>
+                                                            <div className="flex-grow space-y-1 min-w-0">
+                                                                <h4 className="text-xs sm:text-sm font-black text-white uppercase italic tracking-tight truncate">
+                                                                    {review.product?.name || 'Unknown Product'}
+                                                                </h4>
+                                                                <div className="flex items-center space-x-2">
+                                                                    <div className="flex text-amber-400">
+                                                                        {[...Array(5)].map((_, i) => (
+                                                                            <Star
+                                                                                key={i}
+                                                                                size={12}
+                                                                                fill={i < review.rating ? 'currentColor' : 'none'}
+                                                                                className={i >= review.rating ? 'text-slate-700' : ''}
+                                                                            />
+                                                                        ))}
+                                                                    </div>
+                                                                    <span className="text-[10px] font-black text-amber-400">{review.rating}.0</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="bg-black/30 p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-white/5">
+                                                            <p className="text-xs text-slate-300 italic leading-relaxed line-clamp-3">
+                                                                "{review.comment}"
+                                                            </p>
                                                         </div>
                                                     </div>
+
+                                                    <div className="pt-2 flex items-center justify-between border-t border-white/5">
+                                                        <div className={`px-2.5 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest border ${
+                                                            review.status === 'approved'
+                                                                ? 'bg-green-500/10 text-green-400 border-green-500/20'
+                                                                : review.status === 'rejected'
+                                                                ? 'bg-red-500/10 text-red-400 border-red-500/20'
+                                                                : 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20'
+                                                        }`}>
+                                                            {review.status || 'pending'}
+                                                        </div>
+                                                        <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest">
+                                                            {new Date(review.createdAt).toLocaleDateString()}
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                                <p className="text-[11px] text-slate-400 italic leading-relaxed line-clamp-3">"{review.comment}"</p>
-                                                <div className="pt-2 flex items-center justify-between border-t border-white/5">
-                                                    <span className={`text-[8px] font-black uppercase tracking-widest ${review.status === 'approved' ? 'text-green-500' : 'text-yellow-500'}`}>{review.status}</span>
-                                                    <span className="text-[8px] font-black text-slate-600 uppercase tracking-widest">{new Date(review.createdAt).toLocaleDateString()}</span>
-                                                </div>
-                                            </div>
-                                        ))}
+                                            );
+                                        })}
                                     </div>
                                 )}
                             </motion.div>
