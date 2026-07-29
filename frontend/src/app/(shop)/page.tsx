@@ -32,10 +32,10 @@ export default function Home() {
       try {
         // Fetch all 4 homepage product sections concurrently in parallel
         const [newestRes, onSaleRes, featuredRes, trendingRes] = await Promise.all([
-          productApi.getAll({ sort: 'newest', limit: 12 }).catch(() => ({ products: [] })),
-          productApi.getAll({ onSale: true, limit: 8 }).catch(() => ({ products: [] })),
-          productApi.getAll({ featured: true, limit: 8 }).catch(() => ({ products: [] })),
-          productApi.getAll({ trending: true, limit: 8 }).catch(() => ({ products: [] }))
+          productApi.getAll({ sort: 'newest', limit: 16 }).catch(() => ({ products: [] })),
+          productApi.getAll({ onSale: true, limit: 12 }).catch(() => ({ products: [] })),
+          productApi.getAll({ featured: true, limit: 12 }).catch(() => ({ products: [] })),
+          productApi.getAll({ trending: true, limit: 12 }).catch(() => ({ products: [] }))
         ]);
 
         setNewProducts(newestRes.products || []);

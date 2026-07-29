@@ -78,7 +78,7 @@ function ShopContent() {
                 trending: filters.trending,
                 brands: filters.brands,
                 colors: filters.colors,
-                limit: 24
+                limit: 60
             })
                 .then(data => {
                     setProducts(data.products);
