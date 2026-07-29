@@ -154,27 +154,9 @@ export const getProducts = async (req: Request, res: Response, next: NextFunctio
             query['variants.stock'] = { $gt: 0 };
         }
 
-        // 4. On Sale Filter (products with discount)
+        // 4. On Sale Filter (products with compareAtPrice discount)
         if (onSale === 'true') {
-            query.$expr = {
-                $gt: [
-                    {
-                        $size: {
-                            $filter: {
-                                input: "$variants",
-                                as: "variant",
-                                cond: {
-                                    $and: [
-                                        { $gt: ["$$variant.compareAtPrice", "$$variant.sellingPrice"] },
-                                        { $ne: ["$$variant.compareAtPrice", null] }
-                                    ]
-                                }
-                            }
-                        }
-                    },
-                    0
-                ]
-            };
+            query['variants.compareAtPrice'] = { $gt: 0 };
         }
 
         // 5. Featured/Trending Filters
@@ -253,12 +235,18 @@ export const getProducts = async (req: Request, res: Response, next: NextFunctio
                 .sort(sortQuery)
                 .skip(skip)
                 .limit(limit)
-                .populate('category', 'name slug');
+                .populate('category', 'name slug')
+                .lean();
 
             total = await Product.countDocuments(query);
         }
 
         console.log(`📦 Product Search Query: ${Date.now() - startTime}ms`);
+
+        // Cache public product listings for 30s at edge / browser with stale-while-revalidate
+        if (req.method === 'GET' && !search) {
+            res.setHeader('Cache-Control', 'public, max-age=30, stale-while-revalidate=120');
+        }
 
         res.status(200).json({
             status: 'success',

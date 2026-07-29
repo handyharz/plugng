@@ -104,7 +104,12 @@ const ProductSchema: Schema = new Schema({
     }
 }, { timestamps: true });
 
-// Index for search
+// Performance Indexes for production query speed
 ProductSchema.index({ name: 'text', description: 'text' });
+ProductSchema.index({ status: 1, createdAt: -1 });
+ProductSchema.index({ status: 1, featured: 1 });
+ProductSchema.index({ status: 1, salesCount: -1 });
+ProductSchema.index({ status: 1, category: 1 });
+ProductSchema.index({ status: 1, 'variants.compareAtPrice': 1 });
 
 export default mongoose.model<IProduct>('Product', ProductSchema);

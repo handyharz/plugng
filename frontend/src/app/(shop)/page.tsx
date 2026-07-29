@@ -30,20 +30,18 @@ export default function Home() {
     const fetchAllSections = async () => {
       setIsLoading(true);
       try {
-        // Always fetch newest products first (guaranteed to have results)
-        const newest = await productApi.getAll({ sort: 'newest', limit: 12 });
-        setNewProducts(newest.products);
-
-        // Try to fetch filtered sections (these might be empty)
-        const [onSale, featured, trending] = await Promise.all([
-          productApi.getAll({ onSale: true, limit: 8 }).catch(() => ({ products: [], total: 0, page: 1, pages: 0 })),
-          productApi.getAll({ featured: true, limit: 8 }).catch(() => ({ products: [], total: 0, page: 1, pages: 0 })),
-          productApi.getAll({ trending: true, limit: 8 }).catch(() => ({ products: [], total: 0, page: 1, pages: 0 }))
+        // Fetch all 4 homepage product sections concurrently in parallel
+        const [newestRes, onSaleRes, featuredRes, trendingRes] = await Promise.all([
+          productApi.getAll({ sort: 'newest', limit: 12 }).catch(() => ({ products: [] })),
+          productApi.getAll({ onSale: true, limit: 8 }).catch(() => ({ products: [] })),
+          productApi.getAll({ featured: true, limit: 8 }).catch(() => ({ products: [] })),
+          productApi.getAll({ trending: true, limit: 8 }).catch(() => ({ products: [] }))
         ]);
 
-        setOnSaleProducts(onSale.products);
-        setFeaturedProducts(featured.products);
-        setTrendingProducts(trending.products);
+        setNewProducts(newestRes.products || []);
+        setOnSaleProducts(onSaleRes.products || []);
+        setFeaturedProducts(featuredRes.products || []);
+        setTrendingProducts(trendingRes.products || []);
       } catch (error) {
         console.error('Error fetching homepage sections:', error);
       } finally {
