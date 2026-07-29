@@ -732,58 +732,58 @@ function ProfilePageContent() {
                                                                 <Clock size={24} className="animate-pulse" />}
                                                     </div>
 
-                                                    <div className="flex-grow space-y-2">
-                                                        <div className="flex items-center space-x-3">
+                                                    <div className="flex-grow space-y-1 min-w-0">
+                                                        <div className="flex items-center space-x-2 flex-wrap gap-1">
                                                             <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest">ORD-{order.orderNumber}</span>
                                                             <span className="w-1 h-1 rounded-full bg-slate-800" />
                                                             <span className="text-[9px] font-bold text-slate-500 uppercase">{new Date(order.createdAt).toLocaleDateString()}</span>
                                                         </div>
-                                                        <h4 className="text-xl font-black text-white uppercase italic truncate max-w-sm">
+                                                        <h4 className="text-base sm:text-xl font-black text-white uppercase italic truncate">
                                                             {order.items[0].name} {order.items.length > 1 && <span className="text-blue-500 text-xs ml-1">+ {order.items.length - 1} More</span>}
                                                         </h4>
-                                                        <div className="flex flex-wrap gap-2">
+                                                        <div className="flex flex-wrap gap-1.5">
                                                             <span className={`px-2 py-0.5 rounded-lg text-[7px] font-black uppercase tracking-widest border border-white/5 ${order.paymentStatus === 'paid' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-500'}`}>Payment: {order.paymentStatus}</span>
                                                             <span className={`px-2 py-0.5 rounded-lg text-[7px] font-black uppercase tracking-widest border border-white/5 ${order.deliveryStatus === 'delivered' ? 'bg-green-500/20 text-green-400' : 'bg-blue-500/20 text-blue-400'}`}>Shipment: {order.deliveryStatus}</span>
                                                         </div>
                                                     </div>
 
-                                                    <div className="text-right shrink-0 space-y-4">
-                                                        <div className="space-y-1">
-                                                            <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest">Order Total</p>
-                                                            <p className="text-2xl font-black text-white italic tracking-tighter">₦{order.total.toLocaleString()}</p>
-                                                        </div>
-                                                        <div className="flex flex-col gap-2 scale-90 md:scale-100 items-end">
-                                                            <button
-                                                                onClick={() => setTrackingOrder(trackingOrder === order._id ? null : order._id)}
-                                                                className={`flex items-center space-x-2 text-[9px] font-black uppercase tracking-widest transition-all ${trackingOrder === order._id ? 'text-blue-500' : 'text-slate-500 hover:text-blue-500'}`}
-                                                            >
-                                                                <span>{trackingOrder === order._id ? 'Close Tracking' : 'Track Manifest'}</span>
-                                                                <ChevronRight size={14} className={trackingOrder === order._id ? 'rotate-90' : ''} />
-                                                            </button>
-
-                                                            <Link
-                                                                href={`/orders/${order._id}`}
-                                                                className="flex items-center space-x-2 text-[9px] font-black uppercase tracking-widest text-blue-500/70 hover:text-blue-500 transition-all"
-                                                            >
-                                                                <span>Full Details</span>
-                                                                <ExternalLink size={10} />
-                                                            </Link>
-
-                                                            {order.deliveryStatus === 'delivered' && (
-                                                                <button
-                                                                    onClick={() => {
-                                                                        setReviewOrder(order);
-                                                                        setReviewProduct(order.items[0]); // Using the order item which has product info
-                                                                        setShowReviewForm(true);
-                                                                    }}
-                                                                    className="flex items-center space-x-2 text-[9px] font-black uppercase tracking-widest text-amber-500 hover:text-amber-400 transition-all"
-                                                                >
-                                                                    <span>Leave Feedback</span>
-                                                                    <Star size={14} />
-                                                                </button>
-                                                            )}
-                                                        </div>
+                                                    <div className="text-right shrink-0 space-y-2">
+                                                        <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest">Total</p>
+                                                        <p className="text-lg sm:text-2xl font-black text-white italic tracking-tighter">₦{order.total.toLocaleString()}</p>
                                                     </div>
+                                                </div>
+
+                                                {/* Actions row — always visible on mobile */}
+                                                <div className="flex items-center gap-4 pt-3 border-t border-white/5 flex-wrap">
+                                                    <button
+                                                        onClick={() => setTrackingOrder(trackingOrder === order._id ? null : order._id)}
+                                                        className={`flex items-center space-x-1.5 text-[9px] font-black uppercase tracking-widest transition-all px-3 py-1.5 rounded-lg border ${trackingOrder === order._id ? 'text-blue-500 border-blue-500/30 bg-blue-500/10' : 'text-slate-400 border-white/10 hover:text-blue-500 hover:border-blue-500/30 hover:bg-blue-500/10'}`}
+                                                    >
+                                                        <span>{trackingOrder === order._id ? 'Close Tracking' : 'Track Manifest'}</span>
+                                                        <ChevronRight size={12} className={trackingOrder === order._id ? 'rotate-90' : ''} />
+                                                    </button>
+
+                                                    <Link
+                                                        href={`/orders/${order._id}`}
+                                                        className="flex items-center space-x-1.5 text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg border border-blue-500/30 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 transition-all"
+                                                    >
+                                                        <span>Full Details</span>
+                                                        <ExternalLink size={10} />
+                                                    </Link>
+
+                                                    {order.deliveryStatus === 'delivered' && (
+                                                        <button
+                                                            onClick={() => {
+                                                                setReviewOrder(order);
+                                                                setReviewProduct(order.items[0]);
+                                                                setShowReviewForm(true);
+                                                            }}
+                                                            className="flex items-center space-x-1.5 text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-400 hover:bg-amber-500/20 transition-all"
+                                                        >
+                                                            <span>Leave Feedback</span>
+                                                            <Star size={10} />
+                                                        </button>
+                                                    )}
                                                 </div>
 
                                                 {/* Advanced Logistics Tracker Expansion */}
@@ -795,7 +795,7 @@ function ProfilePageContent() {
                                                             exit={{ height: 0, opacity: 0 }}
                                                             className="border-t border-white/5 bg-white/[0.02]"
                                                         >
-                                                            <div className="p-8 space-y-8">
+                                                            <div className="p-4 sm:p-8 space-y-4 sm:space-y-8">
                                                                 <div className="flex items-center justify-between">
                                                                     <div className="space-y-1">
                                                                         <h5 className="text-[10px] font-black text-white uppercase italic tracking-widest">Visual Logistics Link</h5>
@@ -1087,10 +1087,10 @@ function ProfilePageContent() {
                                         </div>
                                     </div>
                                 ) : (
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-h-[600px] overflow-y-auto pr-2 scrollbar-hide">
+                                    <div className="grid grid-cols-1 gap-4 max-h-[600px] overflow-y-auto pr-1 scrollbar-hide">
                                         {wishlist.items.filter((item: any) => item.product !== null).map((item: any) => (
-                                            <div key={item.product._id} className="glass-card bg-white/5 border border-white/10 rounded-[2rem] p-5 flex items-center gap-6 group hover:bg-white/[0.08] transition-all relative overflow-hidden">
-                                                <div className="w-24 h-24 relative rounded-xl overflow-hidden shrink-0">
+                                            <div key={item.product._id} className="glass-card bg-white/5 border border-white/10 rounded-2xl sm:rounded-[2rem] p-4 sm:p-5 flex items-center gap-4 sm:gap-6 group hover:bg-white/[0.08] transition-all relative overflow-hidden">
+                                                <div className="w-16 h-16 sm:w-24 sm:h-24 relative rounded-xl overflow-hidden shrink-0">
                                                     <Image
                                                         src={item.product.images[0]?.url || '/placeholder.png'}
                                                         alt={item.product.name}
@@ -1113,7 +1113,8 @@ function ProfilePageContent() {
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all">
+                                                {/* Add to cart - always visible on mobile */}
+                                                <div className="absolute top-3 right-3">
                                                     <button
                                                         onClick={() => addToCart({
                                                             id: item.product._id,
@@ -1123,9 +1124,9 @@ function ProfilePageContent() {
                                                             description: item.product.description,
                                                             category: item.product.category?.name || 'Uncategorized'
                                                         })}
-                                                        className="w-10 h-10 bg-white text-black rounded-xl flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all"
+                                                        className="w-8 h-8 bg-white text-black rounded-xl flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all"
                                                     >
-                                                        <ShoppingCart size={16} />
+                                                        <ShoppingCart size={14} />
                                                     </button>
                                                 </div>
                                             </div>
@@ -1234,9 +1235,9 @@ function ProfilePageContent() {
                                         <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">No feedback left yet</p>
                                     </div>
                                 ) : (
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-h-[600px] overflow-y-auto pr-2 scrollbar-hide">
+                                    <div className="grid grid-cols-1 gap-4 max-h-[600px] overflow-y-auto pr-1 scrollbar-hide">
                                         {myReviews.map(review => (
-                                            <div key={review._id} className="glass-card bg-white/5 border border-white/10 rounded-[2rem] p-6 space-y-4 group">
+                                            <div key={review._id} className="glass-card bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3 group">
                                                 <div className="flex items-center gap-4">
                                                     <div className="w-12 h-12 relative rounded-xl overflow-hidden shrink-0 border border-white/5">
                                                         <Image

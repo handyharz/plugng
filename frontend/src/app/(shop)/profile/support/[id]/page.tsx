@@ -74,7 +74,7 @@ export default function TicketDetailPage() {
     const publicComments = ticket.comments.filter((c: any) => !c.isInternal);
 
     return (
-        <div className="min-h-screen bg-black pt-32 pb-12 px-6">
+        <div className="min-h-screen bg-black pt-20 sm:pt-32 pb-6 sm:pb-12 px-3 sm:px-6">
             <div className="max-w-4xl mx-auto space-y-8">
                 {/* Header Actions */}
                 <div className="flex items-center justify-between">
@@ -104,11 +104,11 @@ export default function TicketDetailPage() {
                 </div>
 
                 {/* Ticket Summary Card */}
-                <div className="glass-card bg-white/5 border border-white/10 rounded-[2.5rem] p-10 relative overflow-hidden">
+                <div className="glass-card bg-white/5 border border-white/10 rounded-2xl sm:rounded-[2.5rem] p-5 sm:p-10 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/5 rounded-full blur-3xl -mr-32 -mt-32" />
                     <div className="relative space-y-6">
                         <div className="space-y-2">
-                            <h1 className="text-3xl font-black text-white italic uppercase tracking-tighter">
+                            <h1 className="text-xl sm:text-3xl font-black text-white italic uppercase tracking-tighter">
                                 {ticket.subject}
                             </h1>
                             <div className="flex items-center space-x-3 text-[10px] text-slate-500 font-bold uppercase tracking-widest">
@@ -122,8 +122,8 @@ export default function TicketDetailPage() {
                 </div>
 
                 {/* Chat Section */}
-                <div className={`glass-card bg-white/5 border rounded-[2.5rem] flex flex-col h-[600px] overflow-hidden transition-all duration-500 ${ticket.status === 'resolved' ? 'border-green-500/50 shadow-[0_0_40px_-15px_rgba(34,197,94,0.2)]' : 'border-white/10'
-                    }`}>
+                <div className={`glass-card bg-white/5 border rounded-2xl sm:rounded-[2.5rem] flex flex-col overflow-hidden transition-all duration-500 ${ticket.status === 'resolved' ? 'border-green-500/50 shadow-[0_0_40px_-15px_rgba(34,197,94,0.2)]' : 'border-white/10'
+                    }`} style={{ height: 'min(600px, calc(100vh - 460px))' }}>
                     <div className="p-6 border-b border-white/10 flex items-center justify-between">
                         <div className="flex items-center space-x-3">
                             <Headset className="text-blue-500" size={24} />
@@ -137,7 +137,7 @@ export default function TicketDetailPage() {
 
                     <div
                         ref={scrollRef}
-                        className="flex-grow overflow-y-auto p-8 space-y-8 scrollbar-hide"
+                        className="flex-grow overflow-y-auto p-4 sm:p-8 space-y-5 sm:space-y-8 scrollbar-hide"
                     >
                         <AnimatePresence initial={false}>
                             {publicComments.map((comment: any, idx: number) => {
@@ -149,13 +149,13 @@ export default function TicketDetailPage() {
                                         animate={{ opacity: 1, y: 0 }}
                                         className={`flex ${isMe ? 'justify-end' : 'justify-start'}`}
                                     >
-                                        <div className={`flex items-start max-w-[80%] space-x-4 ${isMe ? 'flex-row-reverse space-x-reverse' : ''}`}>
+                                        <div className={`flex items-start max-w-[85%] space-x-3 sm:space-x-4 ${isMe ? 'flex-row-reverse space-x-reverse' : ''}`}>
                                             <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 border border-white/10 ${isMe ? 'bg-blue-600 text-white' : 'bg-white/10 text-slate-400'
                                                 }`}>
                                                 {isMe ? <UserIcon size={18} /> : <Headset size={18} />}
                                             </div>
                                             <div className="space-y-2">
-                                                <div className={`p-5 rounded-[1.5rem] text-[13px] leading-relaxed ${isMe ? 'bg-blue-600 text-white rounded-tr-none' : 'bg-white/10 text-slate-200 rounded-tl-none border border-white/10'
+                                                <div className={`p-4 sm:p-5 rounded-xl sm:rounded-[1.5rem] text-sm leading-relaxed ${isMe ? 'bg-blue-600 text-white rounded-tr-none' : 'bg-white/10 text-slate-200 rounded-tl-none border border-white/10'
                                                     }`}>
                                                     {comment.message}
                                                 </div>
@@ -183,8 +183,8 @@ export default function TicketDetailPage() {
                                 type="text"
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
-                                placeholder={ticket.status === 'closed' || ticket.status === 'resolved' ? "THIS CHANNEL IS CLOSED" : "TYPE YOUR MESSAGE..."}
-                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 pr-16 text-white text-xs font-black uppercase tracking-widest outline-none focus:border-blue-500/50 transition-all placeholder:text-slate-800 disabled:opacity-20"
+                                placeholder={ticket.status === 'closed' || ticket.status === 'resolved' ? "CLOSED" : "Type your message..."}
+                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 sm:px-6 py-4 pr-14 text-white text-sm outline-none focus:border-blue-500/50 transition-all placeholder:text-slate-600 disabled:opacity-20"
                                 disabled={ticket.status === 'resolved' || ticket.status === 'closed'}
                             />
                             <button
