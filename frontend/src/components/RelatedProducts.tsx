@@ -37,7 +37,7 @@ export function RelatedProducts({ currentProductId, categorySlug, limit = 4, com
                 <h2 className={`${compact ? 'text-2xl' : 'text-4xl'} font-black text-white uppercase italic tracking-tighter`}>Related Gear</h2>
             </div>
 
-            <div className={`grid gap-6 ${compact ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'}`}>
+            <div className={`grid gap-3 sm:gap-6 ${compact ? 'grid-cols-1' : 'grid-cols-2 sm:grid-cols-2 lg:grid-cols-4'}`}>
                 {data.map((product) => (
                     <ProductCard
                         key={product._id}
