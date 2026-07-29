@@ -50,9 +50,36 @@ function ShopContent() {
         colors: []
     });
 
+    const [page, setPage] = useState(1);
+    const [isLoadingMore, setIsLoadingMore] = useState(false);
+    const PAGE_LIMIT = 24;
+
+    // Reset pagination when filters change
+    const handleFilterChange = (key: string, value: any) => {
+        setPage(1);
+        setFilters(prev => ({ ...prev, [key]: value }));
+    };
+
+    const handleReset = () => {
+        setPage(1);
+        setFilters({
+            minPrice: '',
+            maxPrice: '',
+            sort: 'newest',
+            search: '',
+            inStock: false,
+            onSale: false,
+            featured: false,
+            trending: false,
+            brands: [],
+            colors: []
+        });
+    };
+
     // Update filters when search params change
     useEffect(() => {
         setShowFilters(searchParams.get('showFilters') !== 'false');
+        setPage(1);
         setFilters(prev => ({
             ...prev,
             onSale: searchParams.get('onSale') === 'true',
@@ -63,7 +90,7 @@ function ShopContent() {
         }));
     }, [searchParams]);
 
-    // Fetch Products with Filters
+    // Initial / Filtered Products Fetch (Page 1)
     useEffect(() => {
         setIsLoading(true);
         const timeoutId = setTimeout(() => {
@@ -78,18 +105,49 @@ function ShopContent() {
                 trending: filters.trending,
                 brands: filters.brands,
                 colors: filters.colors,
-                limit: 60
+                page: 1,
+                limit: PAGE_LIMIT
             })
                 .then(data => {
                     setProducts(data.products);
                     setTotal(data.total);
+                    setPage(1);
                 })
                 .catch(console.error)
                 .finally(() => setIsLoading(false));
-        }, filters.search ? 500 : 0); // Debounce search
+        }, filters.search ? 500 : 0);
 
         return () => clearTimeout(timeoutId);
     }, [filters]);
+
+    // Load More Page Handler
+    const handleLoadMore = () => {
+        if (isLoadingMore || products.length >= total) return;
+        setIsLoadingMore(true);
+        const nextPage = page + 1;
+
+        productApi.getAll({
+            minPrice: filters.minPrice ? parseFloat(filters.minPrice) : undefined,
+            maxPrice: filters.maxPrice ? parseFloat(filters.maxPrice) : undefined,
+            sort: filters.sort,
+            search: filters.search || undefined,
+            inStock: filters.inStock,
+            onSale: filters.onSale,
+            featured: filters.featured,
+            trending: filters.trending,
+            brands: filters.brands,
+            colors: filters.colors,
+            page: nextPage,
+            limit: PAGE_LIMIT
+        })
+            .then(data => {
+                setProducts(prev => [...prev, ...data.products]);
+                setPage(nextPage);
+                setTotal(data.total);
+            })
+            .catch(console.error)
+            .finally(() => setIsLoadingMore(false));
+    };
 
     const mappedProducts: CartProduct[] = useMemo(() => {
         return products.map(p => ({
@@ -329,6 +387,39 @@ function ShopContent() {
                                 ))}
                             </AnimatePresence>
                         </div>
+
+                        {/* Load More Pagination UI */}
+                        {products.length < total && (
+                            <div className="pt-10 flex flex-col items-center space-y-4 text-center">
+                                <div className="space-y-1.5 w-full max-w-xs">
+                                    <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                        <span>Showing {products.length} of {total} products</span>
+                                        <span>{Math.round((products.length / total) * 100)}%</span>
+                                    </div>
+                                    <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                                        <div
+                                            className="h-full bg-blue-500 rounded-full transition-all duration-500"
+                                            style={{ width: `${(products.length / total) * 100}%` }}
+                                        />
+                                    </div>
+                                </div>
+
+                                <button
+                                    onClick={handleLoadMore}
+                                    disabled={isLoadingMore}
+                                    className="px-8 py-3.5 bg-white hover:bg-slate-200 text-black rounded-2xl font-black text-xs uppercase tracking-widest transition-all active:scale-95 disabled:opacity-50 flex items-center space-x-2 shadow-xl shadow-white/5"
+                                >
+                                    {isLoadingMore ? (
+                                        <>
+                                            <Loader2 size={16} className="animate-spin text-black" />
+                                            <span>Loading More Gear...</span>
+                                        </>
+                                    ) : (
+                                        <span>Load More Gear ({total - products.length} Remaining)</span>
+                                    )}
+                                </button>
+                            </div>
+                        )}
                     ) : (
                         <div className="glass-card bg-white/5 border border-dashed border-white/10 rounded-3xl py-24 sm:py-32 text-center space-y-6">
                             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto text-slate-600">
