@@ -378,18 +378,18 @@ function ProfilePageContent() {
     };
 
     return (
-        <div className="max-w-[1440px] mx-auto px-6 py-12 space-y-12">
+        <div className="max-w-[1440px] mx-auto px-3 sm:px-6 pt-16 sm:pt-20 md:pt-24 pb-12 space-y-8 sm:space-y-12">
             {/* Header */}
-            <div className="space-y-6">
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <div className="space-y-4 sm:space-y-6">
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6">
                     <div className="space-y-1">
-                        <h1 className="text-4xl font-black text-white italic uppercase tracking-tighter">
+                        <h1 className="text-3xl sm:text-4xl font-black text-white italic uppercase tracking-tighter">
                             Control <span className="text-blue-500">Center</span>
                         </h1>
                         <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Manage your premium shop account</p>
                     </div>
 
-                    <div className="flex bg-white/5 p-1 rounded-2xl border border-white/10 w-full md:w-fit overflow-x-auto scrollbar-hide gap-1 flex-nowrap whitespace-nowrap">
+                    <div className="flex bg-white/5 p-1.5 rounded-2xl border border-white/10 w-full md:w-fit overflow-x-auto scrollbar-hide gap-1.5 flex-nowrap whitespace-nowrap">
                         {[
                             { id: 'profile', label: 'General', icon: Mail },
                             { id: 'addresses', label: 'Addresses', icon: MapPin },
@@ -405,10 +405,10 @@ function ProfilePageContent() {
                                 key={tab.id}
                                 id={`tab-${tab.id}`}
                                 onClick={() => setActiveTab(tab.id as TabType)}
-                                className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${activeTab === tab.id ? 'bg-white text-black shadow-lg scale-105' : 'text-slate-500 hover:text-white hover:bg-white/5'}`}
+                                className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all shrink-0 ${activeTab === tab.id ? 'bg-white text-black shadow-lg scale-105' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
                             >
-                                <tab.icon size={12} />
-                                <span className="hidden sm:inline">{tab.label}</span>
+                                <tab.icon size={13} className="shrink-0" />
+                                <span>{tab.label}</span>
                             </button>
                         ))}
                     </div>

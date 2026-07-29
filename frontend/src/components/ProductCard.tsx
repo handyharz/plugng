@@ -39,9 +39,10 @@ export function ProductCard({ product }: ProductCardProps) {
         >
             <Link href={`/products/${product.id}`} className="block relative aspect-square overflow-hidden bg-slate-900/50">
                 <Image
-                    src={product.image}
+                    src={product.image || '/placeholder.jpg'}
                     alt={product.name}
                     fill
+                    unoptimized
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />

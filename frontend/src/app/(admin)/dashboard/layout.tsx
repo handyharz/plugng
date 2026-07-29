@@ -1,5 +1,6 @@
 'use client';
 
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import AdminHeader from '@/components/admin/AdminHeader';
@@ -17,14 +18,20 @@ import {
     Activity,
     ShieldCheck,
     BarChart3,
-    ArrowLeft,
     MonitorIcon,
     Star,
     Wallet,
-    CreditCard
+    CreditCard,
+    X
 } from 'lucide-react';
 
-const storeNav = [
+interface NavItemData {
+    name: string;
+    href: string;
+    icon: React.ComponentType<{ className?: string }>;
+}
+
+const storeNav: NavItemData[] = [
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
     { name: 'Products', href: '/dashboard/products', icon: Package },
     { name: 'Orders', href: '/dashboard/orders', icon: ShoppingCart },
@@ -34,14 +41,14 @@ const storeNav = [
     { name: 'Categories', href: '/dashboard/categories', icon: MonitorIcon },
 ];
 
-const operationsNav = [
+const operationsNav: NavItemData[] = [
     { name: 'Customers', href: '/dashboard/customers', icon: Users },
     { name: 'Support', href: '/dashboard/support', icon: MessageSquare },
     { name: 'Promotions', href: '/dashboard/promotions', icon: Tag },
     { name: 'Reviews', href: '/dashboard/moderation', icon: Star },
 ];
 
-const systemNav = [
+const systemNav: NavItemData[] = [
     { name: 'Analytics', href: '/dashboard/analytics', icon: BarChart3 },
     { name: 'Admins', href: '/dashboard/admins', icon: ShieldCheck },
     { name: 'Activity', href: '/dashboard/activity', icon: Activity },
@@ -55,14 +62,27 @@ export default function DashboardLayout({
 }) {
     const pathname = usePathname();
     const { logout } = useAdminAuth();
+    const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+
+    useEffect(() => {
+        setIsMobileSidebarOpen(false);
+    }, [pathname]);
 
     return (
         <div className="min-h-screen bg-slate-950">
+            {/* Mobile Backdrop */}
+            {isMobileSidebarOpen && (
+                <div
+                    onClick={() => setIsMobileSidebarOpen(false)}
+                    className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 lg:hidden"
+                />
+            )}
+
             {/* Sidebar */}
-            <aside className="fixed inset-y-0 left-0 w-64 bg-slate-900 border-r border-white/10 z-50">
+            <aside className={`fixed inset-y-0 left-0 w-64 bg-slate-900 border-r border-white/10 z-50 transition-transform duration-300 ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
                 <div className="flex flex-col h-full">
-                    {/* Logo */}
-                    <div className="p-6 border-b border-white/10">
+                    {/* Logo & Close Button */}
+                    <div className="p-6 border-b border-white/10 flex items-center justify-between">
                         <Link href="/dashboard" className="block">
                             <h1 className="text-2xl font-black text-white uppercase italic tracking-tighter">
                                 Plug<span className="text-blue-500">NG</span>
@@ -71,6 +91,13 @@ export default function DashboardLayout({
                                 Admin Dashboard
                             </p>
                         </Link>
+                        <button
+                            onClick={() => setIsMobileSidebarOpen(false)}
+                            className="lg:hidden p-1.5 rounded-lg bg-white/5 text-slate-400 hover:text-white"
+                            aria-label="Close sidebar"
+                        >
+                            <X className="w-5 h-5" />
+                        </button>
                     </div>
 
                     {/* Groups */}
@@ -117,9 +144,9 @@ export default function DashboardLayout({
             </aside>
 
             {/* Main Content */}
-            <main className="ml-64 min-h-screen">
-                <AdminHeader />
-                <div className="min-h-[calc(100vh-80px)]">
+            <main className="lg:ml-64 min-h-screen">
+                <AdminHeader onToggleSidebar={() => setIsMobileSidebarOpen(prev => !prev)} />
+                <div className="min-h-[calc(100vh-80px)] p-4 sm:p-6 lg:p-8">
                     {children}
                 </div>
             </main>
@@ -127,8 +154,13 @@ export default function DashboardLayout({
     );
 }
 
-function NavItem({ item, pathname }: any) {
-    const isActive = pathname === item.href || pathname?.startsWith(item.href + '/');
+interface NavItemProps {
+    item: NavItemData;
+    pathname: string | null;
+}
+
+function NavItem({ item, pathname }: NavItemProps) {
+    const isActive = pathname === item.href || (pathname ? pathname.startsWith(item.href + '/') : false);
     return (
         <Link
             href={item.href}

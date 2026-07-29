@@ -16,7 +16,7 @@ import { Flame, Star, TrendingUp, Sparkles, Zap } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { SearchBar } from '@/components/SearchBar';
 
 export default function Home() {
@@ -74,17 +74,12 @@ export default function Home() {
   const mappedTrending = useMemo(() => mapProducts(trendingProducts), [trendingProducts]);
   const mappedNew = useMemo(() => mapProducts(newProducts), [newProducts]);
 
-  const { scrollY } = useScroll();
-  const heroScale = useTransform(scrollY, [0, 200], [1, 0.9]);
-  const heroOpacity = useTransform(scrollY, [0, 200], [1, 0]);
-
   return (
     <div className="space-y-0 relative">
       {/* 1. Hero Section (Search + Value Props) */}
-      <section className="px-3 sm:px-6 max-w-[1440px] mx-auto pt-24 sm:pt-28 md:pt-32 pb-4 relative z-20">
+      <section className="px-3 sm:px-6 max-w-[1440px] mx-auto pb-4 relative z-20">
         <motion.div
           layout
-          style={{ scale: heroScale, opacity: heroOpacity }}
           className="relative glass-card rounded-3xl sm:rounded-[3rem] p-6 sm:p-8 md:p-12 overflow-hidden border-white/10 group bg-grid-white/[0.02] text-center"
         >
           {/* Animated Background Gradients */}
@@ -213,7 +208,7 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             { name: 'Cases & Covers', slug: 'cases', emoji: '📱', color: 'from-blue-500/20' },
             { name: 'Power & Charging', slug: 'chargers', emoji: '🔌', color: 'from-purple-500/20' },

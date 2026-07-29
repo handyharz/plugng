@@ -74,7 +74,7 @@ const DeliveryInfo: React.FC = () => {
                 viewport={{ once: true }}
                 className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-emerald-500/30 bg-gradient-to-r from-emerald-500/10 to-green-500/10 mb-6 sm:mb-8 text-center"
             >
-                <div className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6">
+                <div className="flex flex-row md:flex-row items-center justify-center gap-4 sm:gap-6">
                     <div className="flex items-center gap-3 text-left">
                         <div className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-emerald-500/20 shrink-0">
                             <Gift className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-400" />
@@ -108,7 +108,7 @@ const DeliveryInfo: React.FC = () => {
             </motion.div>
 
             {/* Delivery Tiers Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                 {deliveryTiers.map((tier, index) => (
                     <motion.div
                         key={tier.tier}

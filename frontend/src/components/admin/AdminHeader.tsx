@@ -17,7 +17,13 @@ import adminApi from '@/lib/adminApi';
 import Link from 'next/link';
 import { useAdminAuth } from '@/context/AdminAuthContext';
 
-export default function AdminHeader() {
+import { Menu } from 'lucide-react';
+
+interface AdminHeaderProps {
+    onToggleSidebar?: () => void;
+}
+
+export default function AdminHeader({ onToggleSidebar }: AdminHeaderProps) {
     const { admin } = useAdminAuth();
     const queryClient = useQueryClient();
     const [showNotifications, setShowNotifications] = useState(false);
@@ -48,7 +54,15 @@ export default function AdminHeader() {
     };
 
     return (
-        <header className="h-20 bg-slate-900/50 backdrop-blur-xl border-b border-white/10 sticky top-0 z-40 px-8 flex items-center justify-between">
+        <header className="h-16 sm:h-20 bg-slate-900/50 backdrop-blur-xl border-b border-white/10 sticky top-0 z-40 px-4 sm:px-8 flex items-center justify-between gap-3">
+            {/* Mobile Menu Toggle */}
+            <button
+                onClick={onToggleSidebar}
+                className="lg:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white shrink-0 active:scale-95 transition-all"
+                aria-label="Toggle admin sidebar"
+            >
+                <Menu className="w-5 h-5" />
+            </button>
             {/* Search Bar Placeholder */}
             <div className="flex-1 max-w-md">
                 <div className="relative group">
