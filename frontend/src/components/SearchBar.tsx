@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, X, Clock, Zap, ChevronRight, ShoppingBag, ArrowRight, Sparkles, TrendingUp } from 'lucide-react';
+import { Search, X, Clock, Zap, ChevronRight, ArrowRight, Sparkles, TrendingUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -63,6 +63,18 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
 
     // Debounce timer
     const debounceRef = useRef<NodeJS.Timeout | null>(null);
+
+    // Prevent body scroll on mobile search modal open
+    useEffect(() => {
+        if (isOpen && variant === 'header') {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isOpen, variant]);
 
     // Load recent searches on mount
     useEffect(() => {
@@ -139,204 +151,307 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
     const isHero = variant === 'hero';
 
     return (
-        <div className={`relative ${isHero ? 'w-full max-w-xl' : 'z-50'} ${className}`}>
-            {/* Backdrop for focus mode (Header only) */}
+        <div className={`relative ${isHero ? 'w-full max-w-xl' : ''} ${className}`}>
+            {/* Header Collapsed Button (Header variant only) */}
+            {!isHero && (
+                <button
+                    onClick={() => setIsOpen(true)}
+                    className="p-2 text-slate-400 hover:text-white transition-colors rounded-xl active:scale-95 flex items-center justify-center"
+                    aria-label="Open search"
+                >
+                    <Search className="w-5 h-5" />
+                </button>
+            )}
+
+            {/* Expanded Search Modal / Overlay (Header & Hero variants) */}
             <AnimatePresence>
-                {isOpen && !isHero && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={() => setIsOpen(false)}
-                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
-                    />
-                )}
-            </AnimatePresence>
+                {(isOpen || isHero) && (
+                    <>
+                        {/* Header Variant Modal (Only shown when isOpen === true and !isHero) */}
+                        {!isHero && isOpen && (
+                            <>
+                                {/* Backdrop Overlay */}
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    onClick={() => setIsOpen(false)}
+                                    className="fixed inset-0 bg-black/80 backdrop-blur-md z-[110]"
+                                />
 
-            <div ref={searchRef} className={`
-                relative z-50 transition-all duration-300
-                ${!isHero && isOpen ? 'w-full md:w-[600px] fixed top-4 left-1/2 -translate-x-1/2 px-4 md:px-0' : 'w-full relative'}
-            `}>
-                {/* Search Input Bar */}
-                <div className={`
-                    bg-[#0d0d0d] border transition-all duration-300 overflow-hidden flex items-center group
-                    ${isHero
-                        ? 'border-white/10 rounded-2xl h-16 shadow-2xl focus-within:border-blue-500/50 bg-[#0a0a0a]'
-                        : (isOpen ? 'border-blue-500/50 shadow-[0_0_50px_rgba(59,130,246,0.3)] rounded-2xl h-14' : 'border-transparent bg-transparent hover:text-white text-slate-400 p-2')
-                    }
-                `}>
-                    {/* Collapsed State Icon (Header only) */}
-                    {!isOpen && !isHero && (
-                        <button onClick={() => setIsOpen(true)}>
-                            <Search size={20} />
-                        </button>
-                    )}
-
-                    {/* Expanded Input / Always Visible for Hero */}
-                    {(isOpen || isHero) && (
-                        <div className="flex items-center w-full px-4">
-                            {isHero ? (
-                                <Sparkles size={22} className="text-blue-500 mr-3 shrink-0" />
-                            ) : (
-                                <Search size={22} className="text-blue-500 mr-3 shrink-0" />
-                            )}
-                            <input
-                                autoFocus={isOpen && !isHero}
-                                onFocus={() => setIsOpen(true)}
-                                type="text"
-                                placeholder={placeholder || (isHero ? "Ask Your Plug... (e.g. 'iPhone 15 Case')" : "Ask Your Plug (e.g. 'iPhone 15', 'Cables')...")}
-                                value={query}
-                                onChange={handleInput}
-                                onKeyDown={handleKeyDown}
-                                className={`w-full bg-transparent text-white outline-none placeholder-slate-600 ${isHero ? 'text-lg font-medium' : 'text-base font-medium'}`}
-                            />
-                            {isLoading ? (
-                                <Zap size={18} className="text-amber-500 animate-pulse ml-2 shrink-0" />
-                            ) : query ? (
-                                <button onClick={() => { setQuery(''); setResults(null); }} className="text-slate-500 hover:text-white ml-2 shrink-0">
-                                    <X size={18} />
-                                </button>
-                            ) : isHero ? (
-                                <button onClick={() => submitSearch(query)} className="p-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl transition-colors ml-2 shrink-0">
-                                    <TrendingUp size={20} />
-                                </button>
-                            ) : null}
-                        </div>
-                    )}
-                </div>
-
-                {/* Dropdown Results */}
-                <AnimatePresence>
-                    {isOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 10, height: 0 }}
-                            animate={{ opacity: 1, y: 0, height: 'auto' }}
-                            exit={{ opacity: 0, y: 10, height: 0 }}
-                            className={`
-                                ${isHero ? 'relative w-full mt-6 bg-white/[0.02] border-white/5' : 'absolute top-full mt-4 left-0 right-0 md:w-[600px] mx-auto bg-[#0a0a0a] border-white/10'} 
-                                overflow-hidden border rounded-[2rem] shadow-2xl z-50
-                            `}
-                        >
-                            {/* Zero State (No Query) */}
-                            {!query && (
-                                <div className="p-6 space-y-6">
-                                    {recentSearches.length > 0 && (
-                                        <div className="space-y-3">
-                                            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2">Recent Discoveries</p>
-                                            <div className="flex flex-wrap gap-2">
-                                                {recentSearches.map(term => (
-                                                    <button key={term} onClick={() => submitSearch(term)} className="flex items-center space-x-2 px-4 py-2 bg-white/5 rounded-xl text-xs text-slate-300 hover:bg-white/10 hover:text-white transition-all group">
-                                                        <Clock size={12} className="text-slate-500 group-hover:text-blue-400" />
-                                                        <span>{term}</span>
-                                                    </button>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    <div className="space-y-3">
-                                        <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-2">Trending Now</p>
-                                        <div className="grid grid-cols-2 gap-3">
-                                            {trendingTerms.map((term, i) => (
-                                                <button key={term} onClick={() => submitSearch(term)} className="flex items-center justify-between p-3 bg-white/5 rounded-xl group hover:bg-white/10 transition-all text-left">
-                                                    <span className="text-sm font-bold text-slate-400 group-hover:text-white transition-colors">{term}</span>
-                                                    <Zap size={14} className={`${i === 0 ? 'text-amber-500' : 'text-slate-700'} group-hover:text-amber-400`} />
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
-
-                            {/* Results State */}
-                            {query && results && (
-                                <div className="p-2">
-                                    {/* Categories & Brands */}
-                                    {(results.categories.length > 0 || results.brands.length > 0) && (
-                                        <div className="p-3 grid grid-cols-2 gap-4 border-b border-white/5 pb-4 mb-2">
-                                            {results.categories.length > 0 && (
-                                                <div className="space-y-2">
-                                                    <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Categories</p>
-                                                    {results.categories.map((cat: any) => (
-                                                        <Link key={cat._id} href={`/shop?category=${cat.slug}&showFilters=false`} onClick={() => setIsOpen(false)} className="block text-sm text-blue-400 hover:text-blue-300 hover:underline decoration-blue-500/30 underline-offset-4">
-                                                            {cat.name}
-                                                        </Link>
-                                                    ))}
-                                                </div>
-                                            )}
-                                            {results.brands.length > 0 && (
-                                                <div className="space-y-2">
-                                                    <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Brands</p>
-                                                    {results.brands.map((brand) => (
-                                                        <Link key={brand} href={`/shop?showFilters=true&brands=${encodeURIComponent(brand)}`} onClick={() => setIsOpen(false)} className="block text-sm text-slate-300 hover:text-white">
-                                                            {brand}
-                                                        </Link>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                    )}
-
-                                    {results.suggestions.length > 0 && (
-                                        <div className="px-3 pb-4 flex flex-wrap gap-2 border-b border-white/5 mb-2">
-                                            {results.suggestions.slice(0, 6).map((suggestion) => (
+                                {/* Search Sheet / Modal */}
+                                <motion.div
+                                    ref={searchRef}
+                                    initial={{ opacity: 0, y: -20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="fixed top-0 left-0 right-0 z-[120] bg-[#0a0a0a] border-b border-white/10 p-3 sm:p-5 md:top-4 md:left-1/2 md:-translate-x-1/2 md:max-w-2xl md:w-full md:rounded-3xl md:border md:shadow-2xl max-h-screen flex flex-col"
+                                >
+                                    {/* Top Bar: Input + Cancel */}
+                                    <div className="flex items-center space-x-2">
+                                        <div className="flex-1 bg-[#121212] border border-blue-500/40 rounded-xl sm:rounded-2xl h-12 sm:h-14 px-3 sm:px-4 flex items-center shadow-[0_0_30px_rgba(59,130,246,0.2)]">
+                                            <Search className="text-blue-500 w-5 h-5 mr-2.5 shrink-0" />
+                                            <input
+                                                autoFocus
+                                                type="text"
+                                                placeholder={placeholder || "Search gear (e.g. iPhone, Cases, Chargers)..."}
+                                                value={query}
+                                                onChange={handleInput}
+                                                onKeyDown={handleKeyDown}
+                                                className="w-full bg-transparent text-white outline-none placeholder-slate-500 text-sm sm:text-base font-medium"
+                                            />
+                                            {isLoading ? (
+                                                <Zap className="w-4 h-4 text-amber-500 animate-pulse ml-2 shrink-0" />
+                                            ) : query ? (
                                                 <button
-                                                    key={suggestion}
-                                                    onClick={() => submitSearch(suggestion)}
-                                                    className="px-3 py-2 rounded-xl bg-blue-500/10 text-blue-300 hover:bg-blue-500 hover:text-white transition-all text-[11px] font-black uppercase tracking-wider"
+                                                    onClick={() => { setQuery(''); setResults(null); }}
+                                                    className="text-slate-500 hover:text-white p-1 ml-1 shrink-0"
                                                 >
-                                                    {suggestion}
+                                                    <X className="w-4 h-4" />
                                                 </button>
-                                            ))}
+                                            ) : null}
                                         </div>
-                                    )}
 
-                                    {/* Products */}
-                                    <div className="space-y-1">
-                                        {results.products.length === 0 ? (
-                                            <div className="p-8 text-center space-y-2">
-                                                <p className="text-slate-500 text-sm italic">No matches found for "{query}"</p>
-                                            </div>
-                                        ) : (
-                                            results.products.map((product: any) => (
-                                                <Link
-                                                    key={product._id}
-                                                    href={`/products/${product.slug}`}
-                                                    onClick={() => setIsOpen(false)}
-                                                    className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/10 transition-all group"
-                                                >
-                                                    <div className="w-12 h-12 bg-white/5 rounded-lg overflow-hidden shrink-0 relative">
-                                                        <Image src={product.images?.[0]?.url || '/placeholder.png'} alt={product.name} fill className="object-cover" />
-                                                    </div>
-                                                    <div className="flex-grow min-w-0">
-                                                        <h4 className="text-sm font-bold text-white truncate group-hover:text-blue-400 transition-colors uppercase italic tracking-tighter">{product.name}</h4>
-                                                        <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">{product.category?.name || 'Product'}</p>
-                                                    </div>
-                                                    <div className="text-right shrink-0">
-                                                        <p className="text-sm font-black text-white italic">₦{product.variants?.[0]?.sellingPrice?.toLocaleString()}</p>
-                                                    </div>
-                                                    <ChevronRight size={16} className="text-slate-600 group-hover:text-white transition-colors" />
-                                                </Link>
-                                            ))
-                                        )}
-                                    </div>
-
-                                    {/* View All Link */}
-                                    <div className="p-2 mt-2 border-t border-white/5">
                                         <button
-                                            onClick={() => submitSearch(query)}
-                                            className="w-full py-3 bg-blue-600/10 text-blue-500 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center space-x-2"
+                                            onClick={() => setIsOpen(false)}
+                                            className="px-3 py-2 text-xs font-bold text-slate-400 hover:text-white transition-colors shrink-0 uppercase tracking-wider"
                                         >
-                                            <span>See all results</span>
-                                            <ArrowRight size={14} />
+                                            Cancel
                                         </button>
                                     </div>
+
+                                    {/* Dropdown Results Box */}
+                                    <div className="overflow-y-auto max-h-[calc(100vh-100px)] md:max-h-[500px] mt-3 space-y-4 no-scrollbar">
+                                        {/* Zero State (No Query) */}
+                                        {!query && (
+                                            <div className="p-3 sm:p-4 space-y-4">
+                                                {recentSearches.length > 0 && (
+                                                    <div className="space-y-2">
+                                                        <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-1">Recent Searches</p>
+                                                        <div className="flex flex-wrap gap-2">
+                                                            {recentSearches.map(term => (
+                                                                <button
+                                                                    key={term}
+                                                                    onClick={() => submitSearch(term)}
+                                                                    className="flex items-center space-x-2 px-3.5 py-1.5 bg-white/5 rounded-xl text-xs text-slate-300 hover:bg-white/10 hover:text-white transition-all group"
+                                                                >
+                                                                    <Clock className="w-3 h-3 text-slate-500 group-hover:text-blue-400" />
+                                                                    <span>{term}</span>
+                                                                </button>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                )}
+
+                                                <div className="space-y-2">
+                                                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-1">Trending Now</p>
+                                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                                        {trendingTerms.map((term, i) => (
+                                                            <button
+                                                                key={term}
+                                                                onClick={() => submitSearch(term)}
+                                                                className="flex items-center justify-between p-3 bg-white/5 rounded-xl group hover:bg-white/10 transition-all text-left"
+                                                            >
+                                                                <span className="text-xs sm:text-sm font-bold text-slate-300 group-hover:text-white transition-colors">{term}</span>
+                                                                <Zap className={`w-3.5 h-3.5 ${i === 0 ? 'text-amber-500' : 'text-slate-600'} group-hover:text-amber-400`} />
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {/* Results List */}
+                                        {query && results && (
+                                            <div className="p-2 space-y-3">
+                                                {/* Categories & Brands */}
+                                                {(results.categories.length > 0 || results.brands.length > 0) && (
+                                                    <div className="p-2 grid grid-cols-2 gap-3 border-b border-white/10 pb-3">
+                                                        {results.categories.length > 0 && (
+                                                            <div className="space-y-1.5">
+                                                                <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Categories</p>
+                                                                {results.categories.map((cat: any) => (
+                                                                    <Link
+                                                                        key={cat._id}
+                                                                        href={`/shop?category=${cat.slug}&showFilters=false`}
+                                                                        onClick={() => setIsOpen(false)}
+                                                                        className="block text-xs font-bold text-blue-400 hover:text-blue-300 hover:underline truncate"
+                                                                    >
+                                                                        {cat.name}
+                                                                    </Link>
+                                                                ))}
+                                                            </div>
+                                                        )}
+                                                        {results.brands.length > 0 && (
+                                                            <div className="space-y-1.5">
+                                                                <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Brands</p>
+                                                                {results.brands.map((brand) => (
+                                                                    <Link
+                                                                        key={brand}
+                                                                        href={`/shop?showFilters=true&brands=${encodeURIComponent(brand)}`}
+                                                                        onClick={() => setIsOpen(false)}
+                                                                        className="block text-xs font-bold text-slate-300 hover:text-white truncate"
+                                                                    >
+                                                                        {brand}
+                                                                    </Link>
+                                                                ))}
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                )}
+
+                                                {/* Products */}
+                                                <div className="space-y-1">
+                                                    {results.products.length === 0 ? (
+                                                        <div className="p-6 text-center space-y-1">
+                                                            <p className="text-slate-400 text-xs italic">No matches found for "{query}"</p>
+                                                        </div>
+                                                    ) : (
+                                                        results.products.map((product: any) => (
+                                                            <Link
+                                                                key={product._id}
+                                                                href={`/products/${product.slug}`}
+                                                                onClick={() => setIsOpen(false)}
+                                                                className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-white/10 transition-all group"
+                                                            >
+                                                                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/5 rounded-lg overflow-hidden shrink-0 relative">
+                                                                    <Image
+                                                                        src={product.images?.[0]?.url || '/placeholder.jpg'}
+                                                                        alt={product.name}
+                                                                        fill
+                                                                        unoptimized
+                                                                        className="object-cover"
+                                                                    />
+                                                                </div>
+                                                                <div className="flex-grow min-w-0">
+                                                                    <h4 className="text-xs sm:text-sm font-bold text-white truncate group-hover:text-blue-400 transition-colors uppercase italic tracking-tighter">{product.name}</h4>
+                                                                    <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">{product.category?.name || 'Product'}</p>
+                                                                </div>
+                                                                <div className="text-right shrink-0">
+                                                                    <p className="text-xs sm:text-sm font-black text-white italic">₦{product.variants?.[0]?.sellingPrice?.toLocaleString()}</p>
+                                                                </div>
+                                                                <ChevronRight size={14} className="text-slate-600 group-hover:text-white transition-colors shrink-0" />
+                                                            </Link>
+                                                        ))
+                                                    )}
+                                                </div>
+
+                                                {/* See All Results Button */}
+                                                <div className="pt-2 border-t border-white/10">
+                                                    <button
+                                                        onClick={() => submitSearch(query)}
+                                                        className="w-full py-2.5 sm:py-3 bg-blue-600/20 text-blue-400 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center space-x-2"
+                                                    >
+                                                        <span>See all results</span>
+                                                        <ArrowRight size={14} />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                </motion.div>
+                            </>
+                        )}
+
+                        {/* Hero Variant Display */}
+                        {isHero && (
+                            <div ref={searchRef} className="w-full relative">
+                                <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl h-14 sm:h-16 shadow-2xl focus-within:border-blue-500/50 flex items-center px-3 sm:px-4 group">
+                                    <Sparkles className="text-blue-500 w-5 h-5 sm:w-6 sm:h-6 mr-2.5 sm:mr-3 shrink-0" />
+                                    <input
+                                        type="text"
+                                        onFocus={() => setIsOpen(true)}
+                                        placeholder={placeholder || "Ask Your Plug... (e.g. 'iPhone 15 Case')"}
+                                        value={query}
+                                        onChange={handleInput}
+                                        onKeyDown={handleKeyDown}
+                                        className="w-full bg-transparent text-white outline-none placeholder-slate-500 text-sm sm:text-base font-medium"
+                                    />
+                                    {isLoading ? (
+                                        <Zap className="w-4 h-4 text-amber-500 animate-pulse ml-2 shrink-0" />
+                                    ) : query ? (
+                                        <button onClick={() => { setQuery(''); setResults(null); }} className="text-slate-500 hover:text-white ml-2 shrink-0">
+                                            <X className="w-4 h-4" />
+                                        </button>
+                                    ) : (
+                                        <button onClick={() => submitSearch(query)} className="p-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl transition-colors ml-2 shrink-0">
+                                            <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
+                                        </button>
+                                    )}
                                 </div>
-                            )}
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
+
+                                {/* Hero Instant Dropdown Results */}
+                                {isOpen && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10, height: 0 }}
+                                        animate={{ opacity: 1, y: 0, height: 'auto' }}
+                                        exit={{ opacity: 0, y: 10, height: 0 }}
+                                        className="relative w-full mt-4 bg-[#0a0a0a] border border-white/10 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden z-50 p-3 sm:p-4"
+                                    >
+                                        {!query && (
+                                            <div className="space-y-4">
+                                                {recentSearches.length > 0 && (
+                                                    <div className="space-y-2">
+                                                        <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-1">Recent Searches</p>
+                                                        <div className="flex flex-wrap gap-2">
+                                                            {recentSearches.map(term => (
+                                                                <button key={term} onClick={() => submitSearch(term)} className="flex items-center space-x-2 px-3 py-1.5 bg-white/5 rounded-xl text-xs text-slate-300 hover:bg-white/10 hover:text-white transition-all">
+                                                                    <Clock className="w-3 h-3 text-slate-500" />
+                                                                    <span>{term}</span>
+                                                                </button>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                )}
+                                                <div className="space-y-2">
+                                                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-1">Trending Searches</p>
+                                                    <div className="grid grid-cols-2 gap-2">
+                                                        {trendingTerms.map((term) => (
+                                                            <button key={term} onClick={() => submitSearch(term)} className="flex items-center justify-between p-2.5 bg-white/5 rounded-xl text-left hover:bg-white/10 transition-all text-xs font-bold text-slate-300">
+                                                                <span>{term}</span>
+                                                                <Zap className="w-3 h-3 text-amber-500" />
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {query && results && (
+                                            <div className="space-y-3">
+                                                {results.products.slice(0, 4).map((product: any) => (
+                                                    <Link
+                                                        key={product._id}
+                                                        href={`/products/${product.slug}`}
+                                                        onClick={() => setIsOpen(false)}
+                                                        className="flex items-center gap-3 p-2 rounded-xl hover:bg-white/10 transition-all group"
+                                                    >
+                                                        <div className="w-10 h-10 bg-white/5 rounded-lg overflow-hidden shrink-0 relative">
+                                                            <Image src={product.images?.[0]?.url || '/placeholder.jpg'} alt={product.name} fill unoptimized className="object-cover" />
+                                                        </div>
+                                                        <div className="flex-grow min-w-0">
+                                                            <h4 className="text-xs font-bold text-white truncate italic">{product.name}</h4>
+                                                        </div>
+                                                        <span className="text-xs font-black text-white italic">₦{product.variants?.[0]?.sellingPrice?.toLocaleString()}</span>
+                                                    </Link>
+                                                ))}
+                                                <button
+                                                    onClick={() => submitSearch(query)}
+                                                    className="w-full py-2.5 bg-blue-600/20 text-blue-400 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center space-x-2"
+                                                >
+                                                    <span>View All Matches</span>
+                                                    <ArrowRight size={14} />
+                                                </button>
+                                            </div>
+                                        )}
+                                    </motion.div>
+                                )}
+                            </div>
+                        )}
+                    </>
+                )}
+            </AnimatePresence>
         </div>
     );
 }
