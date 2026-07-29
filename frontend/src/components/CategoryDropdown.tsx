@@ -48,7 +48,7 @@ export function CategoryDropdown() {
                                 <p className="px-4 py-2 text-[10px] font-black text-slate-400 uppercase tracking-widest">Featured Brands</p>
                                 {categories?.map((category, index) => (
                                     <Link
-                                        key={category._id || category.id || category.slug || index}
+                                        key={category._id || category.slug || index}
                                         href={`/categories/${category.slug}`}
                                         className="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-blue-600/20 hover:text-white text-slate-200 transition-all group/item"
                                     >

@@ -76,7 +76,7 @@ export default function ProductSection({
                     <div className="flex overflow-x-auto gap-4 sm:gap-6 pb-4 snap-x snap-mandatory scrollbar-hide">
                         {products.map((product, index) => (
                             <motion.div
-                                key={product.id || product._id || index}
+                                key={product.id || index}
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.3, delay: index * 0.05 }}
@@ -91,7 +91,7 @@ export default function ProductSection({
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
                     {products.map((product, index) => (
                         <motion.div
-                            key={product.id || product._id || index}
+                            key={product.id || index}
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.3, delay: index * 0.05 }}
