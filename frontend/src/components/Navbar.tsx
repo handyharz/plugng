@@ -153,11 +153,12 @@ export function Navbar() {
             </nav>
 
             {/* Mobile Navigation Drawer Overlay */}
-            <AnimatePresence>
+            <AnimatePresence key="mobile-nav-presence">
                 {isMobileMenuOpen && (
-                    <>
+                    <React.Fragment key="mobile-menu-fragment">
                         {/* Backdrop */}
                         <motion.div
+                            key="mobile-menu-backdrop"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
@@ -167,6 +168,7 @@ export function Navbar() {
 
                         {/* Slide-out Drawer */}
                         <motion.div
+                            key="mobile-menu-drawer"
                             initial={{ x: '100%' }}
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
@@ -389,7 +391,7 @@ export function Navbar() {
                                 </div>
                             )}
                         </motion.div>
-                    </>
+                    </React.Fragment>
                 )}
             </AnimatePresence>
         </>

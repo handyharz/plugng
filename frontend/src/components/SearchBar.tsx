@@ -146,8 +146,9 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
 
     // Modal Content for Header variant using React Portal to prevent layout shifts
     const headerModalContent = (!isHero && isOpen && mounted) ? createPortal(
-        <AnimatePresence>
+        <AnimatePresence key="search-modal-presence">
             <motion.div
+                key="search-modal-backdrop"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -155,6 +156,7 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
                 className="fixed inset-0 bg-black/80 backdrop-blur-md z-[999] overflow-hidden"
             />
             <motion.div
+                key="search-modal-container"
                 ref={searchRef}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -370,6 +372,7 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
                     {/* Hero Instant Dropdown Results */}
                     {isOpen && (
                         <motion.div
+                            key="hero-search-dropdown"
                             initial={{ opacity: 0, y: 10, height: 0 }}
                             animate={{ opacity: 1, y: 0, height: 'auto' }}
                             exit={{ opacity: 0, y: 10, height: 0 }}
