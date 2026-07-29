@@ -67,30 +67,30 @@ export function ProductCard({ product }: ProductCardProps) {
                 </div>
             </Link>
 
-            <div className="p-4 sm:p-6 md:p-8 flex flex-col flex-1 space-y-3 sm:space-y-4">
+            <div className="p-3 sm:p-6 md:p-8 flex flex-col flex-1 space-y-2 sm:space-y-4">
                 <div className="flex justify-between items-start">
-                    <h3 className="text-base sm:text-xl font-bold text-white tracking-tight leading-tight line-clamp-2">
+                    <h3 className="text-sm sm:text-xl font-bold text-white tracking-tight leading-tight line-clamp-2">
                         {product.name}
                     </h3>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-400 font-medium line-clamp-2 leading-relaxed">
+                <p className="text-[11px] sm:text-sm text-slate-400 font-medium line-clamp-2 leading-relaxed hidden sm:block">
                     {product.description}
                 </p>
 
-                <div className="pt-3 sm:pt-4 mt-auto flex items-center justify-between border-t border-white/5">
+                <div className="pt-2 sm:pt-4 mt-auto flex items-center justify-between border-t border-white/5">
                     <div className="flex flex-col">
                         {product.compareAtPrice && product.compareAtPrice > product.price && (
-                            <span className="text-[10px] sm:text-xs text-slate-500 line-through decoration-red-500/50">
+                            <span className="text-[9px] sm:text-xs text-slate-500 line-through decoration-red-500/50">
                                 {formatCurrency(product.compareAtPrice)}
                             </span>
                         )}
-                        <p className="text-base sm:text-lg font-black text-white tracking-tighter italic">
+                        <p className="text-sm sm:text-lg font-black text-white tracking-tighter italic">
                             {formatCurrency(product.price)}
                         </p>
                     </div>
 
-                    <div className="flex items-center space-x-1.5 sm:space-x-2">
+                    <div className="flex items-center space-x-1.5">
                         <button
                             onClick={async () => {
                                 if (isWishlisted) {
@@ -99,19 +99,19 @@ export function ProductCard({ product }: ProductCardProps) {
                                     await addToWishlist(product.id);
                                 }
                             }}
-                            className={`w-10 h-10 sm:w-12 sm:h-12 border rounded-xl sm:rounded-2xl flex items-center justify-center transition-all duration-300 group/wish ${isWishlisted
+                            className={`w-9 h-9 sm:w-12 sm:h-12 border rounded-xl flex items-center justify-center transition-all duration-300 group/wish ${isWishlisted
                                 ? 'bg-pink-500/20 text-pink-500 border-pink-500/50'
                                 : 'bg-white/5 text-slate-400 border-white/10 hover:bg-pink-500/10 hover:text-pink-500 hover:border-pink-500/30'
                                 }`}
                         >
-                            <Heart className={`w-4 h-4 sm:w-5 sm:h-5 group-hover/wish:scale-110 transition-transform ${isWishlisted ? 'fill-current' : ''}`} />
+                            <Heart className={`w-3.5 h-3.5 sm:w-5 sm:h-5 group-hover/wish:scale-110 transition-transform ${isWishlisted ? 'fill-current' : ''}`} />
                         </button>
 
                         <button
                             onClick={() => addToCart(product)}
-                            className="w-10 h-10 sm:w-12 sm:h-12 bg-white text-black rounded-xl sm:rounded-2xl flex items-center justify-center hover:bg-blue-600 hover:text-white hover:scale-110 transition-all duration-300 shadow-xl shadow-black/10 group/btn"
+                            className="w-9 h-9 sm:w-12 sm:h-12 bg-white text-black rounded-xl flex items-center justify-center hover:bg-blue-600 hover:text-white hover:scale-110 transition-all duration-300 shadow-xl shadow-black/10 group/btn"
                         >
-                            <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:rotate-12 transition-transform" />
+                            <ShoppingCart className="w-3.5 h-3.5 sm:w-5 sm:h-5 group-hover/btn:rotate-12 transition-transform" />
                         </button>
                     </div>
                 </div>

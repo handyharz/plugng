@@ -65,7 +65,7 @@ export default function ProductFilters({ filters, onFilterChange, onReset }: Pro
     };
 
     return (
-        <div className="space-y-6 glass-card bg-white/5 border border-white/10 rounded-3xl p-6 sticky top-32 max-h-[80vh] overflow-y-auto scrollbar-hide">
+        <div className="space-y-6">
             <div className="flex items-center justify-between pb-4 border-b border-white/5">
                 <div className="flex items-center space-x-2">
                     <SlidersHorizontal size={16} className="text-blue-500" />
