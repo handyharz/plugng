@@ -54,7 +54,6 @@ function ShopContent() {
     const [isLoadingMore, setIsLoadingMore] = useState(false);
     const PAGE_LIMIT = 24;
 
-    // Reset pagination when filters change
     const handleFilterChange = (key: string, value: any) => {
         setPage(1);
         setFilters(prev => ({ ...prev, [key]: value }));
@@ -159,25 +158,6 @@ function ShopContent() {
             category: typeof p.category === 'object' ? (p.category as any).name : 'Product'
         }));
     }, [products]);
-
-    const handleFilterChange = (key: string, value: any) => {
-        setFilters(prev => ({ ...prev, [key]: value }));
-    };
-
-    const handleReset = () => {
-        setFilters({
-            minPrice: '',
-            maxPrice: '',
-            sort: 'newest',
-            search: '',
-            inStock: false,
-            onSale: false,
-            featured: false,
-            trending: false,
-            brands: [],
-            colors: []
-        });
-    };
 
     const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
@@ -371,55 +351,57 @@ function ShopContent() {
                             <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] animate-pulse">Syncing Inventory...</p>
                         </div>
                     ) : mappedProducts.length > 0 ? (
-                        <div className="grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6 md:gap-8">
-                            <AnimatePresence mode="popLayout">
-                                {mappedProducts.map((product, index) => (
-                                    <motion.div
-                                        key={product.id}
-                                        layout
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        exit={{ opacity: 0, scale: 0.9 }}
-                                        transition={{ duration: 0.3, delay: index * 0.05 }}
-                                    >
-                                        <ProductCard product={product} />
-                                    </motion.div>
-                                ))}
-                            </AnimatePresence>
-                        </div>
-
-                        {/* Load More Pagination UI */}
-                        {products.length < total && (
-                            <div className="pt-10 flex flex-col items-center space-y-4 text-center">
-                                <div className="space-y-1.5 w-full max-w-xs">
-                                    <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-500">
-                                        <span>Showing {products.length} of {total} products</span>
-                                        <span>{Math.round((products.length / total) * 100)}%</span>
-                                    </div>
-                                    <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-                                        <div
-                                            className="h-full bg-blue-500 rounded-full transition-all duration-500"
-                                            style={{ width: `${(products.length / total) * 100}%` }}
-                                        />
-                                    </div>
-                                </div>
-
-                                <button
-                                    onClick={handleLoadMore}
-                                    disabled={isLoadingMore}
-                                    className="px-8 py-3.5 bg-white hover:bg-slate-200 text-black rounded-2xl font-black text-xs uppercase tracking-widest transition-all active:scale-95 disabled:opacity-50 flex items-center space-x-2 shadow-xl shadow-white/5"
-                                >
-                                    {isLoadingMore ? (
-                                        <>
-                                            <Loader2 size={16} className="animate-spin text-black" />
-                                            <span>Loading More Gear...</span>
-                                        </>
-                                    ) : (
-                                        <span>Load More Gear ({total - products.length} Remaining)</span>
-                                    )}
-                                </button>
+                        <>
+                            <div className="grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6 md:gap-8">
+                                <AnimatePresence mode="popLayout">
+                                    {mappedProducts.map((product, index) => (
+                                        <motion.div
+                                            key={product.id}
+                                            layout
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 0.9 }}
+                                            transition={{ duration: 0.3, delay: index * 0.05 }}
+                                        >
+                                            <ProductCard product={product} />
+                                        </motion.div>
+                                    ))}
+                                </AnimatePresence>
                             </div>
-                        )}
+
+                            {/* Load More Pagination UI */}
+                            {products.length < total && (
+                                <div className="pt-10 flex flex-col items-center space-y-4 text-center">
+                                    <div className="space-y-1.5 w-full max-w-xs">
+                                        <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                            <span>Showing {products.length} of {total} products</span>
+                                            <span>{Math.round((products.length / total) * 100)}%</span>
+                                        </div>
+                                        <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                                            <div
+                                                className="h-full bg-blue-500 rounded-full transition-all duration-500"
+                                                style={{ width: `${(products.length / total) * 100}%` }}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <button
+                                        onClick={handleLoadMore}
+                                        disabled={isLoadingMore}
+                                        className="px-8 py-3.5 bg-white hover:bg-slate-200 text-black rounded-2xl font-black text-xs uppercase tracking-widest transition-all active:scale-95 disabled:opacity-50 flex items-center space-x-2 shadow-xl shadow-white/5"
+                                    >
+                                        {isLoadingMore ? (
+                                            <>
+                                                <Loader2 size={16} className="animate-spin text-black" />
+                                                <span>Loading More Gear...</span>
+                                            </>
+                                        ) : (
+                                            <span>Load More Gear ({total - products.length} Remaining)</span>
+                                        )}
+                                    </button>
+                                </div>
+                            )}
+                        </>
                     ) : (
                         <div className="glass-card bg-white/5 border border-dashed border-white/10 rounded-3xl py-24 sm:py-32 text-center space-y-6">
                             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto text-slate-600">
