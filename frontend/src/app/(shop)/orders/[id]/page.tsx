@@ -94,7 +94,7 @@ export default function OrderDetailsPage() {
     };
 
     return (
-        <div className="max-w-[1440px] mx-auto px-3 sm:px-6 pt-16 sm:pt-24 pb-24 sm:pb-32 space-y-6 sm:space-y-12">
+        <div className="max-w-[1440px] mx-auto px-3 pb-24 sm:pb-32 space-y-6 sm:space-y-12">
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
                 <div className="space-y-3 sm:space-y-4">
