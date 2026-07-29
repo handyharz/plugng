@@ -157,7 +157,7 @@ const ShopByBrand: React.FC = () => {
             >
                 {brands.map((brand, index) => (
                     <Link
-                        key={brand._id}
+                        key={brand._id || brand.id || brand.slug || index}
                         href={`/categories/${brand.slug}`}
                         className="flex-shrink-0"
                     >

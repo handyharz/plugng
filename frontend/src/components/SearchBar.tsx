@@ -203,9 +203,9 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
                                 <div className="space-y-2">
                                     <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-1">Recent Searches</p>
                                     <div className="flex flex-wrap gap-2">
-                                        {recentSearches.map(term => (
+                                        {recentSearches.map((term, index) => (
                                             <button
-                                                key={term}
+                                                key={`modal-recent-${term}-${index}`}
                                                 onClick={() => submitSearch(term)}
                                                 className="flex items-center space-x-2 px-3.5 py-1.5 bg-white/5 rounded-xl text-xs text-slate-300 hover:bg-white/10 hover:text-white transition-all group"
                                             >
@@ -222,7 +222,7 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                     {trendingTerms.map((term, i) => (
                                         <button
-                                            key={term}
+                                            key={`modal-trending-${term}-${i}`}
                                             onClick={() => submitSearch(term)}
                                             className="flex items-center justify-between p-3 bg-white/5 rounded-xl group hover:bg-white/10 transition-all text-left"
                                         >
@@ -242,9 +242,9 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
                                     {results.categories.length > 0 && (
                                         <div className="space-y-1.5">
                                             <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Categories</p>
-                                            {results.categories.map((cat: any) => (
+                                            {results.categories.map((cat: any, index: number) => (
                                                 <Link
-                                                    key={cat._id}
+                                                    key={`modal-cat-${cat._id || cat.id || cat.slug || index}`}
                                                     href={`/shop?category=${cat.slug}&showFilters=false`}
                                                     onClick={() => setIsOpen(false)}
                                                     className="block text-xs font-bold text-blue-400 hover:text-blue-300 hover:underline truncate"
@@ -257,9 +257,9 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
                                     {results.brands.length > 0 && (
                                         <div className="space-y-1.5">
                                             <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Brands</p>
-                                            {results.brands.map((brand) => (
+                                            {results.brands.map((brand: string, index: number) => (
                                                 <Link
-                                                    key={brand}
+                                                    key={`modal-brand-${brand}-${index}`}
                                                     href={`/shop?showFilters=true&brands=${encodeURIComponent(brand)}`}
                                                     onClick={() => setIsOpen(false)}
                                                     className="block text-xs font-bold text-slate-300 hover:text-white truncate"
@@ -278,9 +278,9 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
                                         <p className="text-slate-400 text-xs italic">No matches found for "{query}"</p>
                                     </div>
                                 ) : (
-                                    results.products.map((product: any) => (
+                                    results.products.map((product: any, index: number) => (
                                         <Link
-                                            key={product._id}
+                                            key={`modal-prod-${product._id || product.id || index}`}
                                             href={`/products/${product.slug}`}
                                             onClick={() => setIsOpen(false)}
                                             className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-white/10 transition-all group"
@@ -381,8 +381,8 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
                                         <div className="space-y-2">
                                             <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-1">Recent Searches</p>
                                             <div className="flex flex-wrap gap-2">
-                                                {recentSearches.map(term => (
-                                                    <button key={term} onClick={() => submitSearch(term)} className="flex items-center space-x-2 px-3 py-1.5 bg-white/5 rounded-xl text-xs text-slate-300 hover:bg-white/10 hover:text-white transition-all">
+                                                {recentSearches.map((term, index) => (
+                                                    <button key={`hero-recent-${term}-${index}`} onClick={() => submitSearch(term)} className="flex items-center space-x-2 px-3 py-1.5 bg-white/5 rounded-xl text-xs text-slate-300 hover:bg-white/10 hover:text-white transition-all">
                                                         <Clock className="w-3 h-3 text-slate-500" />
                                                         <span>{term}</span>
                                                     </button>
@@ -393,8 +393,8 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
                                     <div className="space-y-2">
                                         <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest pl-1">Trending Searches</p>
                                         <div className="grid grid-cols-2 gap-2">
-                                            {trendingTerms.map((term) => (
-                                                <button key={term} onClick={() => submitSearch(term)} className="flex items-center justify-between p-2.5 bg-white/5 rounded-xl text-left hover:bg-white/10 transition-all text-xs font-bold text-slate-300">
+                                            {trendingTerms.map((term, index) => (
+                                                <button key={`hero-trending-${term}-${index}`} onClick={() => submitSearch(term)} className="flex items-center justify-between p-2.5 bg-white/5 rounded-xl text-left hover:bg-white/10 transition-all text-xs font-bold text-slate-300">
                                                     <span>{term}</span>
                                                     <Zap className="w-3 h-3 text-amber-500" />
                                                 </button>
@@ -406,9 +406,9 @@ export function SearchBar({ variant = 'header', className = '', placeholder }: S
 
                             {query && results && (
                                 <div className="space-y-3">
-                                    {results.products.slice(0, 4).map((product: any) => (
+                                    {results.products.slice(0, 4).map((product: any, index: number) => (
                                         <Link
-                                            key={product._id}
+                                            key={`hero-prod-${product._id || product.id || index}`}
                                             href={`/products/${product.slug}`}
                                             onClick={() => setIsOpen(false)}
                                             className="flex items-center gap-3 p-2 rounded-xl hover:bg-white/10 transition-all group"
