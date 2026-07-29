@@ -25,8 +25,8 @@ export function ProductGallery({ images, activeImageUrl }: ProductGalleryProps) 
     }, [activeImageUrl, images]);
 
     return (
-        <div className="space-y-6">
-            <div className="aspect-square glass-card rounded-[3rem] overflow-hidden border-white/20 bg-slate-900/50 relative">
+        <div className="space-y-3 sm:space-y-6">
+            <div className="aspect-square glass-card rounded-2xl sm:rounded-[3rem] overflow-hidden border-white/20 bg-slate-900/50 relative">
                 <AnimatePresence mode="wait">
                     <motion.img
                         key={selectedImage}
@@ -48,7 +48,7 @@ export function ProductGallery({ images, activeImageUrl }: ProductGalleryProps) 
                     <button
                         key={index}
                         onClick={() => setSelectedImage(index)}
-                        className={`group aspect-square w-24 flex-shrink-0 glass-card rounded-2xl overflow-hidden border-2 transition-all duration-500 snap-start ${selectedImage === index ? 'border-blue-600 scale-95 shadow-lg shadow-blue-500/20' : 'border-white/10 hover:border-white/30'
+                        className={`group aspect-square w-16 sm:w-24 flex-shrink-0 glass-card rounded-xl sm:rounded-2xl overflow-hidden border-2 transition-all duration-500 snap-start ${selectedImage === index ? 'border-blue-600 scale-95 shadow-lg shadow-blue-500/20' : 'border-white/10 hover:border-white/30'
                             }`}
                     >
                         <img

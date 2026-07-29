@@ -136,7 +136,7 @@ function ShopContent() {
     ].filter(Boolean).length;
 
     return (
-        <div className="min-h-screen pt-16 sm:pt-20 md:pt-24 pb-20 px-3 sm:px-6 max-w-[1440px] mx-auto">
+        <div className="min-h-screen pb-20 px-3 sm:px-6 max-w-[1440px] mx-auto">
             {/* Header */}
             <div className="mb-6 sm:mb-12 space-y-2 sm:space-y-4">
                 <div className="flex items-center space-x-2 text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">

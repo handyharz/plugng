@@ -111,10 +111,10 @@ export function ProductDetails({ product, children }: ProductDetailsProps) {
     };
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-12 lg:gap-20">
             {/* Left: Gallery + Reviews Section */}
-            <div className="lg:col-span-7 space-y-12">
-                <div className="space-y-8">
+            <div className="lg:col-span-7 space-y-8 sm:space-y-12">
+                <div className="space-y-4 sm:space-y-8">
                     <ProductGallery
                         images={allImages}
                         activeImageUrl={selectedVariant?.image}
@@ -123,7 +123,7 @@ export function ProductDetails({ product, children }: ProductDetailsProps) {
 
                 {/* Embedded Content (Reviews) */}
                 {children && (
-                    <div className="mt-16">
+                    <div className="mt-8 sm:mt-16">
                         {children}
                     </div>
                 )}
@@ -131,8 +131,8 @@ export function ProductDetails({ product, children }: ProductDetailsProps) {
 
             {/* Right: Info (Sticky) */}
             <div className="lg:col-span-5">
-                <div className="sticky top-24 space-y-10">
-                    <div className="space-y-4">
+                <div className="lg:sticky lg:top-24 space-y-6 sm:space-y-10">
+                    <div className="space-y-3 sm:space-y-4">
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -154,28 +154,28 @@ export function ProductDetails({ product, children }: ProductDetailsProps) {
                             )}
                         </motion.div>
 
-                        <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter leading-none italic uppercase">
+                        <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter leading-none italic uppercase">
                             {product.name}
                         </h1>
 
-                        <div className="flex items-baseline space-x-4">
-                            <p className="text-3xl font-black text-white tracking-tighter italic">
+                        <div className="flex items-baseline space-x-3 sm:space-x-4">
+                            <p className="text-2xl sm:text-3xl font-black text-white tracking-tighter italic">
                                 {formatCurrency(currentPrice)}
                             </p>
                             {comparePrice && (
-                                <p className="text-xl font-bold text-slate-500 line-through tracking-tighter italic">
+                                <p className="text-base sm:text-xl font-bold text-slate-500 line-through tracking-tighter italic">
                                     {formatCurrency(comparePrice)}
                                 </p>
                             )}
                         </div>
                     </div>
 
-                    <p className="text-slate-400 font-medium leading-relaxed text-lg max-w-xl">
+                    <p className="text-slate-400 font-medium leading-relaxed text-sm sm:text-lg max-w-xl">
                         {product.description}
                     </p>
 
                     {/* Variant Selectors */}
-                    <div className="space-y-8">
+                    <div className="space-y-5 sm:space-y-8">
                         {attributeNames.map(attrName => {
                             const isColor = /colou?r/i.test(attrName);
                             // Case-insensitive and spelling-flexible option lookup
@@ -217,9 +217,9 @@ export function ProductDetails({ product, children }: ProductDetailsProps) {
                                                     key={String(value)}
                                                     onClick={() => handleOptionChange(attrName, String(value))}
                                                     title={String(value)}
-                                                    className={`transition-all duration-300 flex items-center space-x-3 ${isColor && swatchUrl
-                                                        ? `pr-6 pl-1 py-1 rounded-full border-2 overflow-hidden ${isSelected ? 'border-blue-600 bg-blue-600/10 scale-105 shadow-lg shadow-blue-500/20' : 'border-white/10 hover:border-white/30'}`
-                                                        : `px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-widest border-2 ${isSelected
+                                                    className={`transition-all duration-300 flex items-center space-x-2 sm:space-x-3 ${isColor && swatchUrl
+                                                        ? `pr-4 sm:pr-6 pl-1 py-1 rounded-full border-2 overflow-hidden ${isSelected ? 'border-blue-600 bg-blue-600/10 scale-105 shadow-lg shadow-blue-500/20' : 'border-white/10 hover:border-white/30'}`
+                                                        : `px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl text-xs font-black uppercase tracking-widest border-2 ${isSelected
                                                             ? 'bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-500/20'
                                                             : 'bg-white/5 border-white/10 text-slate-400 hover:border-white/30'
                                                         }`
@@ -246,14 +246,14 @@ export function ProductDetails({ product, children }: ProductDetailsProps) {
                         })}
                     </div>
 
-                    <div className="pt-6 space-y-6">
-                        <div className="flex gap-4">
+                    <div className="pt-4 sm:pt-6 space-y-4 sm:space-y-6">
+                        <div className="flex gap-3">
                             <button
                                 onClick={handleAddToCart}
                                 disabled={!selectedVariant || selectedVariant.stock === 0}
-                                className="flex-grow cyber-button py-6 text-lg font-black uppercase italic tracking-tighter group flex items-center justify-center space-x-3 disabled:opacity-50"
+                                className="flex-grow cyber-button py-4 sm:py-6 text-sm sm:text-lg font-black uppercase italic tracking-tighter group flex items-center justify-center space-x-2 sm:space-x-3 disabled:opacity-50"
                             >
-                                <ShoppingCart className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+                                <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform" />
                                 <span>{selectedVariant?.stock === 0 ? 'Out of Stock' : 'Add to Gear Bag'}</span>
                             </button>
 
@@ -265,17 +265,17 @@ export function ProductDetails({ product, children }: ProductDetailsProps) {
                                         await addToWishlist(product._id);
                                     }
                                 }}
-                                className={`w-20 border rounded-[2rem] flex items-center justify-center transition-all duration-300 group/wish ${isWishlisted
+                                className={`w-14 sm:w-20 border rounded-2xl sm:rounded-[2rem] flex items-center justify-center transition-all duration-300 group/wish ${isWishlisted
                                     ? 'bg-pink-500/20 text-pink-500 border-pink-500/50'
                                     : 'bg-white/5 text-slate-400 border-white/10 hover:text-pink-500 hover:bg-pink-500/10 hover:border-pink-500/30'
                                     }`}
                             >
-                                <Heart className={`w-6 h-6 group-hover/wish:scale-110 transition-transform ${isWishlisted ? 'fill-current' : ''}`} />
+                                <Heart className={`w-5 h-5 sm:w-6 sm:h-6 group-hover/wish:scale-110 transition-transform ${isWishlisted ? 'fill-current' : ''}`} />
                             </button>
                         </div>
 
                         {/* Trust Badges */}
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6 border-t border-white/5">
+                        <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-4 sm:pt-6 border-t border-white/5">
                             <div className="flex items-center space-x-3 text-slate-400">
                                 <Truck className="w-5 h-5 text-blue-500" />
                                 <span className="text-[10px] font-black uppercase tracking-widest">Fast Delivery</span>

@@ -101,7 +101,7 @@ export function ProductReviews({ reviews }: ProductReviewsProps) {
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: idx * 0.05 }}
-                                className="bg-white/[0.02] border border-white/5 p-6 rounded-2xl space-y-4 hover:bg-white/[0.04] transition-colors"
+                                className="bg-white/[0.02] border border-white/5 p-4 sm:p-6 rounded-xl sm:rounded-2xl space-y-3 sm:space-y-4 hover:bg-white/[0.04] transition-colors"
                             >
                                 <div className="flex justify-between items-start">
                                     <div className="flex items-center space-x-3">
@@ -119,7 +119,7 @@ export function ProductReviews({ reviews }: ProductReviewsProps) {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="flex items-center text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                                    <div className="flex items-center text-[10px] font-black text-slate-500 uppercase tracking-widest hidden sm:flex">
                                         <Calendar className="w-3 h-3 mr-1.5" />
                                         {formatDate(review.createdAt)}
                                     </div>

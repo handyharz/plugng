@@ -378,7 +378,7 @@ function ProfilePageContent() {
     };
 
     return (
-        <div className="max-w-[1440px] mx-auto px-3 sm:px-6 pt-16 sm:pt-20 md:pt-24 pb-12 space-y-8 sm:space-y-12">
+        <div className="max-w-[1440px] mx-auto px-3 sm:px-6 pb-12 space-y-8 sm:space-y-12">
             {/* Header */}
             <div className="space-y-4 sm:space-y-6">
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6">
