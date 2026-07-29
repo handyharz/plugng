@@ -107,25 +107,25 @@ const ShopByBrand: React.FC = () => {
     }
 
     return (
-        <section className="px-6 max-w-[1440px] mx-auto py-12">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <section className="px-3 sm:px-6 max-w-[1440px] mx-auto py-8 sm:py-12">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8">
                 <div className="space-y-2">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30"
+                        className="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-purple-500/20 border border-purple-500/30"
                     >
-                        <Smartphone className="w-4 h-4 text-purple-400" />
-                        <span className="text-xs font-black text-purple-400 uppercase tracking-wider">
+                        <Smartphone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-400" />
+                        <span className="text-[10px] sm:text-xs font-black text-purple-400 uppercase tracking-wider">
                             Find Your Match
                         </span>
                     </motion.div>
 
-                    <h2 className="text-4xl md:text-5xl font-black text-white italic uppercase tracking-tighter">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white italic uppercase tracking-tighter">
                         Shop by <span className="text-purple-400">Brand</span>
                     </h2>
-                    <p className="text-slate-400 max-w-md">
+                    <p className="text-slate-400 max-w-md text-xs sm:text-sm">
                         Find the perfect accessories for your phone brand. All products are guaranteed compatible.
                     </p>
                 </div>
@@ -134,17 +134,17 @@ const ShopByBrand: React.FC = () => {
                 <div className="flex items-center gap-2">
                     <button
                         onClick={() => scroll('left')}
-                        className="p-3 rounded-xl glass-card border border-white/10 hover:bg-white/10 transition-all active:scale-95"
+                        className="p-2.5 sm:p-3 rounded-xl glass-card border border-white/10 hover:bg-white/10 transition-all active:scale-95"
                         aria-label="Scroll left"
                     >
-                        <ChevronLeft className="w-5 h-5 text-white" />
+                        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     </button>
                     <button
                         onClick={() => scroll('right')}
-                        className="p-3 rounded-xl glass-card border border-white/10 hover:bg-white/10 transition-all active:scale-95"
+                        className="p-2.5 sm:p-3 rounded-xl glass-card border border-white/10 hover:bg-white/10 transition-all active:scale-95"
                         aria-label="Scroll right"
                     >
-                        <ChevronRight className="w-5 h-5 text-white" />
+                        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     </button>
                 </div>
             </div>
@@ -152,7 +152,7 @@ const ShopByBrand: React.FC = () => {
             {/* Brands Carousel */}
             <div
                 ref={scrollContainerRef}
-                className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+                className="flex gap-3 sm:gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
                 {brands.map((brand, index) => (
@@ -166,12 +166,12 @@ const ShopByBrand: React.FC = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.05 }}
                             viewport={{ once: true }}
-                            className={`group relative overflow-hidden glass-card border border-white/10 ${getBrandHoverColor(brand.name)} rounded-3xl p-8 w-48 h-48 transition-all hover:scale-105 active:scale-95 cursor-pointer`}
+                            className={`group relative overflow-hidden glass-card border border-white/10 ${getBrandHoverColor(brand.name)} rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 transition-all hover:scale-105 active:scale-95 cursor-pointer`}
                         >
                             <div className={`absolute inset-0 bg-gradient-to-br ${getBrandColor(brand.name)} opacity-50 group-hover:opacity-100 transition-opacity`} />
 
-                            <div className="relative z-10 h-full flex flex-col items-center justify-center text-center space-y-4">
-                                <div className="relative w-24 h-24 transform group-hover:scale-110 transition-transform duration-300">
+                            <div className="relative z-10 h-full flex flex-col items-center justify-center text-center space-y-2 sm:space-y-4">
+                                <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 transform group-hover:scale-110 transition-transform duration-300">
                                     <Image
                                         src={getBrandImage(brand.slug)}
                                         alt={`${brand.name} logo`}
@@ -181,10 +181,10 @@ const ShopByBrand: React.FC = () => {
                                     />
                                 </div>
                                 <div>
-                                    <div className="text-xl font-black text-white uppercase tracking-tight mb-1">
+                                    <div className="text-base sm:text-lg md:text-xl font-black text-white uppercase tracking-tight mb-0.5">
                                         {brand.name}
                                     </div>
-                                    <div className="text-xs text-slate-400 group-hover:text-white transition-colors font-medium uppercase tracking-wider">
+                                    <div className="text-[9px] sm:text-xs text-slate-400 group-hover:text-white transition-colors font-medium uppercase tracking-wider">
                                         View Products →
                                     </div>
                                 </div>

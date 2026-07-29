@@ -7,55 +7,55 @@ import { motion } from 'framer-motion';
 
 const WalletPromotion: React.FC = () => {
     return (
-        <section className="px-6 max-w-[1440px] mx-auto py-8">
+        <section className="px-3 sm:px-6 max-w-[1440px] mx-auto py-6 sm:py-8">
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="relative overflow-hidden rounded-[3rem] p-8 md:p-12 border border-purple-500/30 bg-gradient-to-br from-purple-500/10 via-transparent to-pink-500/10"
+                className="relative overflow-hidden rounded-2xl sm:rounded-[3rem] p-5 sm:p-8 md:p-12 border border-purple-500/30 bg-gradient-to-br from-purple-500/10 via-transparent to-pink-500/10"
             >
                 {/* Animated Background */}
                 <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-pink-500/20 rounded-full blur-[120px] pointer-events-none" />
 
-                <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8">
                     {/* Left Side - Content */}
                     <div className="flex-1 text-center lg:text-left">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 mb-4">
-                            <Zap className="w-4 h-4 text-purple-400" />
-                            <span className="text-xs font-black text-purple-400 uppercase tracking-wider">
+                        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-purple-500/20 border border-purple-500/30 mb-3 sm:mb-4">
+                            <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-400" />
+                            <span className="text-[10px] sm:text-xs font-black text-purple-400 uppercase tracking-wider">
                                 Exclusive Offer
                             </span>
                         </div>
 
-                        <h2 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase italic tracking-tighter">
+                        <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white mb-3 sm:mb-4 uppercase italic tracking-tighter">
                             Load Your <span className="text-purple-400">Wallet</span>
                         </h2>
 
-                        <div className="space-y-4 mb-6">
+                        <div className="space-y-3 sm:space-y-4 mb-5 sm:mb-6">
                             <div className="flex items-start gap-3 justify-center lg:justify-start">
-                                <div className="p-2 rounded-lg bg-purple-500/20 mt-1">
-                                    <Gift className="w-5 h-5 text-purple-400" />
+                                <div className="p-2 rounded-lg bg-purple-500/20 mt-1 shrink-0">
+                                    <Gift className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
                                 </div>
                                 <div className="text-left">
-                                    <div className="text-xl md:text-2xl font-black text-white">
+                                    <div className="text-lg sm:text-xl md:text-2xl font-black text-white">
                                         Get ₦500 Bonus
                                     </div>
-                                    <div className="text-sm text-slate-300">
+                                    <div className="text-xs sm:text-sm text-slate-300">
                                         When you load ₦10,000 or more
                                     </div>
                                 </div>
                             </div>
 
                             <div className="flex items-start gap-3 justify-center lg:justify-start">
-                                <div className="p-2 rounded-lg bg-emerald-500/20 mt-1">
-                                    <Wallet className="w-5 h-5 text-emerald-400" />
+                                <div className="p-2 rounded-lg bg-emerald-500/20 mt-1 shrink-0">
+                                    <Wallet className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400" />
                                 </div>
                                 <div className="text-left">
-                                    <div className="text-xl md:text-2xl font-black text-white">
+                                    <div className="text-lg sm:text-xl md:text-2xl font-black text-white">
                                         Zero Transaction Fees
                                     </div>
-                                    <div className="text-sm text-slate-300">
+                                    <div className="text-xs sm:text-sm text-slate-300">
                                         Pay with wallet and save on every order
                                     </div>
                                 </div>
@@ -64,10 +64,10 @@ const WalletPromotion: React.FC = () => {
 
                         <Link
                             href="/wallet"
-                            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-black uppercase tracking-wider transition-all hover:scale-105 active:scale-95 group"
+                            className="inline-flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-black text-xs sm:text-sm uppercase tracking-wider transition-all hover:scale-105 active:scale-95 group"
                         >
                             Top Up Now
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </div>
 

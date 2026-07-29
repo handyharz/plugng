@@ -45,24 +45,24 @@ const DeliveryInfo: React.FC = () => {
     ];
 
     return (
-        <section className="px-6 max-w-[1440px] mx-auto py-12 border-t border-white/5">
-            <div className="text-center mb-12">
+        <section className="px-3 sm:px-6 max-w-[1440px] mx-auto py-8 sm:py-12 border-t border-white/5">
+            <div className="text-center mb-8 sm:mb-12">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-500/30 mb-4"
+                    className="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-blue-500/20 border border-blue-500/30 mb-3 sm:mb-4"
                 >
-                    <Truck className="w-4 h-4 text-blue-400" />
-                    <span className="text-xs font-black text-blue-400 uppercase tracking-wider">
+                    <Truck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400" />
+                    <span className="text-[10px] sm:text-xs font-black text-blue-400 uppercase tracking-wider">
                         Nationwide Delivery
                     </span>
                 </motion.div>
 
-                <h2 className="text-4xl md:text-5xl font-black text-white mb-4 uppercase italic tracking-tighter">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 uppercase italic tracking-tighter">
                     We Deliver <span className="text-blue-400">Everywhere</span>
                 </h2>
-                <p className="text-base md:text-lg text-slate-400 max-w-2xl mx-auto">
+                <p className="text-xs sm:text-base md:text-lg text-slate-400 max-w-2xl mx-auto">
                     Fast, reliable delivery across all 36 states in Nigeria. Track your order every step of the way.
                 </p>
             </div>
@@ -72,18 +72,18 @@ const DeliveryInfo: React.FC = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="glass-card rounded-3xl p-6 md:p-8 border border-emerald-500/30 bg-gradient-to-r from-emerald-500/10 to-green-500/10 mb-8 text-center"
+                className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-emerald-500/30 bg-gradient-to-r from-emerald-500/10 to-green-500/10 mb-6 sm:mb-8 text-center"
             >
-                <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-                    <div className="flex items-center gap-3">
-                        <div className="p-3 rounded-2xl bg-emerald-500/20">
-                            <Gift className="w-8 h-8 text-emerald-400" />
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6">
+                    <div className="flex items-center gap-3 text-left">
+                        <div className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-emerald-500/20 shrink-0">
+                            <Gift className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-400" />
                         </div>
                         <div className="text-left">
-                            <div className="text-2xl md:text-3xl font-black text-white">
+                            <div className="text-xl sm:text-2xl md:text-3xl font-black text-white">
                                 FREE DELIVERY
                             </div>
-                            <div className="text-sm text-slate-300">
+                            <div className="text-xs sm:text-sm text-slate-300">
                                 On orders above <span className="text-emerald-400 font-bold">₦5,000</span>
                             </div>
                         </div>
@@ -91,15 +91,15 @@ const DeliveryInfo: React.FC = () => {
 
                     <div className="hidden md:block w-px h-12 bg-white/10" />
 
-                    <div className="flex items-center gap-3">
-                        <div className="p-3 rounded-2xl bg-blue-500/20">
-                            <Clock className="w-8 h-8 text-blue-400" />
+                    <div className="flex items-center gap-3 text-left">
+                        <div className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-blue-500/20 shrink-0">
+                            <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400" />
                         </div>
                         <div className="text-left">
-                            <div className="text-lg md:text-xl font-black text-white">
+                            <div className="text-base sm:text-lg md:text-xl font-black text-white">
                                 SAME-DAY DELIVERY
                             </div>
-                            <div className="text-sm text-slate-300">
+                            <div className="text-xs sm:text-sm text-slate-300">
                                 Lagos only • Order before <span className="text-blue-400 font-bold">2pm</span>
                             </div>
                         </div>
@@ -108,7 +108,7 @@ const DeliveryInfo: React.FC = () => {
             </motion.div>
 
             {/* Delivery Tiers Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                 {deliveryTiers.map((tier, index) => (
                     <motion.div
                         key={tier.tier}
@@ -116,25 +116,25 @@ const DeliveryInfo: React.FC = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
                         viewport={{ once: true }}
-                        className={`glass-card rounded-2xl p-6 border ${tier.borderColor} hover:bg-white/5 transition-all hover:scale-[1.02] relative overflow-hidden group`}
+                        className={`glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6 border ${tier.borderColor} hover:bg-white/5 transition-all hover:scale-[1.02] relative overflow-hidden group`}
                     >
                         <div className={`absolute inset-0 bg-gradient-to-br ${tier.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity`} />
 
                         <div className="relative z-10">
                             {/* Icon */}
-                            <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform">
+                            <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 transform group-hover:scale-110 transition-transform">
                                 {tier.icon}
                             </div>
 
                             {/* Tier Name */}
-                            <div className="text-xs font-black text-slate-500 uppercase tracking-wider mb-1">
+                            <div className="text-[10px] sm:text-xs font-black text-slate-500 uppercase tracking-wider mb-1">
                                 {tier.tier}
                             </div>
 
                             {/* Locations */}
                             <div className="flex items-start gap-2 mb-3">
-                                <MapPin className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
-                                <div className="text-sm font-bold text-white leading-tight">
+                                <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                                <div className="text-xs sm:text-sm font-bold text-white leading-tight">
                                     {tier.locations}
                                 </div>
                             </div>
@@ -142,12 +142,12 @@ const DeliveryInfo: React.FC = () => {
                             {/* Duration & Price */}
                             <div className="flex items-center justify-between pt-3 border-t border-white/10">
                                 <div className="flex items-center gap-1.5">
-                                    <Clock className="w-3.5 h-3.5 text-slate-400" />
-                                    <span className="text-xs text-slate-400 font-medium">
+                                    <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-400" />
+                                    <span className="text-[10px] sm:text-xs text-slate-400 font-medium">
                                         {tier.duration}
                                     </span>
                                 </div>
-                                <div className="text-lg font-black text-white">
+                                <div className="text-base sm:text-lg font-black text-white">
                                     {tier.price}
                                 </div>
                             </div>
@@ -157,8 +157,8 @@ const DeliveryInfo: React.FC = () => {
             </div>
 
             {/* Additional Info */}
-            <div className="mt-8 text-center">
-                <p className="text-sm text-slate-500">
+            <div className="mt-6 sm:mt-8 text-center">
+                <p className="text-xs sm:text-sm text-slate-500">
                     Delivery times are estimates and may vary based on location and order volume.
                 </p>
             </div>

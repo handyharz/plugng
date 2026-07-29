@@ -41,23 +41,23 @@ const WhyChooseUs: React.FC = () => {
     ];
 
     return (
-        <section className="px-6 max-w-[1440px] mx-auto py-12 border-t border-white/5">
-            <div className="text-center mb-12">
+        <section className="px-3 sm:px-6 max-w-[1440px] mx-auto py-8 sm:py-12 border-t border-white/5">
+            <div className="text-center mb-8 sm:mb-12">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-4xl md:text-5xl font-black text-white mb-4 uppercase italic tracking-tighter">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 uppercase italic tracking-tighter">
                         Why Choose <span className="text-blue-400">PlugNG</span>?
                     </h2>
-                    <p className="text-base md:text-lg text-slate-400 max-w-2xl mx-auto">
+                    <p className="text-xs sm:text-base md:text-lg text-slate-400 max-w-2xl mx-auto">
                         We're not just another online store. We're your trusted partner for authentic phone accessories.
                     </p>
                 </motion.div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 {features.map((feature, index) => (
                     <motion.div
                         key={feature.title}
@@ -65,23 +65,23 @@ const WhyChooseUs: React.FC = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
                         viewport={{ once: true }}
-                        className={`group relative overflow-hidden glass-card rounded-3xl p-8 border ${feature.borderColor} hover:bg-white/5 transition-all hover:scale-[1.02] active:scale-[0.98]`}
+                        className={`group relative overflow-hidden glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 border ${feature.borderColor} hover:bg-white/5 transition-all hover:scale-[1.02] active:scale-[0.98]`}
                     >
                         <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity`} />
 
-                        <div className="relative z-10 space-y-4">
+                        <div className="relative z-10 space-y-3 sm:space-y-4">
                             {/* Icon */}
-                            <div className="inline-flex p-4 rounded-2xl bg-white/5 group-hover:bg-white/10 transition-colors">
-                                <feature.icon className={`w-8 h-8 ${feature.iconColor}`} />
+                            <div className="inline-flex p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 group-hover:bg-white/10 transition-colors">
+                                <feature.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${feature.iconColor}`} />
                             </div>
 
                             {/* Title */}
-                            <h3 className="text-xl font-black text-white uppercase tracking-tight">
+                            <h3 className="text-base sm:text-xl font-black text-white uppercase tracking-tight">
                                 {feature.title}
                             </h3>
 
                             {/* Description */}
-                            <p className="text-sm text-slate-400 leading-relaxed">
+                            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                                 {feature.description}
                             </p>
                         </div>

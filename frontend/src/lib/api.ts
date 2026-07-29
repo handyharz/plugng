@@ -134,6 +134,7 @@ export interface User {
     _id: string;
     firstName: string;
     lastName: string;
+    name?: string;
     email: string;
     phone: string;
     role: 'customer' | 'admin' | 'super_admin' | 'manager' | 'support' | 'editor';
@@ -152,7 +153,9 @@ export interface User {
     };
     totalSpent: number;
     loyaltyTier: 'Enthusiast' | 'Elite' | 'Master';
+    tier?: string;
 }
+
 
 // API Functions
 export const authApi = {

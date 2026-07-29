@@ -35,10 +35,10 @@ const AnimatedStat: React.FC<StatProps> = ({ end, label, suffix = '', prefix = '
 
     return (
         <div className="text-center">
-            <div className="text-3xl md:text-4xl font-black text-white mb-1">
+            <div className="text-xl sm:text-3xl md:text-4xl font-black text-white mb-0.5 sm:mb-1">
                 {prefix}{count.toLocaleString()}{suffix}
             </div>
-            <div className="text-xs md:text-sm text-slate-400 uppercase tracking-wider font-bold">
+            <div className="text-[9px] sm:text-xs md:text-sm text-slate-400 uppercase tracking-wider font-bold">
                 {label}
             </div>
         </div>
@@ -74,20 +74,20 @@ const TrustBanner: React.FC = () => {
     ];
 
     return (
-        <section className="px-6 max-w-[1440px] mx-auto py-8">
-            <div className="glass-card rounded-3xl p-8 md:p-12 border border-white/10 relative overflow-hidden">
+        <section className="px-3 sm:px-6 max-w-[1440px] mx-auto py-6 sm:py-8">
+            <div className="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 border border-white/10 relative overflow-hidden">
                 {/* Background Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 pointer-events-none" />
 
                 {/* Stats Section */}
-                <div className="relative z-10 grid grid-cols-3 gap-6 md:gap-12 mb-12 pb-8 border-b border-white/10">
+                <div className="relative z-10 grid grid-cols-3 gap-2 sm:gap-6 md:gap-12 mb-6 sm:mb-12 pb-6 sm:pb-8 border-b border-white/10">
                     <AnimatedStat end={1000} label="Products" suffix="+" />
                     <AnimatedStat end={1000} label="Happy Customers" suffix="+" />
                     <AnimatedStat end={24} label="Support" suffix="/7" />
                 </div>
 
                 {/* Trust Badges */}
-                <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
                     {badges.map((badge, index) => (
                         <motion.div
                             key={badge.title}
@@ -95,19 +95,19 @@ const TrustBanner: React.FC = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1 }}
                             viewport={{ once: true }}
-                            className="group relative overflow-hidden glass-card hover:bg-white/10 border border-white/10 rounded-2xl p-4 md:p-6 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                            className="group relative overflow-hidden glass-card hover:bg-white/10 border border-white/10 rounded-xl sm:rounded-2xl p-3.5 sm:p-5 md:p-6 transition-all hover:scale-[1.02] active:scale-[0.98]"
                         >
                             <div className={`absolute inset-0 bg-gradient-to-br ${badge.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity`} />
 
-                            <div className="relative z-10 flex flex-col items-center text-center space-y-2">
-                                <div className="p-3 rounded-xl bg-white/5 group-hover:bg-white/10 transition-colors">
-                                    <badge.icon className="w-6 h-6 md:w-8 md:h-8 text-blue-400 group-hover:text-blue-300 transition-colors" />
+                            <div className="relative z-10 flex flex-col items-center text-center space-y-1.5 sm:space-y-2">
+                                <div className="p-2 sm:p-3 rounded-xl bg-white/5 group-hover:bg-white/10 transition-colors">
+                                    <badge.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-blue-400 group-hover:text-blue-300 transition-colors" />
                                 </div>
                                 <div>
-                                    <div className="text-sm md:text-base font-black text-white uppercase tracking-tight">
+                                    <div className="text-xs sm:text-sm md:text-base font-black text-white uppercase tracking-tight leading-tight">
                                         {badge.title}
                                     </div>
-                                    <div className="text-[10px] md:text-xs text-slate-400 font-medium">
+                                    <div className="text-[9px] sm:text-[10px] md:text-xs text-slate-400 font-medium">
                                         {badge.description}
                                     </div>
                                 </div>

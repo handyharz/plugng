@@ -81,17 +81,17 @@ export default function Home() {
   return (
     <div className="space-y-0 relative">
       {/* 1. Hero Section (Search + Value Props) */}
-      <section className="px-6 max-w-[1440px] mx-auto pt-10 pb-3 relative z-20">
+      <section className="px-3 sm:px-6 max-w-[1440px] mx-auto pt-24 sm:pt-28 md:pt-32 pb-4 relative z-20">
         <motion.div
           layout
           style={{ scale: heroScale, opacity: heroOpacity }}
-          className="relative glass-card rounded-[3rem] p-12 overflow-hidden border-white/10 group bg-grid-white/[0.02] text-center"
+          className="relative glass-card rounded-3xl sm:rounded-[3rem] p-6 sm:p-8 md:p-12 overflow-hidden border-white/10 group bg-grid-white/[0.02] text-center"
         >
           {/* Animated Background Gradients */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[600px] h-[320px] sm:h-[600px] bg-blue-500/20 rounded-full blur-[100px] sm:blur-[120px] pointer-events-none" />
 
-          <div className="relative z-10 space-y-8 max-w-3xl mx-auto flex flex-col items-center">
-            <div className="flex items-center space-x-3 mb-4">
+          <div className="relative z-10 space-y-6 sm:space-y-8 max-w-3xl mx-auto flex flex-col items-center">
+            <div className="flex items-center space-x-3 mb-2 sm:mb-4">
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
@@ -99,24 +99,24 @@ export default function Home() {
               <span className="text-[10px] font-black text-blue-500 uppercase tracking-[0.3em]">Your Plug</span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-[0.85] uppercase italic">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-[0.9] sm:leading-[0.85] uppercase italic">
               Find Your
-              <span className="text-transparent pl-4 bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Upgrade</span>
+              <span className="text-transparent pl-2 sm:pl-4 bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Upgrade</span>
             </h1>
 
-            <p className="text-base md:text-lg text-slate-400 font-medium max-w-md leading-relaxed mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-slate-400 font-medium max-w-md leading-relaxed mx-auto">
               Search the entire archive for premium, authentic gear.
             </p>
 
             {/* Unified Search Bar */}
-            <SearchBar variant="hero" className="mt-8" />
+            <SearchBar variant="hero" className="mt-4 sm:mt-8" />
 
             {/* Quick Chips */}
-            <div className="flex flex-wrap justify-center gap-3 pt-4 opacity-60">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 pt-2 sm:pt-4 opacity-60">
               {['MagSafe', 'USB-C', 'Audio', 'Protection'].map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 rounded-full border border-white/10 text-[10px] uppercase tracking-wider text-slate-400 hover:text-white hover:border-blue-500/50 cursor-pointer transition-all active:scale-95"
+                  className="px-2.5 py-1 rounded-full border border-white/10 text-[9px] sm:text-[10px] uppercase tracking-wider text-slate-400 hover:text-white hover:border-blue-500/50 cursor-pointer transition-all active:scale-95"
                 >
                   {tag}
                 </span>
@@ -133,10 +133,10 @@ export default function Home() {
       <PaymentHighlight />
 
       {/* 4. On Sale (Carousel) */}
-      <div className="px-6 max-w-[1440px] mx-auto space-y-0" id="on-sale">
+      <div className="px-3 sm:px-6 max-w-[1440px] mx-auto space-y-0" id="on-sale">
         <ProductSection
           title="On Sale"
-          icon={<Flame size={32} />}
+          icon={<Flame size={28} className="sm:w-8 sm:h-8" />}
           products={mappedOnSale}
           isLoading={isLoading}
           ctaText="View All Deals"
@@ -147,10 +147,10 @@ export default function Home() {
       </div>
 
       {/* 5. Featured Products (Grid) */}
-      <div className="px-6 max-w-[1440px] mx-auto space-y-0">
+      <div className="px-3 sm:px-6 max-w-[1440px] mx-auto space-y-0">
         <ProductSection
           title="Featured"
-          icon={<Star size={32} />}
+          icon={<Star size={28} className="sm:w-8 sm:h-8" />}
           products={mappedFeatured}
           isLoading={isLoading}
           ctaText="Explore Featured"
@@ -167,10 +167,10 @@ export default function Home() {
       <ShopByBrand />
 
       {/* 8. Trending Now (Carousel) */}
-      <div className="px-6 max-w-[1440px] mx-auto space-y-0">
+      <div className="px-3 sm:px-6 max-w-[1440px] mx-auto space-y-0">
         <ProductSection
           title="Trending Now"
-          icon={<TrendingUp size={32} />}
+          icon={<TrendingUp size={28} className="sm:w-8 sm:h-8" />}
           products={mappedTrending}
           isLoading={isLoading}
           ctaText="See What's Hot"
@@ -181,10 +181,10 @@ export default function Home() {
       </div>
 
       {/* 9. New Arrivals (Grid) */}
-      <div className="px-6 max-w-[1440px] mx-auto space-y-0">
+      <div className="px-3 sm:px-6 max-w-[1440px] mx-auto space-y-0">
         <ProductSection
           title="New Arrivals"
-          icon={<Sparkles size={32} />}
+          icon={<Sparkles size={28} className="sm:w-8 sm:h-8" />}
           products={mappedNew}
           isLoading={isLoading}
           ctaText="Browse New Gear"
@@ -198,17 +198,17 @@ export default function Home() {
       <WhyChooseUs />
 
       {/* 11. Category Showcase "The Archive" */}
-      <section className="px-6 max-w-[1440px] mx-auto py-16 border-t border-white/5">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+      <section className="px-3 sm:px-6 max-w-[1440px] mx-auto py-10 sm:py-16 border-t border-white/5">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-12">
           <div className="space-y-2">
-            <h2 className="text-4xl md:text-5xl font-black text-white italic uppercase tracking-tighter">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white italic uppercase tracking-tighter">
               The <span className="text-blue-500">Archive</span>
             </h2>
-            <p className="text-slate-500 max-w-md">
+            <p className="text-slate-500 max-w-md text-xs sm:text-sm">
               Discover curated tech collections across our most popular ecosystems.
             </p>
           </div>
-          <Link href="/categories" className="text-xs font-black text-blue-500 uppercase tracking-widest hover:text-white transition-colors group flex items-center gap-2 text-right">
+          <Link href="/categories" className="text-xs font-black text-blue-500 uppercase tracking-widest hover:text-white transition-colors group flex items-center gap-2 text-left sm:text-right">
             Explore All <TrendingUp size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </Link>
         </div>
@@ -223,12 +223,12 @@ export default function Home() {
             <Link
               key={cat.slug}
               href={`/categories/${cat.slug}`}
-              className="group relative overflow-hidden glass-card hover:bg-white/10 border border-white/10 rounded-3xl p-8 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="group relative overflow-hidden glass-card hover:bg-white/10 border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${cat.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity`} />
               <div className="relative z-10">
-                <div className="text-4xl mb-4 transform group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-500">{cat.emoji}</div>
-                <h3 className="text-sm font-black text-white uppercase tracking-widest leading-tight">
+                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 transform group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-500">{cat.emoji}</div>
+                <h3 className="text-xs sm:text-sm font-black text-white uppercase tracking-widest leading-tight">
                   {cat.name}
                 </h3>
                 <div className="mt-2 text-[10px] font-bold text-slate-500 group-hover:text-white transition-colors uppercase tracking-widest">

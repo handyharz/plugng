@@ -41,27 +41,27 @@ const Newsletter: React.FC = () => {
     };
 
     return (
-        <section className="px-6 max-w-[1440px] mx-auto py-12 border-t border-white/5">
+        <section className="px-3 sm:px-6 max-w-[1440px] mx-auto py-8 sm:py-12 border-t border-white/5">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="glass-card rounded-3xl p-8 md:p-12 border border-white/10 relative overflow-hidden"
+                className="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 border border-white/10 relative overflow-hidden"
             >
                 {/* Background Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 pointer-events-none" />
 
                 <div className="relative z-10 max-w-3xl mx-auto text-center">
                     {/* Icon */}
-                    <div className="inline-flex p-4 rounded-2xl bg-blue-500/20 border border-blue-500/30 mb-6">
-                        <Mail className="w-8 h-8 text-blue-400" />
+                    <div className="inline-flex p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-blue-500/20 border border-blue-500/30 mb-4 sm:mb-6">
+                        <Mail className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400" />
                     </div>
 
                     {/* Heading */}
-                    <h2 className="text-3xl md:text-5xl font-black text-white mb-3 uppercase italic tracking-tighter">
+                    <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white mb-2 sm:mb-3 uppercase italic tracking-tighter">
                         Get ₦500 <span className="text-blue-400">Off</span>
                     </h2>
-                    <p className="text-base md:text-lg text-slate-300 mb-8">
+                    <p className="text-xs sm:text-base md:text-lg text-slate-300 mb-6 sm:mb-8">
                         Subscribe to our newsletter and get ₦500 off your first order. Plus, be the first to know about exclusive deals and new arrivals.
                     </p>
 
@@ -75,23 +75,23 @@ const Newsletter: React.FC = () => {
                                     onChange={(e) => setEmail(e.target.value)}
                                     placeholder="Enter your email address"
                                     disabled={status === 'loading' || status === 'success'}
-                                    className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="w-full px-4 py-3 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                                 />
                             </div>
                             <button
                                 type="submit"
                                 disabled={status === 'loading' || status === 'success'}
-                                className="px-8 py-4 rounded-2xl bg-blue-500 hover:bg-blue-600 text-white font-black uppercase tracking-wider transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2 whitespace-nowrap"
+                                className="px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl bg-blue-500 hover:bg-blue-600 text-white font-black text-xs sm:text-sm uppercase tracking-wider transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2 whitespace-nowrap"
                             >
                                 {status === 'loading' ? (
                                     <>
-                                        <Loader2 className="w-5 h-5 animate-spin" />
-                                        <span className="hidden sm:inline">Subscribing...</span>
+                                        <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
+                                        <span>Subscribing...</span>
                                     </>
                                 ) : status === 'success' ? (
                                     <>
-                                        <CheckCircle className="w-5 h-5" />
-                                        <span className="hidden sm:inline">Subscribed!</span>
+                                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                                        <span>Subscribed!</span>
                                     </>
                                 ) : (
                                     'Subscribe'

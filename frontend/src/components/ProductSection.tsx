@@ -48,21 +48,21 @@ export default function ProductSection({
     }
 
     return (
-        <section className="py-16 border-t border-white/5">
+        <section className="py-10 sm:py-16 border-t border-white/5">
             {/* Section Header */}
-            <div className="flex items-center justify-between mb-10">
-                <div className="flex items-center space-x-3">
-                    {icon && <div style={{ color: accentColor }}>{icon}</div>}
-                    <h2 className="text-3xl md:text-4xl font-black text-white italic uppercase tracking-tighter">
+            <div className="flex items-center justify-between mb-6 sm:mb-10 gap-3">
+                <div className="flex items-center space-x-2.5 sm:space-x-3 min-w-0">
+                    {icon && <div style={{ color: accentColor }} className="shrink-0">{icon}</div>}
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white italic uppercase tracking-tighter truncate">
                         {title}
                     </h2>
                 </div>
                 {ctaText && ctaLink && (
                     <Link
                         href={ctaLink}
-                        className="group flex items-center space-x-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all"
+                        className="group flex items-center space-x-1.5 sm:space-x-2 px-3 py-2 sm:px-6 sm:py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all shrink-0"
                     >
-                        <span className="text-xs font-black text-slate-400 group-hover:text-white uppercase tracking-widest transition-colors">
+                        <span className="text-[10px] sm:text-xs font-black text-slate-400 group-hover:text-white uppercase tracking-widest transition-colors">
                             {ctaText}
                         </span>
                         <ArrowRight size={14} className="text-slate-400 group-hover:text-white transition-colors" />
@@ -73,14 +73,14 @@ export default function ProductSection({
             {/* Products Display */}
             {layout === 'carousel' ? (
                 <div className="relative">
-                    <div className="flex overflow-x-auto gap-6 pb-4 snap-x snap-mandatory scrollbar-hide">
+                    <div className="flex overflow-x-auto gap-4 sm:gap-6 pb-4 snap-x snap-mandatory scrollbar-hide">
                         {products.map((product, index) => (
                             <motion.div
                                 key={product.id}
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                                className="flex-none w-[280px] md:w-[320px] snap-start"
+                                className="flex-none w-[240px] sm:w-[280px] md:w-[320px] snap-start"
                             >
                                 <ProductCard product={product} />
                             </motion.div>
@@ -88,7 +88,7 @@ export default function ProductSection({
                     </div>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
                     {products.map((product, index) => (
                         <motion.div
                             key={product.id}
