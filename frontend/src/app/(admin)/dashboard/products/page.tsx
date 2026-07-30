@@ -54,7 +54,7 @@ export default function AdminProductsPage() {
             status: status === 'all' ? undefined : status,
             category: category === 'all' ? undefined : category,
             page,
-            limit: 10
+            limit: 20
         }),
     });
 
@@ -200,7 +200,7 @@ export default function AdminProductsPage() {
                 meta.totalPages > 1 && (
                     <div className="mt-8 flex items-center justify-between text-slate-400">
                         <p className="text-sm">
-                            Showing {(page - 1) * 10 + 1} to {Math.min(page * 10, meta.total)} of {meta.total} results
+                            Showing {(page - 1) * 20 + 1} to {Math.min(page * 20, meta.total)} of {meta.total} results
                         </p>
                         <div className="flex items-center gap-2">
                             <button
