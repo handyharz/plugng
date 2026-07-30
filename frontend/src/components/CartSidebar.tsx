@@ -74,9 +74,12 @@ export function CartSidebar() {
                                         >
                                             <div className="w-24 h-24 rounded-2xl bg-white/5 border border-white/10 overflow-hidden shrink-0">
                                                 <img
-                                                    src={item.image}
+                                                    src={typeof item.image === 'string' && item.image ? item.image : ((item.image as any)?.url || '/hero.png')}
                                                     alt={item.name}
                                                     className="w-full h-full object-cover"
+                                                    onError={(e) => {
+                                                        (e.target as HTMLImageElement).src = '/hero.png';
+                                                    }}
                                                 />
                                             </div>
                                             <div className="flex-1 flex flex-col">

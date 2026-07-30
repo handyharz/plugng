@@ -562,33 +562,40 @@ export default function CheckoutPage() {
                     <h2 className="text-xl font-black uppercase italic mb-6">Order Summary</h2>
 
                     <div className="space-y-4 mb-6 max-h-[400px] overflow-y-auto custom-scrollbar">
-                        {cart.map((item: CartItem) => (
-                            <div key={item.variantId || item.id} className="flex gap-4">
-                                <div className="w-16 h-16 bg-white/10 rounded-lg overflow-hidden shrink-0">
-                                    <Image
-                                        src={item.image}
-                                        alt={item.name}
-                                        width={64}
-                                        height={64}
-                                        className="w-full h-full object-cover"
-                                    />
+                        {cart.map((item: CartItem) => {
+                            const imgUrl = typeof item.image === 'string' && item.image
+                                ? item.image
+                                : ((item.image as any)?.url || '/hero.png');
+
+                            return (
+                                <div key={item.variantId || item.id} className="flex gap-4 items-center">
+                                    <div className="w-16 h-16 bg-white/10 rounded-xl overflow-hidden shrink-0 border border-white/10 relative">
+                                        <img
+                                            src={imgUrl}
+                                            alt={item.name || 'Product'}
+                                            className="w-full h-full object-cover"
+                                            onError={(e) => {
+                                                (e.target as HTMLImageElement).src = '/hero.png';
+                                            }}
+                                        />
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className="font-bold text-sm line-clamp-2 text-white">{item.name}</h3>
+                                        <p className="text-xs text-slate-400 mt-1 flex flex-wrap items-center gap-1.5">
+                                            <span>Qty: {item.quantity}</span>
+                                            {item.selectedOptions && Object.entries(item.selectedOptions).map(([key, val]) => (
+                                                <span key={key} className="px-1.5 py-0.5 bg-white/10 rounded text-[10px] uppercase font-bold text-slate-300">
+                                                    {val}
+                                                </span>
+                                            ))}
+                                        </p>
+                                    </div>
+                                    <div className="font-mono text-sm font-bold text-white shrink-0">
+                                        {new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN', maximumFractionDigits: 0 }).format(item.price * item.quantity)}
+                                    </div>
                                 </div>
-                                <div className="flex-1">
-                                    <h3 className="font-bold text-sm line-clamp-2">{item.name}</h3>
-                                    <p className="text-xs text-slate-400 mt-1">
-                                        Qty: {item.quantity}
-                                        {item.selectedOptions && Object.entries(item.selectedOptions).map(([key, val]) => (
-                                            <span key={key} className="ml-2 px-1.5 py-0.5 bg-white/10 rounded text-[10px] uppercase">
-                                                {val}
-                                            </span>
-                                        ))}
-                                    </p>
-                                </div>
-                                <div className="font-mono text-sm">
-                                    {new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN', maximumFractionDigits: 0 }).format(item.price * item.quantity)}
-                                </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
 
                     <div className="border-t border-white/10 pt-4 space-y-4">

@@ -45,6 +45,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     const { user, isLoading: loading } = useAuth();
     const [isSyncing, setIsSyncing] = useState(false);
 
+    // Helper to safely resolve image URL regardless of string or object structure
+    const resolveImageUrl = (img: any): string => {
+        if (!img) return '';
+        if (typeof img === 'string') return img;
+        if (typeof img === 'object' && img.url) return img.url;
+        return '';
+    };
+
     // Mapper helper
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const mapBackendCartToFrontend = (backendItems: any[]): CartItem[] => {
@@ -54,14 +62,16 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
                 const product = item.product;
 
                 let price = 0;
-                let image = product.images?.[0]?.url || '/placeholder.png'; // Safe access with fallback
+                let image = resolveImageUrl(product.images?.[0]) || '/hero.png';
 
                 if (item.variantId && product.variants) {
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     const variant = product.variants.find((v: any) => v.sku === item.variantId || v._id === item.variantId);
                     if (variant) {
                         price = variant.sellingPrice;
-                        if (variant.image) image = variant.image;
+                        if (variant.image) {
+                            image = resolveImageUrl(variant.image) || image;
+                        }
                     } else {
                         // Fallback if variant not found (rare)
                         price = product.variants?.[0]?.sellingPrice || 0;
@@ -156,7 +166,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
     const addToCart = useCallback(async (product: CartProduct) => {
         // Optimistic update
-        const newItem = { ...product, quantity: 1 };
+        const resolvedImg = resolveImageUrl(product.image) || resolveImageUrl((product as any).images?.[0]) || '/hero.png';
+        const newItem = { ...product, image: resolvedImg, quantity: 1 };
         const itemKey = product.variantId || product.id;
 
         let newCart: CartItem[] = [];
