@@ -1087,50 +1087,58 @@ function ProfilePageContent() {
                                         </div>
                                     </div>
                                 ) : (
-                                    <div className="grid grid-cols-1 gap-4 max-h-[600px] overflow-y-auto pr-1 scrollbar-hide">
-                                        {wishlist.items.filter((item: any) => item.product !== null).map((item: any) => (
-                                            <div key={item.product._id} className="glass-card bg-white/5 border border-white/10 rounded-2xl sm:rounded-[2rem] p-4 sm:p-5 flex items-center gap-4 sm:gap-6 group hover:bg-white/[0.08] transition-all relative overflow-hidden">
-                                                <div className="w-16 h-16 sm:w-24 sm:h-24 relative rounded-xl overflow-hidden shrink-0">
-                                                    <Image
-                                                        src={item.product.images[0]?.url || '/placeholder.png'}
-                                                        alt={item.product.name}
-                                                        fill
-                                                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                                                    />
-                                                </div>
-                                                <div className="flex-grow space-y-2">
-                                                    <h4 className="text-sm font-black text-white uppercase italic tracking-tight truncate">{item.product.name}</h4>
-                                                    <p className="text-lg font-black text-blue-500 italic">₦{item.product.variants?.[0]?.sellingPrice?.toLocaleString()}</p>
-                                                    <div className="flex items-center gap-2">
-                                                        <Link href={`/product/${item.product.slug}`} className="p-2 bg-white/5 rounded-lg text-slate-500 hover:text-white hover:bg-blue-600 transition-all">
-                                                            <ExternalLink size={14} />
-                                                        </Link>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[600px] overflow-y-auto pr-1 scrollbar-hide">
+                                        {wishlist.items.filter((item: any) => item.product !== null).map((item: any) => {
+                                            const imgUrl = typeof item.product?.images?.[0] === 'string'
+                                                ? item.product.images[0]
+                                                : (item.product?.images?.[0]?.url || '/hero.png');
+
+                                            return (
+                                                <div key={item.product._id} className="glass-card bg-white/5 border border-white/10 rounded-2xl sm:rounded-[2rem] p-4 sm:p-5 flex items-center gap-4 sm:gap-6 group hover:bg-white/[0.08] transition-all relative overflow-hidden">
+                                                    <div className="w-16 h-16 sm:w-24 sm:h-24 relative rounded-xl overflow-hidden shrink-0 border border-white/10 bg-black/40">
+                                                        <img
+                                                            src={imgUrl}
+                                                            alt={item.product.name || 'Wishlist item'}
+                                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                                            onError={(e) => {
+                                                                (e.target as HTMLImageElement).src = '/hero.png';
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    <div className="flex-grow space-y-2 min-w-0">
+                                                        <h4 className="text-sm font-black text-white uppercase italic tracking-tight truncate">{item.product.name}</h4>
+                                                        <p className="text-lg font-black text-blue-500 italic">₦{item.product.variants?.[0]?.sellingPrice?.toLocaleString()}</p>
+                                                        <div className="flex items-center gap-2">
+                                                            <Link href={`/product/${item.product.slug}`} className="p-2 bg-white/5 rounded-lg text-slate-500 hover:text-white hover:bg-blue-600 transition-all">
+                                                                <ExternalLink size={14} />
+                                                            </Link>
+                                                            <button
+                                                                onClick={() => handleRemoveFromWishlist(item.product._id)}
+                                                                className="p-2 bg-white/5 rounded-lg text-slate-500 hover:text-red-500 hover:bg-red-500/10 transition-all"
+                                                            >
+                                                                <Trash2 size={14} />
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    {/* Add to cart - always visible on mobile */}
+                                                    <div className="absolute top-3 right-3">
                                                         <button
-                                                            onClick={() => handleRemoveFromWishlist(item.product._id)}
-                                                            className="p-2 bg-white/5 rounded-lg text-slate-500 hover:text-red-500 hover:bg-red-500/10 transition-all"
+                                                            onClick={() => addToCart({
+                                                                id: item.product._id,
+                                                                name: item.product.name,
+                                                                price: item.product.variants?.[0]?.sellingPrice || 0,
+                                                                image: imgUrl,
+                                                                description: item.product.description,
+                                                                category: item.product.category?.name || 'Uncategorized'
+                                                            })}
+                                                            className="w-8 h-8 bg-white text-black rounded-xl flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all"
                                                         >
-                                                            <Trash2 size={14} />
+                                                            <ShoppingCart size={14} />
                                                         </button>
                                                     </div>
                                                 </div>
-                                                {/* Add to cart - always visible on mobile */}
-                                                <div className="absolute top-3 right-3">
-                                                    <button
-                                                        onClick={() => addToCart({
-                                                            id: item.product._id,
-                                                            name: item.product.name,
-                                                            price: item.product.variants?.[0]?.sellingPrice || 0,
-                                                            image: item.product.images?.[0]?.url || '/placeholder.png',
-                                                            description: item.product.description,
-                                                            category: item.product.category?.name || 'Uncategorized'
-                                                        })}
-                                                        className="w-8 h-8 bg-white text-black rounded-xl flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all"
-                                                    >
-                                                        <ShoppingCart size={14} />
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        ))}
+                                            );
+                                        })}
                                     </div>
                                 )}
                             </motion.div>
@@ -1284,13 +1292,12 @@ function ProfilePageContent() {
                                                     </div>
 
                                                     <div className="pt-2 flex items-center justify-between border-t border-white/5">
-                                                        <div className={`px-2.5 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest border ${
-                                                            review.status === 'approved'
-                                                                ? 'bg-green-500/10 text-green-400 border-green-500/20'
-                                                                : review.status === 'rejected'
+                                                        <div className={`px-2.5 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest border ${review.status === 'approved'
+                                                            ? 'bg-green-500/10 text-green-400 border-green-500/20'
+                                                            : review.status === 'rejected'
                                                                 ? 'bg-red-500/10 text-red-400 border-red-500/20'
                                                                 : 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20'
-                                                        }`}>
+                                                            }`}>
                                                             {review.status || 'pending'}
                                                         </div>
                                                         <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest">
