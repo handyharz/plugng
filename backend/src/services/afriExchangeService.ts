@@ -119,3 +119,22 @@ export const verifyAfriExchangeWebhookSignature = ({
 
     return crypto.timingSafeEqual(provided, expectedBuffer);
 };
+
+export const getAfriExchangePaymentStatus = async (
+    referenceOrId: string
+): Promise<{ id?: string; reference?: string; status?: string; amount?: number; token_type?: string; [key: string]: any } | null> => {
+    if (!referenceOrId) return null;
+    try {
+        const response = await axios.get(
+            `${getApiBaseUrl()}/merchants/payment-request/${encodeURIComponent(referenceOrId)}`,
+            {
+                headers: getMerchantHeaders(),
+                timeout: 15000
+            }
+        );
+        return response.data?.data || null;
+    } catch (error: any) {
+        console.warn(`[AfriExchange] Status check failed for ${referenceOrId}:`, error.response?.data?.message || error.message);
+        return null;
+    }
+};

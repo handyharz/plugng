@@ -9,6 +9,7 @@ import Coupon from '../models/Coupon';
 import notificationService from '../services/notificationService';
 import {
     createAfriExchangePaymentRequest,
+    getAfriExchangePaymentStatus,
     isAfriExchangeEnabled,
     verifyAfriExchangeWebhookSignature
 } from '../services/afriExchangeService';
@@ -637,6 +638,37 @@ export const verifyPayment = async (req: Request, res: Response, next: NextFunct
         }
 
         if (order?.paymentMethod === 'afriexchange') {
+            // Check with AfriExchange API directly in case the webhook was delayed, missed, or timed out
+            try {
+                const targetRef = order.afriExchange?.reference || (reference as string);
+                const afriData = await getAfriExchangePaymentStatus(targetRef);
+
+                if (afriData && (afriData.status === 'completed' || afriData.status === 'collection.completed')) {
+                    console.log(`✅ [Verify] AfriExchange API confirmed payment for ${targetRef}`);
+                    if (order.paymentStatus !== 'paid') {
+                        await markOrderAsPaid({
+                            order,
+                            paymentReference: afriData.id || order.paymentReference || targetRef,
+                            paymentStatusSource: 'AfriExchange Verification Fallback',
+                            userIdForNotification: order.user.toString(),
+                            notificationTitle: 'Payment Confirmed',
+                            notificationMessage: `Payment for order #${order.orderNumber} has been verified.`
+                        });
+
+                        if (!order.afriExchange) order.afriExchange = {};
+                        order.afriExchange.status = 'collection.completed';
+                        order.afriExchange.verifiedAt = new Date();
+                        order.markModified('afriExchange');
+                        await order.save({ validateBeforeSave: false });
+                    }
+
+                    res.status(200).json({ status: 'success', data: { order: getVerificationOrderData(order) } });
+                    return;
+                }
+            } catch (err: any) {
+                console.warn('[Verify] AfriExchange fallback status error:', err.message);
+            }
+
             res.status(202).json({
                 status: 'pending',
                 data: {
